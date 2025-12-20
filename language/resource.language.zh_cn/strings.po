@@ -19,7 +19,7 @@ msgstr ""
 
 msgctxt "#31000"
 msgid "Limit number of items in widget"
-msgstr "小部件中项目数上限"
+msgstr "小组件中项目数上限"
 
 msgctxt "#31002"
 msgid "Animated posters"
@@ -79,7 +79,7 @@ msgstr "资源"
 
 msgctxt "#31021"
 msgid "Hide widget title"
-msgstr "隐藏小部件标题"
+msgstr "隐藏小组件标题"
 
 msgctxt "#31022"
 msgid "Video Infodialog"
@@ -103,7 +103,7 @@ msgstr "轮换"
 
 msgctxt "#31028"
 msgid "Widgets fade animation"
-msgstr "小部件消失动画"
+msgstr "小组件消失动画"
 
 msgctxt "#31030"
 msgid "movies in the library"
@@ -135,7 +135,7 @@ msgstr "隐藏演员图片"
 
 msgctxt "#31042"
 msgid "Add-On Widgets"
-msgstr "附加小部件"
+msgstr "附加小组件"
 
 msgctxt "#31043"
 msgid "Last Played Channels"
@@ -479,7 +479,7 @@ msgstr "设置天气同人画"
 
 msgctxt "#31144"
 msgid "Widgets"
-msgstr "小部件"
+msgstr "小组件"
 
 msgctxt "#31145"
 msgid "Show weather"
@@ -499,7 +499,7 @@ msgstr "首尾相接列表"
 
 msgctxt "#31149"
 msgid "Replace widget fanart with background"
-msgstr "替换小部件同人画"
+msgstr "替换小组件同人画"
 
 msgctxt "#31150"
 msgid "Set fallback image"
@@ -695,7 +695,7 @@ msgstr "信息亭模式"
 
 msgctxt "#31200"
 msgid "Only display widgets when pressing up"
-msgstr "仅在按上按键时显示小部件"
+msgstr "仅在按上按键时显示小组件"
 
 msgctxt "#31201"
 msgid "Show detailed info when video is paused"
@@ -931,7 +931,7 @@ msgstr "设置天气图标"
 
 msgctxt "#31261"
 msgid "Widget aspect"
-msgstr "小部件类型"
+msgstr "小组件类型"
 
 msgctxt "#31262"
 msgid "Poster"
@@ -951,7 +951,7 @@ msgstr "插图"
 
 msgctxt "#31266"
 msgid "Widget"
-msgstr "小部件"
+msgstr "小组件"
 
 msgctxt "#31267"
 msgid "Action"
@@ -963,7 +963,7 @@ msgstr "标签"
 
 msgctxt "#31269"
 msgid "Fallback widget"
-msgstr "默认小部件"
+msgstr "默认小组件"
 
 msgctxt "#31270"
 msgid "Video / Music OSD"
@@ -979,7 +979,7 @@ msgstr "多图"
 
 msgctxt "#31273"
 msgid "Hub widget"
-msgstr "中心小部件"
+msgstr "中心小组件"
 
 msgctxt "#31274"
 msgid "Most played Song"
@@ -999,7 +999,7 @@ msgstr "[B]配置播放器设置[/B][CR][CR] •     回放动作[CR] •     �
 
 msgctxt "#31278"
 msgid "Download all artwork"
-msgstr "下载所有艺术作品"
+msgstr "下载所有艺术图"
 
 msgctxt "#31279"
 msgid "Video decoder"
@@ -1019,11 +1019,11 @@ msgstr "特殊功能"
 
 msgctxt "#31283"
 msgid "Select artwork"
-msgstr "选择艺术作品"
+msgstr "选择艺术图"
 
 msgctxt "#31284"
 msgid "Download artwork"
-msgstr "下载艺术作品"
+msgstr "下载艺术图"
 
 msgctxt "#31285"
 msgid "Top Songs"
@@ -1087,7 +1087,7 @@ msgstr "音乐 OSD"
 
 msgctxt "#31303"
 msgid "Widgets"
-msgstr "小部件"
+msgstr "小组件"
 
 msgctxt "#31304"
 msgid "Views"
@@ -1219,7 +1219,7 @@ msgstr "自动滚动"
 
 msgctxt "#31341"
 msgid "Widget-listtype"
-msgstr "小部件-列表模式"
+msgstr "小组件-列表模式"
 
 msgctxt "#31342"
 msgid "List"
@@ -1343,7 +1343,7 @@ msgstr "全尺寸 EPG"
 
 msgctxt "#31385"
 msgid "Also use for widgets"
-msgstr "也用于小部件"
+msgstr "也用于小组件"
 
 msgctxt "#31386"
 msgid "Also use for system-icons"
@@ -1379,7 +1379,7 @@ msgstr "仅显示图标"
 
 msgctxt "#31394"
 msgid "Multi-Widgets"
-msgstr "多小部件"
+msgstr "多小组件"
 
 msgctxt "#31395"
 msgid "Gradient color for "
@@ -1403,7 +1403,7 @@ msgstr "宽高比例"
 
 msgctxt "#31402"
 msgid "Select aspect ratio for square widget"
-msgstr "选择方形小部件的比例类型"
+msgstr "选择方形小组件的比例类型"
 
 msgctxt "#31403"
 msgid "Scale"
@@ -1431,7 +1431,7 @@ msgstr "主菜单栏"
 
 msgctxt "#31411"
 msgid "Fullscreen widget"
-msgstr "全屏小部件"
+msgstr "全屏小组件"
 
 msgctxt "#31412"
 msgid " - Fullscreen"
@@ -1443,23 +1443,23 @@ msgstr "天气位置"
 
 msgctxt "#31414"
 msgid "Widget 1"
-msgstr "小部件 1"
+msgstr "小组件 1"
 
 msgctxt "#31415"
 msgid "Widget 2"
-msgstr "小部件 2"
+msgstr "小组件 2"
 
 msgctxt "#31416"
 msgid "Widget 3"
-msgstr "小部件 3"
+msgstr "小组件 3"
 
 msgctxt "#31417"
 msgid "Widget 4"
-msgstr "小部件 4"
+msgstr "小组件 4"
 
 msgctxt "#31418"
 msgid "Widget 5"
-msgstr "小部件 5"
+msgstr "小组件 5"
 
 msgctxt "#31419"
 msgid "Big Poster"
@@ -1575,7 +1575,7 @@ msgstr "播放下一集"
 
 msgctxt "#31452"
 msgid "Widget"
-msgstr "小部件"
+msgstr "小组件"
 
 msgctxt "#31453"
 msgid "Edge distance"
@@ -1611,7 +1611,7 @@ msgstr "仿冒蓝光"
 
 msgctxt "#31461"
 msgid "Artwork section"
-msgstr "艺术作品部分"
+msgstr "艺术图部分"
 
 msgctxt "#31462"
 msgid "Landscape"
@@ -1619,7 +1619,7 @@ msgstr "场景贴图"
 
 msgctxt "#31463"
 msgid "Artwork of"
-msgstr "艺术作品出自"
+msgstr "艺术图出自"
 
 msgctxt "#31464"
 msgid "Movies and episodes"
@@ -1663,7 +1663,7 @@ msgstr "自定义小组件"
 
 msgctxt "#31474"
 msgid "Configure custom widget"
-msgstr "配置自定义小部件"
+msgstr "配置自定义小组件"
 
 msgctxt "#31475"
 msgid "Netflix fanart window"
@@ -1671,11 +1671,11 @@ msgstr "奈飞同人画窗口"
 
 msgctxt "#31476"
 msgid "Boxed Set"
-msgstr "盒装套装"
+msgstr "影视合集"
 
 msgctxt "#31477"
 msgid "Widget 6"
-msgstr "小部件 6"
+msgstr "小组件 6"
 
 msgctxt "#31478"
 msgid "Indicators"
@@ -1699,7 +1699,7 @@ msgstr "音频频道"
 
 msgctxt "#31484"
 msgid "Spotlight widget path"
-msgstr "聚光灯小部件路径"
+msgstr "聚光灯小组件路径"
 
 msgctxt "#31485"
 msgid "Origin"
@@ -1739,7 +1739,7 @@ msgstr "标签"
 
 msgctxt "#31497"
 msgid "Movies by this director"
-msgstr "这位导演的电影"
+msgstr "该导演的电影"
 
 msgctxt "#31498"
 msgid "Collection"
@@ -1751,19 +1751,19 @@ msgstr "首选百分比"
 
 msgctxt "#31502"
 msgid "On back, widgets do not return to initial position"
-msgstr "返回时，小部件不会返回初始位置"
+msgstr "返回时，小组件不会返回初始位置"
 
 msgctxt "#31503"
 msgid "On up, when at first widget, do not jump back to last widget"
-msgstr "当处于第一个小部件时按上键，不要跳回最后一个小部件"
+msgstr "当处于第一个小组件时按上键，不要跳回最后一个小组件"
 
 msgctxt "#31504"
 msgid "On down, when at last widget, widgets do not return to initial position"
-msgstr "当处于最后一个小部件时按下键，不要跳回第一个小部件"
+msgstr "当处于最后一个小组件时按下键，不要跳回第一个小组件"
 
 msgctxt "#31505"
 msgid "On up/down at first/last widget, go to last/first widget"
-msgstr "当处于第一个/最后一个小部件时按下键/上键，前往最后一个/第一个小部件"
+msgstr "当处于第一个/最后一个小组件时按下键/上键，前往最后一个/第一个小组件"
 
 msgctxt "#31508"
 msgid "Global"
@@ -1843,7 +1843,7 @@ msgstr "简洁"
 
 msgctxt "#31535"
 msgid "Hide plot, when widget is not focused"
-msgstr "当小部件未聚焦时隐藏剧情简介"
+msgstr "当小组件未聚焦时隐藏剧情简介"
 
 msgctxt "#31536"
 msgid "Audio streams"
@@ -1971,7 +1971,7 @@ msgstr "最大"
 
 msgctxt "#31607"
 msgid "On back, jump to first item in widget list"
-msgstr "按下返回，回到小部件列表中第一个项目"
+msgstr "按下返回，回到小组件列表中第一个项目"
 
 msgctxt "#31608"
 msgid "After that, focus home menu"
@@ -1979,7 +1979,7 @@ msgstr "之后，聚焦主菜单"
 
 msgctxt "#31623"
 msgid "If home menu is focused, jump to widgets on back"
-msgstr "在主菜单按下返回，跳转到小部件"
+msgstr "在主菜单按下返回，跳转到小组件"
 
 msgctxt "#31625"
 msgid "Disable addons fanart"
@@ -1987,7 +1987,7 @@ msgstr "禁用插件同人画"
 
 msgctxt "#31630"
 msgid "Hub widget content type"
-msgstr "媒体中心小部件的内容样式"
+msgstr "媒体中心小组件的内容样式"
 
 msgctxt "#31631"
 msgid "Playback action when video info dialog is shown"
