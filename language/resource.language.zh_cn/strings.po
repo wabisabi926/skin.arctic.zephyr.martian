@@ -91,7 +91,7 @@ msgstr "获奖情况"
 
 msgctxt "#31025"
 msgid "Show clearLogo"
-msgstr "显示 ClearLogo"
+msgstr "显示透明徽标"
 
 msgctxt "#31026"
 msgid "Videolyrics"
@@ -247,7 +247,7 @@ msgstr "海报奈飞型"
 
 msgctxt "#31073"
 msgid "Show clearlogo instead of title"
-msgstr "显示 ClearLogo 而非标题"
+msgstr "显示透明徽标而非标题"
 
 msgctxt "#31074"
 msgid "Enable blur"
@@ -283,7 +283,7 @@ msgstr "显示列表而非海报"
 
 msgctxt "#31084"
 msgid "Show clearlogo on top instead on fanart"
-msgstr "显示 CLearLogo 在同人画上方而非表面"
+msgstr "显示透明徽标在同人画上方而非表面"
 
 msgctxt "#31085"
 msgid "Fanart & poster 2"
@@ -843,7 +843,7 @@ msgstr "正在播放…"
 
 msgctxt "#31237"
 msgid "Use minimal busy loader in header"
-msgstr "在标题中使用负载最小的加载程序"
+msgstr "在标题中使用轻量级加载器"
 
 msgctxt "#31238"
 msgid "Select highlight color"
@@ -1179,11 +1179,11 @@ msgstr "季信息"
 
 msgctxt "#31330"
 msgid "ClearLogo"
-msgstr "ClearLOGO"
+msgstr "透明徽标"
 
 msgctxt "#31331"
 msgid "Show ClearLogo/Art"
-msgstr "显示 ClearLogo/Art"
+msgstr "显示透明徽标/艺术图"
 
 msgctxt "#31332"
 msgid "More of"
@@ -1295,7 +1295,7 @@ msgstr "显示文件名"
 
 msgctxt "#31369"
 msgid "Shifted ClearArt"
-msgstr "轮换带 ClearArt"
+msgstr "透明艺术图偏移展示"
 
 msgctxt "#31370"
 msgid "Year of release"
@@ -1335,7 +1335,7 @@ msgstr "中心"
 
 msgctxt "#31383"
 msgid "Fanart with ClearLogo"
-msgstr "带 ClearLogo 的同人画"
+msgstr "带透明徽标的同人画"
 
 msgctxt "#31384"
 msgid "Fullsize EPG"
@@ -1699,7 +1699,7 @@ msgstr "音频频道"
 
 msgctxt "#31484"
 msgid "Spotlight widget path"
-msgstr "聚光灯小组件路径"
+msgstr "“精选推荐”小组件路径"
 
 msgctxt "#31485"
 msgid "Origin"
@@ -1891,11 +1891,11 @@ msgstr "备用图像"
 
 msgctxt "#31568"
 msgid "ClearLogo/Art"
-msgstr "ClearLOGO/ART"
+msgstr "透明徽标/艺术图"
 
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
-msgstr "显示 ClearLogo 而非标题"
+msgstr "显示透明徽标而非标题"
 
 msgctxt "#31575"
 msgid "Default selectbox"
@@ -2023,7 +2023,7 @@ msgstr "当前播放..."
 
 msgctxt "#31667"
 msgid "Animated artwork"
-msgstr "动态艺术图片"
+msgstr "动态艺术图"
 
 msgctxt "#31668"
 msgid "Path to additional animated posters"
@@ -2143,11 +2143,12 @@ msgstr "TMDb"
 
 msgctxt "#31719"
 msgid "Metacritic"
-msgstr "Metacritic 评分"
+msgstr "Metacritic"
 
 msgctxt "#31720"
 msgid "Rotten Tomatoes"
 msgstr "烂番茄"
+
 msgctxt "#31806"
 msgid "Age"
 msgstr "年龄"
@@ -2170,11 +2171,11 @@ msgstr "闻名于"
 
 msgctxt "#31818"
 msgid "Crew membership"
-msgstr "剧组成员资格"
+msgstr "剧组人员身份"
 
 msgctxt "#31819"
 msgid "Crew membership of"
-msgstr "剧组成员资格"
+msgstr "剧组人员身份"
 
 msgctxt "#31900"
 msgid "OSD position"
@@ -2406,4 +2407,4 @@ msgstr "优先选择在线合集"
 
 msgctxt "#31992"
 msgid "Prefer online artwork"
-msgstr "优先选择在线艺术图片"
+msgstr "优先选择在线艺术图"
