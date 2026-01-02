@@ -1461,14 +1461,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Виджет 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Большой постер"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Заблокировать вид для"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Изображения"
@@ -1477,29 +1469,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "Широкий большой"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "Широкий список"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Включить форсированные виды (экспериментально)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Секунды"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Сбросить форсированные виды"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Форсированные виды"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Большие иконки"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1616,6 @@ msgstr "Необходимые дополнения"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Рекомендованные дополнения"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Исправления"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Скрытое окно видео для предотвращения ошибок с аудио"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1781,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "Позиция IMDb"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Использовать метку выбора по умолчанию"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Маленький фанарт"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Маленький предпросмотр"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Маленький постер-предпросмотр"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Информация о сезонах v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "Чистый и минимальный"
@@ -1881,10 +1825,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Список снизу"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Имена файлов"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Резервное изображение"
@@ -1896,10 +1836,6 @@ msgstr "Логотип/прозрачный арт"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Логотип вместо названия"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Метка выбора по умолчанию"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1852,6 @@ msgstr "Настройки эффектов"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Включить автопрокрутку названий"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Тип списка"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"
@@ -2136,6 +2064,10 @@ msgstr "Кассовые сборы"
 msgctxt "#31817"
 msgid "Known for"
 msgstr "Известность за"
+
+msgctxt "#31820"
+msgid "Prevent reload"
+msgstr "Запретить перезагрузку"
 
 msgctxt "#31905"
 msgid "Nodes"

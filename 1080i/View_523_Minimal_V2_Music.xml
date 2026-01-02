@@ -3,10 +3,7 @@
 <includes>
 
     <include name="523Content">
-        <visible>Container.Content(artists) | Container.Content(albums) | Container.Content(songs)</visible>
-        <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-            <param name="string" value="$LOCALIZE[31072] $LOCALIZE[2]" />
-        </include>
+       <visible>$EXP[Exp_View_523]</visible>
         <top>546</top>
         <left>-255</left>
         <width>2275</width>
@@ -17,7 +14,7 @@
         <preloaditems>2</preloaditems>
         <pagecontrol>1644</pagecontrol>
         <focusposition>1</focusposition>
-        <viewtype label="$LOCALIZE[31072] $LOCALIZE[2]">list</viewtype>
+        <viewtype label="$LOCALIZE[31072]">list</viewtype>
         <include>ScrolltimeViewsList</include>
         <itemlayout height="325" width="325">
             <include content="include.widget.square">
@@ -99,7 +96,7 @@
                     <textcolor>Dark2</textcolor>
                     <selectedcolor>Dark2</selectedcolor>
                     <label>$VAR[LabelArtistAlbumDescription]</label>
-                    <visible>[!String.IsEmpty(ListItem.Property(Artist_Description)) | !String.IsEmpty(ListItem.Property(Album_Description))] + !String.IsEqual(ListItem.DBTYPE,song)</visible>
+                    <visible>[!String.IsEmpty(ListItem.Property(Artist_Description)) | !String.IsEmpty(ListItem.Property(Album_Description))] + !String.IsEqual(ListItem.DBTYPE,song) | !String.IsEmpty(ListItem.Plot) + String.IsEqual(ListItem.DBType,musicvideo)</visible>
                 </control>
                 <control type="label">
                     <font>Tiny</font>

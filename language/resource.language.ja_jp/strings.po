@@ -1461,14 +1461,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "ウィジェット 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "大きなポスター"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "ビューをロック"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "画像"
@@ -1477,29 +1469,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "ビッグワイド"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "大きなリスト"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "強制ビューを有効にする(実験的)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "秒"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "フォーカスビューをリセット"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "強制ビュー"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "大きなアイコン"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1616,6 @@ msgstr "必要なアドオン"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "おすすめのアドオン"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "修正"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "オーディオエラーを防ぐための隠しビデオウィンドウ"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1781,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "IMDbの位置"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "デフォルトのセレクトボックスを使用する"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "小さなファンアート"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "小さいサムネイル"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "小さなポスターのサムネイル"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "シーズン情報 v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "クリーンでミニマル"
@@ -1881,10 +1825,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "下位リスト"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "ファイル名"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "フォールバックイメージ"
@@ -1896,10 +1836,6 @@ msgstr "クリアロゴ/アート"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "タイトルの代わりにクリアロゴ"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "デフォルトのセレクトボックス"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1852,6 @@ msgstr "エフェクトの設定"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "タイトルの自動スクロールを有効にする"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "リストタイプ"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"

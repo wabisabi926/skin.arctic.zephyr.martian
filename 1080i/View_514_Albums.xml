@@ -3,7 +3,7 @@
 <includes>
 
     <include name="514Content">
-        <visible>Container.Content(artists) | Container.Content(musicvideos) | Container.Content(albums) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videos) | $EXP[IsVideoAssets] | $EXP[InGameMode]</visible>
+        <visible>$EXP[Exp_View_514]</visible>
         <top>306</top>
         <left>70</left>
         <width>1800</width>
@@ -16,9 +16,6 @@
         <pagecontrol>1616</pagecontrol>
         <orientation>horizontal</orientation>
         <focusposition>1</focusposition>
-        <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-            <param name="string" value="$LOCALIZE[31240]" />
-        </include>
         <viewtype label="31240">list</viewtype>
         <include>ScrolltimeViewsList</include>
         <itemlayout height="330" width="299.66">
@@ -76,7 +73,7 @@
                     <description>Header Label</description>
                     <textcolor>Dark1</textcolor>
                     <font>MediumBold</font>
-                    <label fallback="19055">$INFO[ListItem.Label]</label>
+                    <label fallback="19055">$VAR[Label_View_514_Title]</label>
                 </control>
                 <control type="image" description="clearlogo">
                     <animation effect="slide" start="0,0" end="-735,0" time="200" condition="Skin.HasSetting(514NoCenter)">Conditional</animation>
@@ -102,10 +99,10 @@
                         <animation effect="slide" start="0,0" end="100,0" time="200" condition="!Skin.HasSetting(514NoCenter)">Conditional</animation>
                         <include condition="!Skin.HasSetting(514NoCenter)">CenterInfo</include>
                         <textcolor>Dark1</textcolor>
-                        <label fallback="19055">$VAR[LabelSub_1_GenreAlbum]</label>
+                        <label fallback="19055">$VAR[Label_View_514_GenreAlbum]</label>
                     </control>
                     <control type="textbox">
-                        <visible>[!String.IsEmpty(ListItem.Property(Artist_Description)) + Container.Content(artists)] | [!String.IsEmpty(ListItem.Property(Album_Description)) + Container.Content(albums)] | [!String.Empty(ListItem.Plot) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(videos) | Container.Content(episodes) | Container.Content(seasons) | $EXP[IsVideoAssets]]] | [!String.Empty(Container.ShowPlot) + Container.Content(seasons)]</visible>
+                        <visible>[!String.IsEmpty(ListItem.Property(Artist_Description)) + Container.Content(artists)] | [!String.IsEmpty(ListItem.Property(Album_Description)) + Container.Content(albums)] | [!String.IsEmpty(ListItem.Plot) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(musicvideos) | $EXP[IsVideoAssets]]] | [!String.IsEmpty(Container.ShowPlot) + Container.Content(seasons)]</visible>
                         <left>SidePad</left>
                         <include condition="!Skin.HasSetting(514NoCenter)">CenterInfo</include>
                         <animation effect="slide" start="0,0" end="100,0" time="200" condition="!Skin.HasSetting(514NoCenter)">Conditional</animation>
@@ -121,8 +118,7 @@
                         <animation effect="slide" start="0,0" end="100,0" time="200" condition="!Skin.HasSetting(514NoCenter)">Conditional</animation>
                         <include condition="!Skin.HasSetting(514NoCenter)">CenterInfo</include>
                         <textcolor>Dark2</textcolor>
-                        <label fallback="19055">$VAR[LabelSub_2_YearDurationRating]</label>
-                        <visible>!Container.Content(artists) + !Container.Content(albums)</visible>
+                        <label>$VAR[Label_View_514_YearDurationRating]</label>
                     </control>
                 </control>
             </control>

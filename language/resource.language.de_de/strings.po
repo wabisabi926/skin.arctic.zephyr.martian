@@ -121,6 +121,10 @@ msgctxt "#31037"
 msgid "Extended Info"
 msgstr "Erweiterte Informationen"
 
+msgctxt "#31038"
+msgid "Double pane list"
+msgstr "Zweireihige Liste"
+
 msgctxt "#31039"
 msgid "IPTV Recorder"
 msgstr "IPTV-Rekorder"
@@ -859,7 +863,7 @@ msgstr "Quadratisch schlicht"
 
 msgctxt "#31241"
 msgid "Icons Info"
-msgstr "Symbole-Info"
+msgstr "Symbole Info"
 
 msgctxt "#31242"
 msgid "Provided by themoviedb.org"
@@ -1175,7 +1179,7 @@ msgstr "Temperatur und Icon anzeigen"
 
 msgctxt "#31327"
 msgid "Seasons Info"
-msgstr "Staffel Infos"
+msgstr "Staffel-Info"
 
 msgctxt "#31330"
 msgid "ClearLogo"
@@ -1461,45 +1465,25 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Widget 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Große Symbole"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Ansicht sperren für"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Bilder"
 
 msgctxt "#31422"
 msgid "Big wide"
-msgstr "Groß breit"
+msgstr "Große breite Liste"
 
 msgctxt "#31423"
-msgid "Big list"
-msgstr "Große Liste"
+msgid "Icons Album"
+msgstr "Symbole Album"
 
 msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Erzwungene Ansicht aktivieren (experimentell)"
+msgid "Customise viewtypes"
+msgstr "Ansichten anpassen"
 
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Sekunden"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Erzwungene Ansicht zurücksetzen"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Erzwungene Ansicht"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Große Symbole"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1628,6 @@ msgstr "Erforderliche Addons"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Empfohlene Addons"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Fixes"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Verstecktes Videofenster zum Vermeiden von Audiofehlern"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1809,6 +1785,10 @@ msgctxt "#31521"
 msgid "Poster Wall"
 msgstr "Poster-Wand"
 
+msgctxt "#31522"
+msgid "Poster Flix Seasons"
+msgstr "Poster-Flix Staffeln"
+
 msgctxt "#31523"
 msgid "Fanart Flix"
 msgstr "Fanart-Flix"
@@ -1817,25 +1797,9 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "IMDb-Position"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Standard Auswahlbox verwenden"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Kleines Fanart"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Kleines Vorschaubild"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Kleines Poster-Vorschaubild"
-
 msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Staffel-Info v2"
+msgid "Seasons Info Thumbnails"
+msgstr "Staffel-Info Vorschaubilder"
 
 msgctxt "#31533"
 msgid "Clean and minimal"
@@ -1881,10 +1845,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Kleine Liste"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Dateinamen"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Standardbild"
@@ -1896,10 +1856,6 @@ msgstr "Clear-Logo/-Art"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Clear-Logo anstatt Titel"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Standard Auswahlbox"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1872,6 @@ msgstr "Effekt-Einstellungen"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Autoscrolling für Titel aktivieren"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Listentyp"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"
@@ -2165,6 +2113,10 @@ msgctxt "#31819"
 msgid "Crew membership of"
 msgstr "Crew-Mitgliedschaft von"
 
+msgctxt "#31820"
+msgid "Prevent reload"
+msgstr "Neuladen verhindern"
+
 msgctxt "#31900"
 msgid "OSD position"
 msgstr "Position des OSD"
@@ -2294,7 +2246,7 @@ msgid "Gradient color"
 msgstr "Verlaufsfarbe"
 
 msgctxt "#31967"
-msgid "Customize color settings"
+msgid "Customise color settings"
 msgstr "Farbeinstellungen anpassen"
 
 msgctxt "#31968"

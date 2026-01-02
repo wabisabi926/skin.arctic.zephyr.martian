@@ -10,7 +10,7 @@
             <include>ViewSlideForJumpBar</include>
             <control type="group">
                 <control type="panel" id="516">
-                    <visible>Container.Content(seasons)</visible>
+                    <visible>$EXP[Exp_View_516]</visible>
                     <top>206</top>
                     <left>70</left>
                     <width>1120</width>
@@ -22,9 +22,6 @@
                     <preloaditems>2</preloaditems>
                     <pagecontrol>1604</pagecontrol>
                     <orientation>horizontal</orientation>
-                    <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                        <param name="string" value="$LOCALIZE[31327]" />
-                    </include>
                     <viewtype label="31327">list</viewtype>
                     <include>ScrolltimeViewsList</include>
                     <itemlayout height="355" width="224">
@@ -66,7 +63,7 @@
                     <height>275</height>
                     <left>SidePad</left>
                     <width>1110</width>
-                    <animation effect="slide" start="0,0" end="0,-13" time="0" condition="Skin.HasSetting(511ListInfo)">Conditional</animation>
+                    <animation effect="slide" start="0,0" end="0,-13" time="0" condition="$EXP[ShowListInfo]">Conditional</animation>
                     <onleft>516</onleft>
                     <onright>1603</onright>
                     <onup>516</onup>
@@ -75,16 +72,13 @@
                     <focusposition>3</focusposition>
                     <movement>3</movement>
                     <pagecontrol>1603</pagecontrol>
-                    <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                        <param name="string" value="$LOCALIZE[31327]" />
-                    </include>
                     <viewtype label="31327">list</viewtype>
                     <include>ScrolltimeViewsList</include>
                     <visible>!String.Contains(Control.GetLabel(516),..)</visible>
-                    <itemlayout condition="!Skin.HasSetting(511ListInfo)" width="1101" height="64">
+                    <itemlayout condition="!$EXP[ShowListInfo]" width="1101" height="64">
                         <include>50itemlayout</include>
                     </itemlayout>
-                    <focusedlayout condition="!Skin.HasSetting(511ListInfo)" width="1101" height="64">
+                    <focusedlayout condition="!$EXP[ShowListInfo]" width="1101" height="64">
                         <control type="group">
                             <visible>Control.HasFocus(5161)</visible>
                             <include>50focuslayout</include>
@@ -94,10 +88,10 @@
                             <include>50itemlayout</include>
                         </control>
                     </focusedlayout>
-                    <itemlayout condition="Skin.HasSetting(511ListInfo)" width="1101" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo]" width="1101" height="91.4">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="Skin.HasSetting(511ListInfo)" width="1101" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo]" width="1101" height="91.4">
                         <control type="group">
                             <visible>Control.HasFocus(5161)</visible>
                             <include>50focuslayout_info</include>

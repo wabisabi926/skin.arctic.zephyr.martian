@@ -148,7 +148,7 @@
 							<top>10</top>
 	                        <height>254</height>
 	                        <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-	                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="label">
 	                        <top>274</top>
@@ -195,7 +195,7 @@
 							<top>10</top>
 	                        <height>254</height>
 	                        <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-	                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="image">
 	                        <include>Animation.SelectBoxHome</include>
@@ -316,7 +316,7 @@
             <width>100%</width>
             <height>1</height>
             <texture colordiffuse="BoxHomerow">common/sch2.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <control type="image">
             <top>390r</top>
@@ -416,7 +416,7 @@
 	                        <width>424</width>
 	                        <height>239</height>
 	                        <texture colordiffuse="$VAR[DialogSelectGameBox]" border="4" background="true" infill="false">common/box21.png</texture>
-	                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="label">
 	                        <top>269</top>
@@ -480,7 +480,7 @@
 	                        <width>424</width>
 	                        <height>239</height>
 	                        <texture colordiffuse="$VAR[DialogSelectGameBox]" border="4" background="true" infill="false">common/box21.png</texture>
-	                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="image">
 	                        <include>Animation.SelectBoxHome</include>
@@ -713,5 +713,29 @@
 			</include>
 		</definition>            
 	</include>
-	
+
+	<include name="DialogSelectViewtype">
+		<include content="DefDialogSelectViewtype">
+			<param name="header_id" value="1" />
+			<param name="image" value="$VAR[ImageViewSelector]" />
+			<param name="control_id" value="3" />
+			<param name="scrollid" value="1600" />
+			
+			<control type="list" id="3">
+				<left>8</left>
+				<height>552</height>
+				<width>512</width>
+				<top>115</top>
+				<onleft>1600</onleft>
+				<onright>1600</onright>
+				<pagecontrol>1600</pagecontrol>
+				<scrolltime>0</scrolltime>
+				<include content="Def_SimpleListLayout">
+					<param name="width" value="520" />
+					<param name="font" value="Tiny" />
+					<param name="item_selected"	value="String.isEqual(Container.Viewmode,ListItem.Label)" />
+				</include>
+			</control>
+		</include>
+	</include>
 </includes>

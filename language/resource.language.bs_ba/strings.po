@@ -1461,14 +1461,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Vidžet 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Veliki poster"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Zaključaj prikaz za"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Slike"
@@ -1477,29 +1469,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "Veliki široki"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "Velika lista"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Omogući prisilne prikaze (eksperimentalno)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Sekunde"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Poništi prisilne prikaze"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Prisilni pogledi"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Velike ikone"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1616,6 @@ msgstr "Potrebni dodaci"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Preporučeni dodaci"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Ispravke"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Skriveni video prozor za sprječavanje audio grešaka"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1781,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "Pozicija na IMDb-u"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Koristi zadani okvir za odabir"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Mali fanart"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Mala sličica"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Sličica malog postera"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Informacije o sezonama v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "Čisto i minimalno"
@@ -1881,10 +1825,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Niska lista"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Nazivi datoteka"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Rezervna slika"
@@ -1896,10 +1836,6 @@ msgstr "Pročitajte logo/umetničku sliku"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Jasan logo umjesto naslova"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Zadani okvir za odabir"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1852,6 @@ msgstr "Postavke efekata"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Omogući automatsko skrolovanje za naslove"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Vrsta liste"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"

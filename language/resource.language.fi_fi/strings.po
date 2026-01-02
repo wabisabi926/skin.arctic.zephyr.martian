@@ -1461,14 +1461,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Widgetti 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Suuri juliste"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Lukitse näkymä sisällölle"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Kuvat"
@@ -1477,29 +1469,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "Suuri leveä"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "Suuri lista"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Käytä pakotettuja näkymiä (kokeellinen)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Sekuntia"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Palauta pakotetut näkymät"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Pakotetut näkymät"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Suuret kuvakkeet"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1616,6 @@ msgstr "Tarpeelliset lisäosat"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Suositellut lisäosat"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Korjaukset"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Piilotettu videoruutu äänivirheiden välttämiseksi"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1781,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "IMDb:n sijainti"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Käytä oletusarvoista valintalaatikkoa"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Pieni fanart"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Pieni pienoiskuva"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Pieni julistepienoiskuva"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Kausitiedot v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "Siisti ja minimalistinen"
@@ -1881,10 +1825,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Matala lista"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Tiedostonimet"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Varakuva"
@@ -1896,10 +1836,6 @@ msgstr "Clearlogo/clearart"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Korvaa nimi clearlogolla"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Oletusarvoinen valintalaatikko"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1852,6 @@ msgstr "Tehosteasetukset"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Vieritä nimiä automaattisesti"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Listan tyyppi"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"
@@ -2116,6 +2044,10 @@ msgstr ""
 msgctxt "#31711"
 msgid "Wikipedia"
 msgstr ""
+
+msgctxt "#31820"
+msgid "Prevent reload"
+msgstr "Estä uudelleenlataus"
 
 msgctxt "#31903"
 msgid "Cloudiness"

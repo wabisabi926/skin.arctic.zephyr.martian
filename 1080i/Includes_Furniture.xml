@@ -583,6 +583,46 @@
         <value>star0</value>
     </variable>
 
+    <variable name="ScreensaverFlagstar1">
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,1) + Skin.HasSetting(userrating.override.rating)">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,0) + Skin.HasSetting(userrating.override.rating)">star5</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,1) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,0) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star5</value>
+        <value>star0</value>
+    </variable>
+
+    <variable name="ScreensaverFlagstar2">
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,3) + Skin.HasSetting(userrating.override.rating)">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,2) + Skin.HasSetting(userrating.override.rating)">star5</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,3) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,2) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star5</value>
+        <value>star0</value>
+    </variable>
+
+    <variable name="ScreensaverFlagstar3">
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,5) + Skin.HasSetting(userrating.override.rating)">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,4) + Skin.HasSetting(userrating.override.rating)">star5</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,5) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,4) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star5</value>
+        <value>star0</value>
+    </variable>
+
+    <variable name="ScreensaverFlagstar4">
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,7) + Skin.HasSetting(userrating.override.rating)">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,6) + Skin.HasSetting(userrating.override.rating)">star5</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,7) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,6) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star5</value>
+        <value>star0</value>
+    </variable>
+
+    <variable name="ScreensaverFlagstar5">
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,9) + Skin.HasSetting(userrating.override.rating)">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.UserRating,8) + Skin.HasSetting(userrating.override.rating)">star5</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,9) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star10</value>
+        <value condition="Integer.IsGreater(Container(1297).ListItem.Rating,8) + [String.IsEmpty(Container(1297).ListItem.UserRating) | !Skin.HasSetting(userrating.override.rating)]">star5</value>
+        <value>star0</value>
+    </variable>
+
     <variable name="ClearLogoTopVar">
         <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
@@ -604,11 +644,22 @@
     
     <include name="Furniture_Flags">
         <control type="group">
-    		<visible>Container.Content(movies) | Container.Content(files) | Container.Content(musicvideos) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | $EXP[IsVideoAssets] + !ListItem.IsFolder</visible>
+    		<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + [!ListItem.IsFolder | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]</visible>
             <include>Animation.FurnitureVisible</include>
             <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags)">
                 <param name="position_low" value="true" />
             </include>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)</visible>
+            <include>Animation.FurnitureVisible</include>
+            <include content="Furniture_Flags_Audio_Include" condition="!Skin.HasSetting(furniture.flags)">
+                <param name="position_low" value="true" />
+            </include>
+	        <control type="group">
+	            <visible>String.IsEqual(ListItem.DBType,album)</visible>
+	            <include condition="!Skin.HasSetting(furniture.flags)">AlbumInfo</include>
+	        </control>
         </control>
     </include>
     
@@ -1808,24 +1859,13 @@
         	<visible>[Control.HasFocus(301) | ControlGroup(301).HasFocus] + !Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)</visible>
             <include>Animation.FurnitureVisible</include>
 	        <control type="group">
-	        	<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)</visible>
+	        	<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,file)</visible>
 	            <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)">
 	                <param name="position_low" value="true" />
 	            </include>
 	        </control>
             <control type="group">
                 <visible>String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)</visible>
-        		<!-- Fakelist Container for Album Count -->
-		        <control type="list" id="5014">
-		            <visible>String.IsEqual(ListItem.DBType,album)</visible>
-		            <top>-3000</top>
-		            <left>-3000</left>
-		            <width>1</width>
-		            <height>1</height>
-		            <itemlayout/>
-		            <focusedlayout/>
-		            <content>$VAR[AlbumPath]</content>
-		        </control>
                 <include content="Furniture_Flags_Audio_Include" condition="!Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)">
                     <param name="position_low" value="true" />
                 </include>
@@ -1841,7 +1881,7 @@
         <value condition="Window.IsVisible(service-LibreELEC-Settings-mainWindow.xml)">special://skin/extras/icons/libreelec.png</value>
         <value condition="Window.IsVisible(DialogFavourites.xml)">special://skin/extras/icons/favourites.png</value>
         <value condition="Window.IsVisible(EventLog.xml)">special://skin/extras/icons/antenna.png</value>
-        <value condition="Window.IsVisible(1104) | Window.IsVisible(1105)">special://skin/extras/icons/director.png</value>
+        <value condition="Window.IsVisible(1124) | Window.IsVisible(1125)">special://skin/extras/icons/director.png</value>
         <value condition="Player.HasAudio + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/songs.png</value>
         <value condition="Player.HasVideo + VideoPlayer.Content(livetv) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/livetv.png</value>
         <value condition="Player.HasVideo + VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/film.png</value>
@@ -1880,7 +1920,7 @@
         <value condition="Window.IsVisible(FileManager.xml)">special://skin/extras/icons/database.png</value>
         <value condition="Window.IsVisible(Home.xml)">special://skin/extras/icons/home.png</value>
         <value condition="Window.IsVisible(MyVideoNav.xml)">special://skin/extras/icons/video-addons.png</value>
-        <value condition="Window.IsVisible(1124)">special://skin/extras/icons/wand.png</value>
+        <value condition="Window.IsVisible(1104)">special://skin/extras/icons/wand.png</value>
         <value condition="String.EndsWith(Window.Property(xmlfile),_Hub.xml)">$INFO[Window(home).Property(WindowIcon)]</value>
         <value>special://skin/extras/icons/artist.png</value>
     </variable>
@@ -1916,8 +1956,8 @@
         <value condition="$EXP[InGameMode]">$LOCALIZE[10821]</value>
         <value condition="Window.IsVisible(MyGames.xml)">$LOCALIZE[10821]</value>
         <value condition="Container.Content(videoassets)">$INFO[Container.FolderName,, - ]$LOCALIZE[40209]</value>
-        <value condition="Container.Content(videoversions)">$INFO[Container.FolderName,, - ]$LOCALIZE[40210]</value>
         <value condition="Container.Content(videoextras)">$INFO[Container.FolderName,, - ]$LOCALIZE[40211]</value>
+        <value condition="Container.Content(videoversions) + !String.IsEqual(Container.FolderPath,videodb://movies/videoversions/)">$INFO[Container.FolderName,, - ]$LOCALIZE[40210]</value>
         <value condition="Window.IsVisible(MyVideoNav.xml) + String.IsEqual(Container.FolderPath,videodb://movies/titles/)">$LOCALIZE[20342]</value>
         <value condition="Window.IsVisible(MyVideoNav.xml) + String.IsEqual(Container.FolderPath,videodb://tvshows/titles/)">$LOCALIZE[20343]</value>
         <value condition="Window.IsVisible(MyVideoNav.xml) + String.Contains(Container.FolderPath,videodb://movies/,Left)">$INFO[Container.FolderName]</value>
@@ -1947,15 +1987,15 @@
         <value condition="Window.IsVisible(AddonBrowser.xml)">$LOCALIZE[24001]</value>
         <value condition="Window.IsVisible(MyPlaylist.xml)">$LOCALIZE[13350]</value>
         <value condition="Window.IsVisible(FileManager.xml)">$LOCALIZE[744]</value>
-        <value condition="Window.IsVisible(1104) + String.IsEqual(Window(1104).Property(content),1)">$LOCALIZE[31211]</value>
-        <value condition="Window.IsVisible(1104) + String.IsEqual(Window(1104).Property(content),2)">$LOCALIZE[31210]</value>
-        <value condition="Window.IsVisible(1104) + String.IsEqual(Window(1104).Property(content),3)">$LOCALIZE[31209]</value>
-        <value condition="Window.IsVisible(1104)">$LOCALIZE[31208]</value>
-        <value condition="Window.IsVisible(1105) + String.IsEqual(Window(1105).Property(content),1)">$LOCALIZE[31211]</value>
-        <value condition="Window.IsVisible(1105) + String.IsEqual(Window(1105).Property(content),2)">$LOCALIZE[31210]</value>
-        <value condition="Window.IsVisible(1105) + String.IsEqual(Window(1105).Property(content),3)">$LOCALIZE[31212]</value>
-        <value condition="Window.IsVisible(1105)">$LOCALIZE[31213]</value>
-        <value condition="Window.IsVisible(1125)">$LOCALIZE[31580]</value>
+        <value condition="Window.IsVisible(1104)">$LOCALIZE[31580]</value>
+        <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),1)">$LOCALIZE[31211]</value>
+        <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),2)">$LOCALIZE[31210]</value>
+        <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),3)">$LOCALIZE[31209]</value>
+        <value condition="Window.IsVisible(1124)">$LOCALIZE[31208]</value>
+        <value condition="Window.IsVisible(1125) + String.IsEqual(Window(1125).Property(content),1)">$LOCALIZE[31211]</value>
+        <value condition="Window.IsVisible(1125) + String.IsEqual(Window(1125).Property(content),2)">$LOCALIZE[31210]</value>
+        <value condition="Window.IsVisible(1125) + String.IsEqual(Window(1125).Property(content),3)">$LOCALIZE[31212]</value>
+        <value condition="Window.IsVisible(1125)">$LOCALIZE[31213]</value>
         <value condition="String.EndsWith(Window.Property(xmlfile),_Hub.xml)">$INFO[Window(home).Property(WindowTitle)]</value>
         <value>$LOCALIZE[10000]</value>
     </variable>
@@ -1978,9 +2018,9 @@
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),musicvideos) | [String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + [String.Contains(Container(300).ListItem.Property(path),library://video/musicvideos/) | String.Contains(Container(300).ListItem.Property(path),library://music/musicvideos/)]]">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(MusicVideos.Count)][/COLOR] $LOCALIZE[20389]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(Home).Property(MusicVideos.UnWatched)][/COLOR] $LOCALIZE[31215]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),livetv) + String.IsEmpty(Pvr.BackendChannels)">$INFO[Pvr.BackendName]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),livetv) + !String.IsEmpty(Pvr.BackendChannels)">$INFO[Pvr.BackendName]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Pvr.BackendChannels][/COLOR] $LOCALIZE[19019]</value>
-        <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),weather)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature,,[/COLOR]  ]$INFO[Window(Weather).Property(Location)]</value>
-        <value condition="String.IsEqual(Container(300).ListItem.Property(widget),weatherdaily)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature,,[/COLOR]  ]$INFO[Window(Weather).Property(Location)]</value>
-        <value condition="String.IsEqual(Container(300).ListItem.Property(widget),weatherhourly)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature,,[/COLOR]  ]$INFO[Window(Weather).Property(Location)]</value>
+        <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),weather)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature][/COLOR]$INFO[Window(Weather).Property(Location),  ,]</value>
+        <value condition="String.IsEqual(Container(300).ListItem.Property(widget),weatherdaily)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature][/COLOR]$INFO[Window(Weather).Property(Location),  ,]</value>
+        <value condition="String.IsEqual(Container(300).ListItem.Property(widget),weatherhourly)">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature][/COLOR]$INFO[Window(Weather).Property(Location),  ,]</value>
         <value condition="Window.IsVisible(MyWeather.xml) + !String.IsEmpty(Window(Weather).Property(Location))">[COLOR=$VAR[ColorHighlight]]$VAR[Weather_Temperature,,[/COLOR]  ]$INFO[Window(Weather).Property(Location)]</value>
         <value condition="!Library.HasContent(Music) + String.IsEmpty(Pvr.BackendChannels)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Movies.Count)][/COLOR] $LOCALIZE[20342]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Episodes.Count)][/COLOR] $LOCALIZE[20360]</value>
         <value condition="!Library.HasContent(Music)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Movies.Count)][/COLOR] $LOCALIZE[20342]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Episodes.Count)][/COLOR] $LOCALIZE[20360]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Pvr.BackendChannels][/COLOR] $LOCALIZE[19019]</value>
@@ -1996,10 +2036,9 @@
             <include>Animation.ClearLogo.FadeOut</include>
             <visible>Skin.HasSetting(furniture.logo)</visible>
             <visible>!Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)</visible>
-            <visible>![Window.IsVisible(Home.xml) + [Window.IsVisible(DialogVideoInfo.xml) | $EXP[HomeIsSpotlight] | $EXP[HomeIsModern]]]</visible>
+            <visible>![Window.IsVisible(Home.xml) + [Window.IsVisible(DialogVideoInfo.xml) | $EXP[HomeIsSpotlight]]]</visible>
             <visible>![Control.IsVisible(504) + Skin.HasSetting(504clearlogo)]</visible>
             <visible>![Control.IsVisible(509) + Skin.HasSetting(509clearlogo)]</visible>
-            <visible>![Control.IsVisible(510) + Skin.HasSetting(ShowClearart510)]</visible>
             <visible>![[Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(524)] + Skin.HasSetting(view.netflix.clearlogo)]</visible>
             <centertop>120</centertop>
             <centerleft>50%</centerleft>
@@ -2473,8 +2512,6 @@
             </control>
         </control>
     </include>
-    
-    
 
     <include name="Furniture_Flags_AudioDialogInfo">
         <control type="group">
@@ -2484,27 +2521,6 @@
         </control>
     </include>
     
-    <include name="Furniture_Flags_Audio">
-        <!-- Fakelist Container for Album Count -->
-        <control type="list" id="5014">
-            <visible>String.IsEqual(ListItem.DBType,album)</visible>
-            <top>-3000</top>
-            <left>-3000</left>
-            <width>1</width>
-            <height>1</height>
-            <itemlayout/>
-            <focusedlayout/>
-            <content>$VAR[AlbumPath]</content>
-        </control>
-        <control type="group">
-            <visible>String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)</visible>
-            <include>Animation.FurnitureVisible</include>
-            <include content="Furniture_Flags_Audio_Include" condition="!Skin.HasSetting(furniture.flags)">
-                <param name="position_low" value="true" />
-            </include>
-        </control>
-    </include>
-
     <include name="Furniture_Flags_Audio_Include">
         <control type="grouplist">
             <visible>![Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)]</visible>
@@ -3374,7 +3390,7 @@
 
     <include name="ExtendedRatingFlags_Furniture">
         <control type="image" description="TMDb Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + Skin.HasSetting(furniture.showtmdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating),0) + Skin.HasSetting(furniture.showtmdb)</visible>
             <centertop>50%</centertop>
             <width>29</width>
             <height>29</height>
@@ -3382,7 +3398,7 @@
             <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/tmdb.png</texture>
         </control>
         <control type="label" description="TMDb Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + Skin.HasSetting(furniture.showtmdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating),0) + Skin.HasSetting(furniture.showtmdb)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3391,7 +3407,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)]</label>
         </control>
         <control type="image" description="IMDb_Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + Skin.HasSetting(furniture.showimdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating),0) + Skin.HasSetting(furniture.showimdb)</visible>
             <centertop>50%</centertop>
             <width>50</width>
             <height>64</height>
@@ -3400,7 +3416,7 @@
             <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/imdb.png</texture>
         </control>
         <control type="label" description="IMDb_Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + Skin.HasSetting(furniture.showimdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating),0) + Skin.HasSetting(furniture.showimdb)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3409,7 +3425,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)]</label>
         </control>          
         <control type="image" description="Trakt Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + Skin.HasSetting(furniture.showtrakt)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0) + Skin.HasSetting(furniture.showtrakt)</visible>
             <centertop>50%</centertop>
             <width>33</width>
             <height>33</height>
@@ -3417,7 +3433,7 @@
             <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/trakt.png</texture>
         </control>
         <control type="label" description="Trakt Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + Skin.HasSetting(furniture.showtrakt)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0) + Skin.HasSetting(furniture.showtrakt)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3482,7 +3498,7 @@
     
     <include name="ExtendedRatingFlags_Furniture_Color">
         <control type="image" description="TMDb Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + Skin.HasSetting(furniture.showtmdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating),0) + Skin.HasSetting(furniture.showtmdb)</visible>
             <centertop>50%</centertop>
             <width>30</width>
             <height>30</height>
@@ -3490,7 +3506,7 @@
             <texture background="true">flags/color/ratings/tmdb.png</texture>
         </control>
         <control type="label" description="TMDb Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + Skin.HasSetting(furniture.showtmdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating),0) + Skin.HasSetting(furniture.showtmdb)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3499,7 +3515,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.TMDb_Rating)]</label>
         </control>
         <control type="image" description="IMDb_Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + Skin.HasSetting(furniture.showimdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating),0) + Skin.HasSetting(furniture.showimdb)</visible>
             <centertop>50%</centertop>
             <width>52</width>
             <height>64</height>
@@ -3508,7 +3524,7 @@
             <texture background="true">flags/color/ratings/imdb.png</texture>
         </control>
         <control type="label" description="IMDb_Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + Skin.HasSetting(furniture.showimdb)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating),0) + Skin.HasSetting(furniture.showimdb)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3517,7 +3533,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.IMDb_Rating)]</label>
         </control>
         <control type="image" description="Trakt Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + Skin.HasSetting(furniture.showtrakt)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0) + Skin.HasSetting(furniture.showtrakt)</visible>
             <centertop>50%</centertop>
             <width>34</width>
             <height>34</height>
@@ -3525,7 +3541,7 @@
             <texture background="true">flags/color/ratings/trakt.png</texture>
         </control>
         <control type="label" description="Trakt Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + Skin.HasSetting(furniture.showtrakt)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0) + Skin.HasSetting(furniture.showtrakt)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>

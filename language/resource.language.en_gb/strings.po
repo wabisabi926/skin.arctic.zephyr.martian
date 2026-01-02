@@ -121,6 +121,10 @@ msgctxt "#31037"
 msgid "Extended Info"
 msgstr ""
 
+msgctxt "#31038"
+msgid "Double pane list"
+msgstr ""
+
 msgctxt "#31039"
 msgid "IPTV Recorder"
 msgstr ""
@@ -1461,14 +1465,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr ""
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr ""
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr ""
-
 msgctxt "#31421"
 msgid "Images"
 msgstr ""
@@ -1478,27 +1474,15 @@ msgid "Big wide"
 msgstr ""
 
 msgctxt "#31423"
-msgid "Big list"
+msgid "Icons Album"
 msgstr ""
 
 msgctxt "#31424"
-msgid "Enable forced views (experimental)"
+msgid "Customise viewtypes"
 msgstr ""
 
 msgctxt "#31425"
 msgid "Seconds"
-msgstr ""
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr ""
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr ""
-
-msgctxt "#31428"
-msgid "Big icons"
 msgstr ""
 
 msgctxt "#31429"
@@ -1643,14 +1627,6 @@ msgstr ""
 
 msgctxt "#31469"
 msgid "Recommended addons"
-msgstr ""
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr ""
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
 msgstr ""
 
 msgctxt "#31472"
@@ -1809,6 +1785,10 @@ msgctxt "#31521"
 msgid "Poster Wall"
 msgstr ""
 
+msgctxt "#31522"
+msgid "Poster Flix Seasons"
+msgstr ""
+
 msgctxt "#31523"
 msgid "Fanart Flix"
 msgstr ""
@@ -1817,24 +1797,8 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr ""
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr ""
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr ""
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr ""
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr ""
-
 msgctxt "#31530"
-msgid "Seasons Info v2"
+msgid "Seasons Info Thumbnails"
 msgstr ""
 
 msgctxt "#31533"
@@ -1881,10 +1845,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr ""
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr ""
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr ""
@@ -1895,10 +1855,6 @@ msgstr ""
 
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
-msgstr ""
-
-msgctxt "#31575"
-msgid "Default selectbox"
 msgstr ""
 
 msgctxt "#31576"
@@ -1915,14 +1871,6 @@ msgstr ""
 
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
-msgstr ""
-
-msgctxt "#31591"
-msgid "V2"
-msgstr ""
-
-msgctxt "#31592"
-msgid "List type"
 msgstr ""
 
 msgctxt "#31593"
@@ -2177,6 +2125,10 @@ msgctxt "#31819"
 msgid "Crew membership of"
 msgstr ""
 
+msgctxt "#31820"
+msgid "Prevent reload"
+msgstr ""
+
 msgctxt "#31900"
 msgid "OSD position"
 msgstr ""
@@ -2306,7 +2258,7 @@ msgid "Gradient color"
 msgstr ""
 
 msgctxt "#31967"
-msgid "Customize color settings"
+msgid "Customise color settings"
 msgstr ""
 
 msgctxt "#31968"

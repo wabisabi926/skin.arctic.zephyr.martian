@@ -2,18 +2,6 @@
 <!-- Foundation -->
 <includes>
     <include file="Defaults.xml"/>
-    <include file="Includes_VideoLyrics.xml"/>
-    <include file="Includes_Lists.xml"/>
-    <include file="Includes_DialogVideoInfo.xml"/>
-    <include file="Includes_DialogMusicInfo.xml"/>
-    <include file="Includes_DialogAddonInfo.xml"/>
-    <include file="Includes_DialogPVRInfo.xml"/>
-    <include file="Includes_DialogSelect.xml"/>
-    <include file="Includes_SubItems_Home.xml"/>
-    <include file="Includes_NowPlaying.xml"/>
-    <include file="Includes_Custom_Items.xml"/>
-    <include file="Includes_Games.xml"/>
-    <include file="Includes_Weather.xml"/>
 
     <!-- Views -->
     <include file="View_50_List.xml"/>
@@ -28,15 +16,16 @@
     <include file="View_58_Cards.xml"/>
     <include file="View_59_BannerWall.xml"/>
     <include file="View_500_Thumbnails.xml"/>
+    <include file="View_501_List_Square.xml"/>
+    <include file="View_502_Slider.xml"/>
     <include file="View_503_Poster_Square.xml"/>
     <include file="View_505_Wall_Square.xml"/>
     <include file="View_504_Netflix.xml"/>
-    <include file="View_507_Fanart.xml"/>
+    <include file="View_508_Fanart.xml"/>
     <include file="View_509_Shift.xml"/>
     <include file="View_513_Shifted.xml"/>
     <include file="View_511_Double.xml"/>
     <include file="View_512_Double_Banner.xml"/>
-    <include file="View_506_Slider.xml"/>
     <include file="View_514_Albums.xml"/>
     <include file="View_517_WallSmall.xml"/>
     <include file="View_516_SeasonsInfo.xml"/>
@@ -46,7 +35,7 @@
     <include file="View_523_Minimal_V2_Music.xml"/>
     <include file="View_522_Minimal_V2_Episodes.xml"/>
     <include file="View_524_Minimal_V2_Seasons.xml"/>
-    <include file="View_527_List_V2.xml"/>
+
     <include file="Includes_Furniture.xml"/>
     <include file="Includes_Home.xml"/>
     <include file="Includes_Labels.xml"/>
@@ -55,9 +44,26 @@
     <include file="Includes_Defs.xml"/>
     <include file="Includes_PVR.xml"/>
     <include file="Includes_OSD.xml"/>
+    <include file="Includes_VideoLyrics.xml"/>
+    <include file="Includes_Lists.xml"/>
+    <include file="Includes_DialogVideoInfo.xml"/>
+    <include file="Includes_DialogMusicInfo.xml"/>
+    <include file="Includes_DialogAddonInfo.xml"/>
+    <include file="Includes_DialogPVRInfo.xml"/>
+    <include file="Includes_DialogSelect.xml"/>
+    <include file="Includes_SubItems_Home.xml"/>
+    <include file="Includes_NowPlaying.xml"/>
+    <include file="Includes_Custom_Items.xml"/>
+    <include file="Includes_Games.xml"/>
+    <include file="Includes_Views.xml"/>
+    <include file="Includes_Weather.xml"/>
 
     <!-- Skin Shortcuts -->
     <include file="script-skinshortcuts-includes.xml"/>
+    <!-- Skin Viewtypes -->
+    <include file="script-skinviewtypes-includes.xml" />
+
+    <include file="Includes_Views_Fallbacks.xml"/>
 
     <!-- Expressions -->
     <expression name="HomeIsModernMultiWidgets">!Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.classicwidgets) + Skin.HasSetting(home.modernwidgets) + Skin.HasSetting(home.vertical.widgets)</expression>
@@ -70,7 +76,6 @@
     <expression name="HomeIsVertical">Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.vertical.widgets)</expression>
     <expression name="HomeIsSpotlight">!Skin.HasSetting(home.classicwidgets) + !Skin.HasSetting(home.vertical) + !Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(home.modernwidgets)</expression>
     <expression name="HomeIsModern">Skin.HasSetting(home.modernwidgets) + !Skin.HasSetting(home.vertical.widgets) + !Skin.HasSetting(homemenu.netflix)</expression>
-    <expression name="IsYoutube">String.Contains(Container.FolderPath,plugin://plugin.video.youtube)</expression>
     <expression name="Widget1Enabled">String.IsEqual(Container(300).ListItem.Property(widgetEnable),yes)</expression>
     <expression name="Widget2Enabled">String.IsEqual(Container(300).ListItem.Property(widgetEnable.2),yes)</expression>
     <expression name="Widget3Enabled">String.IsEqual(Container(300).ListItem.Property(widgetEnable.3),yes)</expression>
@@ -89,7 +94,7 @@
     <expression name="ShowInfoOnPause">Player.Paused + Skin.HasSetting(osd.showinfoonpause) + String.IsEmpty(Window(Home).Property(OSDExtendedInfo))</expression>
     <expression name="VideoOSDShort">!String.IsEmpty(Window(home).Property(osdshowinfo)) | !String.IsEmpty(Window(home).Property(osdinfo)) | Player.ShowInfo | $EXP[ShowInfoOnPause] | [Window.IsVisible(videoosd) + Window.IsVisible(DialogFullScreenInfo.xml)]</expression>
     <expression name="VideoOSDWide">String.IsEmpty(Window(home).Property(osdshowinfo)) + String.IsEmpty(Window(home).Property(osdinfo)) + !Player.ShowInfo + !$EXP[ShowInfoOnPause] + ![Window.IsVisible(videoosd) + Window.IsVisible(DialogFullScreenInfo.xml)]</expression>
-    <expression name="TrailerWindowIsActive">Skin.HasSetting(home.netflix.autoplay.trailer) + [[Window.IsVisible(Home.xml) + [$EXP[HomeIsModernMultiWidgetsNetflix] | $EXP[HomeIsCleanMinimal] | $EXP[HomeIsVerticalMultiWidgetsNetflix]]] | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(510)] + !Window.IsVisible(DialogVideoInfo.xml) + String.IsEqual(Window(home).Property(TrailerPath2),Player.FileNameAndPath) + !String.IsEmpty(Player.FileNameAndPath)</expression>
+    <expression name="TrailerWindowIsActive">Skin.HasSetting(home.netflix.autoplay.trailer) + [[Window.IsVisible(Home.xml) + [$EXP[HomeIsModernMultiWidgetsNetflix] | $EXP[HomeIsCleanMinimal] | $EXP[HomeIsVerticalMultiWidgetsNetflix]]] | Control.IsVisible(521) | Control.IsVisible(522)] + !Window.IsVisible(DialogVideoInfo.xml) + String.IsEqual(Window(home).Property(TrailerPath2),Player.FileNameAndPath) + !String.IsEmpty(Player.FileNameAndPath)</expression>
     <expression name="TrailerIsReady">Skin.HasSetting(home.netflix.autoplay.trailer) + [Window.IsVisible(Home.xml) | Window.IsVisible(MyVideoNav.xml) | $EXP[InGameMode]] + !Control.HasFocus(300) + !Player.HasMedia + !String.IsEmpty(Window(home).Property(listitem.trailer)) + !System.HasVisibleModalDialog + !Window.IsVisible(script-globalsearch.xml) + !String.IsEqual(Window(home).Property(TrailerPath),Window(home).Property(listitem.trailer)) + !System.IdleTime(30)</expression>
     <expression name="TrailerWaitingForPlayer">!String.IsEmpty(Window(home).Property(TrailerPath2)) + !String.IsEmpty(Window(home).Property(TrailerPath)) + String.IsEmpty(Player.FileNameAndPath)</expression>
     <expression name="TrailerIsPlaying">String.IsEqual(Window(home).Property(TrailerPath2),Player.FileNameAndPath) + !String.IsEmpty(Player.FileNameAndPath)</expression>
@@ -361,30 +366,32 @@
     
     <expression name="IsWatched">
         [String.IsEqual(ListItem.Overlay,OverlayWatched.png)
-        | String.IsEmpty(ListItem.Overlay) + !String.IsEmpty(ListItem.DBID) + Integer.IsGreater(ListItem.PlayCount,0)]
-        + !ListItem.IsPlaying + !$EXP[IsInProgress]
+        | String.IsEmpty(ListItem.Overlay) + !String.IsEmpty(ListItem.DBID) + Integer.IsGreater(ListItem.PlayCount,0)
         + [ String.IsEqual(ListItem.DBType,movie)
           | String.IsEqual(ListItem.DBType,tvshow)
           | String.IsEqual(ListItem.DBType,season)
           | String.IsEqual(ListItem.DBType,episode)
           | String.IsEqual(ListItem.DBType,set)
-          | String.IsEqual(ListItem.DBType,video) ]
+          | String.IsEqual(ListItem.DBType,musicvideo)
+          | String.IsEqual(ListItem.DBType,video) ]]
+        + !ListItem.IsPlaying + !$EXP[IsInProgress]          
     </expression>
 
     <expression name="IsUnwatched">
         [String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)
-        | String.IsEmpty(ListItem.Overlay) + !String.IsEmpty(ListItem.DBID) + Integer.IsEqual(ListItem.PlayCount,0)]
-        + !ListItem.IsPlaying + !$EXP[IsInProgress]
+        | String.IsEmpty(ListItem.Overlay) + !String.IsEmpty(ListItem.DBID) + Integer.IsEqual(ListItem.PlayCount,0)
         + [ String.IsEqual(ListItem.DBType,movie)
           | String.IsEqual(ListItem.DBType,tvshow)
           | String.IsEqual(ListItem.DBType,season)
           | String.IsEqual(ListItem.DBType,episode)
           | String.IsEqual(ListItem.DBType,set)
-          | String.IsEqual(ListItem.DBType,video) ]
+          | String.IsEqual(ListItem.DBType,musicvideo)
+          | String.IsEqual(ListItem.DBType,video) ]]
+        + !ListItem.IsPlaying + !$EXP[IsInProgress]          
     </expression>
 
     <expression name="IsNewContent">
-        $EXP[IsUnwatched] + [$EXP[IsNewMovie] | $EXP[IsNewTVShow] | $EXP[IsNewSeason] | $EXP[IsNewEpisode]]
+        !String.IsEmpty(ListItem.DBID) + $EXP[IsUnwatched] + [$EXP[IsNewMovie] | $EXP[IsNewTVShow] | $EXP[IsNewSeason] | $EXP[IsNewEpisode]]
     </expression>
     
     <expression name="IsInProgress301">
@@ -393,59 +400,97 @@
 
     <expression name="IsWatched301">
         [String.IsEqual(Container(301).ListItem.Overlay,OverlayWatched.png)
-        | String.IsEmpty(Container(301).ListItem.Overlay) + !String.IsEmpty(Container(301).ListItem.DBID) + Integer.IsGreater(Container(301).ListItem.PlayCount,0)]
-        + !Container(301).ListItem.IsPlaying + !$EXP[IsInProgress301]
+        | String.IsEmpty(Container(301).ListItem.Overlay) + !String.IsEmpty(Container(301).ListItem.DBID) + Integer.IsGreater(Container(301).ListItem.PlayCount,0)
         + [ String.IsEqual(Container(301).ListItem.DBType,movie)
           | String.IsEqual(Container(301).ListItem.DBType,tvshow)
           | String.IsEqual(Container(301).ListItem.DBType,season)
           | String.IsEqual(Container(301).ListItem.DBType,episode)
           | String.IsEqual(Container(301).ListItem.DBType,set)
-          | String.IsEqual(Container(301).ListItem.DBType,video) ]
+          | String.IsEqual(Container(301).ListItem.DBType,musicvideo)
+          | String.IsEqual(Container(301).ListItem.DBType,video) ]]
+        + !Container(301).ListItem.IsPlaying + !$EXP[IsInProgress301]
     </expression>
 
     <expression name="IsUnwatched301">
         [String.IsEqual(Container(301).ListItem.Overlay,OverlayUnwatched.png)
-        | String.IsEmpty(Container(301).ListItem.Overlay) + !String.IsEmpty(Container(301).ListItem.DBID) + Integer.IsEqual(Container(301).ListItem.PlayCount,0)]
-        + !Container(301).ListItem.IsPlaying + !$EXP[IsInProgress301]
+        | String.IsEmpty(Container(301).ListItem.Overlay) + !String.IsEmpty(Container(301).ListItem.DBID) + Integer.IsEqual(Container(301).ListItem.PlayCount,0)
         + [ String.IsEqual(Container(301).ListItem.DBType,movie)
           | String.IsEqual(Container(301).ListItem.DBType,tvshow)
           | String.IsEqual(Container(301).ListItem.DBType,season)
           | String.IsEqual(Container(301).ListItem.DBType,episode)
           | String.IsEqual(Container(301).ListItem.DBType,set)
-          | String.IsEqual(Container(301).ListItem.DBType,video) ]
+          | String.IsEqual(Container(301).ListItem.DBType,musicvideo)
+          | String.IsEqual(Container(301).ListItem.DBType,video) ]]
+        + !Container(301).ListItem.IsPlaying + !$EXP[IsInProgress301]
     </expression>
 
     <expression name="IsNewContent301">
-        $EXP[IsUnwatched301] + [$EXP[IsNewMovie301] | $EXP[IsNewTVShow301] | $EXP[IsNewSeason301] | $EXP[IsNewEpisode301]]
+        !String.IsEmpty(Container(301).ListItem.DBID) + $EXP[IsUnwatched301] + [$EXP[IsNewMovie301] | $EXP[IsNewTVShow301] | $EXP[IsNewSeason301] | $EXP[IsNewEpisode301]]
     </expression>
 
+    <expression name="HasWatchedProgress">
+        [!Skin.HasSetting(hide.markers.inprogress) + $EXP[IsInProgress]] | [!Skin.HasSetting(hide.markers.watched) + $EXP[IsWatched]] | [!Skin.HasSetting(hide.markers.newcontent) | $EXP[IsNewContent]]
+    </expression>
+
+    <expression name="HasWatchedProgress301">
+        [!Skin.HasSetting(hide.markers.inprogress) + $EXP[IsInProgress301]] | [!Skin.HasSetting(hide.markers.watched) + $EXP[IsWatched301]] | [!Skin.HasSetting(hide.markers.newcontent) | $EXP[IsNewContent301]]
+    </expression>
+
+    <expression name="InGameMode">Window.IsVisible(MyGames.xml) | Container.Content(games)</expression>
+    
     <expression name="IsVideoAssets">
-        Container.Content(videoassets) | Container.Content(videoversions) | Container.Content(videoextras)
+        Container.Content(videoversions) + !String.IsEqual(Container.FolderPath,videodb://movies/videoversions/) | Container.Content(videoassets) | Container.Content(videoextras)
     </expression>
 
     <expression name="IsVideoAssets301">
-        Container(301).Content(videoassets) | Container(301).Content(videoversions) | Container(301).Content(videoextras)
+        Container(301).Content(videoversions) + !String.IsEqual(Container(301).FolderPath,videodb://movies/videoversions/) | Container(301).Content(videoassets) | Container(301).Content(videoextras)
     </expression>
     
-    <expression name="HasPlayStatusIndicator">
-        [$EXP[IsInProgress] + !Skin.HasSetting(hide.markers.inprogress)] | [$EXP[IsWatched] + !Skin.HasSetting(hide.markers.watched)] | [$EXP[IsNewContent] + !Skin.HasSetting(hide.markers.newcontent)]
+    <expression name="HasEnableExtendedListInfo">
+        Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(songs) | Container.Content(albums) | Container.Content(artists) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[InGameMode] |  $EXP[IsVideoAssets]
+    </expression>
+    <expression name="HasEnableProgressInfo">
+        Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | $EXP[IsVideoAssets]
+    </expression>
+    <expression name="HasEnableRatingInfo">
+        Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | $EXP[InGameMode] | $EXP[IsVideoAssets]
+    </expression>
+ 
+    <expression name="ShowListInfo">
+        [   
+          Control.IsVisible(50) + !Skin.HasSetting(No50ListInfo)
+          | Control.IsVisible(550) + !Skin.HasSetting(No550ListInfo)
+          | Control.IsVisible(56) + Skin.HasSetting(56ListInfo)
+          | Control.IsVisible(57) + Skin.HasSetting(57ListInfo)
+          | Control.IsVisible(516) + Skin.HasSetting(516ListInfo)
+          | [Control.IsVisible(511) | Control.IsVisible(512)] + Skin.HasSetting(511ListInfo)
+        ] + $EXP[HasEnableExtendedListInfo]</expression>
+
+    <expression name="ShowProgressInfo">Skin.HasSetting(furniture.overlayinfobalken) + $EXP[HasEnableProgressInfo]</expression>
+    <expression name="ShowRatingInfo">!Skin.HasSetting(hide.ratings) + $EXP[HasEnableRatingInfo]</expression>
+
+    <expression name="IsMediaInfoList">$EXP[IsVideoAssets] + !Skin.HasSetting(list.hide.mediainfo)</expression>
+    <expression name="HasDurationInfo">[[Control.HasFocus(5161) + !String.IsEmpty(Container(5161).ListItem.Duration(mins))] | [Container.Content(artists) + !String.IsEmpty(ListItem.Property(Artist_Born))] | [[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + Integer.IsGreater(ListItem.Property(TotalEpisodes),0)] | [[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | $EXP[IsVideoAssets]] + !String.IsEmpty(ListItem.Duration(mins))]] + !$EXP[IsMediaInfoList]</expression>
+            
+    <expression name="UsePreviewImageSquare">
+        [ !String.Contains(Control.GetLabel(1),(movies)) 
+        + !String.Contains(Control.GetLabel(1),(sets)) 
+        + !String.Contains(Control.GetLabel(1),(tvshows)) 
+        + !String.Contains(Control.GetLabel(1),(episode-groups-tvshows)) 
+        + !String.Contains(Control.GetLabel(1),(seasons)) 
+        + !String.Contains(Control.GetLabel(1),(episode-groups-seasons)) 
+        + !String.Contains(Control.GetLabel(1),(episodes)) 
+        + !String.Contains(Control.GetLabel(1),(actors)) 
+        + !String.Contains(Control.GetLabel(1),(videoversions)) 
+        + !String.Contains(Control.GetLabel(1),(videoextras)) 
+        + !String.Contains(Control.GetLabel(1),(videoassets)) ]
     </expression>
 
-    <expression name="HasPlayStatusIndicator301">
-        [$EXP[IsInProgress301] + !Skin.HasSetting(hide.markers.inprogress)] | [$EXP[IsWatched301] + !Skin.HasSetting(hide.markers.watched)] | [$EXP[IsNewContent301] + !Skin.HasSetting(hide.markers.newcontent)]
-    </expression>
-    
-    <expression name="IsMediaInfoList">$EXP[IsVideoAssets] + !Skin.HasSetting(list.hide.mediainfo) + !Skin.HasSetting(list.show.filename)</expression>
-    
-    <expression name="InGameMode">
-        [ String.Contains(Container.FolderPath,plugin://plugin.program.ael) 
-        | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.launcher) 
-        | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher) 
-        | String.Contains(Container.FolderPath,plugin://plugin.program.akl) 
-        | String.Contains(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher) 
-        | String.Contains(Container.FolderPath,plugin://plugin.program.iagl) 
-        | Window.IsActive(games) 
-        | Container.Content(games) ]
+    <expression name="UsePreviewImageMusic">
+        [ String.Contains(Control.GetLabel(1),(albums)) 
+        | String.Contains(Control.GetLabel(1),(songs)) 
+        | String.Contains(Control.GetLabel(1),(artists)) 
+        | String.Contains(Control.GetLabel(1),(musicvideos))]
     </expression>
         
     <expression name="IsColorSchemeDefault">
@@ -750,7 +795,7 @@
 
     <variable name="StartupFanart">
         <value condition="!String.IsEmpty(Skin.String(startupfanart.fallback))">$INFO[Skin.String(startupfanart.fallback)]</value>
-        <value>common/bg.jpg</value>
+        <value>background/bg.jpg</value>
     </variable>
 
     <variable name="StartupDiffuse">
@@ -1042,11 +1087,28 @@
     <include name="Blur_SimpleBackground_Onload_Action">
 	    <onload condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onload>
     </include>
-    
+
+    <include name="TrailerWindow">
+        <control type="videowindow">
+            <visible>$EXP[TrailerWindowIsActive] + !$EXP[ExtendedNowPlayingIsVisible]</visible>
+            <include condition="![$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)]">DefTrailerVideoWindowSmall</include>
+            <include condition="$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)">DefTrailerVideoWindowFullscreen</include>
+        </control>        
+        <control type="image" description="Background">
+            <animation effect="slide" start="0,0" end="0,-90" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window.force)">Conditional</animation>
+            <animation effect="slide" start="0,0" end="0,-50" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window) + String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
+            <animation effect="slide" start="0,0" end="0,-90" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window) + !String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEqual(VideoPlayer.VideoAspect,1.78) + !String.IsEqual(VideoPlayer.VideoAspect,1.66) + !String.IsEqual(VideoPlayer.VideoAspect,1.37) + !String.IsEqual(VideoPlayer.VideoAspect,1.33) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
+            <visible>$EXP[TrailerWindowIsActive] + !$EXP[ExtendedNowPlayingIsVisible] + ![$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)]</visible>
+            <top>0</top>
+            <include>Dimensions_Fullscreen</include>
+            <texture colordiffuse="Background">background/trailerwindow.png</texture>
+        </control>
+    </include>
+        
     <include name="GlobalVideoWindow">
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">common/bg.jpg</texture>
+            <texture colordiffuse="Background">background/bg.jpg</texture>
         </control>
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
@@ -1056,6 +1118,14 @@
         <control type="videowindow">
             <include>Dimensions_Fullscreen</include>
             <visible>Player.HasVideo + Skin.HasSetting(global.showvideo)</visible>
+        </control>
+    </include>
+
+    <include name="GlobalVideoWindowHidden">
+        <!--Hidden video window to prevent audio errors-->
+        <control type="videowindow">
+            <visible>Player.HasVideo + !Player.Paused</visible>
+            <include>Dimensions_Fullscreen</include>
         </control>
     </include>
 
@@ -1131,49 +1201,13 @@
         <include condition="Integer.IsEqual(Skin.String(Fadetime),400)">FadetimeFast</include>
     </include>
 
-    <include name="FadetimeFast">
-        <fadetime>400</fadetime>
-    </include>
+    <include name="FadetimeFast"><fadetime>400</fadetime></include>
+    <include name="FadetimeSlow"><fadetime>1800</fadetime></include>
+    <include name="FadetimeSuperSlow"><fadetime>3600</fadetime></include>
+    <include name="FadetimeDefault"><fadetime>BackgroundFanartFadetime</fadetime></include>
 
-    <include name="FadetimeDefault">
-        <fadetime>BackgroundFanartFadetime</fadetime>
-    </include>
-
-    <include name="FadetimeSlow">
-        <fadetime>1800</fadetime>
-    </include>
-
-    <include name="FadetimeSuperSlow">
-        <fadetime>3600</fadetime>
-    </include>
-
-    <include name="HiddenVideoWindow">
-
-        <!--Hidden video window to prevent audio errors-->
-        <control type="videowindow">
-            <include>Dimensions_Fullscreen</include>
-        </control>
-    </include>
-
-    <include name="TrailerWindow">
-        <control type="videowindow">
-            <visible>$EXP[TrailerWindowIsActive] + !$EXP[ExtendedNowPlayingIsVisible]</visible>
-            <include condition="![$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)]">DefTrailerVideoWindowSmall</include>
-            <include condition="$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)">DefTrailerVideoWindowFullscreen</include>
-        </control>        
-        <control type="image" description="Background">
-            <animation effect="slide" start="0,0" end="0,-90" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window.force)">Conditional</animation>
-            <animation effect="slide" start="0,0" end="0,-50" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window) + String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
-            <animation effect="slide" start="0,0" end="0,-90" time="0" condition="Skin.HasSetting(home.netflix.autoplay.trailer.custom.window) + !String.IsEqual(VideoPlayer.VideoAspect,1.85) + !String.IsEqual(VideoPlayer.VideoAspect,1.78) + !String.IsEqual(VideoPlayer.VideoAspect,1.66) + !String.IsEqual(VideoPlayer.VideoAspect,1.37) + !String.IsEqual(VideoPlayer.VideoAspect,1.33) + !String.IsEmpty(VideoPlayer.VideoAspect)">Conditional</animation>
-            <visible>$EXP[TrailerWindowIsActive] + !$EXP[ExtendedNowPlayingIsVisible] + ![$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)]</visible>
-            <top>0</top>
-            <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">common/trailerwindow.png</texture>
-        </control>
-    </include>
-    
     <include name="GlobalBackground">        
-        <include condition="!Skin.HasSetting(global.showvideo) + Skin.HasSetting(background.video.fix.audio.errors)">HiddenVideoWindow</include>
+        <include condition="!Skin.HasSetting(global.showvideo)">GlobalVideoWindowHidden</include>
         <include>GlobalVideoWindow</include>
         <include condition="Skin.HasSetting(global.showvisualisation) + Visualisation.Enabled">GlobalVisualisation</include>
         <control type="fadelabel" id="4399">
@@ -1252,8 +1286,8 @@
         <!-- Visualisation Overlay -->
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">common/bg.jpg</texture>
-            <visible>!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic] + !$EXP[HomeIsModern] + [[Player.HasVideo + Skin.HasSetting(global.showvideo)] | [Player.HasAudio + Skin.HasSetting(global.showvisualisation) + !String.IsEmpty(Visualisation.Name)]]</visible>
+            <texture colordiffuse="Background">background/bg.jpg</texture>
+            <visible>!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic] + [[Player.HasVideo + Skin.HasSetting(global.showvideo)] | [Player.HasAudio + Skin.HasSetting(global.showvisualisation) + !String.IsEmpty(Visualisation.Name)]]</visible>
             <animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
         </control>
 
@@ -1262,13 +1296,13 @@
 
         <!-- Global Fanart -->
         <control type="group">
-            <visible>![Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(510) | Control.IsVisible(520) | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] | $EXP[InfoDialogsActive] + [!Window.IsVisible(home) | !$EXP[InfoDialogsExtendedBackground]]</visible>
+            <visible>![Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] | $EXP[InfoDialogsActive] + [!Window.IsVisible(home) | !$EXP[InfoDialogsExtendedBackground]]</visible>
 			<include>Animation.BackgroundHideView</include>
  	        <control type="multiimage" description="Fanart">
 	            <visible>!Skin.HasSetting(TMDbHelper.EnableBlur) | [Window.IsVisible(home) + !$EXP[InfoDialogsActive]]</visible>
 	            <visible>!Skin.HasSetting(global.hidefanart) | Window.IsVisible(home)</visible>
 	            <visible>!Player.HasMedia | [!Skin.HasSetting(global.showvideo) + Player.HasVideo] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Skin.HasSetting(global.showvisualisation) + String.IsEmpty(Visualisation.Name) + Player.HasAudio]</visible>
-	            <include condition="![Window.IsVisible(home) + [$EXP[HomeIsSpotlight] | $EXP[HomeIsClassic] | $EXP[HomeIsModern]]]">GlobalBackgroundFade</include>
+	            <include condition="![Window.IsVisible(home) + [$EXP[HomeIsSpotlight] | $EXP[HomeIsClassic]]]">GlobalBackgroundFade</include>
  	            <include>Dimensions_Fullscreen</include>
 	            <include>Animation.Background.OpenClose</include>
 	            <include>BackgroundFanartFadetime</include>
@@ -1298,9 +1332,9 @@
 		
 	        <!-- Final Overlays -->
 	        <control type="image" description="FanartOverlay">
-                <visible>!Window.IsVisible(Home.xml) | [!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic] + !$EXP[HomeIsModern]]</visible>
+                <visible>!Window.IsVisible(Home.xml) | [!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic]]</visible>
 	            <include>Dimensions_Fullscreen</include>
-	            <texture colordiffuse="FloorFade">common/floor.png</texture>
+	            <texture colordiffuse="FloorFade">background/floor.png</texture>
 	            <include>Animation.AutoTrailer.FadeOut.Background</include>
 	        </control>
         </control>
@@ -1316,14 +1350,14 @@
 	        <timeperimage>HomeTimePerImage</timeperimage>
 	        <randomize>true</randomize>
 	        <aspectratio>scale</aspectratio>
-	        <imagepath background="true" diffuse="diffuse/netflix-clean.png">$VAR[GlobalFanart]</imagepath>
+	        <imagepath background="true" diffuse="background/netflix-clean.png">$VAR[GlobalFanart]</imagepath>
 	        <include>Animation.Animate.Fanart</include>
 	        <include>Animation.AutoTrailer.FadeOut.Background</include>
         </control>
         
         <!-- Netflix Preview Window -->
         <control type="multiimage" description="Fanart">
-            <visible>[Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(homemenu.clean.flix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(510) | Control.IsVisible(520) | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] + !$EXP[InfoDialogsActive] + String.IsEmpty(Window(Home).Property(TMDbHelper.HideView))</visible>
+            <visible>[Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(homemenu.clean.flix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] + !$EXP[InfoDialogsActive] + String.IsEmpty(Window(Home).Property(TMDbHelper.HideView))</visible>
             <visible>!Player.HasMedia | [!Skin.HasSetting(global.showvideo) + Player.HasVideo] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Skin.HasSetting(global.showvisualisation) + String.IsEmpty(Visualisation.Name) + Player.HasAudio]</visible>
             <include>Animation.Background.OpenClose</include>
             <include>Dimensions_Fullscreen</include>
@@ -1341,7 +1375,7 @@
             <timeperimage>HomeTimePerImage</timeperimage>
             <randomize>true</randomize>
             <aspectratio>scale</aspectratio>
-            <imagepath background="true" diffuse="diffuse/netflix-combined.png">$VAR[GlobalFanart]</imagepath>
+            <imagepath background="true" diffuse="background/netflix-combined.png">$VAR[GlobalFanart]</imagepath>
             <include>Animation.Animate.Fanart</include>
             <include>Animation.AutoTrailer.FadeOut.Background</include>
         </control>
@@ -1351,7 +1385,7 @@
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
             <include condition="$EXP[InfoDialogsExtendedBackground]">Animation.FadeFromHome</include>
-            <texture colordiffuse="Background">common/bg.jpg</texture>
+            <texture colordiffuse="Background">background/bg.jpg</texture>
         </control>
         <control type="multiimage" description="Fanart">
             <visible>!Skin.HasSetting(TMDbHelper.EnableBlur) + !Skin.HasSetting(global.hidefanart)</visible>
@@ -1380,39 +1414,9 @@
         <control type="image" description="FanartOverlay">
             <include>Dimensions_Fullscreen</include>
             <include condition="$EXP[InfoDialogsExtendedBackground]">Animation.FadeFromHome</include>
-            <texture colordiffuse="FloorFade">common/floor.png</texture>
+            <texture colordiffuse="FloorFade">background/floor.png</texture>
         </control>
     </include>
-
-    <variable name="ClickToJump">
-        <value condition="Control.IsVisible(501)">SetFocus(501)</value>
-        <value condition="Control.IsVisible(507)">SetFocus(507)</value>
-        <value condition="Control.IsVisible(504)">SetFocus(504)</value>
-        <value condition="Control.IsVisible(50)">SetFocus(50)</value>
-        <value condition="Control.IsVisible(51)">SetFocus(51)</value>
-        <value condition="Control.IsVisible(52)">SetFocus(52)</value>
-        <value condition="Control.IsVisible(53)">SetFocus(53)</value>
-        <value condition="Control.IsVisible(54)">SetFocus(54)</value>
-        <value condition="Control.IsVisible(56)">SetFocus(56)</value>
-        <value condition="Control.IsVisible(57)">SetFocus(57)</value>
-        <value condition="Control.IsVisible(58)">SetFocus(58)</value>
-        <value condition="Control.IsVisible(59)">SetFocus(59)</value>
-        <value condition="Control.IsVisible(500)">SetFocus(500)</value>
-        <value condition="Control.IsVisible(55)">SetFocus(55)</value>
-        <value condition="Control.IsVisible(555)">SetFocus(555)</value>
-        <value condition="Control.IsVisible(550)">SetFocus(550)</value>
-        <value condition="Control.IsVisible(509)">SetFocus(509)</value>
-        <value condition="Control.IsVisible(505)">SetFocus(505)</value>
-        <value condition="Control.IsVisible(519)">SetFocus(519)</value>
-        <value condition="Control.IsVisible(511)">SetFocus(511)</value>
-        <value condition="Control.IsVisible(512)">SetFocus(512)</value>
-        <value condition="Control.IsVisible(513)">SetFocus(513)</value>
-        <value condition="Control.IsVisible(514)">SetFocus(514)</value>
-        <value condition="Control.IsVisible(515)">SetFocus(515)</value>
-        <value condition="Control.IsVisible(5161)">SetFocus(5161)</value>
-        <value condition="Control.IsVisible(516)">SetFocus(516)</value>
-        <value condition="Control.IsVisible(517)">SetFocus(517)</value>
-    </variable>
 
     <include name="buttontextures">
         <param name="color" value="$PARAM[color]" default="Dark4"/>
@@ -1496,33 +1500,6 @@
         <value condition="!String.IsEmpty(Container(301).ListItem.Icon)">$INFO[Container(301).ListItem.Icon]</value>
     </variable>
 
-    <include name="DialogConfirmButtons">
-        <control type="button" id="12">
-            <description>Yes</description>
-            <width>270</width>
-            <label>107</label>
-            <font>Button</font>
-            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-            <texturenofocus colordiffuse="Black12" border="5">common/box.png</texturenofocus>
-        </control>
-        <control type="button" id="11">
-            <description>Yes</description>
-            <width>270</width>
-            <label>107</label>
-            <font>Button</font>
-            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-            <texturenofocus colordiffuse="Black12" border="5">common/box.png</texturenofocus>
-        </control>
-        <control type="button" id="10">
-            <description>No</description>
-            <width>270</width>
-            <label>106</label>
-            <font>Button</font>
-            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-            <texturenofocus colordiffuse="Black12" border="5">common/box.png</texturenofocus>
-        </control>
-    </include>
-
 	<variable name="MusicInfoNavigation_onleft_control_id">
 		<value condition="!Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)">11100</value>
 		<value>9008</value>
@@ -1561,9 +1538,9 @@
 	</variable>
 
     <expression name="ShowTmdbCast">!Skin.HasSetting(extended.info.local.cast) + !Skin.HasSetting(hidebutton.video.cast) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)]</expression>
-    <expression name="ShowTmdbDirector">!Skin.HasSetting(hidebutton.video.director) + String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Director))</expression>
+    <expression name="ShowTmdbDirector">!Skin.HasSetting(hidebutton.video.director) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo)] + [!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Director)) | !String.IsEmpty(ListItem.Director)]</expression>
     <expression name="ShowTmdbCrew">Skin.HasSetting(showbutton.video.crew) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)]</expression>
-    <expression name="ShowTmdbStudio">Skin.HasSetting(showbutton.video.studio) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Studio))</expression>
+    <expression name="ShowTmdbStudio">Skin.HasSetting(showbutton.video.studio) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + [!String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Studio)) | !String.IsEmpty(ListItem.Studio)]</expression>
     <expression name="ShowTmdbSimilar">Skin.HasSetting(showbutton.video.similar) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)]</expression>
     <expression name="ShowTmdbSet">!Skin.HasSetting(extended.info.local.collections) + !Skin.HasSetting(hidebutton.video.set) + [[String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Set.TMDb_ID))] | [String.IsEqual(ListItem.DBType,set) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.TMDb_ID))]]</expression>
     <expression name="ShowTmdbArtwork">!Skin.HasSetting(extended.info.local.artwork) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)]</expression>
@@ -1807,7 +1784,7 @@
                         <include>DefContextButtonGradient</include>
                         <label>5</label>
                         <align>left</align>
-                        <onclick>ActivateWindow(1122)</onclick>
+                        <onclick>ActivateWindow(1123)</onclick>
                     </control>
                 </control>
             </control>
@@ -2089,78 +2066,6 @@
         </control>
     </include>
 
-    <variable name="SetTMDBHelperWidgetContainer">
-        <value condition="Control.IsVisible(30111)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30111),00:00,silent)</value>
-        <value condition="Control.IsVisible(30121)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30121),00:00,silent)</value>
-        <value condition="Control.IsVisible(30131)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30131),00:00,silent)</value>
-        <value condition="Control.IsVisible(30141)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30141),00:00,silent)</value>
-        <value condition="Control.IsVisible(30151)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30151),00:00,silent)</value>
-        <value condition="Control.IsVisible(30161)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30161),00:00,silent)</value>
-        <value condition="Control.IsVisible(30171)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30171),00:00,silent)</value>
-        <value condition="Control.IsVisible(30181)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30181),00:00,silent)</value>
-        <value condition="Control.IsVisible(30191)">AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,30191),00:00,silent)</value>
-    </variable>
-
-    <include name="unlock_views">
-        <onclick condition="[Container.Content() + !String.IsEmpty(Skin.String(Skin.ForcedView.))]">Skin.Reset(Skin.ForcedView.)</onclick>
-        <onclick condition="[Container.Content(tags) + !String.IsEmpty(Skin.String(Skin.ForcedView.tags))]">Skin.Reset(Skin.ForcedView.tags)</onclick>
-        <onclick condition="[Container.Content(years) + !String.IsEmpty(Skin.String(Skin.ForcedView.years))]">Skin.Reset(Skin.ForcedView.years)</onclick>
-        <onclick condition="[Container.Content(genres) + !String.IsEmpty(Skin.String(Skin.ForcedView.genres))]">Skin.Reset(Skin.ForcedView.genres)</onclick>
-        <onclick condition="[Container.Content(countries) + !String.IsEmpty(Skin.String(Skin.ForcedView.countries))]">Skin.Reset(Skin.ForcedView.countries)</onclick>
-        <onclick condition="[Container.Content(studios) + !String.IsEmpty(Skin.String(Skin.ForcedView.studios))]">Skin.Reset(Skin.ForcedView.studios)</onclick>
-        <onclick condition="[Container.Content(playlists) + !String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]">Skin.Reset(Skin.ForcedView.playlists)</onclick>
-        <onclick condition="[Container.Content(movies) + !String.IsEmpty(Skin.String(Skin.ForcedView.movies))]">Skin.Reset(Skin.ForcedView.movies)</onclick>
-        <onclick condition="[Container.Content(sets) + !String.IsEmpty(Skin.String(Skin.ForcedView.sets))]">Skin.Reset(Skin.ForcedView.sets)</onclick>
-        <onclick condition="[Container.Content(tvshows) + !String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]">Skin.Reset(Skin.ForcedView.tvshows)</onclick>
-        <onclick condition="[Container.Content(seasons) + !String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]">Skin.Reset(Skin.ForcedView.seasons)</onclick>
-        <onclick condition="[Container.Content(episodes) + !String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]">Skin.Reset(Skin.ForcedView.episodes)</onclick>
-        <onclick condition="[Container.Content(artists) + !String.IsEmpty(Skin.String(Skin.ForcedView.artists))]">Skin.Reset(Skin.ForcedView.artists)</onclick>
-        <onclick condition="[Container.Content(albums) + !String.IsEmpty(Skin.String(Skin.ForcedView.albums))]">Skin.Reset(Skin.ForcedView.albums)</onclick>
-        <onclick condition="[Container.Content(songs) + !String.IsEmpty(Skin.String(Skin.ForcedView.songs))]">Skin.Reset(Skin.ForcedView.songs)</onclick>
-        <onclick condition="[Container.Content(musicvideos) + !String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]">Skin.Reset(Skin.ForcedView.musicvideos)</onclick>
-        <onclick condition="[Container.Content(addons) + !String.IsEmpty(Skin.String(Skin.ForcedView.addons))]">Skin.Reset(Skin.ForcedView.addons)</onclick>
-        <onclick condition="[Container.Content(actors) + !String.IsEmpty(Skin.String(Skin.ForcedView.actors))]">Skin.Reset(Skin.ForcedView.actors)</onclick>
-        <onclick condition="[Container.Content(directors) + !String.IsEmpty(Skin.String(Skin.ForcedView.directors))]">Skin.Reset(Skin.ForcedView.directors)</onclick>
-        <onclick condition="[Container.Content(files) + !String.IsEmpty(Skin.String(Skin.ForcedView.files))]">Skin.Reset(Skin.ForcedView.files)</onclick>
-        <onclick condition="[Container.Content(mixed) + !String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]">Skin.Reset(Skin.ForcedView.mixed)</onclick>
-        <onclick condition="[Container.Content(images) + !String.IsEmpty(Skin.String(Skin.ForcedView.images))]">Skin.Reset(Skin.ForcedView.images)</onclick>
-        <onclick condition="[Container.Content(games) + !String.IsEmpty(Skin.String(Skin.ForcedView.games))]">Skin.Reset(Skin.ForcedView.games)</onclick>
-        <onclick condition="[Container.Content(unknown) + !String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]">Skin.Reset(Skin.ForcedView.unknown)</onclick>
-        <onclick condition="[Container.Content(videos) + !String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">Skin.Reset(Skin.ForcedView.videos)</onclick>
-    </include>
-
-    <include name="lock_views">
-        <onclick condition="[Container.Content() + String.IsEmpty(Skin.String(Skin.ForcedView.))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(tags) + String.IsEmpty(Skin.String(Skin.ForcedView.tags))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(years) + String.IsEmpty(Skin.String(Skin.ForcedView.years))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(genres) + String.IsEmpty(Skin.String(Skin.ForcedView.genres))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(countries) + String.IsEmpty(Skin.String(Skin.ForcedView.countries))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(studios) + String.IsEmpty(Skin.String(Skin.ForcedView.studios))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(playlists) + String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(movies) + String.IsEmpty(Skin.String(Skin.ForcedView.movies))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(sets) + String.IsEmpty(Skin.String(Skin.ForcedView.sets))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(tvshows) + String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(seasons) + String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(episodes) + String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(artists) + String.IsEmpty(Skin.String(Skin.ForcedView.artists))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(albums) + String.IsEmpty(Skin.String(Skin.ForcedView.albums))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(songs) + String.IsEmpty(Skin.String(Skin.ForcedView.songs))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(musicvideos) + String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(addons) + String.IsEmpty(Skin.String(Skin.ForcedView.addons))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(actors) + String.IsEmpty(Skin.String(Skin.ForcedView.actors))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(directors) + String.IsEmpty(Skin.String(Skin.ForcedView.directors))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(files) + String.IsEmpty(Skin.String(Skin.ForcedView.files))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(mixed) + String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(images) + String.IsEmpty(Skin.String(Skin.ForcedView.images))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(games) + String.IsEmpty(Skin.String(Skin.ForcedView.games))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(unknown) + String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-        <onclick condition="[Container.Content(videos) + String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$ESCINFO[Container.Viewmode])</onclick>
-    </include>
-
-    <include name="forced_view">
-        <visible>[Container.Content(games) + [String.IsEqual(Skin.String(Skin.ForcedView.games),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.games))]] | [Container.Content(movies) + [String.IsEqual(Skin.String(Skin.ForcedView.movies),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.movies))]] | [Container.Content(sets) + [String.IsEqual(Skin.String(Skin.ForcedView.sets),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.sets))]] | [Container.Content(tvshows) + [String.IsEqual(Skin.String(Skin.ForcedView.tvshows),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]] | [Container.Content(seasons) + [String.IsEqual(Skin.String(Skin.ForcedView.seasons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]] | [Container.Content(episodes) + [String.IsEqual(Skin.String(Skin.ForcedView.episodes),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]] | [Container.Content(actors) + [String.IsEqual(Skin.String(Skin.ForcedView.actors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.actors))]] | [Container.Content(artists) + [String.IsEqual(Skin.String(Skin.ForcedView.artists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.artists))]] | [Container.Content(albums) + [String.IsEqual(Skin.String(Skin.ForcedView.albums),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.albums))]] | [Container.Content(songs) + [String.IsEqual(Skin.String(Skin.ForcedView.songs),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.songs))]] | [Container.Content(addons) + [String.IsEqual(Skin.String(Skin.ForcedView.addons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.addons))]] | [Container.Content(genres) + [String.IsEqual(Skin.String(Skin.ForcedView.genres),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.genres))]] | [Container.Content(images) + [String.IsEqual(Skin.String(Skin.ForcedView.images),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.images))]] | [Container.Content(videos) + [String.IsEqual(Skin.String(Skin.ForcedView.videos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.videos))]] | [Container.Content() + [String.IsEqual(Skin.String(Skin.ForcedView.),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.))]] | [Container.Content(tags) + [String.IsEqual(Skin.String(Skin.ForcedView.tags),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tags))]] | [Container.Content(years) + [String.IsEqual(Skin.String(Skin.ForcedView.years),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.years))]] | [Container.Content(countries) + [String.IsEqual(Skin.String(Skin.ForcedView.countries),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.countries))]] | [Container.Content(studios) + [String.IsEqual(Skin.String(Skin.ForcedView.studios),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.studios))]] | [Container.Content(playlists) + [String.IsEqual(Skin.String(Skin.ForcedView.playlists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]] | [Container.Content(musicvideos) + [String.IsEqual(Skin.String(Skin.ForcedView.musicvideos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]] | [Container.Content(directors) + [String.IsEqual(Skin.String(Skin.ForcedView.directors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.directors))]] | [Container.Content(files) + [String.IsEqual(Skin.String(Skin.ForcedView.files),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.files))]] | [Container.Content(mixed) + [String.IsEqual(Skin.String(Skin.ForcedView.mixed),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]] | [Container.Content(unknown) + [String.IsEqual(Skin.String(Skin.ForcedView.unknown),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]] | [!Container.Content(games) + !Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(actors) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs) + !Container.Content(addons) + !Container.Content(genres) + !Container.Content(images) + !Container.Content(videos) + !Container.Content() + !Container.Content(tags) + !Container.Content(years) + !Container.Content(countries) + !Container.Content(studios) + !Container.Content(playlists) + !Container.Content(musicvideos) + !Container.Content(directors) + !Container.Content(files) + !Container.Content(mixed) + !Container.Content(unknown)] | Window.IsVisible(MyPlaylist.xml)</visible>
-    </include>
-
     <include name="DialogForcedArrow">
         <align>center</align>
         <top>20</top>
@@ -2168,10 +2073,22 @@
         <texture colordiffuse="Dark1" flipy="false">common/arrow-small-right.png</texture>
     </include>
 
+    <variable name="TMDBHelperWidgetContainer">
+        <value condition="Control.IsVisible(30111)">$NUMBER[30111]</value>
+        <value condition="Control.IsVisible(30121)">$NUMBER[30121]</value>
+        <value condition="Control.IsVisible(30131)">$NUMBER[30131]</value>
+        <value condition="Control.IsVisible(30141)">$NUMBER[30141]</value>
+        <value condition="Control.IsVisible(30151)">$NUMBER[30151]</value>
+        <value condition="Control.IsVisible(30161)">$NUMBER[30161]</value>
+        <value condition="Control.IsVisible(30171)">$NUMBER[30171]</value>
+        <value condition="Control.IsVisible(30181)">$NUMBER[30181]</value>
+        <value condition="Control.IsVisible(30191)">$NUMBER[30191]</value>
+    </variable>
+
     <include name="SetWidgetContainerForTMDB">
         <control type="button">
             <visible>false</visible>
-            <onfocus>$VAR[SetTMDBHelperWidgetContainer]</onfocus>
+            <onfocus>AlarmClock(Preload,SetProperty(TMDbHelper.WidgetContainer,$VAR[TMDBHelperWidgetContainer]),00:00,silent)</onfocus>
             <onfocus>SetProperty(WindowTitle,$INFO[Container(300).ListItem.Label],home)</onfocus>
         </control>
     </include>
@@ -2250,8 +2167,48 @@
         <onclick>Skin.Reset(homemenu.clean.flix)</onclick>
     </include>
 
+    <variable name="SetsPath">
+        <value condition="ListItem.IsCollection + !String.IsEmpty(ListItem.DBID)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
+        <value condition="Container(301).ListItem.IsCollection + !String.IsEmpty(Container(301).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301).ListItem.DBID]/?setid=$INFO[Container(301).ListItem.DBID]</value>
+        <value condition="!Window.IsVisible(home) | !Skin.HasSetting(home.vertical.widgets)"></value>
+        <value condition="Control.IsVisible(30111) + Container(30111).ListItem.IsCollection + !String.IsEmpty(Container(30111).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30111).ListItem.DBID]/?setid=$INFO[Container(30111).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30121) + Container(30121).ListItem.IsCollection + !String.IsEmpty(Container(30121).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30121).ListItem.DBID]/?setid=$INFO[Container(30121).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30131) + Container(30131).ListItem.IsCollection + !String.IsEmpty(Container(30131).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30131).ListItem.DBID]/?setid=$INFO[Container(30131).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30141) + Container(30141).ListItem.IsCollection + !String.IsEmpty(Container(30141).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30141).ListItem.DBID]/?setid=$INFO[Container(30141).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30151) + Container(30151).ListItem.IsCollection + !String.IsEmpty(Container(30151).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30151).ListItem.DBID]/?setid=$INFO[Container(30151).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30161) + Container(30161).ListItem.IsCollection + !String.IsEmpty(Container(30161).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30161).ListItem.DBID]/?setid=$INFO[Container(30161).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30171) + Container(30171).ListItem.IsCollection + !String.IsEmpty(Container(30171).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30171).ListItem.DBID]/?setid=$INFO[Container(30171).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30181) + Container(30181).ListItem.IsCollection + !String.IsEmpty(Container(30181).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30181).ListItem.DBID]/?setid=$INFO[Container(30181).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30191) + Container(30191).ListItem.IsCollection + !String.IsEmpty(Container(30191).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30191).ListItem.DBID]/?setid=$INFO[Container(30191).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301101) + Container(301101).ListItem.IsCollection + !String.IsEmpty(Container(301101).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301101).ListItem.DBID]/?setid=$INFO[Container(301101).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301111) + Container(301111).ListItem.IsCollection + !String.IsEmpty(Container(301111).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301111).ListItem.DBID]/?setid=$INFO[Container(301111).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301121) + Container(301121).ListItem.IsCollection + !String.IsEmpty(Container(301121).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301121).ListItem.DBID]/?setid=$INFO[Container(301121).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301131) + Container(301131).ListItem.IsCollection + !String.IsEmpty(Container(301131).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301131).ListItem.DBID]/?setid=$INFO[Container(301131).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301141) + Container(301141).ListItem.IsCollection + !String.IsEmpty(Container(301141).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301141).ListItem.DBID]/?setid=$INFO[Container(301141).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301151) + Container(301151).ListItem.IsCollection + !String.IsEmpty(Container(301151).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301151).ListItem.DBID]/?setid=$INFO[Container(301151).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301161) + Container(301161).ListItem.IsCollection + !String.IsEmpty(Container(301161).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301161).ListItem.DBID]/?setid=$INFO[Container(301161).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30112) + Container(30112).ListItem.IsCollection + !String.IsEmpty(Container(30112).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30112).ListItem.DBID]/?setid=$INFO[Container(30112).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30122) + Container(30122).ListItem.IsCollection + !String.IsEmpty(Container(30122).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30122).ListItem.DBID]/?setid=$INFO[Container(30122).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30132) + Container(30132).ListItem.IsCollection + !String.IsEmpty(Container(30132).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30132).ListItem.DBID]/?setid=$INFO[Container(30132).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30142) + Container(30142).ListItem.IsCollection + !String.IsEmpty(Container(30142).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30142).ListItem.DBID]/?setid=$INFO[Container(30142).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30152) + Container(30152).ListItem.IsCollection + !String.IsEmpty(Container(30152).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30152).ListItem.DBID]/?setid=$INFO[Container(30152).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30162) + Container(30162).ListItem.IsCollection + !String.IsEmpty(Container(30162).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30162).ListItem.DBID]/?setid=$INFO[Container(30162).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30172) + Container(30172).ListItem.IsCollection + !String.IsEmpty(Container(30172).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30172).ListItem.DBID]/?setid=$INFO[Container(30172).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30182) + Container(30182).ListItem.IsCollection + !String.IsEmpty(Container(30182).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30182).ListItem.DBID]/?setid=$INFO[Container(30182).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(30192) + Container(30192).ListItem.IsCollection + !String.IsEmpty(Container(30192).ListItem.DBID)">videodb://movies/sets/$INFO[Container(30192).ListItem.DBID]/?setid=$INFO[Container(30192).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301102) + Container(301102).ListItem.IsCollection + !String.IsEmpty(Container(301102).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301102).ListItem.DBID]/?setid=$INFO[Container(301102).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301112) + Container(301112).ListItem.IsCollection + !String.IsEmpty(Container(301112).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301112).ListItem.DBID]/?setid=$INFO[Container(301112).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301122) + Container(301122).ListItem.IsCollection + !String.IsEmpty(Container(301122).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301122).ListItem.DBID]/?setid=$INFO[Container(301122).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301132) + Container(301132).ListItem.IsCollection + !String.IsEmpty(Container(301132).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301132).ListItem.DBID]/?setid=$INFO[Container(301132).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301142) + Container(301142).ListItem.IsCollection + !String.IsEmpty(Container(301142).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301142).ListItem.DBID]/?setid=$INFO[Container(301142).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301152) + Container(301152).ListItem.IsCollection + !String.IsEmpty(Container(301152).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301152).ListItem.DBID]/?setid=$INFO[Container(301152).ListItem.DBID]</value>
+        <value condition="Control.IsVisible(301162) + Container(301162).ListItem.IsCollection + !String.IsEmpty(Container(301162).ListItem.DBID)">videodb://movies/sets/$INFO[Container(301162).ListItem.DBID]/?setid=$INFO[Container(301162).ListItem.DBID]</value>
+     </variable>
+
     <variable name="AlbumPath">
         <value condition="ListItem.IsFolder + String.IsEqual(ListItem.DBType,album)">$INFO[ListItem.FolderPath]</value>
+        <value condition="Container(301).ListItem.IsFolder + String.IsEqual(Container(301).ListItem.DBType,album)">$INFO[Container(301).ListItem.FolderPath]</value>
+        <value condition="!Window.IsVisible(home) | !Skin.HasSetting(home.vertical.widgets)"></value>
         <value condition="Control.IsVisible(30111) + Container(30111).ListItem.IsFolder + String.IsEqual(Container(30111).ListItem.DBType,album)">$INFO[Container(30111).ListItem.FolderPath]</value>
         <value condition="Control.IsVisible(30121) + Container(30121).ListItem.IsFolder + String.IsEqual(Container(30121).ListItem.DBType,album)">$INFO[Container(30121).ListItem.FolderPath]</value>
         <value condition="Control.IsVisible(30131) + Container(30131).ListItem.IsFolder + String.IsEqual(Container(30131).ListItem.DBType,album)">$INFO[Container(30131).ListItem.FolderPath]</value>
@@ -2287,12 +2244,41 @@
     </variable>
     
     <variable name="ActorPath">
-        <value condition="ListItem.IsFolder + String.IsEqual(Container(301).ListItem.DBType,actor)">$INFO[Container(301).ListItem.FolderPath]</value>
         <value condition="ListItem.IsFolder + String.IsEqual(ListItem.DBType,actor)">$INFO[ListItem.FolderPath]</value>
-    </variable>
-
-    <variable name="AlbumPath301">
-        <value condition="Container(301).ListItem.IsFolder + String.IsEqual(Container(301).ListItem.DBType,album)">$INFO[Container(301).ListItem.FolderPath]</value>
+        <value condition="Container(301).ListItem.IsFolder + String.IsEqual(Container(301).ListItem.DBType,actor)">$INFO[Container(301).ListItem.FolderPath]</value>
+        <value condition="!Window.IsVisible(home) | !Skin.HasSetting(home.vertical.widgets)"></value>
+        <value condition="Control.IsVisible(30111) + Container(30111).ListItem.IsFolder + String.IsEqual(Container(30111).ListItem.DBType,actor)">$INFO[Container(30111).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30121) + Container(30121).ListItem.IsFolder + String.IsEqual(Container(30121).ListItem.DBType,actor)">$INFO[Container(30121).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30131) + Container(30131).ListItem.IsFolder + String.IsEqual(Container(30131).ListItem.DBType,actor)">$INFO[Container(30131).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30141) + Container(30141).ListItem.IsFolder + String.IsEqual(Container(30141).ListItem.DBType,actor)">$INFO[Container(30141).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30151) + Container(30151).ListItem.IsFolder + String.IsEqual(Container(30151).ListItem.DBType,actor)">$INFO[Container(30151).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30161) + Container(30161).ListItem.IsFolder + String.IsEqual(Container(30161).ListItem.DBType,actor)">$INFO[Container(30161).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30171) + Container(30171).ListItem.IsFolder + String.IsEqual(Container(30171).ListItem.DBType,actor)">$INFO[Container(30171).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30181) + Container(30181).ListItem.IsFolder + String.IsEqual(Container(30181).ListItem.DBType,actor)">$INFO[Container(30181).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30191) + Container(30191).ListItem.IsFolder + String.IsEqual(Container(30191).ListItem.DBType,actor)">$INFO[Container(30191).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301101) + Container(301101).ListItem.IsFolder + String.IsEqual(Container(301101).ListItem.DBType,actor)">$INFO[Container(301101).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301111) + Container(301111).ListItem.IsFolder + String.IsEqual(Container(301111).ListItem.DBType,actor)">$INFO[Container(301111).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301121) + Container(301121).ListItem.IsFolder + String.IsEqual(Container(301121).ListItem.DBType,actor)">$INFO[Container(301121).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301131) + Container(301131).ListItem.IsFolder + String.IsEqual(Container(301131).ListItem.DBType,actor)">$INFO[Container(301131).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301141) + Container(301141).ListItem.IsFolder + String.IsEqual(Container(301141).ListItem.DBType,actor)">$INFO[Container(301141).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301151) + Container(301151).ListItem.IsFolder + String.IsEqual(Container(301151).ListItem.DBType,actor)">$INFO[Container(301151).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301161) + Container(301161).ListItem.IsFolder + String.IsEqual(Container(301161).ListItem.DBType,actor)">$INFO[Container(301161).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30112) + Container(30112).ListItem.IsFolder + String.IsEqual(Container(30112).ListItem.DBType,actor)">$INFO[Container(30112).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30122) + Container(30122).ListItem.IsFolder + String.IsEqual(Container(30122).ListItem.DBType,actor)">$INFO[Container(30122).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30132) + Container(30132).ListItem.IsFolder + String.IsEqual(Container(30132).ListItem.DBType,actor)">$INFO[Container(30132).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30142) + Container(30142).ListItem.IsFolder + String.IsEqual(Container(30142).ListItem.DBType,actor)">$INFO[Container(30142).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30152) + Container(30152).ListItem.IsFolder + String.IsEqual(Container(30152).ListItem.DBType,actor)">$INFO[Container(30152).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30162) + Container(30162).ListItem.IsFolder + String.IsEqual(Container(30162).ListItem.DBType,actor)">$INFO[Container(30162).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30172) + Container(30172).ListItem.IsFolder + String.IsEqual(Container(30172).ListItem.DBType,actor)">$INFO[Container(30172).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30182) + Container(30182).ListItem.IsFolder + String.IsEqual(Container(30182).ListItem.DBType,actor)">$INFO[Container(30182).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(30192) + Container(30192).ListItem.IsFolder + String.IsEqual(Container(30192).ListItem.DBType,actor)">$INFO[Container(30192).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301102) + Container(301102).ListItem.IsFolder + String.IsEqual(Container(301102).ListItem.DBType,actor)">$INFO[Container(301102).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301112) + Container(301112).ListItem.IsFolder + String.IsEqual(Container(301112).ListItem.DBType,actor)">$INFO[Container(301112).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301122) + Container(301122).ListItem.IsFolder + String.IsEqual(Container(301122).ListItem.DBType,actor)">$INFO[Container(301122).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301132) + Container(301132).ListItem.IsFolder + String.IsEqual(Container(301132).ListItem.DBType,actor)">$INFO[Container(301132).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301142) + Container(301142).ListItem.IsFolder + String.IsEqual(Container(301142).ListItem.DBType,actor)">$INFO[Container(301142).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301152) + Container(301152).ListItem.IsFolder + String.IsEqual(Container(301152).ListItem.DBType,actor)">$INFO[Container(301152).ListItem.FolderPath]</value>
+        <value condition="Control.IsVisible(301162) + Container(301162).ListItem.IsFolder + String.IsEqual(Container(301162).ListItem.DBType,actor)">$INFO[Container(301162).ListItem.FolderPath]</value>
     </variable>
 
     <variable name="DB_type">
@@ -2340,25 +2326,27 @@
 	<!-- TMDb vars taken from https://github.com/jurialmunkey/skin.arctic.fuse.2 -->
 	
     <variable name="Studio_Query">
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.1.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.1.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;with_id=True]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.2.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.2.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;with_id=True]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.3.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.3.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;with_id=True]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.1.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.1.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;with_id=True]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.2.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.2.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;with_id=True]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.3.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.3.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.1.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.1.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;sort_key=first_air_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.2.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.2.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;sort_key=first_air_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Network.3.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Network.3.TMDb_ID),&amp;tmdb_type=tv&amp;with_networks=,&amp;sort_key=first_air_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.1.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.1.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;sort_key=release_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.2.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.2.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;sort_key=release_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio.3.TMDb_ID))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Studio.3.TMDb_ID),&amp;tmdb_type=movie&amp;with_companies=,&amp;sort_key=release_date&amp;with_id=True]</value>
+        <value condition="!String.IsEmpty(ListItem.Studio)">$INFO[ListItem.Studio,&amp;tmdb_type=movie&amp;with_companies=,&amp;sort_key=release_date]</value>
     </variable>
 
     <variable name="Director_Query">
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.1.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.1.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.1.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.1.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.2.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.2.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.2.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.2.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.3.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.3.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.3.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.3.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.4.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.4.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.4.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.4.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.5.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.5.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.5.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.5.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.6.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.6.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.6.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.6.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.7.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.7.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.7.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.7.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.8.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.8.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.8.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.8.TMDb_ID),tmdb_id=,]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.9.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.9.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.9.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.9.TMDb_ID),tmdb_id=,]</value>
-        <value >$INFO[Window(Home).Property(TMDbHelper.ListItem.Director),query=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.1.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.1.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.1.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.1.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.2.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.2.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.2.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.2.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.3.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.3.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.3.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.3.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.4.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.4.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.4.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.4.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.5.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.5.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.5.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.5.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.6.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.6.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.6.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.6.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.7.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.7.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.7.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.7.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.8.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.8.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.8.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.8.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.9.Name)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director.9.job)) + String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Director.9.job),Director)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director.9.TMDb_ID),&amp;tmdb_id=,]</value>
+        <value condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Director),&amp;query=,]</value>
+        <value>$INFO[ListItem.Director,&amp;query=,]</value>
     </variable>
 
     <variable name="FromCreator_Tmdb_Id">
@@ -2382,10 +2370,6 @@
     <include name="Image_Content_Additional_Fanart">
         <content>$VAR[Image_Content_Additional_Fanart]</content>
     </include>
-
-    <variable name="SetsPath">
-        <value condition="ListItem.IsCollection + !String.IsEmpty(ListItem.DBID)">videodb://movies/sets/$INFO[ListItem.DBID]/?setid=$INFO[ListItem.DBID]</value>
-    </variable>
 
     <include name="ButtonPlaylist">
         <control type="button" id="6148">

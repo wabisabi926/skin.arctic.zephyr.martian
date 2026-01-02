@@ -10,7 +10,7 @@
             <include>ViewSlideForJumpBar</include>
             <control type="group">
                 <control type="panel" id="58">
-                    <visible>$EXP[InGameMode] | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !String.Contains(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(sets) | Container.Content(videos) | Container.Content(seasons) | $EXP[IsVideoAssets]</visible>
+                    <visible>$EXP[Exp_View_58]</visible>
                     <top>206</top>
                     <height>660</height>
                     <left>70</left>
@@ -22,9 +22,6 @@
                     <orientation>vertical</orientation>
                     <pagecontrol>1624</pagecontrol>
                     <preloaditems>2</preloaditems>
-                    <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                        <param name="string" value="$LOCALIZE[31198]" />
-                    </include>
                     <viewtype label="31198">list</viewtype>
                     <include>ScrolltimeViewsList</include>
                     <itemlayout width="890" height="330" condition="!Container.Content(episodes)">
@@ -84,7 +81,7 @@
                             <right>10</right>
                             <bottom>10</bottom>
                             <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <include condition="!Skin.HasSetting(hide.markers)">IndicatorPoster</include>
                     </itemlayout>
@@ -144,7 +141,7 @@
                             <right>10</right>
                             <bottom>10</bottom>
                             <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <include condition="!Skin.HasSetting(hide.markers)">IndicatorPoster</include>
                     </itemlayout>
@@ -204,7 +201,7 @@
                             <right>10</right>
                             <bottom>10</bottom>
                             <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <include condition="!Skin.HasSetting(hide.markers)">IndicatorPoster</include>
                     </focusedlayout>
@@ -264,7 +261,7 @@
                             <right>10</right>
                             <bottom>10</bottom>
                             <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <include condition="!Skin.HasSetting(hide.markers)">IndicatorPoster</include>
                     </focusedlayout>

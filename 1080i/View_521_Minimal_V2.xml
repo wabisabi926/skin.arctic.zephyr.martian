@@ -3,10 +3,7 @@
 <includes>
 
     <include name="521Content">
-        <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videos) | $EXP[IsVideoAssets] | $EXP[InGameMode]</visible>
-        <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-            <param name="string" value="$LOCALIZE[31072]" />
-        </include>
+        <visible>$EXP[Exp_View_521]</visible>
         <top>546</top>
         <left>-151</left>
         <width>2150</width>
@@ -114,7 +111,7 @@
                     <font>Tiny</font>
                     <textcolor>Dark1</textcolor>
                     <selectedcolor>Dark1</selectedcolor>
-                    <label>$VAR[LabelSub_1_GenreAlbum]</label>
+                    <label fallback="19055">$VAR[Label_View_514_GenreAlbum]</label>
                 </control>
                 <control type="textbox">
                     <font>Tiny</font>
@@ -128,7 +125,7 @@
                     <font>Tiny</font>
                     <textcolor>Dark2</textcolor>
                     <selectedcolor>Dark2</selectedcolor>
-                    <label>$VAR[LabelSub_2_YearDurationRating]</label>
+                    <label>$VAR[Label_View_514_YearDurationRating]</label>
                 </control>
             </control>
             <control type="grouplist">
@@ -160,7 +157,7 @@
                     <font>Tiny</font>
                     <textcolor>Dark2</textcolor>
                     <selectedcolor>Dark2</selectedcolor>
-                    <label>$VAR[LabelSub_2_YearDurationRating]</label>
+                    <label>$VAR[Label_View_514_YearDurationRating]</label>
                 </control>
             </control>
         </control>

@@ -6,10 +6,11 @@
     <onload>Skin.Reset(TMDbHelper.MonitorContainer)</onload>
     <onload>Skin.SetBool(TMDbHelper.DirectCallAuto)</onload>
     <onload condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onload>
+    <onload>RunScript(script.skinvariables,action=buildviews)</onload>
+    <onload>ClearProperty(SkinSplashStarted,home)</onload>
 
     <!-- First start settings -->
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(use.new.jumpbar)</onload>
-    <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(global.hideborders)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(global.hidecirles)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(show.reflections)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(homemenu.items.underlined)</onload>
@@ -23,7 +24,6 @@
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(disable.only.hide.menu.items)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetString(WidgetLimit,25)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetString(HubLimit,25)</onload>
-    <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(511ListInfo)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(furniture.flagicons)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(furniture.weatherleft)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(osd.usetheme)</onload>

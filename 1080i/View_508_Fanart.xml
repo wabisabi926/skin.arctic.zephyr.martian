@@ -12,7 +12,7 @@
                 <left>$PARAM[left]</left>
                 <width>159</width>
                 <height>159</height>
-                <visible>Skin.HasSetting(furniture.overlayinfobalken)</visible>
+                <visible>$EXP[ShowProgressInfo]</visible>
                 <visible>!String.IsEqual(ListItem.Label,..) + !String.IsEqual(ListItem.DBType,set)</visible>
                 <control type="image" description="Back">
                     <width>159</width>
@@ -56,7 +56,7 @@
         </definition>
     </include>
 
-    <include name="View_507_Layout">
+    <include name="View_508_Layout">
         <control type="image">
             <right>111</right>
             <width>1160</width>
@@ -66,7 +66,7 @@
             <visible>true</visible>
         </control>
         <control type="group">
-            <visible>Skin.HasSetting(507.noscrolling)</visible>
+            <visible>Skin.HasSetting(508.noscrolling)</visible>
             <left>59</left>
             <height>650</height>
             <width>538</width>
@@ -107,7 +107,7 @@
                 <selectedcolor>Dark2</selectedcolor>
                 <visible>!String.IsEqual(ListItem.Label,..)</visible>
             </control>
-            <include condition="Skin.HasSetting(furniture.overlayinfobalken)" content="ProgressCircle">
+            <include content="ProgressCircle">
                 <param name="progresstvshowvisible" value="false"/>
                 <param name="left" value="415"/>
                 <param name="top" value="495"/>
@@ -141,13 +141,13 @@
         </control>
     </include>
 
-    <include name="View_507_Fanart2">
-        <description>List View (id=507)</description>
+    <include name="View_508_Fanart2">
+        <description>List View (id=508)</description>
         <control type="group">
-            <visible>Control.IsVisible(507)</visible>
+            <visible>Control.IsVisible(508)</visible>
             <include>ViewSlideForJumpBar</include>
             <control type="group">
-                <visible>Control.IsVisible(507)</visible>
+                <visible>Control.IsVisible(508)</visible>
                 <include>Animation.Common</include>
                 <control type="group">
                     <left>70</left>
@@ -199,10 +199,10 @@
                             <texture colordiffuse="Fallback" border="5" background="true">common/box.png</texture>
                         </control>
                     </control>
-                    <visible>Control.IsVisible(507)</visible>
+                    <visible>Control.IsVisible(508)</visible>
                     <control type="group">
-                        <control type="wraplist" id="507">
-                            <visible>Container.Content(movies) | Container.Content(musicvideos) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(videos) | $EXP[IsVideoAssets] | $EXP[InGameMode]</visible>
+                        <control type="wraplist" id="508">
+                            <visible>$EXP[Exp_View_508]</visible>
                             <top>217</top>
                             <left>-20</left>
                             <width>1980</width>
@@ -214,16 +214,13 @@
                             <preloaditems>2</preloaditems>
                             <pagecontrol>1600</pagecontrol>
                             <orientation>vertical</orientation>
-                            <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                                <param name="string" value="$LOCALIZE[31265]" />
-                            </include>
                             <viewtype label="31265">wraplist</viewtype>
                             <include>ScrolltimeViewsList</include>
                             <itemlayout height="646" width="1900">
-                                <include>View_507_Layout</include>
+                                <include>View_508_Layout</include>
                             </itemlayout>
                             <focusedlayout height="646" width="1900">
-                                <include>View_507_Layout</include>
+                                <include>View_508_Layout</include>
                             </focusedlayout>
                         </control>
                     </control>
@@ -233,7 +230,7 @@
                         <right>SidePad</right>
                         <bottom>216</bottom>
                         <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+                        <visible>Skin.HasSetting(global.showborders)</visible>
                     </control>
                     <control type="scrollbar" id="1600">
                         <include content="scrollbar_vertical">
@@ -243,13 +240,13 @@
                     </control>
                 </control>
                 <control type="group">
-                    <visible>Control.IsVisible(507)</visible>
+                    <visible>Control.IsVisible(508)</visible>
                     <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
                         <param name="right" value="71" />
                         <param name="top" value="207" />
                     </include>
                     <control type="group">
-                        <visible>!Skin.HasSetting(507.noscrolling)</visible>
+                        <visible>!Skin.HasSetting(508.noscrolling)</visible>
                         <left>109</left>
                         <top>217</top>
                         <height>650</height>
@@ -291,7 +288,7 @@
                             <selectedcolor>Dark2</selectedcolor>
                             <visible>!String.IsEqual(ListItem.Label,..)</visible>
                         </control>
-                        <include condition="Skin.HasSetting(furniture.overlayinfobalken)" content="ProgressCircle">
+                        <include condition="$EXP[ShowProgressInfo]" content="ProgressCircle">
                             <param name="left" value="415"/>
                             <param name="top" value="495"/>
                         </include>

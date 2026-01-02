@@ -1461,14 +1461,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Widget 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Veľký plagát"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Uzamknúť zobrazenie pre"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Obrázky"
@@ -1477,29 +1469,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "Veľký široký"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "Veľký zoznam"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Povoliť vynútené zobrazenia (experimentálne)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Sekundy"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Obnoviť vynútené zobrazenia"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Vynútené pohľady"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Veľké ikony"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1616,6 @@ msgstr "Požadované doplnky"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Odporúčané doplnky"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Opravy"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Skryté video okno, aby sa zabránilo chybám zvuku"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1781,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "Pozícia IMDb"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Použiť predvolené výberové pole"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Malý Fanart"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Malá miniatúra"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Malá miniatúra plagátu"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Informácie o sezónach v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "Čisté a minimálne"
@@ -1881,10 +1825,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Nízky zoznam"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Názvy súborov"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Záložný obrázok"
@@ -1896,10 +1836,6 @@ msgstr "ClearLogo/Art"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Clearlogo namiesto názvu"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Predvolené výberové pole"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1852,6 @@ msgstr "Nastavenia efektov"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Povoliť automatické posúvanie titulov"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Typ zoznamu"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"

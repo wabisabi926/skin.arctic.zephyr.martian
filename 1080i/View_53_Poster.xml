@@ -4,7 +4,7 @@
 
     <include name="53Content">
         <height>1080</height>
-        <visible>$EXP[InGameMode] | Container.Content(musicvideos) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(videos) | Container.Content(seasons) | $EXP[IsVideoAssets]</visible>
+        <visible>$EXP[Exp_View_53]</visible>
         <posy>96</posy>
         <posx>-190</posx>
         <width>2300</width>
@@ -16,10 +16,7 @@
         <preloaditems>0</preloaditems>
         <pagecontrol>1633</pagecontrol>
         <orientation>horizontal</orientation>
-        <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-            <param name="string" value="$LOCALIZE[31419]" />
-        </include>
-        <viewtype label="31419">list</viewtype>
+        <viewtype label="538">list</viewtype>
         <include>ScrolltimeViewsList</include>
         <itemlayout width="270">
             <control type="group">
@@ -84,7 +81,7 @@
                     <width>PosterW</width>
                     <height>PosterH</height>
                     <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                    <visible>!Skin.HasSetting(global.hideborders)</visible>
+                    <visible>Skin.HasSetting(global.showborders)</visible>
                 </control>
                 <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
                     <param name="right" value="-138" />

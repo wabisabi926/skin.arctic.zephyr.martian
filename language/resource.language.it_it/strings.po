@@ -121,6 +121,10 @@ msgctxt "#31037"
 msgid "Extended Info"
 msgstr "Info estese"
 
+msgctxt "#31038"
+msgid "Double pane list"
+msgstr "Lista su doppio pannello"
+
 msgctxt "#31039"
 msgid "IPTV Recorder"
 msgstr "Registratore IPTV"
@@ -1461,14 +1465,6 @@ msgctxt "#31418"
 msgid "Widget 5"
 msgstr "Widget 5"
 
-msgctxt "#31419"
-msgid "Big Poster"
-msgstr "Poster grande"
-
-msgctxt "#31420"
-msgid "Lock view for"
-msgstr "Blocca vista per"
-
 msgctxt "#31421"
 msgid "Images"
 msgstr "Immagini"
@@ -1477,29 +1473,9 @@ msgctxt "#31422"
 msgid "Big wide"
 msgstr "Largo grande"
 
-msgctxt "#31423"
-msgid "Big list"
-msgstr "Elenco grande"
-
-msgctxt "#31424"
-msgid "Enable forced views (experimental)"
-msgstr "Abilita visualizzazioni forzate (sperimentale)"
-
 msgctxt "#31425"
 msgid "Seconds"
 msgstr "Secondi"
-
-msgctxt "#31426"
-msgid "Reset forced views"
-msgstr "Reimposta viste forzate"
-
-msgctxt "#31427"
-msgid "Forced views"
-msgstr "Viste forzate"
-
-msgctxt "#31428"
-msgid "Big icons"
-msgstr "Icone grandi"
 
 msgctxt "#31429"
 msgid "more..."
@@ -1644,14 +1620,6 @@ msgstr "Add-on richiesti"
 msgctxt "#31469"
 msgid "Recommended addons"
 msgstr "Add-on raccomandati"
-
-msgctxt "#31470"
-msgid "Fixes"
-msgstr "Correzioni"
-
-msgctxt "#31471"
-msgid "Hidden video window to prevent audio errors"
-msgstr "Finestra video nascosta per evitare errori audio"
 
 msgctxt "#31472"
 msgid "CoreELEC Settings"
@@ -1817,26 +1785,6 @@ msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "Posizione IMDb"
 
-msgctxt "#31526"
-msgid "Use default selectbox"
-msgstr "Usa casella selezione predefinita"
-
-msgctxt "#31527"
-msgid "Small Fanart"
-msgstr "Fanart piccola"
-
-msgctxt "#31528"
-msgid "Small Thumbnail"
-msgstr "Miniatura piccola"
-
-msgctxt "#31529"
-msgid "Small Poster Thumbnail"
-msgstr "Miniatura poster piccolo"
-
-msgctxt "#31530"
-msgid "Seasons Info v2"
-msgstr "Seasons Info v2"
-
 msgctxt "#31533"
 msgid "Clean and minimal"
 msgstr "Pulito e minimale"
@@ -1881,10 +1829,6 @@ msgctxt "#31564"
 msgid "Low list"
 msgstr "Elenco ridotto"
 
-msgctxt "#31565"
-msgid "Filenames"
-msgstr "Nomi file"
-
 msgctxt "#31567"
 msgid "Fallback image"
 msgstr "Immagine di ripiego"
@@ -1896,10 +1840,6 @@ msgstr "ClearLogo/Art"
 msgctxt "#31569"
 msgid "Clearlogo instead of title"
 msgstr "Clearlogo invece del titolo"
-
-msgctxt "#31575"
-msgid "Default selectbox"
-msgstr "Casella di selezione predefinita"
 
 msgctxt "#31576"
 msgid "Scrollbar"
@@ -1916,14 +1856,6 @@ msgstr "Impostazioni effetti"
 msgctxt "#31589"
 msgid "Enable auto scrolling for titles"
 msgstr "Abilita scorrimento automatico titoli"
-
-msgctxt "#31591"
-msgid "V2"
-msgstr "V2"
-
-msgctxt "#31592"
-msgid "List type"
-msgstr "Tipo di elenco"
 
 msgctxt "#31593"
 msgid "Enable auto playing trailers in flix views"
@@ -2136,6 +2068,10 @@ msgstr "Incassi"
 msgctxt "#31817"
 msgid "Known for"
 msgstr "Conosciuto per"
+
+msgctxt "#31820"
+msgid "Prevent reload"
+msgstr "Evita ricaricamento"
 
 msgctxt "#31903"
 msgid "Cloudiness"

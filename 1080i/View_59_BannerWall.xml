@@ -8,7 +8,7 @@
             <visible>Control.IsVisible(59)</visible>
             <include>ViewSlideForJumpBar</include>
             <control type="panel" id="59">
-                <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(videos) | $EXP[IsVideoAssets] | $EXP[InGameMode]</visible>
+                <visible>$EXP[Exp_View_59]</visible>
                 <top>200</top>
                 <right>70</right>
                 <left>70</left>
@@ -19,9 +19,6 @@
                 <ondown>59</ondown>
                 <preloaditems>2</preloaditems>
                 <pagecontrol>1619</pagecontrol>
-                <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                    <param name="string" value="$LOCALIZE[31244]" />
-                </include>
                 <viewtype label="31244">list</viewtype>
                 <include>ScrolltimeViewsList</include>
                 <itemlayout height="133" width="593">

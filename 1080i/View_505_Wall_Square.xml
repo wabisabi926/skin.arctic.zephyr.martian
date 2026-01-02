@@ -2,13 +2,13 @@
 <!-- Foundation -->
 <includes>
 
-    <include name="View_505_506_Wall">
+    <include name="View_505_Wall">
         <control type="group">
             <include>Animation.Common</include>
             <visible>Control.IsVisible(505)</visible>
             <include>ViewSlideForJumpBar</include>
             <control type="panel" id="505">
-                <visible>$EXP[InGameMode] | Container.Content(artists) | Container.Content(albums) | Container.Content(musicvideos)</visible>
+                <visible>$EXP[Exp_View_505]</visible>
                 <top>206</top>
                 <right>70</right>
                 <width>1120</width>
@@ -19,9 +19,6 @@
                 <ondown>505</ondown>
                 <preloaditems>2</preloaditems>
                 <pagecontrol>60</pagecontrol>
-                <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                    <param name="string" value="$LOCALIZE[31241]" />
-                </include>
                 <viewtype label="31241">list</viewtype>
                 <include>ScrolltimeViewsList</include>
                 <itemlayout height="337" width="222">
@@ -73,11 +70,14 @@
                 </include>
             </control>
         </control>
+    </include>
+
+    <include name="View_506_Wall">    
         <control type="group">
             <include>Animation.Common</include>
             <visible>Control.IsVisible(506)</visible>
             <control type="panel" id="506">
-                <visible>$EXP[InGameMode] | Container.Content(musicvideos) | Container.Content(albums)</visible>
+                <visible>$EXP[Exp_View_506]</visible>
                 <top>206</top>
                 <right>70</right>
                 <width>1120</width>
@@ -88,10 +88,7 @@
                 <ondown>506</ondown>
                 <preloaditems>2</preloaditems>
                 <pagecontrol>60</pagecontrol>
-                <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                    <param name="string" value="$LOCALIZE[536]" />
-                </include>
-                <viewtype label="536">list</viewtype>
+                <viewtype label="31423">list</viewtype>
                 <include>ScrolltimeViewsList</include>
                 <itemlayout height="220" width="224">
                     <include content="include.widget.poster">
@@ -138,12 +135,15 @@
                 </control>
             </control>
         </control>
+    </include>
+
+    <include name="View_507_Wall">    
         <control type="group">
             <include>Animation.Common</include>
             <visible>Control.IsVisible(507)</visible>
             <include>ViewSlideForJumpBar</include>
             <control type="panel" id="507">
-                <visible>$EXP[InGameMode] | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums)</visible>
+                <visible>$EXP[Exp_View_507]</visible>
                 <top>206</top>
                 <right>70</right>
                 <left>70</left>
@@ -154,9 +154,6 @@
                 <ondown>507</ondown>
                 <preloaditems>2</preloaditems>
                 <pagecontrol>60</pagecontrol>
-                <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                    <param name="string" value="$LOCALIZE[536]" />
-                </include>
                 <viewtype label="536">list</viewtype>
                 <include>ScrolltimeViewsList</include>
                 <itemlayout height="337" width="222">

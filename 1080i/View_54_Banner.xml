@@ -11,7 +11,7 @@
                 <control type="fixedlist" id="54">
                     <animation effect="slide" start="0" end="136" condition="!Container.Content(episodes) + !Container.Content(albums) + !Container.Content(songs)">Conditional</animation>
                     <animation effect="slide" start="0" end="210" condition="Container.Content(albums) | Container.Content(songs)">Conditional</animation>
-                    <visible>$EXP[InGameMode] | Container.Content(songs) | Container.Content(albums) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons) | Container.Content(sets) | Container.Content(videos) | $EXP[IsVideoAssets]</visible>
+                    <visible>$EXP[Exp_View_54]</visible>
                     <top>PosterPad</top>
                     <height>640</height>
                     <centerleft>50%</centerleft>
@@ -24,9 +24,6 @@
                     <movement>2</movement>
                     <preloaditems>2</preloaditems>
                     <pagecontrol>1620</pagecontrol>
-                    <include content="forced_view" condition="Skin.HasSetting(enable.forcedviews)">
-                        <param name="string" value="$LOCALIZE[539]" />
-                    </include>
                     <viewtype label="539">list</viewtype>
                     <include>ScrolltimeViewsList</include>
                     <itemlayout width="1288" height="106" condition="!Container.Content(episodes) + !Container.Content(albums) + !Container.Content(songs)">
@@ -267,7 +264,7 @@
                             <right>109</right>
                             <bottom>9</bottom>
                             <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
                             <param name="right" value="101" />
@@ -351,7 +348,7 @@
                             <width>1242</width>
                             <height>272</height>
                             <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
-                            <visible>!Skin.HasSetting(global.hideborders)</visible>
+                            <visible>Skin.HasSetting(global.showborders)</visible>
                         </control>
                         <control type="group">
                             <visible>Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0)</visible>
@@ -431,7 +428,7 @@
                                 <width>1514</width>
                                 <height>272</height>
                                 <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
-                                <visible>!Skin.HasSetting(global.hideborders)</visible>
+                                <visible>Skin.HasSetting(global.showborders)</visible>
                             </control>
                             <control type="group">
                                 <animation effect="slide" end="-54,0" time="0" condition="!Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
@@ -537,7 +534,7 @@
                                 <width>1094</width>
                                 <height>272</height>
                                 <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
-                                <visible>!Skin.HasSetting(global.hideborders)</visible>
+                                <visible>Skin.HasSetting(global.showborders)</visible>
                             </control>
                             <control type="label">
                                 <top>47</top>
@@ -649,7 +646,7 @@
                                 <width>1094</width>
                                 <height>272</height>
                                 <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
-                                <visible>!Skin.HasSetting(global.hideborders)</visible>
+                                <visible>Skin.HasSetting(global.showborders)</visible>
                             </control>
                             <control type="label">
                                 <font>EpisodeNumber</font>

@@ -66,6 +66,11 @@
         <value condition="!String.IsEmpty(Skin.String(indicatorcolorbackgroundlabel.name))">$INFO[Skin.String(indicatorcolorbackgroundlabel.name)]</value>
         <value>ffffffff</value>
     </variable>
+
+    <variable name="DefScreensaverWidget">
+        <value condition="!String.IsEmpty(Skin.String(screensaver.arctic.mirage.path))">$INFO[Skin.String(screensaver.arctic.mirage.path)]</value>
+        <value>special://skin/extras/playlists/RandomMovies.xsp</value>
+    </variable>
     
     <variable name="DefWidgetContent">
         <value condition="[String.IsEqual(Container(300).ListItem.Property(widget),weatherdaily) | String.IsEqual(Container(300).ListItem.Property(widget),weatherhourly)] + !String.IsEmpty(Skin.String(weather.fanart))">noop</value>
@@ -73,7 +78,7 @@
         <value condition="!String.IsEmpty(Skin.String(home.slideshowpath)) + String.IsEmpty(Container(300).ListItem.Property(widget))">noop</value>
         <value condition="!String.IsEmpty(Skin.String(home.fallbackwidget))">$INFO[Skin.String(home.fallbackwidget)]</value>
         <value condition="!String.IsEmpty(Skin.String(widgetSpotlightPath)) + [String.IsEmpty(Skin.String(home.slideshowpath)) | String.IsEqual(Skin.String(home.slideshowpath),none)]">$INFO[Skin.String(widgetSpotlightPath)]</value>
-        <value condition="!Library.HasContent(Movies) + !Library.HasContent(TVShows)">plugin://plugin.video.themoviedb.helper/?info=random_trending&amp;tmdb_type=both&amp;widget=true&amp;reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]</value>
+        <value condition="!Library.HasContent(Movies) + !Library.HasContent(TVShows)">plugin://plugin.video.themoviedb.helper/?info=random_trending&amp;tmdb_type=both&amp;widget=true&amp;cacheonly=true&amp;reload=$INFO[Window(Home).Property(TMDbHelper.Widgets.Reload)]</value>
         <value>$VAR[RandomMovies]</value>
     </variable>
 
@@ -89,12 +94,10 @@
 
     <variable name="DefWidgetLimit">
         <value condition="Integer.IsGreater(Skin.String(WidgetLimit),0)">$INFO[Skin.String(WidgetLimit)]</value>
-        <value>$LOCALIZE[37030]</value>
     </variable>
 
     <variable name="DefHubLimit">
         <value condition="Integer.IsGreater(Skin.String(HubLimit),0)">$INFO[Skin.String(HubLimit)]</value>
-        <value>$LOCALIZE[37030]</value>
     </variable>
 
     <include name="DefDialogButtons">
@@ -177,13 +180,13 @@
 
     <include name="DefDialogHeader">
         <param name="left" value="$PARAM[left]" default="LabelLeft"/>
+        <param name="right" value="$PARAM[right]" default="48"/>
         <param name="posy" value="$PARAM[posy]" default="25"/>
-        <param name="width" value="$PARAM[width]" default="970"/>
         <definition>
         <description>header label</description>
         <left>$PARAM[left]</left>
+        <right>$PARAM[right]</right>
         <posy>$PARAM[posy]</posy>
-        <width>$PARAM[width]</width>
         <include>FontTop</include>
         <textcolor>Black70</textcolor>
         </definition>
@@ -249,62 +252,6 @@
         </definition>
     </include>
         
-    <include name="DefDialogOK">
-        <centerleft>50%</centerleft>
-        <posy>360</posy>
-        <width>900</width>
-        <include>Animation.FadeIn.Slide</include>
-        <include>Animation.FadeOut</include>
-        <control type="image">
-            <posx>-30</posx>
-            <posy>-30</posy>
-            <width>960</width>
-            <height>444</height>
-            <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-        </control>
-        <control type="image">
-            <left>-46</left>
-            <right>-46</right>
-            <top>-46</top>
-            <height>476</height>
-            <bordertexture border="32">common/shadow-24.png</bordertexture>
-            <bordersize>24</bordersize>
-            <texture colordiffuse="White100" border="16">common/box.png</texture>
-        </control>
-        <control type="label" id="1">
-            <description>Heading</description>
-            <left>75</left>
-            <right>15</right>
-            <include>FontTop</include>
-            <align>left</align>
-            <textcolor>Black70</textcolor>
-        </control>
-        <include content="Kodi_Logo">
-            <param name="dimensions" value="40"/>
-            <param name="top" value="15"/>
-            <param name="left" value="17"/>
-        </include>
-
-        <!-- Lines -->
-        <control type="image">
-            <top>70</top>
-            <left>17</left>
-            <width>860</width>
-            <height>1</height>
-            <bottom>10</bottom>
-            <colordiffuse>Black12</colordiffuse>
-            <texture>common/white.png</texture>
-        </control>
-        <control type="textbox" id="9">
-            <description>Line 1</description>
-            <left>15</left>
-            <right>15</right>
-            <posy>108</posy>
-            <height>180</height>
-            <font>Tiny</font>
-        </control>
-    </include>
-
 	<include name="DefDialogSettings">
 		<param name="header_label" />
 		<param name="controlid" default="11" />
@@ -375,7 +322,50 @@
 		<pagecontrol>1600</pagecontrol>
 		<scrolltime>0</scrolltime>    
     </include>
-    
+
+    <include name="DefDialogSelectViewtype">
+        <param name="header_id"/>
+        <param name="header_label"/>
+        <param name="control_id" default="3" />
+        <param name="scrollid" default="1600" />
+        <definition>
+	        <include content="DefDialog">
+                <param name="header_label" value="$PARAM[header_label]"/>
+	            <param name="header_id" value="$PARAM[header_id]"/>
+	            <param name="height" value="754"/>
+	            <param name="width" value="1566"/>
+
+                <nested/>
+
+	            <control type="image">
+	                <posx>520</posx>
+	                <top>115</top>
+	                <height>550</height>
+	                <width>1</width>
+	                <texture colordiffuse="Black12">common/white.png</texture>
+	            </control>
+	            <control type="image">
+	                <left>552</left>
+	                <top>115</top>
+	                <height>548</height>
+	                <width>974</width>
+	                <fadetime>150</fadetime>
+	                <texture background="true">$PARAM[image]</texture>
+	            </control>
+
+	            <include content="scrollbar_dialog">
+	                <param name="scrollid" value="$PARAM[scrollid]"/>
+	                <param name="onleft" value="$PARAM[control_id]"/>
+	                <param name="onright" value="$PARAM[control_id]"/>
+	                <param name="height" value="550"/>
+	                <param name="centerright" value="1045" />
+	            </include>
+
+	            <include>DialogSelectlabelInclude</include>
+	        </include>
+        </definition>
+    </include>    
+
     <include name="DefPVRDialogButton">
         <width>600</width>
         <height>66</height>
@@ -647,6 +637,37 @@
         <height>70</height>
     </include>
 
+    <include name="Def9000Header">
+        <param name="header_label" default="14018"/>
+        <definition>
+            <control type="group">
+                <left>22</left>
+                <top>22</top>
+                <control type="label">
+                    <description>Header Label</description>
+                    <left>70</left>
+                    <width>1000</width>
+                    <posy>0</posy>
+                    <include>FontTop</include>
+                    <textcolor>Black70</textcolor>
+                    <label>$PARAM[header_label]</label>
+                </control>
+                <include>Kodi_Logo</include>
+
+                <!-- Lines -->
+                <control type="image">
+                    <top>70</top>
+                    <left>17</left>
+                    <width>388</width>
+                    <height>1</height>
+                    <bottom>10</bottom>
+                    <colordiffuse>Black12</colordiffuse>
+                    <texture>common/white.png</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+        
     <include name="Def9000GroupList">
         <param name="height" default="350"/>
         <definition>
@@ -713,37 +734,7 @@
             <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
         </control>
     </include>
-
-    <include name="Def9000MusicSide">
-        <control type="button" id="9001">
-            <include>DefContextButtonGradient</include>
-            <label>$LOCALIZE[582]: $INFO[Container.Viewmode]</label>
-            <align>left</align>
-            <onclick>ActivateWindow(1108)</onclick>
-        </control>
-        <control type="radiobutton" id="1111">
-            <selected>[Container.Content() + !String.IsEmpty(Skin.String(Skin.ForcedView.))] | [Container.Content(tags) + !String.IsEmpty(Skin.String(Skin.ForcedView.tags))] | [Container.Content(years) + !String.IsEmpty(Skin.String(Skin.ForcedView.years))] | [Container.Content(genres) + !String.IsEmpty(Skin.String(Skin.ForcedView.genres))] | [Container.Content(countries) + !String.IsEmpty(Skin.String(Skin.ForcedView.countries))] | [Container.Content(studios) + !String.IsEmpty(Skin.String(Skin.ForcedView.studios))] | [Container.Content(playlists) + !String.IsEmpty(Skin.String(Skin.ForcedView.playlists))] | [Container.Content(movies) + !String.IsEmpty(Skin.String(Skin.ForcedView.movies))] | [Container.Content(sets) + !String.IsEmpty(Skin.String(Skin.ForcedView.sets))] | [Container.Content(tvshows) + !String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))] | [Container.Content(seasons) + !String.IsEmpty(Skin.String(Skin.ForcedView.seasons))] | [Container.Content(episodes) + !String.IsEmpty(Skin.String(Skin.ForcedView.episodes))] | [Container.Content(artists) + !String.IsEmpty(Skin.String(Skin.ForcedView.artists))] | [Container.Content(albums) + !String.IsEmpty(Skin.String(Skin.ForcedView.albums))] | [Container.Content(songs) + !String.IsEmpty(Skin.String(Skin.ForcedView.songs))] | [Container.Content(musicvideos) + !String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))] | [Container.Content(addons) + !String.IsEmpty(Skin.String(Skin.ForcedView.addons))] | [Container.Content(actors) + !String.IsEmpty(Skin.String(Skin.ForcedView.actors))] | [Container.Content(directors) + !String.IsEmpty(Skin.String(Skin.ForcedView.directors))] | [Container.Content(files) + !String.IsEmpty(Skin.String(Skin.ForcedView.files))] | [Container.Content(mixed) + !String.IsEmpty(Skin.String(Skin.ForcedView.mixed))] | [Container.Content(images) + !String.IsEmpty(Skin.String(Skin.ForcedView.images))] | [Container.Content(games) + !String.IsEmpty(Skin.String(Skin.ForcedView.games))] | [Container.Content(unknown) + !String.IsEmpty(Skin.String(Skin.ForcedView.unknown))] | [Container.Content(videos) + !String.IsEmpty(Skin.String(Skin.ForcedView.videos))]</selected>
-            <include>DefContextButtonGradient</include>
-            <align>left</align>
-            <label>$LOCALIZE[31420] $VAR[label_container]</label>
-            <include>unlock_views</include>
-            <include>lock_views</include>
-            <visible>!String.IsEmpty(Container.Content) + Skin.HasSetting(enable.forcedviews)</visible>
-        </control>
-        <control type="button" id="3">
-            <description>Sort</description>
-            <include>DefContextButtonGradient</include>
-            <align>left</align>
-        </control>
-        <control type="togglebutton" id="4">
-            <description>Ascending</description>
-            <include>DefContextButtonGradient</include>
-            <align>left</align>
-            <label>584</label>
-            <altlabel>585</altlabel>
-        </control>
-    </include>
-
+   
     <include name="DefHomeRight520">
         <right>508</right>
     </include>
@@ -768,16 +759,16 @@
     </variable>
 
     <variable name="DefMovieDBMoviesContent">
-        <value condition="String.IsEqual(Window(1104).Property(content),1)">plugin://plugin.video.themoviedb.helper?info=top_rated&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
-        <value condition="String.IsEqual(Window(1104).Property(content),2)">plugin://plugin.video.themoviedb.helper?info=popular&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
-        <value condition="String.IsEqual(Window(1104).Property(content),3)">plugin://plugin.video.themoviedb.helper?info=upcoming&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1124).Property(content),1)">plugin://plugin.video.themoviedb.helper?info=top_rated&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1124).Property(content),2)">plugin://plugin.video.themoviedb.helper?info=popular&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1124).Property(content),3)">plugin://plugin.video.themoviedb.helper?info=upcoming&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
         <value>plugin://plugin.video.themoviedb.helper?info=now_playing&amp;tmdb_type=movie&amp;nextpage=false&amp;cacheonly=true</value>
     </variable>
 
     <variable name="DefMovieDBEpisodesContent">
-        <value condition="String.IsEqual(Window(1105).Property(content),1)">plugin://plugin.video.themoviedb.helper?info=top_rated&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
-        <value condition="String.IsEqual(Window(1105).Property(content),2)">plugin://plugin.video.themoviedb.helper?info=popular&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
-        <value condition="String.IsEqual(Window(1105).Property(content),3)">plugin://plugin.video.themoviedb.helper?info=on_the_air&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1125).Property(content),1)">plugin://plugin.video.themoviedb.helper?info=top_rated&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1125).Property(content),2)">plugin://plugin.video.themoviedb.helper?info=popular&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
+        <value condition="String.IsEqual(Window(1125).Property(content),3)">plugin://plugin.video.themoviedb.helper?info=on_the_air&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
         <value>plugin://plugin.video.themoviedb.helper?info=airing_today&amp;tmdb_type=tv&amp;nextpage=false&amp;cacheonly=true</value>
     </variable>
 
@@ -800,12 +791,14 @@
     </variable>
 
     <variable name="Def_Director_List">
-        <value condition="$EXP[ShowTmdbDirector] + !String.IsEmpty(Window.Property(videodirector))">plugin://plugin.video.themoviedb.helper/?info=crew_in_movies&amp;tmdb_type=person&amp;filter_key=job&amp;filter_value=Director&amp;$VAR[Director_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;sort_key=release_date$VAR[Tmdb_Query_Params]</value>
+        <value condition="$EXP[ShowTmdbDirector] + !String.IsEmpty(Window.Property(videodirector)) + !String.IsEmpty(TvShowTitle)">plugin://plugin.video.themoviedb.helper/?info=crew_in_tvshows&amp;tmdb_type=person&amp;filter_key=job&amp;filter_value=Director$VAR[Director_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.TvShowTitle]&amp;sort_key=first_air_date$VAR[Tmdb_Query_Params]</value>
+        <value condition="$EXP[ShowTmdbDirector] + !String.IsEmpty(Window.Property(videodirector)) + String.IsEqual(ListItem.DBType,tvshow)">plugin://plugin.video.themoviedb.helper/?info=crew_in_tvshows&amp;tmdb_type=person&amp;filter_key=job&amp;filter_value=Director$VAR[Director_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;sort_key=first_air_date$VAR[Tmdb_Query_Params]</value>
+        <value condition="$EXP[ShowTmdbDirector] + !String.IsEmpty(Window.Property(videodirector))">plugin://plugin.video.themoviedb.helper/?info=crew_in_movies&amp;tmdb_type=person&amp;filter_key=job&amp;filter_value=Director$VAR[Director_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;sort_key=release_date$VAR[Tmdb_Query_Params]</value>
     </variable>
 
     <variable name="Def_Studio_List">
-        <value condition="$EXP[ShowTmdbStudio] + !String.IsEmpty(Window.Property(videostudio)) + String.IsEqual(ListItem.DBTYPE,movie)">plugin://plugin.video.themoviedb.helper?info=discover$VAR[Studio_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;sort_key=release_date$VAR[Tmdb_Query_Params]</value>
-        <value condition="$EXP[ShowTmdbStudio] + !String.IsEmpty(Window.Property(videostudio))">plugin://plugin.video.themoviedb.helper?info=discover$VAR[Studio_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]&amp;sort_key=first_air_date$VAR[Tmdb_Query_Params]</value>
+        <value condition="$EXP[ShowTmdbStudio] + !String.IsEmpty(Window.Property(videostudio)) + !String.IsEmpty(TvShowTitle)">plugin://plugin.video.themoviedb.helper?info=discover$VAR[Studio_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.TvShowTitle]$VAR[Tmdb_Query_Params]</value>
+        <value condition="$EXP[ShowTmdbStudio] + !String.IsEmpty(Window.Property(videostudio))">plugin://plugin.video.themoviedb.helper?info=discover$VAR[Studio_Query]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]$VAR[Tmdb_Query_Params]</value>
     </variable>
 
     <variable name="Def_Similar_List">
@@ -1068,7 +1061,7 @@
                         <right>637</right>
                         <bottom>0</bottom>
                         <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                        <visible>!Skin.HasSetting(global.hideborders)</visible>
+                        <visible>Skin.HasSetting(global.showborders)</visible>
                     </control>
                     <control type="image">
                         <left>-2</left>
@@ -1365,7 +1358,7 @@
                 <right>30</right>
                 <bottom>10</bottom>
                 <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                <texture diffuse="diffuse/wall.png" background="true" fallback="$PARAM[fallbackpicture]">$VAR[CastImage]</texture>
+                <texture diffuse="diffuse/wall.png" background="true" fallback="$PARAM[fallbackpicture]">$INFO[ListItem.Art(thumb)]</texture>
                 <visible>$PARAM[thumb]</visible>
             </control>
             <control type="image">
@@ -1382,7 +1375,7 @@
                 <right>30</right>
                 <bottom>10</bottom>
                 <top>10</top>
-                <visible>!Skin.HasSetting(global.hideborders)</visible>
+                <visible>Skin.HasSetting(global.showborders)</visible>
                 <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
             </control>
             <control type="group">
@@ -1422,7 +1415,7 @@
                     <right>30</right>
                     <bottom>10</bottom>
                     <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                    <texture diffuse="diffuse/wall.png" background="true" fallback="$PARAM[fallbackpicture]">$VAR[CastImage]</texture>
+                    <texture diffuse="diffuse/wall.png" background="true" fallback="$PARAM[fallbackpicture]">$INFO[ListItem.Art(thumb)]</texture>
                     <visible>$PARAM[thumb]</visible>
                 </control>
                 <control type="image">
@@ -1439,7 +1432,7 @@
                     <top>10</top>
                     <right>30</right>
                     <bottom>10</bottom>
-                    <visible>!Skin.HasSetting(global.hideborders)</visible>
+                    <visible>Skin.HasSetting(global.showborders)</visible>
                     <texture colordiffuse="BoxNotification" border="4" infill="false">common/box21.png</texture>
                 </control>
 	            <control type="group">
@@ -1507,7 +1500,7 @@
                 <right>30</right>
                 <bottom>10</bottom>
                 <top>10</top>
-                <visible>!Skin.HasSetting(global.hideborders)</visible>
+                <visible>Skin.HasSetting(global.showborders)</visible>
                 <texture colordiffuse="Box2" border="4" infill="false">common/box21.png</texture>
             </control>
             <control type="group">
@@ -1551,7 +1544,7 @@
                     <top>10</top>
                     <right>30</right>
                     <bottom>10</bottom>
-                    <visible>!Skin.HasSetting(global.hideborders)</visible>
+                    <visible>Skin.HasSetting(global.showborders)</visible>
                     <texture colordiffuse="BoxNotification" border="4" infill="false">common/box21.png</texture>
                 </control>
 	            <control type="group">
@@ -1708,6 +1701,7 @@
             <width>1360</width>
             <visible>$PARAM[visible]</visible>
             <visible>!System.HasAddon($PARAM[addonname])</visible>
+            <disabledcolor>Dark3</disabledcolor>
             <include>DefSettingsButtonGradientSkinSettings</include>
             <label>$PARAM[addonname]</label>
             <label2>$INFO[System.AddonVersion($PARAM[addonname]),(,)]        </label2>
@@ -1930,7 +1924,7 @@
 
     <include name="Def_Gradient_Settings_Image_Shortcuts">
         <param name="top" value="$PARAM[top]" default="116"/>
-        <param name="left" value="$PARAM[left]" default="630"/>
+        <param name="left" value="$PARAM[left]" default="655"/>
         <param name="width" value="$PARAM[width]" default="905"/>
         <param name="height" value="$PARAM[height]" default="66"/>
         <param name="slide" value="$PARAM[slide]" default="69"/>
@@ -2997,7 +2991,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundVersions]" background="true">misc/overlaywatched.png</texture>
-                 <visible>[ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator]</visible>
+                 <visible>[ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress]</visible>
             </control>
             <control type="image">
                  <right>8</right>
@@ -3005,7 +2999,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundExtras]" background="true">misc/overlaywatched.png</texture>
-                 <visible>[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] + ![ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator]</visible>
+                 <visible>[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] + ![ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress]</visible>
             </control>
             <control type="image">
                  <right>8</right>
@@ -3013,7 +3007,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundLibrary]" background="true">misc/overlaywatched.png</texture>
-                 <visible>!String.IsEmpty(ListItem.Property(Item.Info)) + !String.IsEmpty(ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets]] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator]</visible>
+                 <visible>!String.IsEmpty(ListItem.Property(Item.Info)) + !String.IsEmpty(ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets]] + ![ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress]</visible>
             </control>
             <control type="label">
                  <right>-9</right>
@@ -3025,7 +3019,7 @@
                  <textcolor>$VAR[ColorIndicatorBackgroundLabel]</textcolor>
                  <selectedcolor>$VAR[ColorIndicatorBackgroundLabel]</selectedcolor>
                  <animation effect="rotate" center="auto" time="0" end="-45" condition="true" loop="false">Conditional</animation>
-                 <visible>!ListItem.IsPlaying + [[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets] | $EXP[HasPlayStatusIndicator]]</visible>
+                 <visible>!ListItem.IsPlaying + [[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets] | $EXP[HasWatchedProgress]]</visible>
             </control>
             <control type="label">
                  <right>-8</right>
@@ -3036,7 +3030,7 @@
                  <font>WatchedIcon</font>
                  <textcolor>$VAR[ColorIndicatorBackgroundIsPlayingIcon]</textcolor>
                  <selectedcolor>$VAR[ColorIndicatorBackgroundIsPlayingIcon]</selectedcolor>
-                 <visible>[ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] | !String.IsEmpty(ListItem.Property(Item.Info)) + !String.IsEmpty(ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets] | $EXP[HasPlayStatusIndicator]]</visible>
+                 <visible>[ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] | !String.IsEmpty(ListItem.Property(Item.Info)) + !String.IsEmpty(ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets] | $EXP[HasWatchedProgress]]</visible>
             </control>
         </control>
         </definition>
@@ -3109,7 +3103,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundVersions]">misc/overlaywatched.png</texture>
-                 <visible>[Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets301] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator301]</visible>
+                 <visible>[Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets301] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress301]</visible>
             </control>
             <control type="image">
                  <right>8</right>
@@ -3117,7 +3111,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundExtras]">misc/overlaywatched.png</texture>
-                 <visible>[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] + ![Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets301] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator301]</visible>
+                 <visible>[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] + ![Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)] + !$EXP[IsVideoAssets301] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress301]</visible>
             </control>
             <control type="image">
                  <right>8</right>
@@ -3125,7 +3119,7 @@
                  <width>100</width>
                  <height>100</height>
                  <texture colordiffuse="$VAR[ColorIndicatorBackgroundLibrary]" background="true">misc/overlaywatched.png</texture>
-                 <visible>!String.IsEmpty(Container(301).ListItem.Property(Item.Info)) + !String.IsEmpty(Container(301).ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301]] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasPlayStatusIndicator301]</visible>
+                 <visible>!String.IsEmpty(Container(301).ListItem.Property(Item.Info)) + !String.IsEmpty(Container(301).ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301]] + ![Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] + !$EXP[HasWatchedProgress301]</visible>
             </control>
             <control type="label">
                  <right>-9</right>
@@ -3137,7 +3131,7 @@
                  <textcolor>$VAR[ColorIndicatorBackgroundLabel]</textcolor>
                  <selectedcolor>$VAR[ColorIndicatorBackgroundLabel]</selectedcolor>
                  <animation effect="rotate" center="auto" time="0" end="-45" condition="true" loop="false">Conditional</animation>
-                 <visible>!Container(301).ListItem.IsPlaying + [[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301] | $EXP[HasPlayStatusIndicator301]]</visible>
+                 <visible>!Container(301).ListItem.IsPlaying + [[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301] | $EXP[HasWatchedProgress301]]</visible>
             </control>
             <control type="label">
                  <right>-8</right>
@@ -3148,7 +3142,7 @@
                  <font>WatchedIcon</font>
                  <textcolor>$VAR[ColorIndicatorBackgroundIsPlayingIcon]</textcolor>
                  <selectedcolor>$VAR[ColorIndicatorBackgroundIsPlayingIcon]</selectedcolor>
-                 <visible>[Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] | !String.IsEmpty(Container(301).ListItem.Property(Item.Info)) + !String.IsEmpty(Container(301).ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301] | $EXP[HasPlayStatusIndicator301]]</visible>
+                 <visible>[Container(301).ListItem.IsPlaying + !Skin.HasSetting(hide.markers.isplaying)] | !String.IsEmpty(Container(301).ListItem.Property(Item.Info)) + !String.IsEmpty(Container(301).ListItem.DBID) + !Skin.HasSetting(hide.markers.library) + ![[[Container(301).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)] | [Container(301).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]] + !$EXP[IsVideoAssets301] | $EXP[HasWatchedProgress301]]</visible>
             </control>            
         </control>
         </definition>
@@ -3442,7 +3436,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
     </include>
 
@@ -3523,7 +3517,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
     </include>
 
@@ -3591,7 +3585,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
     </include>
     
@@ -3617,7 +3611,7 @@
             <bottom>10</bottom>
             <aspectratio scalediffuse="false">scale</aspectratio>
             <texture diffuse="diffuse/widgetposter_new.png" background="true" fallback="DefaultMovies.png">$VAR[PosterImage]</texture>
-            <include condition="!Skin.HasSetting(global.hideborders)">border_texture</include>
+            <include condition="Skin.HasSetting(global.showborders)">border_texture</include>
             <visible>!String.IsEqual(ListItem.DBType,genre) + !String.EndsWith(Container.FolderPath,Genres) + !String.IsEqual(ListItem.DBTYPE,studio)</visible>
         </control>
         <control type="image">
@@ -3644,7 +3638,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders) + [String.IsEqual(ListItem.DBType,studio) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres)]</visible>
+            <visible>Skin.HasSetting(global.showborders) + [String.IsEqual(ListItem.DBType,studio) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres)]</visible>
         </control>
         <include condition="$PARAM[visible_title_overlay]">Alternative_Title_Overlay</include>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
@@ -3690,7 +3684,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -3742,7 +3736,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -3855,7 +3849,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
     </include>
 
@@ -3943,7 +3937,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -4003,7 +3997,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -4057,7 +4051,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -4184,7 +4178,7 @@
             <right>10</right>
             <bottom>10</bottom>
             <texture colordiffuse="BoxWidget" border="4" background="true" infill="false">common/box21.png</texture>
-            <visible>!Skin.HasSetting(global.hideborders)</visible>
+            <visible>Skin.HasSetting(global.showborders)</visible>
         </control>
         <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
             <param name="indicatorbackground" value="$PARAM[indicatorbackground]" />
@@ -4403,6 +4397,7 @@
     <include name="Def_SimpleListLayout">
         <param name="width" default="696" />        
         <param name="height" default="69" />        
+        <param name="font" default="SmallBold" />
         <param name="focused" default="true"/>
         <param name="indicators" default="true" />
         <param name="item_selected" default="ListItem.IsSelected" />
@@ -4414,7 +4409,7 @@
                         <param name="right" value="84" />
                     </include>
                     <right>30</right>
-                    <font>SmallBold</font>
+                    <font>$PARAM[font]</font>
                     <textcolor>Black70</textcolor>
                     <selectedcolor>Black70</selectedcolor>
                     <height>66</height>
@@ -4435,7 +4430,7 @@
                         </include>
                         <right>30</right>
                         <height>66</height>
-                        <font>SmallBold</font>
+                        <font>$PARAM[font]</font>
                         <textcolor>Black70</textcolor>
                         <selectedcolor>Black70</selectedcolor>
                         <aligny>center</aligny>
@@ -4466,7 +4461,7 @@
                         </include>
                         <right>30</right>
                         <height>66</height>
-                        <font>SmallBold</font>
+                        <font>$PARAM[font]</font>
                         <textcolor>Selected</textcolor>
                         <selectedcolor>Selected</selectedcolor>
                         <aligny>center</aligny>
@@ -4513,7 +4508,7 @@
                     <width>113</width>
                     <height>113</height>
                     <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                    <visible>!Skin.HasSetting(global.hideborders) + Skin.HasSetting(global.hidecirles)</visible>
+                    <visible>Skin.HasSetting(global.showborders) + Skin.HasSetting(global.hidecirles)</visible>
                 </control>
                 <control type="label">
                     <posy>-18</posy>
@@ -4650,7 +4645,7 @@
                     <width>113</width>
                     <height>113</height>
                     <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                    <visible>!Skin.HasSetting(global.hideborders) + Skin.HasSetting(global.hidecirles)</visible>
+                    <visible>Skin.HasSetting(global.showborders) + Skin.HasSetting(global.hidecirles)</visible>
                 </control>
             </focusedlayout>
         </definition>
@@ -4687,7 +4682,7 @@
                     <width>113</width>
                     <height>113</height>
                     <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                    <visible>!Skin.HasSetting(global.hideborders) + Skin.HasSetting(global.hidecirles)</visible>
+                    <visible>Skin.HasSetting(global.showborders) + Skin.HasSetting(global.hidecirles)</visible>
                 </control>        
                 <control type="label">
                     <left>170</left>
@@ -4701,7 +4696,6 @@
                     <height>135</height>
                     <posy>-18</posy>
                     <label>$VAR[MediaInfoListLabel]</label>
-                    <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Duration)">Conditional</animation>
                 </control>
                 <control type="label">
                     <left>170</left>
@@ -4714,7 +4708,7 @@
                     <selectedcolor>Black70</selectedcolor>
                     <height>135</height>
                     <posy>18</posy>
-                    <label>$VAR[MediaInfoListLabel2]</label>
+                    <label fallback="19055">$VAR[MediaInfoListLabel2]</label>
                 </control>
                 <include condition="$PARAM[indicators]" content="Def_IndicatorImage">
                     <param name="selected" value="$PARAM[item_selected]" />
@@ -4735,7 +4729,6 @@
                         <textcolor>Black70</textcolor>
                         <selectedcolor>Black70</selectedcolor>
                         <label>$VAR[MediaInfoListLabel]</label>
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Duration)">Conditional</animation>
                     </control>
                     <control type="label">
                         <left>170</left>
@@ -4748,7 +4741,7 @@
                         <posy>18</posy>
                         <textcolor>Black70</textcolor>
                         <selectedcolor>Black70</selectedcolor>
-                        <label>$VAR[MediaInfoListLabel2]</label>
+                        <label fallback="19055">$VAR[MediaInfoListLabel2]</label>
                     </control>
                     <include condition="$PARAM[indicators]" content="Def_IndicatorImage">
                         <param name="selected" value="$PARAM[item_selected]" />
@@ -4780,7 +4773,6 @@
                         <textcolor>Selected</textcolor>
                         <selectedcolor>Selected</selectedcolor>
                         <label>$VAR[MediaInfoListLabel]</label>
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Duration)">Conditional</animation>
                     </control>
                     <control type="label">
                         <left>170</left>
@@ -4793,7 +4785,7 @@
                         <posy>18</posy>
                         <textcolor>Selected</textcolor>
                         <selectedcolor>Selected</selectedcolor>
-                        <label>$VAR[MediaInfoListLabel2]</label>
+                        <label fallback="19055">$VAR[MediaInfoListLabel2]</label>
                     </control>
                     <include condition="$PARAM[indicators]" content="Def_IndicatorImage">
                         <param name="selected" value="$PARAM[item_selected]" />
@@ -4825,7 +4817,7 @@
                     <width>113</width>
                     <height>113</height>
                     <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
-                    <visible>!Skin.HasSetting(global.hideborders) + Skin.HasSetting(global.hidecirles)</visible>
+                    <visible>Skin.HasSetting(global.showborders) + Skin.HasSetting(global.hidecirles)</visible>
                 </control>
             </focusedlayout>
         </definition>
@@ -4844,13 +4836,7 @@
         <param name="header" />
         <param name="property" />
         <definition>
-            <onclick condition="!System.AddonIsEnabled(script.embuary.helper)">Skin.Reset($PARAM[property])</onclick>
-            <onclick condition="!System.AddonIsEnabled(script.embuary.helper)">Skin.SetImage($PARAM[property])</onclick>
-            <onclick condition="System.AddonIsEnabled(script.embuary.helper)">SetProperty(Dialog.1.Label,$LOCALIZE[16018])</onclick>
-            <onclick condition="System.AddonIsEnabled(script.embuary.helper)">SetProperty(Dialog.1.BuiltIn,Skin.Reset($PARAM[property]))</onclick>
-            <onclick condition="System.AddonIsEnabled(script.embuary.helper)">SetProperty(Dialog.2.Label,$LOCALIZE[31271])</onclick>
-            <onclick condition="System.AddonIsEnabled(script.embuary.helper)">SetProperty(Dialog.2.BuiltIn,Skin.SetImage($PARAM[property]))</onclick>
-            <onclick condition="System.AddonIsEnabled(script.embuary.helper)">RunScript(script.embuary.helper,action=createselect,header=$PARAM[header])</onclick>
+            <onclick>RunScript(script.skinvariables,run_dialog=select,heading=$PARAM[header],list=$LOCALIZE[16018] / $LOCALIZE[31271],"executebuiltin_0=Skin.Reset($PARAM[property])","executebuiltin=Skin.SetImage($PARAM[property])")</onclick>          
         </definition>
     </include>
 
