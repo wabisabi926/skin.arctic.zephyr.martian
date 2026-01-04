@@ -763,7 +763,7 @@ msgstr "曲目列表出自"
 
 msgctxt "#31217"
 msgid "Show clearart with seekbar"
-msgstr "使用搜索栏显示 clearart"
+msgstr "显示带进度条的透明徽标"
 
 msgctxt "#31218"
 msgid "Show numeric rating"
