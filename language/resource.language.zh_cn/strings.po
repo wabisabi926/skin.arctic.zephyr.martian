@@ -547,15 +547,15 @@ msgstr "[B]配置系统设置[/B][CR][CR] •     设置和校准显示器[CR] �
 
 msgctxt "#31162"
 msgid "[B]Configure Add-Ons[/B][CR][CR] •     Manage your installed Add-ons[CR] •     Install Add-ons from kodi.tv[CR] •     Modify Add-on settings"
-msgstr "[B]配置插件[/B][CR][CR] •     管理已安装插件[CR] •     从kodi.tv安装插件[CR] •     修改插件设置"
+msgstr "[B]配置插件[/B][CR][CR] •     管理已安装插件[CR] •     从 kodi.tv 安装插件[CR] •     修改插件设置"
 
 msgctxt "#31163"
 msgid "[B]Configure TV Settings[/B][CR][CR] •     Change full screen info[CR] •     Manage EPG data settings"
-msgstr "[B]配置电视设置[/B][CR][CR] •     更改全屏信息[CR] •     管理EPG数据设置"
+msgstr "[B]配置电视设置[/B][CR][CR] •     更改全屏信息[CR] •     管理 EPG 数据设置"
 
 msgctxt "#31164"
 msgid "[B]Configure Service Settings[/B][CR][CR] •     Control via UPnP and HTTP[CR] •     Configure file sharing[CR] •     Enable Zeroconf[CR] •     Configure AirPlay"
-msgstr "[B]配置服务设置[/B][CR][CR] •     通过UPnP和HTTP控制[CR] •     配置共享[CR] •     启用Zeroconf[CR] •     配置AirPlay"
+msgstr "[B]配置服务设置[/B][CR][CR] •     通过 UPnP 和 HTTP 控制[CR] •     配置共享[CR] •     启用 Zeroconf[CR] •     配置 AirPlay"
 
 msgctxt "#31165"
 msgid "[B]Configure Profile Settings[/B][CR][CR] •     Setup user profiles[CR] •     Enable login screen[CR] •     Set master locks[CR] •     Control access to content"
@@ -563,7 +563,7 @@ msgstr "[B]设置配置文件[/B][CR][CR] •     设置用户配置文件[CR] �
 
 msgctxt "#31166"
 msgid "[B]Configure Skin Settings[/B][CR][CR] •     Customise the home screen[CR] •     Set background options[CR] •     Configure OSD options[CR] •     Enable add-on support[CR] •     Disable screen elements"
-msgstr "[B]配置皮肤设置[/B][CR][CR] •     自定义主屏幕[CR] •     设置背景选项[CR] •     配置OSD选项[CR] •     启用附加支持[CR] •     禁用屏幕元素"
+msgstr "[B]配置皮肤设置[/B][CR][CR] •     自定义主屏幕[CR] •     设置背景选项[CR] •     配置 OSD 选项[CR] •     启用附加支持[CR] •     禁用屏幕元素"
 
 msgctxt "#31167"
 msgid "[B]View System Information[/B][CR][CR] •     Summary[CR] •     Storage[CR] •     Network[CR] •     Video[CR] •     Hardware[CR] •     PVR Backend"
