@@ -611,7 +611,7 @@ msgstr "您确定要删除设置快捷方式吗？[CR]在删除此快捷方式�
 
 msgctxt "#31178"
 msgid "Hub items"
-msgstr "聚合中心项目"
+msgstr "分类中心项目"
 
 msgctxt "#31180"
 msgid "Cast of"
@@ -663,11 +663,11 @@ msgstr "导演是"
 
 msgctxt "#31192"
 msgid "Movie Hub"
-msgstr "电影聚合中心"
+msgstr "电影分类中心"
 
 msgctxt "#31193"
 msgid "TV Hub"
-msgstr "电视聚合中心"
+msgstr "电视分类中心"
 
 msgctxt "#31194"
 msgid "View Options"
@@ -979,7 +979,7 @@ msgstr "多图"
 
 msgctxt "#31273"
 msgid "Hub widget"
-msgstr "聚合中心小组件"
+msgstr "分类中心小组件"
 
 msgctxt "#31274"
 msgid "Most played Song"
@@ -1071,7 +1071,7 @@ msgstr "      "
 
 msgctxt "#31299"
 msgid "Show plot on HUB"
-msgstr "在聚合中心显示情节"
+msgstr "在分类中心显示情节"
 
 msgctxt "#31300"
 msgid "Colors"
@@ -1095,7 +1095,7 @@ msgstr "视图"
 
 msgctxt "#31305"
 msgid "Hubs"
-msgstr "聚合中心"
+msgstr "分类中心"
 
 msgctxt "#31307"
 msgid "ClearArt"
@@ -1371,7 +1371,7 @@ msgstr "首选标签而不是评级"
 
 msgctxt "#31392"
 msgid "Limit number of items in hub"
-msgstr "聚合中心项目数上限"
+msgstr "分类中心项目数上限"
 
 msgctxt "#31393"
 msgid "Show icons only"
@@ -1915,7 +1915,7 @@ msgstr "禁用插件同人画"
 
 msgctxt "#31630"
 msgid "Hub widget content type"
-msgstr "聚合中心小组件的内容样式"
+msgstr "分类中心小组件的内容样式"
 
 msgctxt "#31631"
 msgid "Playback action when video info dialog is shown"
