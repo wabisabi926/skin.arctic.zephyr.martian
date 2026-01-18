@@ -159,7 +159,7 @@ msgstr "随机电影"
 
 msgctxt "#31048"
 msgid "In Progress Movies"
-msgstr "正在播放的电影"
+msgstr "正在观看的电影"
 
 msgctxt "#31049"
 msgid "Top Rated Movies"
@@ -179,19 +179,19 @@ msgstr "电影合集"
 
 msgctxt "#31053"
 msgid "New Tv Shows"
-msgstr "新电视节目"
+msgstr "新电视剧"
 
 msgctxt "#31054"
 msgid "Recently Watched TV Shows"
-msgstr "最近观看的电视节目"
+msgstr "最近观看的电视剧"
 
 msgctxt "#31056"
 msgid "Random Tv Shows"
-msgstr "随机电视节目"
+msgstr "随机电视剧"
 
 msgctxt "#31057"
 msgid "Top Rated Tv Shows"
-msgstr "最高分电视节目"
+msgstr "最高分电视剧"
 
 msgctxt "#31058"
 msgid "New Episodes"
@@ -211,7 +211,7 @@ msgstr "未观看的剧集"
 
 msgctxt "#31062"
 msgid "In Progress Episodes"
-msgstr "正在播放的剧集"
+msgstr "正在观看的剧集"
 
 msgctxt "#31063"
 msgid "Top Rated Episodes"
@@ -535,7 +535,7 @@ msgstr "电影出自"
 
 msgctxt "#31160"
 msgid "Tv Shows by"
-msgstr "电视节目出自"
+msgstr "电视剧出自"
 
 msgctxt "#31161"
 msgid "[B]Configure System Settings[/B][CR][CR] •     Setup and calibrate displays[CR] •     Configure audio output[CR] •     Setup remote controls[CR] •     Set power saving options[CR] •     Enable debugging[CR] •     Setup master lock"
@@ -643,7 +643,7 @@ msgstr "从影纪录来自"
 
 msgctxt "#31188"
 msgid "TV Show appearances of"
-msgstr "参演的电视节目来自"
+msgstr "参演的电视剧来自"
 
 msgctxt "#31189"
 msgid "Discography of"
@@ -803,7 +803,7 @@ msgstr "摄制组"
 
 msgctxt "#31228"
 msgid "TV Show appearances"
-msgstr "曾亮相的电视节目"
+msgstr "曾亮相的电视剧"
 
 msgctxt "#31229"
 msgid "Discography"
@@ -1155,7 +1155,7 @@ msgstr "未观看的新剧集"
 
 msgctxt "#31323"
 msgid "New Unwatched Tv Shows"
-msgstr "未观看的新电视节目"
+msgstr "未观看的新电视剧"
 
 msgctxt "#31324"
 msgid "Search results for"
@@ -1491,11 +1491,11 @@ msgstr "智能快捷方式"
 
 msgctxt "#31434"
 msgid "Movies and TV shows"
-msgstr "电影和电视节目"
+msgstr "电影和电视剧"
 
 msgctxt "#31435"
 msgid "Recently added Songs"
-msgstr "电影和电视节目"
+msgstr "电影和电视剧"
 
 msgctxt "#31436"
 msgid "Most played Songs"
@@ -1759,7 +1759,7 @@ msgstr "迷你 EPG（垂直，仅 5 项）"
 
 msgctxt "#31518"
 msgid "Unwatched Tv Shows"
-msgstr "未收看的电视节目"
+msgstr "未收看的电视剧"
 
 msgctxt "#31520"
 msgid "for"
