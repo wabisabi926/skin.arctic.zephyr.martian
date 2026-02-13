@@ -19,7 +19,7 @@ msgstr ""
 
 msgctxt "#31000"
 msgid "Limit number of items in widget"
-msgstr "小组件中项目数上限"
+msgstr "小组件中项数上限"
 
 msgctxt "#31002"
 msgid "Animated posters"
@@ -355,7 +355,7 @@ msgstr "默认"
 
 msgctxt "#31101"
 msgid "items"
-msgstr "项目"
+msgstr "项"
 
 msgctxt "#31102"
 msgid "min"
@@ -615,7 +615,7 @@ msgstr "您确定要删除设置快捷方式吗？[CR]在删除此快捷方式�
 
 msgctxt "#31178"
 msgid "Hub items"
-msgstr "媒体中心项目"
+msgstr "分类中心项"
 
 msgctxt "#31180"
 msgid "Cast of"
@@ -1079,7 +1079,7 @@ msgstr "      "
 
 msgctxt "#31299"
 msgid "Show plot on HUB"
-msgstr "在媒体中心显示情节"
+msgstr "在分类中心显示情节"
 
 msgctxt "#31300"
 msgid "Colors"
@@ -1103,7 +1103,7 @@ msgstr "视图"
 
 msgctxt "#31305"
 msgid "Hubs"
-msgstr "媒体中心"
+msgstr "分类中心"
 
 msgctxt "#31307"
 msgid "ClearArt"
@@ -1383,7 +1383,7 @@ msgstr "首选标签而不是评级"
 
 msgctxt "#31392"
 msgid "Limit number of items in hub"
-msgstr "媒体中心项目数上限"
+msgstr "分类中心项数上限"
 
 msgctxt "#31393"
 msgid "Show icons only"
@@ -1499,7 +1499,7 @@ msgstr "更多…"
 
 msgctxt "#31430"
 msgid "item"
-msgstr "项目"
+msgstr "项"
 
 msgctxt "#31431"
 msgid "Use old Arctic Zephyr window animation"
@@ -1923,7 +1923,7 @@ msgstr "最大"
 
 msgctxt "#31607"
 msgid "On back, jump to first item in widget list"
-msgstr "按下返回，回到小组件列表中第一个项目"
+msgstr "按下返回，回到小组件列表中第一个项"
 
 msgctxt "#31608"
 msgid "After that, focus home menu"
@@ -1939,7 +1939,7 @@ msgstr "禁用插件同人画"
 
 msgctxt "#31630"
 msgid "Hub widget content type"
-msgstr "媒体中心小组件的内容样式"
+msgstr "分类中心小组件的内容样式"
 
 msgctxt "#31631"
 msgid "Playback action when video info dialog is shown"
@@ -1947,7 +1947,7 @@ msgstr "显示视频信息对话框时开始播放"
 
 msgctxt "#31632"
 msgid "Stop playback when item is no longer focused"
-msgstr "当项目不再聚焦时停止播放"
+msgstr "当项不再聚焦时停止播放"
 
 msgctxt "#31643"
 msgid "LibreELEC Settings"
@@ -2326,7 +2326,7 @@ msgstr "默认值（Unicode）"
 
 msgctxt "#31982"
 msgid "Lock position of focused item"
-msgstr "锁定聚焦项目的位置"
+msgstr "锁定聚焦项的位置"
 
 msgctxt "#31983"
 msgid "User rating overrides Kodi rating"
