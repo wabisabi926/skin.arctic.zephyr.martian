@@ -923,24 +923,24 @@
                 <orientation>vertical</orientation>
                 <scrolltime>200</scrolltime>
                 <itemlayout height="70">
-                    <control type="image">
-                        <aligny>center</aligny>
-                        <left>12</left>
-                        <width>64</width>
-                        <height>64</height>
-                        <centertop>50%</centertop>
-                        <texture colordiffuse="Dark2">$INFO[ListItem.Icon]</texture>
-                    </control>
                     <control type="label">
                         <aligny>center</aligny>
                         <align>left</align>
-                        <left>86</left>
-                        <width>212</width>
+                        <left>26</left>
+                        <width>218</width>
                         <centertop>50%</centertop>
                         <height>100%</height>
                         <textcolor>Dark2</textcolor>
                         <include>DefContextButton</include>
                         <label>$INFO[ListItem.Label]</label>
+                    </control>
+                    <control type="image">
+                        <aligny>center</aligny>
+                        <right>12</right>
+                        <width>64</width>
+                        <height>64</height>
+                        <centertop>50%</centertop>
+                        <texture colordiffuse="Dark2">$INFO[ListItem.Icon]</texture>
                     </control>
                 </itemlayout>
                 <focusedlayout height="70">
@@ -954,24 +954,24 @@
                         <height>100%</height>
                         <texture border="8" colordiffuse="$VAR[ColorGradient]">common/gradient-box-wide.png</texture>
                     </control>
-                    <control type="image">
-                        <aligny>center</aligny>
-                        <left>12</left>
-                        <width>64</width>
-                        <height>64</height>
-                        <centertop>50%</centertop>
-                        <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
-                    </control>
                     <control type="label">
                         <aligny>center</aligny>
                         <align>left</align>
-                        <left>86</left>
-                        <width>212</width>
+                        <left>26</left>
+                        <width>218</width>
                         <centertop>50%</centertop>
                         <height>100%</height>
                         <textcolor>Selected</textcolor>
                         <include>DefContextButton</include>
                         <label>$INFO[ListItem.Label]</label>
+                    </control>
+                    <control type="image">
+                        <aligny>center</aligny>
+                        <right>12</right>
+                        <width>64</width>
+                        <height>64</height>
+                        <centertop>50%</centertop>
+                        <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
                     </control>
                 </focusedlayout>
                 <content>
