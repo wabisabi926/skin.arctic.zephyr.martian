@@ -1320,7 +1320,7 @@ msgid "Year of release"
 msgstr "发行年份"
 
 msgctxt "#31371"
-msgid "到tal"
+msgid "total"
 msgstr "全部"
 
 msgctxt "#31372"
