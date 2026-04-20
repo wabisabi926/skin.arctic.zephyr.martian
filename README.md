@@ -7,7 +7,7 @@
 ## 魔改功能
 
 1. 增加海报墙标题
-2. 增加豆瓣评分（需要搭配魔改版 tmdb 助手 https://github.com/wabisabi926/plugin.video.themoviedb.helper/tree/douban）
+2. 增加豆瓣评分（需要搭配魔改版 tmdb 助手） https://github.com/wabisabi926/plugin.video.themoviedb.helper/tree/douban
 3. 更新中文翻译
 
 
