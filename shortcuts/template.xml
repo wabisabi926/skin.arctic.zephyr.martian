@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
-    <other include="widget-classic">
+ 
+    <propertyGroup name="widgetContentProperties">
         <property name="content" tag="property" attribute="name|widgetPath" value="Submenu">skinshortcuts-submenu</property>
         <property name="content" tag="property" attribute="name|widgetPath" value="Settings">SettingsInfoItems</property>
         <property name="content" tag="property" attribute="name|widgetPath" value="Systeminfo">SystemInfoItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherDaily">WeatherDailyItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherHourly">WeatherHourlyItems</property>
+        <property name="content" tag="property" attribute="name|widgetPath" value="Weather">WeatherDailyItems</property>
         <property name="content" tag="property" attribute="name|widgetPath"/>
         <property name="content">$VAR[DefWidgetContent]</property>
         <property name="target" tag="property" attribute="name|widgetTarget"/>
         <property name="target">$VAR[DefWidgetTarget]</property>
-        <property name="browse">never</property>
         <property name="sortby" tag="property" attribute="name|widgetSortby"/>
         <property name="sortorder" tag="property" attribute="name|widgetSortorder"/>
         <property name="autoscroll" tag="property" attribute="name|widgetAutoscroll" value="yes">true</property>
         <property name="autoscroll">false</property>
         <property name="limit" tag="property" attribute="name|widgetLimit"/>
-
-        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Square">7</property>
-        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Thumbnail">4</property>
-        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Landscape">4</property>
-        <property name="autoLimit">10</property>
-
-        <property name="isAutoLimit" tag="property" attribute="name|widgetLimit" value="Auto">true</property>
-        <property name="isAutoLimit">false</property>
 
         <property name="isDynamicContent" propertyValue="false">
             <rule tag="property" attribute="name|widget" value="submenu" />                
@@ -32,14 +23,61 @@
             <rule tag="property" attribute="name|widget" value="weather" />                
         </property>
         <property name="isDynamicContent">true</property>
-
-        <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="submenu">Square</property>
+    </propertyGroup>
+    
+    <propertyGroup name="widgetLayoutProperties">
+         <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="submenu">Square</property>
         <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="settings">Square</property>
         <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="systeminfo">Square</property>
         <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Square">Square</property>
         <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Landscape">Landscape</property>
         <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Thumbnail">Thumbnail</property>
         <property name="widgetAspectCheck">Poster</property>
+    </propertyGroup>
+    
+    <propertyGroup name="moreItemProperties">
+	    <!-- Show More Item -->
+        <property name="showMore" tag="property" attribute="name|widgetLimit">true</property>
+	    <property name="showMore">false</property>
+
+        <property name="hasTarget" tag="property" attribute="name|widgetTarget">true</property>
+        <property name="hasTarget" tag="property" attribute="name|widgetPath">false</property>
+        <property name="hasTarget" tag="property" attribute="name|isSubmenu" value="True">false</property>
+        <property name="hasTarget">true</property>
+
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="movies">special://skin/extras/backgrounds/fallbacks/film.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="sets">special://skin/extras/backgrounds/fallbacks/film.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="tvshows">special://skin/extras/backgrounds/fallbacks/tv.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="episodes">special://skin/extras/backgrounds/fallbacks/tv.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="musicvideos">special://skin/extras/backgrounds/fallbacks/music.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="artists">special://skin/extras/backgrounds/fallbacks/music.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="albums">special://skin/extras/backgrounds/fallbacks/music.jpg</property>
+        <property name="showMoreFanart" tag="property" attribute="name|widgetType" value="songs">special://skin/extras/backgrounds/fallbacks/music.jpg</property>
+	    <property name="showMoreFanart" tag="property" attribute="name|widgetTarget" value="videos">special://skin/extras/backgrounds/fallbacks/tv.jpg</property>
+	    <property name="showMoreFanart" tag="property" attribute="name|widgetTarget" value="music">special://skin/extras/backgrounds/fallbacks/music.jpg</property>
+
+        <property name="showMoreFanartFallback" tag="property" attribute="name|widgetPath">false</property>
+        <property name="showMoreFanartFallback">true</property>
+
+	    <property name="limitNumber" tag="property" attribute="name|widgetLimit" value="$NUMBER[10]">10</property>
+	    <property name="limitNumber" tag="property" attribute="name|widgetLimit" value="$NUMBER[25]">25</property>
+	    <property name="limitNumber" tag="property" attribute="name|widgetLimit" value="$NUMBER[50]">50</property>
+	    <property name="limitNumber" tag="property" attribute="name|widgetLimit" value="$NUMBER[100]">100</property>
+	    <property name="limitNumber">99999</property>    
+    </propertyGroup>   
+    
+    <other include="widget-classic">
+        <propertyGroup>widgetContentProperties</propertyGroup>
+        <propertyGroup>widgetLayoutProperties</propertyGroup>
+        <propertyGroup>moreItemProperties</propertyGroup>
+
+        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Square">7</property>
+        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Thumbnail">4</property>
+        <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Landscape">4</property>
+        <property name="autoLimit">10</property>
+
+        <property name="isAutoLimit" tag="property" attribute="name|widgetLimit" value="Auto">true</property>
+        <property name="isAutoLimit">false</property>
 
         <controls>
             <control type="list" id="301">
@@ -129,52 +167,28 @@
                    <param name="limit" value="$SKINSHORTCUTS[limit]" />
                    <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
                    <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="$SKINSHORTCUTS[browse]" />
                    <param name="content" value="$SKINSHORTCUTS[content]" />
                    <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
                    <param name="autolimit" value="$SKINSHORTCUTS[autoLimit]" />
                 </include>
                 <include content="Widget_ContentInclude" condition="!$SKINSHORTCUTS[isDynamicContent]">
-                   <param name="target" value="$SKINSHORTCUTS[target]" />
-                   <param name="limit" value="$SKINSHORTCUTS[limit]" />
-                   <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
-                   <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="never" />
                    <param name="include" value="$SKINSHORTCUTS[content]" />
-                   <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
-                   <param name="autolimit" value="$SKINSHORTCUTS[autoLimit]" />
                 </include>
+		        <include content="Widget_ContentItem" condition="$SKINSHORTCUTS[showMore] + $SKINSHORTCUTS[hasTarget] + $SKINSHORTCUTS[isDynamicContent] + !$SKINSHORTCUTS[isAutoLimit] + Skin.HasSetting(enable.morewidget)">
+		            <param name="label" value="31429" />
+		            <param name="icon" value="misc/more-items.png" />
+		            <param name="fanart" value="$SKINSHORTCUTS[showMoreFanart]" />
+                    <param name="fanart_fallback" value="$SKINSHORTCUTS[showMoreFanartFallback]" />
+		            <param name="onclick" value="ActivateWindow($SKINSHORTCUTS[target],$SKINSHORTCUTS[content],return)" />
+		            <param name="visible" value="Integer.IsEqual(Container(301).NumItems,$SKINSHORTCUTS[limitNumber]) | Integer.IsEqual(Container(301).NumItems,$PYTHON[int(limitNumber) + 1])" />
+		        </include>
             </control>
         </controls>
     </other>
 
     <other include="widget-featured">
-        <property name="content" tag="property" attribute="name|widgetPath" value="Submenu">skinshortcuts-submenu</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="Settings">SettingsInfoItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="Systeminfo">SystemInfoItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherDaily">WeatherDailyItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherHourly">WeatherHourlyItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath"/>
-        <property name="content">$VAR[DefWidgetContent]</property>
-        <property name="target" tag="property" attribute="name|widgetTarget"/>
-        <property name="target">$VAR[DefWidgetTarget]</property>
-        <property name="browse">never</property>
-        <property name="sortby" tag="property" attribute="name|widgetSortby"/>
-        <property name="sortorder" tag="property" attribute="name|widgetSortorder"/>
-        <property name="autoscroll" tag="property" attribute="name|widgetAutoscroll" value="yes">true</property>
-        <property name="autoscroll">false</property>
-        <property name="limit" tag="property" attribute="name|widgetLimit"/>
-
-        <property name="isAutoLimit" tag="property" attribute="name|widgetLimit" value="Auto">true</property>
-        <property name="isAutoLimit">false</property>
-
-        <property name="isDynamicContent" propertyValue="false">
-            <rule tag="property" attribute="name|widget" value="submenu" />                
-            <rule tag="property" attribute="name|widget" value="settings" />                
-            <rule tag="property" attribute="name|widget" value="systeminfo" />                
-            <rule tag="property" attribute="name|widget" value="weather" />                
-        </property>
-        <property name="isDynamicContent">true</property>
+        <propertyGroup>widgetContentProperties</propertyGroup>
+        <propertyGroup>moreItemProperties</propertyGroup>
 
         <controls>
             <control type="wraplist" id="301">
@@ -205,39 +219,27 @@
                    <param name="limit" value="$SKINSHORTCUTS[limit]" />
                    <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
                    <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="$SKINSHORTCUTS[browse]" />
                    <param name="content" value="$SKINSHORTCUTS[content]" />
-                   <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
                 </include>
                 <include content="Widget_ContentInclude" condition="!$SKINSHORTCUTS[isDynamicContent]">
-                   <param name="target" value="$SKINSHORTCUTS[target]" />
-                   <param name="limit" value="$SKINSHORTCUTS[limit]" />
-                   <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
-                   <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="never" />
                    <param name="include" value="$SKINSHORTCUTS[content]" />
-                   <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
+                </include>
+                <include content="Widget_ContentItem" condition="$SKINSHORTCUTS[showMore] + $SKINSHORTCUTS[hasTarget] + $SKINSHORTCUTS[isDynamicContent] + Skin.HasSetting(enable.morewidget)">
+                    <param name="label" value="31429" />
+                    <param name="icon" value="misc/more-items.png" />
+                    <param name="fanart" value="$SKINSHORTCUTS[showMoreFanart]" />
+                    <param name="fanart_fallback" value="$SKINSHORTCUTS[showMoreFanartFallback]" />
+                    <param name="onclick" value="ActivateWindow($SKINSHORTCUTS[target],$SKINSHORTCUTS[content],return)" />
+                    <param name="visible" value="Integer.IsEqual(Container(301).NumItems,$SKINSHORTCUTS[limitNumber]) | Integer.IsEqual(Container(301).NumItems,$PYTHON[int(limitNumber) + 1])" />
                 </include>
             </control>
         </controls>
     </other>
 
     <other include="widget-vertical">
-        <property name="content" tag="property" attribute="name|widgetPath" value="Submenu">skinshortcuts-submenu</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="Settings">SettingsInfoItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="Systeminfo">SystemInfoItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherDaily">WeatherDailyItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath" value="WeatherHourly">WeatherHourlyItems</property>
-        <property name="content" tag="property" attribute="name|widgetPath"/>
-        <property name="content">$VAR[DefWidgetContent]</property>
-        <property name="target" tag="property" attribute="name|widgetTarget"/>
-        <property name="target">$VAR[DefWidgetTarget]</property>
-        <property name="browse">never</property>
-        <property name="sortby" tag="property" attribute="name|widgetSortby"/>
-        <property name="sortorder" tag="property" attribute="name|widgetSortorder"/>
-        <property name="autoscroll" tag="property" attribute="name|widgetAutoscroll" value="yes">true</property>
-        <property name="autoscroll">false</property>
-        <property name="limit" tag="property" attribute="name|widgetLimit"/>
+        <propertyGroup>widgetContentProperties</propertyGroup>
+        <propertyGroup>widgetLayoutProperties</propertyGroup>
+        <propertyGroup>moreItemProperties</propertyGroup>
 
         <property name="autoLimit" tag="property" attribute="name|widget" value="submenu">5</property>
         <property name="autoLimit" tag="property" attribute="name|widget" value="settings">5</property>
@@ -249,23 +251,6 @@
 
         <property name="isAutoLimit" tag="property" attribute="name|widgetLimit" value="Auto">true</property>
         <property name="isAutoLimit">false</property>
-
-        <property name="isDynamicContent" propertyValue="false">
-            <rule tag="property" attribute="name|widget" value="mysubmenu" />                
-            <rule tag="property" attribute="name|widget" value="settings" />                
-            <rule tag="property" attribute="name|widget" value="systeminfo" />                
-            <rule tag="property" attribute="name|widget" value="weatherdaily" />                
-            <rule tag="property" attribute="name|widget" value="weatherhourly" />                
-        </property>
-        <property name="isDynamicContent">true</property>
-
-        <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="submenu">Square</property>
-        <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="settings">Square</property>
-        <property name="widgetAspectCheck" tag="property" attribute="name|widget" value="systeminfo">Square</property>
-        <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Square">Square</property>
-        <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Landscape">Landscape</property>
-        <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" value="Thumbnail">Thumbnail</property>
-        <property name="widgetAspectCheck">Poster</property>
 
         <controls>
             <control type="fixedlist" id="301">
@@ -294,81 +279,32 @@
                     <param name="time" value="Skin.String(AutoScrollTime)" />
                     <param name="condition" value="!Control.HasFocus(301) + !System.ScreenSaverActive + System.IdleTime(1)" />
                 </include>
-                <itemlayout height="325" width="222" condition="$PYTHON['true' if widgetAspectCheck in 'Poster' else 'false']">
-                    <include content="include.widget.poster">
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                    </include>
-                </itemlayout>
-                <itemlayout height="325" width="325" condition="$PYTHON['true' if widgetAspectCheck in 'Square' else 'false']">
-                    <include content="include.widget.square">
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                    </include>
-                </itemlayout>
-                <itemlayout height="325" width="562" condition="$PYTHON['true' if widgetAspectCheck in 'Landscape' else 'false']">
-                    <include content="include.widget.landscape">
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                    </include>
-                </itemlayout>
-                <itemlayout height="325" width="562" condition="$PYTHON['true' if widgetAspectCheck in 'Thumbnail' else 'false']">
-                    <include content="include.widget.thumb">
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                    </include>
-                </itemlayout>
-                <focusedlayout height="325" width="222" condition="$PYTHON['true' if widgetAspectCheck in 'Poster' else 'false']">
-                    <include content="include.widget.poster">
-                        <param name="id" value="301"/>
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                        <param name="focused" value="true" />
-                    </include>
-                </focusedlayout>
-                <focusedlayout height="325" width="325" condition="$PYTHON['true' if widgetAspectCheck in 'Square' else 'false']">
-                    <include content="include.widget.square">
-                        <param name="id" value="301"/>
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                        <param name="focused" value="true" />
-                    </include>
-                </focusedlayout>
-                <focusedlayout height="325" width="562" condition="$PYTHON['true' if widgetAspectCheck in 'Landscape' else 'false']">
-                    <include content="include.widget.landscape">
-                        <param name="id" value="301"/>
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                        <param name="focused" value="true" />
-                    </include>
-                </focusedlayout>
-                <focusedlayout height="325" width="562" condition="$PYTHON['true' if widgetAspectCheck in 'Thumbnail' else 'false']">
-                    <include content="include.widget.thumb">
-                        <param name="id" value="301"/>
-                        <param name="reflections" value="Skin.HasSetting(show.reflections)"/>
-                        <param name="height" value="325"/>
-                        <param name="focused" value="true" />
-                    </include>
-                </focusedlayout>
+                <!-- ItemLayout -->
+                <include content="Widget_Layout_Normal">
+                    <param name="shortcutsid" value="301"/>
+                    <param name="Thumbnail" value="$PYTHON['true' if widgetAspectCheck in 'Thumbnail' else 'false']"/>
+                    <param name="Landscape" value="$PYTHON['true' if widgetAspectCheck in 'Landscape' else 'false']"/>
+                    <param name="Square" value="$PYTHON['true' if widgetAspectCheck in 'Square' else 'false']"/>  
+                </include>
                 <include content="Widget_ContentDynamic" condition="$SKINSHORTCUTS[isDynamicContent]">
                    <param name="target" value="$SKINSHORTCUTS[target]" />
                    <param name="limit" value="$SKINSHORTCUTS[limit]" />
                    <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
                    <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="$SKINSHORTCUTS[browse]" />
                    <param name="content" value="$SKINSHORTCUTS[content]" />
                    <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
                    <param name="autolimit" value="$SKINSHORTCUTS[autoLimit]" />
                 </include>
                 <include content="Widget_ContentInclude" condition="!$SKINSHORTCUTS[isDynamicContent]">
-                   <param name="target" value="$SKINSHORTCUTS[target]" />
-                   <param name="limit" value="$SKINSHORTCUTS[limit]" />
-                   <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
-                   <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                   <param name="browse" value="never" />
                    <param name="include" value="$SKINSHORTCUTS[content]" />
-                   <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
-                   <param name="autolimit" value="$SKINSHORTCUTS[autoLimit]" />
+                </include>
+                <include content="Widget_ContentItem" condition="$SKINSHORTCUTS[showMore] + $SKINSHORTCUTS[hasTarget] + $SKINSHORTCUTS[isDynamicContent] + !$SKINSHORTCUTS[isAutoLimit] + Skin.HasSetting(enable.morewidget)">
+                    <param name="label" value="31429" />
+                    <param name="icon" value="misc/more-items.png" />
+                    <param name="fanart" value="$SKINSHORTCUTS[showMoreFanart]" />
+                    <param name="fanart_fallback" value="$SKINSHORTCUTS[showMoreFanartFallback]" />
+                    <param name="onclick" value="ActivateWindow($SKINSHORTCUTS[target],$SKINSHORTCUTS[content],return)" />
+                    <param name="visible" value="Integer.IsEqual(Container(301).NumItems,$SKINSHORTCUTS[limitNumber]) | Integer.IsEqual(Container(301).NumItems,$PYTHON[int(limitNumber) + 1])" />
                 </include>
             </control>
         </controls>
@@ -446,31 +382,29 @@
 	        <property name="content" tag="property" attribute="name|list"/>
 	        
 	        <property name="target" tag="property" attribute="name|widgetTarget"/>
-            <property name="browse" tag="label2" value="tvguide">never</property>
-            <property name="browse" tag="property" attribute="name|widgetLimit" value="Auto">never</property>
-	        <property name="browse">$VAR[DefWidgetBrowse]</property>
 	        <property name="sortby" tag="property" attribute="name|widgetSortby"/>
 	        <property name="sortorder" tag="property" attribute="name|widgetSortorder"/>
 	        <property name="autoscroll" tag="property" attribute="name|widgetAutoscroll" value="yes">true</property>
 	        <property name="autoscroll">false</property>
-	        <property name="limit" tag="label2" value="tvguide">5</property>
 	        <property name="limit" tag="property" attribute="name|widgetLimit"/>
 
             <property name="isAutoLimit" tag="property" attribute="name|widgetLimit" value="Auto">true</property>
+            <property name="isAutoLimit" tag="label2" value="epg">true</property>
             <property name="isAutoLimit">false</property>
 
             <property name="label" tag="label" />
             <property name="label">$LOCALIZE[31105]</property>
 
-            <property name="movement" tag="property" attribute="name|list" value="Submenu">4</property>
-            <property name="movement" tag="property" attribute="name|list" value="Settings">4</property>
-            <property name="movement" tag="property" attribute="name|list" value="Systeminfo">4</property>
-            <property name="movement" tag="property" attribute="name|widgetAspect" value="Square">4</property>
-            <property name="movement" tag="property" attribute="name|widgetAspect" value="Thumbnail">2</property>
-            <property name="movement" tag="property" attribute="name|widgetAspect" value="Landscape">2</property>
-            <property name="movement" tag="property" attribute="name|widgetAspect" value="LandscapeSmall">3</property>
-            <property name="movement" tag="property" attribute="name|widgetAspect" value="LandscapePosterSmall">2</property>
-            <property name="movement">7</property>
+            <property name="autoLimit" tag="label2" value="epg">5</property>
+            <property name="autoLimit" tag="property" attribute="name|list" value="Submenu">5</property>
+            <property name="autoLimit" tag="property" attribute="name|list" value="Settings">5</property>
+            <property name="autoLimit" tag="property" attribute="name|list" value="Systeminfo">5</property>
+            <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Square">5</property>
+            <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Thumbnail">3</property>
+            <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="Landscape">3</property>
+            <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="LandscapeSmall">4</property>
+            <property name="autoLimit" tag="property" attribute="name|widgetAspect" value="LandscapePosterSmall">3</property>
+            <property name="autoLimit">8</property>
 
             <property name="isSubmenu" tag="property" attribute="name|list" value="Submenu">true</property>
             <property name="isSubmenu">false</property>
@@ -495,7 +429,7 @@
             <property name="widgetAspectCheck" tag="property" attribute="name|widgetAspect" />
             <property name="widgetAspectCheck">Poster</property>
 
-            <property name="widgetInclude" tag="label2" value="tvguide">Widget_Layout_PVRGuide</property>
+            <property name="widgetInclude" tag="label2" value="epg">Widget_Layout_PVRGuide</property>
             <property name="widgetInclude" tag="property" attribute="name|list" value="Settings">Widget_Layout_System</property>
             <property name="widgetInclude" tag="property" attribute="name|list" value="Systeminfo">Widget_Layout_System</property>
             <property name="widgetInclude" tag="property" attribute="name|list" value="WeatherDaily">Widget_Layout_Weather</property>
@@ -508,12 +442,14 @@
             <property name="fullscreenInfoInclude" tag="property" attribute="name|list" value="WeatherHourly">HomeWidgetsWeatherInfo</property>
             <property name="fullscreenInfoInclude">HomeWidgetsFullscreenInfo</property>
 
+            <propertyGroup>moreItemProperties</propertyGroup>
+
             <!-- Widget Container -->
             <property name="layoutHeight" tag="property" attribute="name|widgetFullscreen" value="yes">710</property>
             <property name="layoutHeight">325</property>
             <property name="layoutHeight2" tag="property" attribute="name|widgetFullscreen" value="yes">750</property>
             <property name="layoutHeight2">365</property>
-            <property name="orientation" tag="label2" value="tvguide">vertical</property>
+            <property name="orientation" tag="label2" value="epg">vertical</property>
             <property name="orientation">horizontal</property>
 
 	        <controls>
@@ -546,7 +482,7 @@
 	                    <param name="height" value="$SKINSHORTCUTS[layoutHeight]"/>
 	                    <param name="height2" value="$SKINSHORTCUTS[layoutHeight2]"/>
 	                    <param name="orientation" value="$SKINSHORTCUTS[orientation]"/>
-                        <param name="movement" value="$SKINSHORTCUTS[movement]"/>
+                        <param name="movement" value="$PYTHON[int(autoLimit) - 1]"/>
                         <param name="autoscroll" value="$SKINSHORTCUTS[autoscroll]"/>
                     </include>
                     <!-- ItemLayout -->
@@ -558,26 +494,25 @@
 	                    <param name="LandscapeSmall" value="$PYTHON['true' if widgetAspectCheck in 'LandSmall' else 'false']"/>
                         <param name="LandscapePosterSmall" value="$PYTHON['true' if widgetAspectCheck in 'LandPoSmall' else 'false']"/>
 	                    <param name="Square" value="$PYTHON['true' if widgetAspectCheck in 'Square' else 'false']"/>  
-                  </include>
+                    </include>
 	                <include content="Widget_ContentDynamic" condition="$SKINSHORTCUTS[isDynamicContent]">
 	                   <param name="target" value="$SKINSHORTCUTS[target]" />
                        <param name="limit" value="$SKINSHORTCUTS[limit]" />
 	                   <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
                        <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                       <param name="browse" value="$SKINSHORTCUTS[browse]" />
                        <param name="content" value="$SKINSHORTCUTS[content]" />
                        <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
-                       <param name="autolimit" value="$PYTHON[int(movement) + 1]" />
+                       <param name="autolimit" value="$SKINSHORTCUTS[autoLimit]" />
 	                </include>
                     <include content="Widget_ContentInclude" condition="!$SKINSHORTCUTS[isDynamicContent]">
-                       <param name="target" value="$SKINSHORTCUTS[target]" />
-                       <param name="limit" value="$SKINSHORTCUTS[limit]" />
-                       <param name="sortby" value="$SKINSHORTCUTS[sortby]" />
-                       <param name="sortorder" value="$SKINSHORTCUTS[sortorder]" />
-                       <param name="browse" value="never" />
                        <param name="include" value="$SKINSHORTCUTS[content]" />
-                       <param name="is_autolimit" value="$SKINSHORTCUTS[isAutoLimit]" />
-                       <param name="autolimit" value="$PYTHON[int(movement) + 1]" />
+                    </include>
+                    <include content="Widget_ContentItem" condition="$SKINSHORTCUTS[showMore] + $SKINSHORTCUTS[hasTarget] + $SKINSHORTCUTS[isDynamicContent] + !$SKINSHORTCUTS[isAutoLimit] + Skin.HasSetting(enable.morewidget)">
+                        <param name="label" value="31429" />
+                        <param name="icon" value="misc/more-items.png" />
+                        <param name="fanart" value="$SKINSHORTCUTS[showMoreFanart]" />
+                        <param name="onclick" value="ActivateWindow($SKINSHORTCUTS[target],$SKINSHORTCUTS[content],return)" />
+                        <param name="visible" value="[Integer.IsEqual(Container($PYTHON[int(mainmenuid) * 10000 + 3100 + int(id)]).NumItems,$SKINSHORTCUTS[limitNumber]) | Integer.IsEqual(Container($PYTHON[int(mainmenuid) * 10000 + 3100 + int(id)]).NumItems,$PYTHON[int(limitNumber) + 1])] + !Container($PYTHON[int(mainmenuid) * 10000 + 3100 + int(id)]).IsUpdating" />
                     </include>
                 </control>
                 <control type="group" id="$PYTHON[int(mainmenuid) * 10000 + 7500 + int(id)]">
@@ -599,8 +534,7 @@
         <!--- Widget Content -->
         <property name="content">$VAR[DefWidgetContent]</property>
         <property name="target">$VAR[DefWidgetTarget]</property>
-        <property name="browse">$VAR[DefWidgetBrowse]</property>
-        <property name="limit">$NUMBER[25]</property>
+        <property name="limit">25</property>
 
         <controls>
             <control type="group">
@@ -650,9 +584,15 @@
                     </include>
                     <include content="Widget_ContentDynamic">
                        <param name="target" value="$SKINSHORTCUTS[target]" />
-                       <param name="browse" value="$SKINSHORTCUTS[browse]" />
                        <param name="content" value="$SKINSHORTCUTS[content]" />
                        <param name="limit" value="$SKINSHORTCUTS[limit]" />
+                    </include>
+                    <include content="Widget_ContentItem" condition="Skin.HasSetting(enable.morewidget)">
+                        <param name="label" value="31429" />
+                        <param name="icon" value="misc/more-items.png" />
+                        <param name="fanart_fallback">true</param>
+                        <param name="onclick" value="ActivateWindow($SKINSHORTCUTS[target],$SKINSHORTCUTS[content],return)" />
+                        <param name="visible" value="[Integer.IsEqual(Container(993100).NumItems,$SKINSHORTCUTS[limit]) | Integer.IsEqual(Container(993100).NumItems,$PYTHON[int(limit) + 1])]  + !Container(993100).IsUpdating" />
                     </include>
                 </control>
                 <!-- InfoSub -->

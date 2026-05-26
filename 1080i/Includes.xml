@@ -63,7 +63,7 @@
     <include file="script-skinshortcuts-includes.xml" />
 
     <!-- Fallbacks File for Viewtype includes must be last -->
-    <include file="Includes_Views_Fallbacks.xml"/>
+    <include file="Includes_Fallbacks.xml"/>
 
     <!-- Expressions -->
     <expression name="HomeIsModernMultiWidgets">!Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.classicwidgets) + Skin.HasSetting(home.modernwidgets) + Skin.HasSetting(home.vertical.widgets)</expression>
@@ -94,7 +94,7 @@
     <expression name="TrailerWaitingForPlayer">!String.IsEmpty(Window(home).Property(TrailerPath2)) + !String.IsEmpty(Window(home).Property(TrailerPath)) + String.IsEmpty(Player.FileNameAndPath)</expression>
     <expression name="TrailerIsPlaying">String.IsEqual(Window(home).Property(TrailerPath2),Player.FileNameAndPath) + !String.IsEmpty(Player.FileNameAndPath)</expression>
     <expression name="AutoTrailerDebugging">Skin.HasSetting(home.netflix.autoplay.trailer) + Skin.HasSetting(DebugInfo.extended) + Skin.HasSetting(DebugInfo.extended)</expression>
-    <expression name="ExtendedNowPlayingIsVisible">[Skin.HasSetting(extended.nowplaying) + Window.IsVisible(Home) + [Player.HasMedia | Player.Playing]] + [[!ControlGroup(301).HasFocus() + !Control.HasFocus(8888) + !Control.HasFocus(4567)] | ControlGroup(777).HasFocus()]</expression>
+    <expression name="ExtendedNowPlayingIsVisible">[Skin.HasSetting(extended.nowplaying) + Window.IsVisible(Home) + [Player.HasMedia | Player.Playing]] + [[!ControlGroup(301).HasFocus() + !Control.HasFocus(8888) + !Control.HasFocus(8808) + !Control.HasFocus(4567)] | ControlGroup(777).HasFocus()]</expression>
     <expression name="ExtendedNowPlayingHelperAutoShow">!$EXP[TrailerIsReady] + !$EXP[TrailerIsPlaying] + !$EXP[TrailerWaitingForPlayer] + !$EXP[TrailerWindowIsActive] + [System.IdleTime(5) + !String.IsEmpty(Window(home).Property(nowplayingautoshowtimer)) + Skin.HasSetting(extended.nowplaying) + Window.IsVisible(Home) + [Player.HasMedia | Player.Playing] + Skin.HasSetting(home.nowplaying.info.auto.show) + !$EXP[InfoDialogsActive] + !Window.IsVisible(DialogContextMenu.xml) + !Window.IsVisible(DialogBusy.xml)]</expression>
     <expression name="ExtendedNowPlayingHelperAutoClose">!$EXP[TrailerIsReady] + !$EXP[TrailerIsPlaying] + !$EXP[TrailerWaitingForPlayer] + !$EXP[TrailerWindowIsActive] + [[!String.IsEmpty(Window(home).Property(controlsvisible)) | Control.HasFocus(25) | Control.HasFocus(778)] + Skin.HasSetting(extended.nowplaying) + Window.IsVisible(Home) + !Player.HasMedia + !Player.Playing + !Skin.HasSetting(hide.home.nowplaying.controls)]</expression>
     <expression name="TitleClearlogoAvailable">[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(artist.clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))]</expression>
@@ -311,6 +311,8 @@
         + !String.Contains(Control.GetLabel(1),(episodes)) 
         + !String.Contains(Control.GetLabel(1),(episodes-files)) 
         + !String.Contains(Control.GetLabel(1),(actors)) 
+        + !String.Contains(Control.GetLabel(1),(games)) 
+        + !String.Contains(Control.GetLabel(1),(none-games)) 
         + !String.Contains(Control.GetLabel(1),(videoversions)) 
         + !String.Contains(Control.GetLabel(1),(videoextras)) 
         + !String.Contains(Control.GetLabel(1),(videoassets)) ]
@@ -577,7 +579,7 @@
 
     <variable name="StartupFanart">
         <value condition="!String.IsEmpty(Skin.String(startupfanart.fallback))">$INFO[Skin.String(startupfanart.fallback)]</value>
-        <value>background/bg.jpg</value>
+        <value>special://skin/extras/backgrounds/overlays/bg.jpg</value>
     </variable>
 
     <variable name="StartupDiffuse">
@@ -724,14 +726,14 @@
             <visible>$EXP[TrailerWindowIsActive] + !$EXP[ExtendedNowPlayingIsVisible] + ![$EXP[HomeIsCleanMinimal] + Window.IsVisible(Home)]</visible>
             <top>0</top>
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">background/trailerwindow.png</texture>
+            <texture colordiffuse="Background">special://skin/extras/backgrounds/overlays/trailerwindow.png</texture>
         </control>
     </include>
         
     <include name="GlobalVideoWindow">
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">background/bg.jpg</texture>
+            <texture colordiffuse="Background">special://skin/extras/backgrounds/overlays/bg.jpg</texture>
         </control>
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
@@ -911,7 +913,7 @@
         <!-- Visualisation Overlay -->
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">background/bg.jpg</texture>
+            <texture colordiffuse="Background">special://skin/extras/backgrounds/overlays/bg.jpg</texture>
             <visible>!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic] + [[Player.HasVideo + Skin.HasSetting(global.showvideo)] | [Player.HasAudio + Skin.HasSetting(global.showvisualisation) + !String.IsEmpty(Visualisation.Name)]]</visible>
             <animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
         </control>
@@ -959,7 +961,7 @@
 	        <control type="image" description="FanartOverlay">
                 <visible>!Window.IsVisible(Home.xml) | [!$EXP[HomeIsSpotlight] + !$EXP[HomeIsClassic]]</visible>
 	            <include>Dimensions_Fullscreen</include>
-	            <texture colordiffuse="FloorFade">background/floor.png</texture>
+	            <texture colordiffuse="FloorFade">special://skin/extras/backgrounds/overlays/floor.png</texture>
 	            <include>Animation.AutoTrailer.FadeOut.Background</include>
 	        </control>
         </control>
@@ -975,7 +977,7 @@
 	        <timeperimage>HomeTimePerImage</timeperimage>
 	        <randomize>true</randomize>
 	        <aspectratio>scale</aspectratio>
-	        <imagepath background="true" diffuse="background/netflix-clean.png">$VAR[GlobalFanart]</imagepath>
+	        <imagepath background="true" diffuse="special://skin/extras/backgrounds/overlays/netflix-clean.png">$VAR[GlobalFanart]</imagepath>
 	        <include>Animation.Animate.Fanart</include>
 	        <include>Animation.AutoTrailer.FadeOut.Background</include>
         </control>
@@ -1000,7 +1002,7 @@
             <timeperimage>HomeTimePerImage</timeperimage>
             <randomize>true</randomize>
             <aspectratio>scale</aspectratio>
-            <imagepath background="true" diffuse="background/netflix-combined.png">$VAR[GlobalFanart]</imagepath>
+            <imagepath background="true" diffuse="special://skin/extras/backgrounds/overlays/netflix-combined.png">$VAR[GlobalFanart]</imagepath>
             <include>Animation.Animate.Fanart</include>
             <include>Animation.AutoTrailer.FadeOut.Background</include>
         </control>
@@ -1010,7 +1012,7 @@
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
             <include condition="$EXP[InfoDialogsExtendedBackground]">Animation.FadeFromHome</include>
-            <texture colordiffuse="Background">background/bg.jpg</texture>
+            <texture colordiffuse="Background">special://skin/extras/backgrounds/overlays/bg.jpg</texture>
         </control>
         <control type="multiimage" description="Fanart">
             <visible>!Skin.HasSetting(TMDbHelper.EnableBlur) + !Skin.HasSetting(global.hidefanart)</visible>
@@ -1039,7 +1041,7 @@
         <control type="image" description="FanartOverlay">
             <include>Dimensions_Fullscreen</include>
             <include condition="$EXP[InfoDialogsExtendedBackground]">Animation.FadeFromHome</include>
-            <texture colordiffuse="FloorFade">background/floor.png</texture>
+            <texture colordiffuse="FloorFade">special://skin/extras/backgrounds/overlays/floor.png</texture>
         </control>
     </include>
 
@@ -2027,7 +2029,7 @@
           | String.IsEqual(Container(211).ListItem.Property(widget),systeminfo)
           | String.IsEqual(Container(211).ListItem.Property(widget),settings) ]
         | !$EXP[Skinshortcuts_Mainmenu_Active]
-        + [ String.IsEqual(Container(211).ListItem.Label2,tvguide)
+        + [ String.IsEqual(Container(211).ListItem.Label2,epg)
           | String.IsEqual(Container(211).ListItem.Property(Path),submenu)
           | String.IsEqual(Container(211).ListItem.Property(Path),systeminfo)
           | String.IsEqual(Container(211).ListItem.Property(Path),settings) ]
@@ -2061,11 +2063,18 @@
         <value condition="String.StartsWith(Container(211).ListItem.Label2,Music)">music</value>
         <value condition="String.StartsWith(Container(211).ListItem.Label2,Program)">programs</value>
         <value condition="String.StartsWith(Container(211).ListItem.Label2,Picture)">pictures</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Label2,Game)">games</value>
         <value condition="String.Contains(Container(211).ListItem.Property(path),Videos)">videos</value>
         <value condition="String.Contains(Container(211).ListItem.Property(path),Music)">music</value>
         <value condition="String.Contains(Container(211).ListItem.Property(path),Programs)">programs</value>
         <value condition="String.Contains(Container(211).ListItem.Property(path),Pictures)">pictures</value>
         <value condition="String.Contains(Container(211).ListItem.Property(path),favourites)">favouritesbrowser</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://channels/tv)">tvchannels</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://recordings/tv)">tvrecordings</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://timers/tv)">tvtimers</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://channels/radio)">radiochannels</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://recordings/radio)">radiorecordings</value>
+        <value condition="String.StartsWith(Container(211).ListItem.Property(path),pvr://timers/radio)">radiotimers</value>
     </variable>
     
 </includes>
