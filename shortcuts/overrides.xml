@@ -146,7 +146,6 @@
     <icon labelID="moviehub">special://skin/extras/icons/film.png</icon>
     <icon labelID="livetv">special://skin/extras/icons/livetv.png</icon>
     <icon labelID="radio">special://skin/extras/icons/radio.png</icon>
-    <icon labelID="32087">special://skin/extras/icons/radio.png</icon>
     <icon labelID="weather">special://skin/extras/icons/sun.png</icon>
     <icon labelID="12600">special://skin/extras/icons/sun.png</icon>
     <icon labelID="settings">special://skin/extras/icons/settings.png</icon>
@@ -394,8 +393,8 @@
             <shortcut label="$LOCALIZE[3]" icon="DefaultVideo.png">ActivateWindow(Videos)</shortcut>
             <shortcut label="$LOCALIZE[342]" icon="DefaultMovies.png">ActivateWindow(Videos,videodb://movies/titles/,return)</shortcut>
             <shortcut label="$LOCALIZE[20343]" icon="DefaultTVShows.png">ActivateWindow(Videos,videodb://tvshows/titles/,return)</shortcut>
-            <shortcut label="$LOCALIZE[31103]" icon="DefaultTVShows.png">ActivateWindow(Tvchannels)</shortcut>
-            <shortcut label="$LOCALIZE[32087]" icon="DefaultAudio.png">ActivateWindow(RadioChannels)</shortcut>
+            <shortcut label="$LOCALIZE[31103]" icon="special://skin/extras/icons/livetv.png">ActivateWindow(Tvchannels)</shortcut>
+            <shortcut label="$LOCALIZE[19021]" icon="special://skin/extras/icons/radio.png">ActivateWindow(RadioChannels)</shortcut>
             <shortcut label="$LOCALIZE[2]" icon="DefaultMusicAlbums.png">ActivateWindow(Music)</shortcut>
             <shortcut label="$LOCALIZE[589]" icon="DefaultMusicAlbums.png">PlayerControl(PartyMode)</shortcut>
             <shortcut label="$LOCALIZE[32108]" icon="DefaultMusicVideos.png">PlayerControl(PartyMode(Video))</shortcut>
@@ -455,22 +454,13 @@
                 <content>upnp-music</content>
             </node>
         </node>
-        <node label="$LOCALIZE[32017]" condition="System.GetBool(pvrmanager.enabled)" version="13">
-            <content>pvr</content>
-            <node label="$LOCALIZE[19023]">
-                <content>pvr-tv</content>
-            </node>
-            <node label="$LOCALIZE[19024]">
-                <content>pvr-radio</content>
-            </node>
-        </node>
-        <node label="$LOCALIZE[32017]" condition="PVR.HasTVChannels" version="14">
+        <node label="$LOCALIZE[31103]" condition="PVR.HasTVChannels">
             <content>pvr</content>
             <node label="$LOCALIZE[19023]">
                 <content>pvr-tv</content>
             </node>
         </node>
-        <node label="$LOCALIZE[32087]" condition="PVR.HasRadioChannels" version="14">
+        <node label="$LOCALIZE[19021]" condition="PVR.HasRadioChannels">
             <content>radio</content>
             <node label="$LOCALIZE[19024]">
                 <content>pvr-radio</content>
@@ -481,6 +471,7 @@
         </node>
         <node label="$LOCALIZE[32007]">
             <node label="$LOCALIZE[32009]">
+                <shortcut label="20244" type="program" icon="DefaultAddonProgram.png" condition="System.Platform.Android">ActivateWindow(programs,androidapp://sources/apps/,return)</shortcut>
                 <shortcut label="$LOCALIZE[10001]" type="program" icon="DefaultAddonProgram.png">ActivateWindow(Programs,Addons,return)</shortcut>
                 <content>addon-program</content>
             </node>
@@ -497,7 +488,6 @@
                 <content>addon-image</content>
             </node>
             <shortcut label="$LOCALIZE[35049]" type="games" icon="DefaultAddonGame.png">ActivateWindow(Games,Addons,return)</shortcut>
-            <shortcut label="20244" type="program" icon="DefaultAddonProgram.png" condition="System.Platform.Android">ActivateWindow(programs,androidapp://sources/apps/,return)</shortcut>
         </node>
         <node label="$LOCALIZE[1036]">
             <content>favourite</content>
@@ -560,6 +550,7 @@
                 <shortcut widget="UnwatchedEpisodes" type="video" label="$LOCALIZE[31061]" icon="DefaultTVShows.png" widgetType="episodes" widgetTarget="videos">special://skin/extras/playlists/UnwatchedEpisodes.xsp</shortcut>
                 <shortcut widget="InProgressEpisodes" type="video" label="$LOCALIZE[31062]" icon="special://skin/extras/icons/timer.png" widgetType="episodes" widgetTarget="videos">special://skin/extras/playlists/InProgressEpisodes.xsp</shortcut>
                 <shortcut widget="TopRatedEpisodes" type="video" label="$LOCALIZE[31063]" icon="DefaultTVShows.png" widgetType="episodes" widgetTarget="videos">special://skin/extras/playlists/TopRatedEpisodes.xsp</shortcut>
+                <shortcut widget="NextUp" type="video" label="$LOCALIZE[31069]" icon="special://skin/extras/icons/timer.png" widgetType="episodes" widgetTarget="videos" condition="System.AddonIsEnabled(script.skin.info.service)">plugin://script.skin.info.service/?action=next_up&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</shortcut>
             </node>
             <node label="$LOCALIZE[133]">
                 <shortcut widget="RandomArtists" type="music" label="$LOCALIZE[31068]" icon="DefaultMusicArtists.png" widgetType="artists" widgetTarget="music">special://skin/extras/playlists/RandomArtists.xsp</shortcut>

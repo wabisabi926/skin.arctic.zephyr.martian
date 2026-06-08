@@ -229,6 +229,10 @@ msgctxt "#31068"
 msgid "Random Artists"
 msgstr "Losowo artyści"
 
+msgctxt "#31069"
+msgid "Next up"
+msgstr "Następny"
+
 msgctxt "#31071"
 msgid "Show fanart/landscape view"
 msgstr "Pokaż fanart/ zdjęcie z opisem"
@@ -1912,10 +1916,6 @@ msgstr "Lokalne"
 msgctxt "#31693"
 msgid "Online"
 msgstr "Online"
-
-msgctxt "#31694"
-msgid "Game studio/flag icons"
-msgstr "Studio gier/ ikony flagi"
 
 msgctxt "#31699"
 msgid "Pick a colour..."

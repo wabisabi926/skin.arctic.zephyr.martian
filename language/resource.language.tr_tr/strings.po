@@ -233,6 +233,10 @@ msgctxt "#31068"
 msgid "Random Artists"
 msgstr ""
 
+msgctxt "#31069"
+msgid "Next up"
+msgstr "Sıradaki"
+
 msgctxt "#31071"
 msgid "Show fanart/landscape view"
 msgstr ""
@@ -1915,10 +1919,6 @@ msgstr ""
 
 msgctxt "#31693"
 msgid "Online"
-msgstr ""
-
-msgctxt "#31694"
-msgid "Game studio/flag icons"
 msgstr ""
 
 msgctxt "#31699"

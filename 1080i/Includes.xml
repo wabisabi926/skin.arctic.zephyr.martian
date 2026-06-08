@@ -77,8 +77,7 @@
     <expression name="HomeIsSpotlight">!Skin.HasSetting(home.classicwidgets) + !Skin.HasSetting(home.vertical) + !Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(home.modernwidgets)</expression>
     <expression name="HomeIsModern">Skin.HasSetting(home.modernwidgets) + !Skin.HasSetting(home.vertical.widgets) + !Skin.HasSetting(homemenu.netflix)</expression>
     <expression name="HomeShowHeader">Skin.HasSetting(home.showheader) + !Skin.HasSetting(home.vertical.widgets)</expression>
-    <expression name="HomeDisableSubmenu">String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1111)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1112)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1113)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1114)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1115)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1116)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1117)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1118)) | String.IsEqual(Container(300).ListItem.Property(translatedPath),ActivateWindow(1119))</expression>
-       
+    
     <expression name="InfoDialogsActive">Window.IsActive(DialogVideoInfo.xml) | Window.IsActive(DialogMusicInfo.xml) | Window.IsActive(DialogAddonInfo.xml) | Window.IsActive(DialogPVRInfo.xml)</expression>
     <expression name="InfoDialogsExtendedBackground">![Skin.HasSetting(home.vertical) | Skin.HasSetting(home.vertical.widgets)] | Skin.HasSetting(homemenu.netflix) | Skin.HasSetting(TMDbHelper.EnableBlur)</expression>
     <expression name="IsPVRVideo">!Player.HasAudio + VideoPlayer.Content(livetv)</expression>
@@ -391,13 +390,6 @@
        [!String.IsEmpty(ListItem.IMDBNumber) + String.StartsWith(ListItem.IMDBNumber,tt)] | 
        [VideoPlayer.IsFullscreen + !String.IsEmpty(VideoPlayer.IMDBNumber) + String.StartsWith(VideoPlayer.IMDBNumber,tt)]
     </expression>
-
-	<expression name="IsUpdatingMultiWidgets">
-		[ Control.IsVisible(30111) + Container(30111).IsUpdating + Integer.IsEqual(Container(30111).NumItems,0) | Control.IsVisible(30121) + Container(30121).IsUpdating + Integer.IsEqual(Container(30121).NumItems,0) | Control.IsVisible(30131) + Container(30131).IsUpdating + Integer.IsEqual(Container(30131).NumItems,0) | Control.IsVisible(30141) + Container(30141).IsUpdating + Integer.IsEqual(Container(30141).NumItems,0) 
-		| Control.IsVisible(30151) + Container(30151).IsUpdating + Integer.IsEqual(Container(30151).NumItems,0) | Control.IsVisible(30161) + Container(30161).IsUpdating + Integer.IsEqual(Container(30161).NumItems,0) | Control.IsVisible(30171) + Container(30171).IsUpdating + Integer.IsEqual(Container(30171).NumItems,0) | Control.IsVisible(30181) + Container(30181).IsUpdating + Integer.IsEqual(Container(30181).NumItems,0)
-		| Control.IsVisible(30191) + Container(30191).IsUpdating + Integer.IsEqual(Container(30191).NumItems,0) | Control.IsVisible(301101) + Container(301101).IsUpdating + Integer.IsEqual(Container(301101).NumItems,0) | Control.IsVisible(301111) + Container(301111).IsUpdating | Control.IsVisible(301121) + Container(301121).IsUpdating + Integer.IsEqual(Container(301121).NumItems,0) | Control.IsVisible(301131) + Container(301131).IsUpdating + Integer.IsEqual(Container(301131).NumItems,0)
-		| Control.IsVisible(301141) + Container(301141).IsUpdating + Integer.IsEqual(Container(301141).NumItems,0) | Control.IsVisible(301151) + Container(301151).IsUpdating + Integer.IsEqual(Container(301151).NumItems,0) | Control.IsVisible(301161) + Container(301161).IsUpdating + Integer.IsEqual(Container(301161).NumItems,0)]
-	</expression>
 
     <expression name="Visualisation_ShowFanart">!Skin.HasSetting(musicosd.hidefanart)</expression>
     <expression name="Visualisation_ShowSlideshow">!Skin.HasSetting(musicosd.hidefanart) + System.AddonIsEnabled(script.artistslideshow) + !Skin.HasSetting(ArtistSlideShow.Disabled)</expression>
@@ -923,7 +915,7 @@
 
         <!-- Global Fanart -->
         <control type="group">
-            <visible>![Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] | $EXP[InfoDialogsActive] + [!Window.IsVisible(home) | !$EXP[InfoDialogsExtendedBackground]]</visible>
+            <visible>![Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(hide.homemenu.netflix.preview) | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] | $EXP[InfoDialogsActive] + [!Window.IsVisible(home) | !$EXP[InfoDialogsExtendedBackground]]</visible>
 			<include>Animation.BackgroundHideView</include>
  	        <control type="multiimage" description="Fanart">
 	            <visible>!Skin.HasSetting(TMDbHelper.EnableBlur) | [Window.IsVisible(home) + !$EXP[InfoDialogsActive]]</visible>
@@ -984,7 +976,7 @@
         
         <!-- Netflix Preview Window -->
         <control type="multiimage" description="Fanart">
-            <visible>[Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(homemenu.clean.flix) + !Skin.HasSetting(hide.homemenu.netflix.preview) + !$EXP[IsUpdatingMultiWidgets] | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] + !$EXP[InfoDialogsActive] + String.IsEmpty(Window(Home).Property(TMDbHelper.HideView))</visible>
+            <visible>[Window.IsVisible(Home.xml) + Skin.HasSetting(homemenu.netflix) + !Skin.HasSetting(homemenu.clean.flix) + !Skin.HasSetting(hide.homemenu.netflix.preview) | [Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)] + !Skin.HasSetting(hide.views.netflix.preview) + !Skin.HasSetting(TMDbHelper.EnableBlur)] + !$EXP[InfoDialogsActive] + String.IsEmpty(Window(Home).Property(TMDbHelper.HideView))</visible>
             <visible>!Player.HasMedia | [!Skin.HasSetting(global.showvideo) + Player.HasVideo] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Skin.HasSetting(global.showvisualisation) + String.IsEmpty(Visualisation.Name) + Player.HasAudio]</visible>
             <include>Animation.Background.OpenClose</include>
             <include>Dimensions_Fullscreen</include>
@@ -1783,18 +1775,13 @@
     </include>
 
     <variable name="PlayListStatsPath">
-        <value condition="System.AddonIsEnabled(script.embuary.helper) + String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Videos) + String.Contains(Container(300).ListItem.Property(path),playlists) + String.Contains(Container(300).ListItem.Property(path),.xsp)">plugin://script.embuary.helper/?info=getpathstats&amp;path=$INFO[Container(300).ListItem.Property(path)]&amp;prefix=Playlist</value>
+        <value condition="System.AddonIsEnabled(script.skin.info.service) + String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Videos) + String.Contains(Container(300).ListItem.Property(path),playlists) + String.Contains(Container(300).ListItem.Property(path),.xsp)">plugin://script.skin.info.service/?action=path_stats&amp;path=$INFO[Container(300).ListItem.Property(list)]&amp;reload=$INFO[Window(Home).Property(SkinInfo.Library.Refreshed)]</value>
     </variable>
 
     <variable name="PlaylistsCountItemPath">
         <value condition="String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Videos) + String.Contains(Container(300).ListItem.Property(path),playlists) + !String.Contains(Container(300).ListItem.Property(path),.xsp)">special://videoplaylists/</value>
     </variable>
 
-    <variable name="RandomMovies">
-        <value condition="Skin.HasSetting(home.netflix.autoplay.trailer)">special://skin/extras/playlists/Spotlight.xsp</value>
-        <value>special://skin/extras/playlists/RandomMovies.xsp</value>
-    </variable>
-    
     <include name="BusySpinner">
         <param name="color" default="Dark1"/>
         <definition>
@@ -1837,6 +1824,7 @@
     
     <include name="EffectsPreviewImage">
         <control type="image">
+            <aspectratio>scale</aspectratio>
             <texture background="true">$PARAM[texture]</texture>
             <include>BackgroundFanartFadetime</include>
             <animation effect="fade" end="5" start="100" time="0" condition="Integer.IsEqual(Skin.String(BackgroundBrightnessBlur),5)">Conditional</animation>
