@@ -58,7 +58,7 @@ msgid "Netflix"
 msgstr ""
 
 msgctxt "#31017"
-msgid "Colored icon media flags"
+msgid "Coloured icon media flags"
 msgstr ""
 
 msgctxt "#31019"
@@ -231,6 +231,10 @@ msgstr ""
 
 msgctxt "#31068"
 msgid "Random Artists"
+msgstr ""
+
+msgctxt "#31069"
+msgid "Next up"
 msgstr ""
 
 msgctxt "#31071"
@@ -438,7 +442,7 @@ msgid "Set your favourite settings"
 msgstr ""
 
 msgctxt "#31126"
-msgid "Accent colors"
+msgid "Accent colours"
 msgstr ""
 
 msgctxt "#31133"
@@ -834,11 +838,11 @@ msgid "Use minimal busy loader in header"
 msgstr ""
 
 msgctxt "#31238"
-msgid "Select highlight color"
+msgid "Select highlight colour"
 msgstr ""
 
 msgctxt "#31239"
-msgid "Current Color"
+msgid "Current Colour"
 msgstr ""
 
 msgctxt "#31240"
@@ -1066,7 +1070,7 @@ msgid "Show plot on HUB"
 msgstr ""
 
 msgctxt "#31300"
-msgid "Colors"
+msgid "Colours"
 msgstr ""
 
 msgctxt "#31301"
@@ -1354,7 +1358,7 @@ msgid "Multi-Widgets"
 msgstr ""
 
 msgctxt "#31395"
-msgid "Gradient color for "
+msgid "Gradient colour for "
 msgstr ""
 
 msgctxt "#31396"
@@ -1418,11 +1422,11 @@ msgid "Seconds"
 msgstr ""
 
 msgctxt "#31429"
-msgid "more..."
+msgid "Show more..."
 msgstr ""
 
 msgctxt "#31430"
-msgid "item"
+msgid "Limited widgets have \"more items\" object"
 msgstr ""
 
 msgctxt "#31431"
@@ -1651,6 +1655,10 @@ msgstr ""
 
 msgctxt "#31500"
 msgid "Prefer percentage"
+msgstr ""
+
+msgctxt "#31501"
+msgid "[B]Manage Files[/B][CR][CR] •     Copy[CR] •     Move[CR] •     Delete[CR] •     Rename[CR] •     Manage Source"
 msgstr ""
 
 msgctxt "#31502"
@@ -1930,7 +1938,7 @@ msgid "Show detailed info when video starts (in seconds)"
 msgstr ""
 
 msgctxt "#31679"
-msgid "Color presets"
+msgid "Colour presets"
 msgstr ""
 
 msgctxt "#31680"
@@ -1957,16 +1965,12 @@ msgctxt "#31693"
 msgid "Online"
 msgstr ""
 
-msgctxt "#31694"
-msgid "Game studio/flag icons"
-msgstr ""
-
 msgctxt "#31699"
-msgid "Pick a color..."
+msgid "Pick a colour..."
 msgstr ""
 
 msgctxt "#31700"
-msgid "Set color"
+msgid "Set colour"
 msgstr ""
 
 msgctxt "#31702"
@@ -2198,15 +2202,15 @@ msgid "Simple Gray"
 msgstr ""
 
 msgctxt "#31965"
-msgid "Highlight color"
+msgid "Highlight colour"
 msgstr ""
 
 msgctxt "#31966"
-msgid "Gradient color"
+msgid "Gradient colour"
 msgstr ""
 
 msgctxt "#31967"
-msgid "Customise color settings"
+msgid "Customise colour settings"
 msgstr ""
 
 msgctxt "#31968"
@@ -2310,5 +2314,5 @@ msgid "Prefer online artwork"
 msgstr ""
 
 msgctxt "#31993"
-msgid "Timed change of color scheme"
+msgid "Timed change of colour scheme"
 msgstr ""

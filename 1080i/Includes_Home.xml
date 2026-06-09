@@ -782,7 +782,7 @@
                     <onup condition="$EXP[ExtendedNowPlayingIsVisible] + !Skin.HasSetting(hide.home.nowplaying.controls) + [$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]">777</onup>
                     <onup condition="!Player.HasVideo | !Skin.HasSetting(global.showvideo)">301</onup>
                     <onup>301</onup>
-                    <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !$EXP[HomeDisableSubmenu]">SetFocus(302,0)</ondown>
+                    <ondown condition="Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</ondown>
                     <onback condition="Skin.HasSetting(home.onback.go.to.first.widget) + Integer.IsGreater(Container(301).NumItems,0)">SetFocus(301)</onback>
                     <onleft>300</onleft>
                     <onright>300</onright>
@@ -825,7 +825,7 @@
             <animation effect="slide" start="0" end="0,250" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
             <animation effect="slide" start="0" end="0,250" time="150">WindowClose</animation>
             <animation effect="slide" end="0" start="0,250" time="150">WindowOpen</animation>
-            <posy>251</posy>
+            <posy>245</posy>
             <centerleft>185</centerleft>
             <width>346</width>
             <height>662</height>
@@ -1088,12 +1088,12 @@
                 <bottom>10</bottom>
                 <texture border="5" colordiffuse="Light3" diffuse="diffuse/wall-fanart.png">common/box.png</texture>
             </control>
-            <include content="def_weatherfanart.widgets">
+            <include content="Weather_Fanart_Image">
                 <param name="FanartCode" value="$INFO[Window(Weather).Property(Daily.$PARAM[day].FanartCode)]"/>
                 <param name="bordertopbottom" value="9"/>
                 <param name="borderleftright" value="9"/>
             </include>
-            <include content="def_weathericon">
+            <include content="Weather_Icon_Image">
 				<param name="left" value="50" />
 				<param name="top" value="30" />
 				<param name="size" value="192" />
@@ -1168,7 +1168,7 @@
                         <height>900</height>
                         <bottom>-680</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="Background">background/bg.jpg</texture>
+                        <texture colordiffuse="Background">special://skin/extras/backgrounds/overlays/bg.jpg</texture>
                         <animation effect="fade" start="100" end="75" time="200" condition="true">Conditional</animation>
                     </control>
                     <control type="image" description="FanartOverlay">
@@ -1176,7 +1176,7 @@
                         <height>900</height>
                         <bottom>-680</bottom>
                         <aspectratio aligny="bottom">scale</aspectratio>
-                        <texture colordiffuse="FloorFade">background/floor.png</texture>
+                        <texture colordiffuse="FloorFade">special://skin/extras/backgrounds/overlays/floor.png</texture>
                     </control>
                     <control type="image" description="Shadow">
                         <width>100%</width>
@@ -1437,7 +1437,7 @@
                 <include condition="Skin.HasSetting(furniture.clock)">DefHomeRightSidePad</include>
                 <onup condition="!Skin.HasSetting(home.dontshowfanart) + [!String.IsEmpty(Container(300).ListItem.Property(widget)) | [String.IsEmpty(Container(300).ListItem.Property(widget)) + [String.IsEmpty(Container(300).ListItem.Property(Background)) + [String.IsEmpty(Skin.String(home.slideshowpath))]]]]">301</onup>
                 <onup condition="Skin.HasSetting(home.dontshowfanart) + [!String.IsEmpty(Container(300).ListItem.Property(widget)) | [String.IsEmpty(Container(300).ListItem.Property(widget)) + [String.IsEmpty(Container(300).ListItem.Property(Background)) + [String.IsEmpty(Skin.String(home.slideshowpath))]]]]">SetFocus(301,0)</onup>
-                <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !$EXP[HomeDisableSubmenu]">SetFocus(302,0)</ondown>
+                <ondown condition="Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</ondown>
                 <onleft>300</onleft>
                 <onright>300</onright>
                 <orientation>horizontal</orientation>
@@ -1490,7 +1490,7 @@
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark1">common/arrow-small.png</texture>
                     <visible>Control.HasFocus(300)</visible>
-                    <visible>Integer.IsGreater(Container(302).NumItems,0) + !$EXP[HomeDisableSubmenu]</visible>
+                    <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                 </control>
             </control>
@@ -1512,7 +1512,7 @@
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark3">common/arrow-small.png</texture>
                     <visible>Control.HasFocus(300)</visible>
-                    <visible>Integer.IsGreater(Container(302).NumItems,0) + !$EXP[HomeDisableSubmenu]</visible>
+                    <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                 </control>
                 <control type="group">
@@ -1629,7 +1629,7 @@
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark1">common/arrow-small.png</texture>
                     <visible>Control.HasFocus(300)</visible>
-                    <visible>Integer.IsGreater(Container(302).NumItems,0) + !$EXP[HomeDisableSubmenu]</visible>
+                    <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                 </control>
             </control>
@@ -1813,12 +1813,12 @@
                 <bottom>10</bottom>
                 <texture border="5" colordiffuse="Panel">common/box.png</texture>
             </control>
-            <include content="def_weatherfanart.widgets">
+            <include content="Weather_Fanart_Image">
                 <param name="FanartCode" value="$INFO[Window(Weather).Property(Daily.$PARAM[day].FanartCode)]"/>
                 <param name="bordertopbottom" value="9"/>
                 <param name="borderleftright" value="9"/>
             </include>
-            <include content="def_weathericon">
+            <include content="Weather_Icon_Image">
 				<param name="left" value="50" />
 				<param name="top" value="30" />
 				<param name="size" value="192" />
@@ -1909,7 +1909,7 @@
                     <height>720</height>
                     <orientation>vertical</orientation>
                     <onright>301</onright>
-                    <onleft condition="!$EXP[HomeDisableSubmenu]">302</onleft>
+                    <onleft>302</onleft>
                     <scrolltime>200</scrolltime>
                     <include>HomeVerticalMenuListLayout</include>
                     <content>
@@ -2171,7 +2171,7 @@
                     <onright condition="$EXP[ExtendedNowPlayingIsVisible] + Skin.HasSetting(hide.home.nowplaying.controls) + Skin.HasSetting(home.extended.nowplaying.tracklist) + Integer.IsGreater(Container(778).NumItems,0) + Player.HasAudio">778</onright>
                     <onright condition="$EXP[ExtendedNowPlayingIsVisible] + !Skin.HasSetting(hide.home.nowplaying.controls)">777</onright>
                     <onright>301</onright>
-                    <onleft condition="!$EXP[HomeDisableSubmenu]">302</onleft>
+                    <onleft>302</onleft>
                     <onfocus>ClearProperty(nowplayingautoshowtimer,home)</onfocus>
                     <onback condition="Skin.HasSetting(home.onback.go.to.first.widget) + Integer.IsGreater(Container(301).NumItems,0)">SetFocus(301)</onback>
                     <scrolltime>200</scrolltime>
@@ -2262,6 +2262,18 @@
                 <onfocus>SetFocus($INFO[Window(home).Property(BackToId)])</onfocus>
                 <onfocus>SetFocus(300)</onfocus>
             </control>
+            <control type="button" id="8808">
+                <include>HiddenButton</include>
+                <onfocus condition="String.IsEqual(Window(Home).Property(BackToId),Window(Home).Property(LastId))">SetFocus(300)</onfocus>
+                <onfocus condition="!String.IsEqual(Window(Home).Property(BackToId),Window(Home).Property(LastId)) + !String.IsEmpty(Window(Home).Property(BackToId))">SetFocus($INFO[Window(Home).Property(BackToId)])</onfocus>
+                <onfocus condition="String.IsEmpty(Window(Home).Property(BackToId))">SetFocus(300)</onfocus>
+            </control>
+            <control type="button" id="8888">
+	            <include>HiddenButton</include>
+	            <onfocus condition="String.IsEqual(Window(Home).Property(BackToId),Window(Home).Property(LastId))">SetFocus(300)</onfocus>
+	            <onfocus condition="!String.IsEqual(Window(Home).Property(BackToId),Window(Home).Property(LastId)) + !String.IsEmpty(Window(Home).Property(BackToId))">SetFocus($INFO[Window(Home).Property(LastId)])</onfocus>
+	            <onfocus condition="String.IsEmpty(Window(Home).Property(BackToId))">SetFocus(300)</onfocus>
+	        </control>
         </control>
     </include>
 
