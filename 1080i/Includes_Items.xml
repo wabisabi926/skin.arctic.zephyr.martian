@@ -1145,7 +1145,7 @@
     			<param name="content" value="$PARAM[content]"/>
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
-    	</item>	
+    	</item>
     	<item id="6">
     		<include content="RatingItem">
     			<param name="label" value="$LOCALIZE[31720]"/>
@@ -1153,7 +1153,15 @@
     			<param name="content" value="$PARAM[content]"/>
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
-    	</item>	
+    	</item>
+    	<item id="7">
+    		<include content="RatingItem">
+    			<param name="label" value="Douban"/>
+    			<param name="flag" value="Douban"/>
+    			<param name="content" value="$PARAM[content]"/>
+    			<param name="slot" value="$PARAM[slot]"/>
+    		</include>
+    	</item>
     </include>
     
     <include name="RatingItem">
