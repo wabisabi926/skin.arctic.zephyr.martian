@@ -64,7 +64,7 @@ msgid "Coloured icon media flags"
 msgstr "彩色图标媒体标识"
 
 msgctxt "#31019"
-msgid "Supported Addons"
+msgid "Supported add-ons"
 msgstr "支持的插件"
 
 msgctxt "#31020"
@@ -1279,6 +1279,10 @@ msgctxt "#31366"
 msgid "Show Filenames"
 msgstr "显示文件名"
 
+msgctxt "#31368"
+msgid "Show unwatched episodes count"
+msgstr "显示未观看的剧集数"
+
 msgctxt "#31369"
 msgid "Shifted ClearArt"
 msgstr "偏移透明艺术图"
@@ -1428,7 +1432,7 @@ msgid "Show more..."
 msgstr "显示更多..."
 
 msgctxt "#31430"
-msgid "Limited widgets have "more items" object"
+msgid "Limited widgets have \"more items\" object"
 msgstr "有“更多选项”物体的有限小部件"
 
 msgctxt "#31431"
@@ -1552,11 +1556,11 @@ msgid "disabled"
 msgstr "已禁用"
 
 msgctxt "#31468"
-msgid "Required addons"
+msgid "Required add-ons"
 msgstr "必需的插件"
 
 msgctxt "#31469"
-msgid "Recommended addons"
+msgid "Recommended add-ons"
 msgstr "推荐的插件"
 
 msgctxt "#31472"
@@ -1620,7 +1624,7 @@ msgid "CPU"
 msgstr "处理器"
 
 msgctxt "#31489"
-msgid "Underlined homemenu items"
+msgid "Underlined home menu items"
 msgstr "带下划线的主菜单项"
 
 msgctxt "#31492"
@@ -1858,10 +1862,6 @@ msgstr "之后，聚焦主菜单"
 msgctxt "#31623"
 msgid "If home menu is focused, jump to widgets on back"
 msgstr "当主菜单处于聚焦状态时，按“返回键”跳转到小组件"
-
-msgctxt "#31625"
-msgid "Disable addons fanart"
-msgstr "禁用插件背景图"
 
 msgctxt "#31630"
 msgid "Hub widget content type"

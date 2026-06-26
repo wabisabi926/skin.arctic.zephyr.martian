@@ -57,7 +57,7 @@ msgid "Coloured icon media flags"
 msgstr "컬러 아이콘으로 미디어 정보 표시"
 
 msgctxt "#31019"
-msgid "Supported Addons"
+msgid "Supported add-ons"
 msgstr "스킨에 필요한 애드온"
 
 msgctxt "#31020"
@@ -1248,6 +1248,10 @@ msgctxt "#31366"
 msgid "Show Filenames"
 msgstr "파일 이름 표시"
 
+msgctxt "#31368"
+msgid "Show unwatched episodes count"
+msgstr "미시청 에피소드 수 표시"
+
 msgctxt "#31369"
 msgid "Shifted ClearArt"
 msgstr "시프티드 클리어아트"
@@ -1501,11 +1505,11 @@ msgid "disabled"
 msgstr "사용 안 함"
 
 msgctxt "#31468"
-msgid "Required addons"
+msgid "Required add-ons"
 msgstr "필수 애드온"
 
 msgctxt "#31469"
-msgid "Recommended addons"
+msgid "Recommended add-ons"
 msgstr "추천 애드온"
 
 msgctxt "#31472"
@@ -1565,7 +1569,7 @@ msgid "CPU"
 msgstr "CPU"
 
 msgctxt "#31489"
-msgid "Underlined homemenu items"
+msgid "Underlined home menu items"
 msgstr ""
 
 msgctxt "#31492"
@@ -1794,10 +1798,6 @@ msgstr ""
 
 msgctxt "#31623"
 msgid "If home menu is focused, jump to widgets on back"
-msgstr ""
-
-msgctxt "#31625"
-msgid "Disable addons fanart"
 msgstr ""
 
 msgctxt "#31630"
