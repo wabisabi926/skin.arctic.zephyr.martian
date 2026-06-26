@@ -58,7 +58,7 @@ msgid "Coloured icon media flags"
 msgstr "Medijske zastavice u boji s ikonama"
 
 msgctxt "#31019"
-msgid "Supported Addons"
+msgid "Supported add-ons"
 msgstr "Podržani dodaci"
 
 msgctxt "#31020"
@@ -1249,6 +1249,10 @@ msgctxt "#31366"
 msgid "Show Filenames"
 msgstr "Prikaži nazive datoteka"
 
+msgctxt "#31368"
+msgid "Show unwatched episodes count"
+msgstr "Prikaži broj nepogledanih epizoda"
+
 msgctxt "#31369"
 msgid "Shifted ClearArt"
 msgstr "Pomaknuto ClearArt"
@@ -1502,11 +1506,11 @@ msgid "disabled"
 msgstr "onemogućeno"
 
 msgctxt "#31468"
-msgid "Required addons"
+msgid "Required add-ons"
 msgstr "Potrebni dodaci"
 
 msgctxt "#31469"
-msgid "Recommended addons"
+msgid "Recommended add-ons"
 msgstr "Preporučeni dodaci"
 
 msgctxt "#31472"
@@ -1539,7 +1543,7 @@ msgstr "HDR"
 
 msgctxt "#31481"
 msgid "Blu-ray / HD DVD / DVD / WEB-DL / TV"
-msgid "Blu-ray / HD DVD / DVD / WEB-DL / TV"
+msgstr "Blu-ray / HD DVD / DVD / WEB-DL / TV"
 
 msgctxt "#31482"
 msgid "IMDb Top 250"
@@ -1566,7 +1570,7 @@ msgid "CPU"
 msgstr "Procesor"
 
 msgctxt "#31489"
-msgid "Underlined homemenu items"
+msgid "Underlined home menu items"
 msgstr "Podvučene stavke početnog menija"
 
 msgctxt "#31492"
@@ -1796,10 +1800,6 @@ msgstr "Nakon toga, fokusirajte se na početni meni"
 msgctxt "#31623"
 msgid "If home menu is focused, jump to widgets on back"
 msgstr "Ako je fokus na početnom meniju, preskoči na vidžete na poleđini"
-
-msgctxt "#31625"
-msgid "Disable addons fanart"
-msgstr "Onemogući fanart dodataka"
 
 msgctxt "#31630"
 msgid "Hub widget content type"

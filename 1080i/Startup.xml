@@ -10,6 +10,7 @@
     <onload>ClearProperty(SkinSplashStarted,home)</onload>
 
     <!-- First start settings -->
+    <onload condition="!Skin.HasSetting(startup.init)">Skin.SetString(TMDbHelper.Blur.Radius,30)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetString(AutoScrollTime,20s)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(use.new.jumpbar)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(global.hidecirles)</onload>
@@ -24,6 +25,7 @@
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(disable.only.hide.menu.items)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(furniture.flagicons)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(furniture.weatherleft)</onload>
+    <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(ShowUnwatchedEpisodes)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(osd.usetheme)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(musicosd.showvideolyrics)</onload>
     <onload condition="!Skin.HasSetting(startup.init)">Skin.SetBool(ShowClearArtOSD)</onload>

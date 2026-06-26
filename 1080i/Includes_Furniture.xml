@@ -663,6 +663,57 @@
         <value condition="!String.IsEmpty(Container(9500).ListItem.Art(artist.clearlogo))">$INFO[Container(9500).ListItem.Art(artist.clearlogo)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.clearlogo)) + String.StartsWith(Container(9500).ListItem.FolderPath,pvr://)">$INFO[Window(Home).Property(TMDbHelper.ListItem.clearlogo)]</value>
     </variable>
+
+    <include name="Furniture_Flagstar">
+        <param name="left" value="$PARAM[left]" default="0"/>
+        <param name="visible" value="$PARAM[visible]" default="true"/>
+        <param name="color" value="$PARAM[color]" default="$VAR[ColorStars]"/>
+        <definition>
+        <control type="image">
+            <left>$PARAM[left]</left>
+            <width>64</width>
+            <height>36</height>
+            <centertop>48%</centertop>
+            <aspectratio>keep</aspectratio>
+            <texture colordiffuse="$PARAM[color]">flags/$VAR[$PARAM[Star]].png</texture>
+            <visible>$PARAM[visible]</visible>
+        </control>
+        </definition>
+    </include>
+
+    <include name="Furniture_RatingFlags">
+        <param name="visible" value="$PARAM[visible]" default="true"/>
+        <definition>
+        <include content="Furniture_Flagstar">
+            <param name="Star" value="$PARAM[Star]1" />
+            <param name="color" value="$PARAM[color]" />
+        </include>
+        <include content="Furniture_Flagstar">
+            <param name="Star" value="$PARAM[Star]2" />
+            <param name="left" value="-20" />
+            <param name="visible" value="$PARAM[visible]" />
+            <param name="color" value="$PARAM[color]" />
+        </include>
+        <include content="Furniture_Flagstar">
+            <param name="Star" value="$PARAM[Star]3" />
+            <param name="left" value="-20" />
+            <param name="visible" value="$PARAM[visible]" />
+            <param name="color" value="$PARAM[color]" />
+        </include>
+        <include content="Furniture_Flagstar">
+            <param name="Star" value="$PARAM[Star]4" />
+            <param name="left" value="-20" />
+            <param name="visible" value="$PARAM[visible]" />
+            <param name="color" value="$PARAM[color]" />
+        </include>
+        <include content="Furniture_Flagstar">
+            <param name="Star" value="$PARAM[Star]5" />
+            <param name="left" value="-20" />
+            <param name="visible" value="$PARAM[visible]" />
+            <param name="color" value="$PARAM[color]" />
+        </include>
+        </definition>
+    </include>
  
     <include name="Furniture_Flags_DialogInfo">
         <control type="group">
@@ -717,7 +768,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.TotalEpisodes)) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Episode))] + !Skin.HasSetting(episodes.show.unwatched)] | [[!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.UnwatchedEpisodes))] + Skin.HasSetting(episodes.show.unwatched)]]] | ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(ListItem.VideoResolution)]</visible>
+                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes)] | [!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]]] | ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(ListItem.VideoResolution)]</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -756,7 +807,7 @@
                 <aspectratio align="left">keep</aspectratio>
                 <visible>Skin.HasSetting(furniture.flagicons) + !Skin.HasSetting(furniture.flags.resolution) + !String.IsEmpty(ListItem.VideoResolution) + !ListItem.IsCollection</visible>
             </control>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.flags.rating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.flags.rating)">
                 <param name="Star" value="Flagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -1046,7 +1097,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.TotalEpisodes)) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Episode))] + !Skin.HasSetting(episodes.show.unwatched)] | [[!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.UnwatchedEpisodes))] + Skin.HasSetting(episodes.show.unwatched)]]] | ListItem.IsCollection</visible>
+                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes)] | [!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]]] | ListItem.IsCollection</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -1086,7 +1137,7 @@
                 <aspectratio align="left">scale</aspectratio>
                 <visible>!Skin.HasSetting(furniture.flags.resolution) + !String.IsEmpty(ListItem.VideoResolution) + !ListItem.IsCollection</visible>
             </control>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.flags.rating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.flags.rating)">
                 <param name="Star" value="Flagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -1389,7 +1440,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes))]] | Container(9500).ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(Container(9500).ListItem.VideoResolution)]</visible>
+                <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [[!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]] | Container(9500).ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(Container(9500).ListItem.VideoResolution)]</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -1428,7 +1479,7 @@
                 <aspectratio align="left">keep</aspectratio>
                 <visible>Skin.HasSetting(furniture.flagicons) + !Skin.HasSetting(furniture.flags.resolution) + !String.IsEmpty(Container(9500).ListItem.VideoResolution) + !Container(9500).ListItem.IsCollection</visible>
             </control>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.flags.rating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.flags.rating)">
                 <param name="Star" value="HubFlagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -1673,7 +1724,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes))]] | Container(9500).ListItem.IsCollection</visible>
+                <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [[!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]] | Container(9500).ListItem.IsCollection</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -1713,7 +1764,7 @@
                 <aspectratio align="left">scale</aspectratio>
                 <visible>!Skin.HasSetting(furniture.flags.resolution) + !String.IsEmpty(Container(9500).ListItem.VideoResolution) + !Container(9500).ListItem.IsCollection</visible>
             </control>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.flags.rating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.flags.rating)">
                 <param name="Star" value="HubFlagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -2046,7 +2097,7 @@
         <value condition="String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Videos) + String.Contains(Container(300).ListItem.Property(path),playlists) + !String.Contains(Container(300).ListItem.Property(path),.xsp)">[COLOR=$VAR[ColorHighlight]]$INFO[Container(9986).NumItems][/COLOR] $LOCALIZE[20012]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),videos)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Movies.Count)][/COLOR] $LOCALIZE[20342]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(TVshows.Count)][/COLOR] $LOCALIZE[36903]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Episodes.Count)][/COLOR] $LOCALIZE[20360]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),music) | [String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),music) + !String.Contains(Container(300).ListItem.Property(path),musicvideo) + !String.Contains(Container(300).ListItem.Property(path),plugin://)]">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Music.ArtistsCount)][/COLOR] $LOCALIZE[133]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Music.AlbumsCount)][/COLOR] $LOCALIZE[132]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(Music.SongsCount)][/COLOR] $LOCALIZE[134]</value>
-        <value condition="String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Favourites) + System.AddonIsEnabled(script.favourites)">[COLOR=$VAR[ColorHighlight]]$INFO[Window(Home).Property(favourite.count)][/COLOR] $LOCALIZE[1036]</value>
+        <value condition="String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + String.Contains(Container(300).ListItem.Property(path),Favourites)">[COLOR=$VAR[ColorHighlight]]$INFO[Container(9987).NumItems][/COLOR] $LOCALIZE[1036]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),musicvideos) | [String.StartsWith(Container(300).ListItem.Property(path),ActivateWindow) + [String.Contains(Container(300).ListItem.Property(path),library://video/musicvideos/) | String.Contains(Container(300).ListItem.Property(path),library://music/musicvideos/)]]">[COLOR=$VAR[ColorHighlight]]$INFO[Window(home).Property(MusicVideos.Count)][/COLOR] $LOCALIZE[20389]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Window(Home).Property(MusicVideos.UnWatched)][/COLOR] $LOCALIZE[31215]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),livetv) + String.IsEmpty(Pvr.BackendChannels)">$INFO[Pvr.BackendName]</value>
         <value condition="String.IsEqual(Container(300).ListItem.Property(defaultID),livetv) + !String.IsEmpty(Pvr.BackendChannels)">$INFO[Pvr.BackendName]  •  [COLOR=$VAR[ColorHighlight]]$INFO[Pvr.BackendChannels][/COLOR] $LOCALIZE[19019]</value>
@@ -2140,8 +2191,9 @@
                 </control>
             </control>
             <control type="group">
-                <include condition="$EXP[HomeShowHeader]">Header_PlaylistsCountItem</include>
-                <include condition="$EXP[HomeShowHeader]">Header_PlayListStats</include>
+                <include condition="Window.IsVisible(home) + $EXP[HomeShowHeader]">Header_FavouritesCountItem</include>
+                <include condition="Window.IsVisible(home) + $EXP[HomeShowHeader]">Header_PlaylistsCountItem</include>
+                <include condition="Window.IsVisible(home) + $EXP[HomeShowHeader]">Header_PlayListStats</include>
                 <control type="group">
 	                <visible>Skin.HasSetting(furniture.logo) + [!Window.IsVisible(home) | [$EXP[HomeIsVertical] | $EXP[HomeIsClassic]] + Control.HasFocus(301)] + !Window.IsVisible(settings) + !Window.IsVisible(skinsettings) + !Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(tvchannels) + !Window.IsVisible(tvrecordings) + !Window.IsVisible(tvguide) + !Window.IsVisible(tvsearch) + !Window.IsVisible(tvtimers)</visible>
 	                <control type="label">
@@ -2180,6 +2232,27 @@
         </control>
     </include>
 
+    <include name="Header_PlayListStats">
+        <control type="list">
+            <include>HiddenListControl</include>
+            <content>$VAR[PlayListStatsPath]</content>
+        </control>
+    </include>
+    
+    <include name="Header_PlaylistsCountItem">
+        <control type="list" id="9986">
+            <include>HiddenListControl</include>
+            <content>$VAR[PlaylistsCountItemPath]</content>
+        </control>
+    </include>
+
+    <include name="Header_FavouritesCountItem">
+        <control type="list" id="9987">
+            <include>HiddenListControl</include>
+            <content>favourites://</content>
+        </control>
+    </include>
+    
     <include name="HeaderLabelWidthLogo">
         <width>560</width>
     </include>
@@ -2559,7 +2632,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.hide.musicrating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="FlagstarSong" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -2766,7 +2839,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.hide.musicrating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="FlagstarSong" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -2925,7 +2998,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.hide.musicrating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="HubFlagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -3104,7 +3177,7 @@
             <itemgap>0</itemgap>
             <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.hide.musicrating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="HubFlagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>
@@ -3274,7 +3347,7 @@
                 <visible>!String.IsEmpty(Control.GetLabel(6601))</visible>
                 <visible>Skin.HasSetting(furniture.flagicons) + !Skin.HasSetting(furniture.flags.resolution)</visible>
             </control>
-            <include content="Def_Flags_Furniture_Small" condition="!Skin.HasSetting(furniture.flags.rating)">
+            <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.flags.rating)">
                 <param name="Star" value="Flagstar" />
                 <param name="visible" value="!Skin.HasSetting(furniture.numericrating)" />
             </include>

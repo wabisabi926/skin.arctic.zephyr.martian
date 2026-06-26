@@ -58,7 +58,7 @@ msgid "Coloured icon media flags"
 msgstr "Farebné ikony médií vlajky"
 
 msgctxt "#31019"
-msgid "Supported Addons"
+msgid "Supported add-ons"
 msgstr "Podporované doplnky"
 
 msgctxt "#31020"
@@ -1249,6 +1249,10 @@ msgctxt "#31366"
 msgid "Show Filenames"
 msgstr "Zobraziť názvy súborov"
 
+msgctxt "#31368"
+msgid "Show unwatched episodes count"
+msgstr "Zobraziť počet nezhliadnutých epizód"
+
 msgctxt "#31369"
 msgid "Shifted ClearArt"
 msgstr "Posunutý ClearArt"
@@ -1502,11 +1506,11 @@ msgid "disabled"
 msgstr "zablokovaný"
 
 msgctxt "#31468"
-msgid "Required addons"
+msgid "Required add-ons"
 msgstr "Požadované doplnky"
 
 msgctxt "#31469"
-msgid "Recommended addons"
+msgid "Recommended add-ons"
 msgstr "Odporúčané doplnky"
 
 msgctxt "#31472"
@@ -1566,7 +1570,7 @@ msgid "CPU"
 msgstr "CPU"
 
 msgctxt "#31489"
-msgid "Underlined homemenu items"
+msgid "Underlined home menu items"
 msgstr "Podčiarknuté položky domovskej ponuky"
 
 msgctxt "#31492"
@@ -1796,10 +1800,6 @@ msgstr "Potom sa zamerajte na domovskú ponuku"
 msgctxt "#31623"
 msgid "If home menu is focused, jump to widgets on back"
 msgstr "Ak je domáca ponuka zameraná, prejdite na miniaplikácie na zadnej strane"
-
-msgctxt "#31625"
-msgid "Disable addons fanart"
-msgstr "Zakázať doplnky fanart"
 
 msgctxt "#31630"
 msgid "Hub widget content type"
