@@ -1144,6 +1144,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_2">
@@ -1152,6 +1153,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
     
 	<variable name="Label_Movie_Ratings">
@@ -1164,6 +1166,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_Player_2">
@@ -1172,6 +1175,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
 	<variable name="Label_Movie_Ratings_Player">
@@ -1184,6 +1188,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_TvShow_Ratings_Player">
@@ -1192,6 +1197,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Settings_Movie_Rating_1">
@@ -1200,6 +1206,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$LOCALIZE[31720]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
@@ -1209,6 +1216,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$LOCALIZE[31720]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
@@ -1218,6 +1226,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$LOCALIZE[31720]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
