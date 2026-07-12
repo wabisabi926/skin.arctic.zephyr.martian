@@ -10,6 +10,24 @@
         <value>$LOCALIZE[31125]</value>
     </variable>
  
+    <variable name="LabelWidgetShortcutsName">
+        <value condition="!String.IsEmpty(Container(211).ListItem.Property(widgetName))">$INFO[Container(211).ListItem.Property(widgetName)]</value>
+        <value condition="!String.IsEmpty(Container(211).ListItem.Property(background))">$LOCALIZE[31110]</value>
+        <value>$LOCALIZE[31269]</value>
+    </variable>
+
+    <variable name="LabelFallbackWidgetName">
+        <value condition="String.IsEqual(Skin.String(home.slideshowpath),none)">$LOCALIZE[16018]</value>
+        <value condition="!String.IsEmpty(Skin.String(home.slideshowpath))">$INFO[Skin.String(home.slideshowpath)]</value>
+        <value>$LOCALIZE[31105]</value>
+    </variable>
+
+    <variable name="LabelPercentWatchedPVR">
+        <value condition="$EXP[IsInProgress] + !Skin.HasSetting(hide.markers.inprogress)">$VAR[LabelInProgressPercentage]</value>
+        <value condition="$EXP[IsWatched] + !Skin.HasSetting(hide.markers.watched)">[COLOR=WatchedProgress]&#62078;[/COLOR]</value>
+        <value condition="$EXP[IsUnwatched] + Skin.HasSetting(markers.unwatched)">&#61833;</value>
+    </variable>
+
     <variable name="ProgressCircleLabel">
         <value condition="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)">$VAR[Percentagelabel]</value>
         <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) + !String.IsEmpty(ListItem.Property(WatchedEpisodes))">$INFO[ListItem.Property(WatchedEpisodes)]/$INFO[ListItem.Property(TotalEpisodes)]</value>
@@ -224,7 +242,7 @@
     </variable>
 
     <variable name="WidgetLabel">
-        <value condition="!String.IsEmpty(Container(300).ListItem.Property(widgetLabel))">$INFO[Container(300).ListItem.Property(widgetLabel)]</value>
+        <value condition="!String.IsEmpty(Container(300).ListItem.Property(widgetName))">$INFO[Container(300).ListItem.Property(widgetName)]</value>
         <value condition="!String.IsEmpty(Skin.String(home.fallbackwidget.name))">$INFO[Skin.String(home.fallbackwidget.name)]</value>
         <value>$LOCALIZE[31105]</value>
     </variable>
@@ -306,11 +324,6 @@
     <variable name="MusicScanLabel">
         <value condition="Library.IsScanningMusic">$LOCALIZE[13353]</value>
         <value>$LOCALIZE[653]</value>
-    </variable>
-    
-    <variable name="PVRInfoLabel">
-        <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
-        <value condition="Window.IsVisible(MyPVRProviders.xml) + !String.IsEqual(ListItem.Label,..)">$INFO[ListItem.Label]</value>
     </variable>
 
     <variable name="PVREpisodeLabel">
@@ -444,6 +457,8 @@
     </variable>
 
     <variable name="LabelNextAiredDetails">
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Title),[B],[/B]  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Air_Time),,  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Title))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Title),[B],[/B]  •  ]$VAR[LabelTvShowStatus,,  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Name),[B],[/B]  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Air_Time),,  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Name),[B],[/B]  •  ]$VAR[LabelTvShowStatus,,  •  ]$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired)]</value>
         <value>$VAR[LabelTvShowStatus]</value>
@@ -533,36 +548,53 @@
         <value>$LOCALIZE[37030]</value>
     </variable>
 
-    <variable name="Label_Widget_Name">
-        <value condition="!String.IsEmpty(Container(211).ListItem.Property(widgetLabel))">$INFO[Container(211).ListItem.Property(widgetLabel)]</value>
-        <value condition="!String.IsEmpty(Container(211).ListItem.Property(background))">$LOCALIZE[31110]</value>
-        <value>$LOCALIZE[31269]</value>
-    </variable>
-
-    <variable name="Label_FallbackWidget_Name">
-        <value condition="String.IsEqual(Skin.String(home.slideshowpath),none)">$LOCALIZE[16018]</value>
-        <value condition="!String.IsEmpty(Skin.String(home.slideshowpath))">$INFO[Skin.String(home.slideshowpath)]</value>
-        <value>$LOCALIZE[31105]</value>
-    </variable>
-
     <variable name="Label_Widget_Aspect">
-        <value condition="String.IsEmpty(Container(211).ListItem.Property(widgetAspect))">$LOCALIZE[31262]</value>
-        <value>$INFO[Container(211).ListItem.Property(widgetAspectLabel)]</value>
-    </variable>
-
-    <variable name="Label_Widget_Style">
-        <value condition="String.IsEmpty(Container(211).ListItem.Property(widgetStyle))">$LOCALIZE[31262]</value>
-        <value>$INFO[Container(211).ListItem.Property(widgetStyleLabel)]</value>
+        <value condition="[String.IsEmpty(Container(211).ListItem.Property(widgetaspect)) | String.IsEqual(Container(211).ListItem.Property(widgetaspect),Poster)] + !String.IsEqual(Container(211).ListItem.Property(widget),submenu)">$LOCALIZE[31262]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),Square)">$LOCALIZE[31263]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),Landscape)">$LOCALIZE[31462]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),Banner)">$LOCALIZE[20020]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),Thumbnail)">$LOCALIZE[21371]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),LandscapeSmall)">$LOCALIZE[31703]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetaspect),LandscapePosterSmall)">$LOCALIZE[31704]</value>
     </variable>
 
     <variable name="Label_Widget_SortBy">
-        <value condition="String.IsEmpty(Container(211).ListItem.Property(widgetSortby))">$LOCALIZE[571]</value>
-        <value>$INFO[Container(211).ListItem.Property(widgetSortbyLabel)]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),name)">$LOCALIZE[551]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),random)">$LOCALIZE[590]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),dateadded)">$LOCALIZE[570]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),lastplayed)">$LOCALIZE[568]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),playcount)">$LOCALIZE[567]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),year)">$LOCALIZE[345]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),rating)">$LOCALIZE[563]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),userrating)">$LOCALIZE[33067]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),votes)">$LOCALIZE[205]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),genre)">$LOCALIZE[515]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),country)">$LOCALIZE[574]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),studio)">$LOCALIZE[572]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),playlist)">$LOCALIZE[559]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),episode)">$LOCALIZE[20359]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),season)">$LOCALIZE[20373]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),totalepisodes)">$LOCALIZE[20360]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),watchedepisodes)">$LOCALIZE[21457]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),tvshowtitle)">$LOCALIZE[36902]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),file)">$LOCALIZE[561]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),title)">$LOCALIZE[369]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),tracknumber)">$LOCALIZE[554]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),time)">$LOCALIZE[555]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),artist)">$LOCALIZE[557]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),album)">$LOCALIZE[558]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),channelnumber)">$LOCALIZE[19029]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),lastupdated)">$LOCALIZE[12014]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),lastused)">$LOCALIZE[12012]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),date)">$LOCALIZE[552]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortby),userpreference)">$LOCALIZE[19349]</value>
+        <value>$LOCALIZE[571]</value>
     </variable>
     
     <variable name="Label_Widget_Sortorder">
-        <value condition="String.IsEmpty(Container(211).ListItem.Property(widgetSortorder))">$LOCALIZE[571]</value>
-        <value>$INFO[Container(211).ListItem.Property(widgetSortorderLabel)]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortorder),ascending)">$LOCALIZE[584]</value>
+        <value condition="String.IsEqual(Container(211).ListItem.Property(widgetSortorder),descending)">$LOCALIZE[585]</value>
+        <value>$LOCALIZE[571]</value>
     </variable>
 
     <variable name="Label_Widget_Content">
@@ -583,19 +615,11 @@
         <value>$LOCALIZE[37030]</value>
     </variable>
     
-    <variable name="Label_Skinshortcuts_ItemStatus">
+    <variable name="ItemStatus">
         <value condition="!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">$LOCALIZE[305]</value>
         <value>$LOCALIZE[1223]</value>
     </variable>
 
-	<variable name="Label_Skinshortcuts_DialogTitle">
-		<value condition="String.IsEqual(Window.Property(menuname),mainmenu) | String.IsEmpty(Window.Property(menuname))">$ADDON[script.skinshortcuts 32071]</value>
-		<value condition="String.IsEqual(Window.Property(menuname),powermenu)">$LOCALIZE[31359]</value>
-		<value condition="String.EndsWith(Window.Property(menuname),.widgets)">$LOCALIZE[31361]</value>
-        <value condition="String.StartsWith(Window.Property(menuname),x11)">$LOCALIZE[31362]</value>
-		<value>$ADDON[script.skinshortcuts 32072]</value>
-	</variable>
-    
     <variable name="Label_DialogVideoInfo_Header">
         <value condition="String.IsEqual(Window.Property(content),5)">$LOCALIZE[31463] $INFO[ListItem.Title]</value>
         <value condition="String.IsEqual(Window.Property(content),6)">$LOCALIZE[31158] $INFO[ListItem.Title]</value>
@@ -1000,11 +1024,6 @@
         <value>$INFO[ListItem.FileNameAndPath]</value>
     </variable>
 
-    <variable name="Label_VideoManager_FileNameAndPath">
-        <value condition="Control.HasFocus(50) + !String.IsEmpty(Container(50).ListItem.DecodedFileNameAndPath)">$INFO[Container(50).ListItem.DecodedFileNameAndPath]</value>
-        <value condition="Control.HasFocus(50)">$INFO[Container(50).ListItem.FileNameAndPath]</value>
-    </variable>
-
     <variable name="LabelGenreHomeSmallWidget">
         <value condition="String.IsEqual(ListItem.DBType,episode) + !String.IsEmpty(ListItem.TvShowTitle) + Window.IsVisible(Home.xml)">$INFO[ListItem.TvShowTitle]</value>
         <value condition="String.IsEqual(ListItem.DBType,episode)">$VAR[LabelDurationTimeCheck]</value>
@@ -1144,7 +1163,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_2">
@@ -1153,7 +1171,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
     
 	<variable name="Label_Movie_Ratings">
@@ -1166,7 +1183,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_Player_2">
@@ -1175,7 +1191,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
 	<variable name="Label_Movie_Ratings_Player">
@@ -1188,7 +1203,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_TvShow_Ratings_Player">
@@ -1197,7 +1211,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.Trakt_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.Trakt_Rating),  •  Trakt ,]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$INFO[Window(Home).Property(TMDbHelper.Player.Metacritic_Rating),  •  MC ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$INFO[Window(Home).Property(TMDbHelper.Player.RottenTomatoes_Rating),  •  RT ,%]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating,,.0),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Settings_Movie_Rating_1">
@@ -1206,7 +1219,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),RT)">$LOCALIZE[31720]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
@@ -1216,7 +1228,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),RT)">$LOCALIZE[31720]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
@@ -1226,7 +1237,6 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Trakt)">$LOCALIZE[31486]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MC)">$LOCALIZE[31719]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),RT)">$LOCALIZE[31720]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban)">Douban</value>
         <value>$LOCALIZE[231]</value>
     </variable>
 
@@ -1388,6 +1398,7 @@
         <value condition="$EXP[IsBackgroundImageOrange]">$LOCALIZE[31958]</value>
         <value condition="$EXP[IsBackgroundImageSlate]">$LOCALIZE[31959]</value>
         <value condition="$EXP[IsBackgroundImageCoal]">$LOCALIZE[31960]</value>
+        <value condition="$EXP[IsBackgroundImageOnyx]">$LOCALIZE[31902]</value>
         <value>$INFO[Skin.String(fanart.fallback)]</value>
     </variable>
     
@@ -1427,18 +1438,6 @@
         <value>$INFO[ListItem.Property(Artist_Formed)]</value>
     </variable>
   
-  	<variable name="Label_Player_SubtitlesLanguage">
-  		<value condition="!VideoPlayer.HasSubtitles">$LOCALIZE[31604]</value>
-  		<value condition="!VideoPlayer.SubtitlesEnabled">$LOCALIZE[13106]</value>
-  		<value condition="!String.IsEmpty(VideoPlayer.SubtitlesLanguage)">$VAR[Label_Subtitles_Codec,,  •  ][UPPERCASE]$INFO[VideoPlayer.SubtitlesLanguage][/UPPERCASE]          </value>
-  		<value>$VAR[Label_Subtitles_Codec,,  •  ]$LOCALIZE[31936]          </value>
-  	</variable>
-
-  	<variable name="Label_Player_AudioLanguage">
-  		<value condition="!String.IsEmpty(VideoPlayer.AudioLanguage)">[UPPERCASE]$INFO[VideoPlayer.AudioLanguage][/UPPERCASE]</value>
-  		<value>$LOCALIZE[31936]</value>
-  	</variable>
-
     <variable name="Label_Video_3D">
         <value condition="$EXP[IsVideo3D]">3D</value>        
     </variable>
@@ -1516,8 +1515,8 @@
     </variable>
 
     <variable name="Label_Video_HdrType">
+        <value condition="$EXP[IsVideoHDR10Plus]">HDR10+</value>
         <value condition="String.IsEqual(ListItem.HdrType,dolbyvision) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.HdrType,dolbyvision)]">Dolby Vision</value>
-        <value condition="String.IsEqual(ListItem.HdrType,hdr10plus) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.HdrType,hdr10plus)] | $EXP[IsVideoHDR10Plus]">HDR10+</value>
         <value condition="String.IsEqual(ListItem.HdrType,hlg) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.HdrType,hlg)]">HLG</value>
         <value condition="String.IsEqual(ListItem.HdrType,hdr10) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.HdrType,hdr10)]">HDR10</value>
         <value condition="VideoPlayer.IsFullscreen">$INFO[VideoPlayer.HdrType]</value>
@@ -1525,16 +1524,11 @@
     </variable>
 
     <variable name="Label_Video_HdrType_Hub">
+        <value condition="$EXP[IsVideoHDR10PlusHub]">HDR10+</value>
         <value condition="String.IsEqual(Container(9500).ListItem.HdrType,dolbyvision)">Dolby Vision</value>
-        <value condition="String.IsEqual(Container(9500).ListItem.HdrType,hdr10plus) | $EXP[IsVideoHDR10PlusHub]">HDR10+</value>
         <value condition="String.IsEqual(Container(9500).ListItem.HdrType,hlg)">HLG</value>
         <value condition="String.IsEqual(Container(9500).ListItem.HdrType,hdr10)">HDR10</value>
         <value>$INFO[Container(9500).ListItem.HdrType]</value>
-    </variable>
-
-    <variable name="Label_Video_HdrType_Detailed">
-        <value condition="Window.IsActive(fullscreenvideo)">$VAR[Label_Video_HdrType]$INFO[VideoPlayer.HdrDetail, P]</value>
-        <value>$VAR[Label_Video_HdrType]$INFO[ListItem.HdrDetail, P]</value>
     </variable>
 
     <variable name="Label_Audio_Codec">
@@ -1711,175 +1705,6 @@
         <value>$INFO[Container(9500).ListItem.AudioCodec]</value>
     </variable>
 
-	<variable name="Label_Subtitles_Codec">
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, ass)">ASS</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, dvb_subtitle)">DVB-SUB</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, dvb_teletext)">DVB-Text</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, dvd_subtitle)">VobSub</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, hdmv_pgs_subtitle)">PGS</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, microdvd)">MicroDVD</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, mov_text)">Timed Text</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, mpl2)">MPL2</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, realtext)">RealText</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, sami)">SAMI</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, srt)">SubRip</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, ssa)">SSA</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, subrip)">Subrip</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, text)">Text</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, ttml)">TTML</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, vplayer)">VPlayer</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, webvtt)">WebVTT</value>
-		<value condition="Window.IsActive(fullscreenvideo) + String.IsEqual(VideoPlayer.SubtitleCodec, xsub)">XSUB</value>
-		<value condition="Window.IsActive(fullscreenvideo)">$INFO[VideoPlayer.SubtitleCodec]</value>
-	</variable>
-
-    <variable name="Label_Stream_Codec">
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),av1)">AV1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),avc1)">AVC-1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),div3)">DivX</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),divx)">DivX</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),dx50)">DivX</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),flv)">FLV</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),h263)">H.263</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),h264)">H.264</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),hev1)">H.265</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),hevc)">H.265</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),hvc1)">H.265</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),mpeg1)">MPEG-1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),mpeg2)">MPEG-2</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),mpeg2video)">MPEG-2</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),mp4v)">MPEG-4</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),mpeg4)">MPEG-4</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),theora)">Theora</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),vc1)">VC-1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),vc-1)">VC-1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),vp8)">VP8</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),vp9)">VP9</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),wmv)">WMV</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),wmv3)">WMV</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),wvc1)">VC-1</value>
-        <value condition="Window.IsVisible(dialogselectvideo) + String.IsEqual(ListItem.Property(stream.codec),xvid)">XviD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac)">AAC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac_latm)">AAC LATM</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac_lc)">AAC-LC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac_ltp)">AAC-LTP</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aac_ssr)">AAC-SSR</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),he_aac)">HE-AAC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),he_aac_v2)">HE-AACv2</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),ac3)">Dolby Digital</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aif)">AIFF</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aifc)">AIFF</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),aiff)">AIFF</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),alac)">ALAC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),ape)">APE</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),avc)">AVC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),cdda)">CDDA</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dca)">DTS</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dolbydigital)">Dolby Digital</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dsd_lsbf)">DSD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dsd_lsbf_planar)">DSD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dsd_msbf)">DSD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dsd_msbf_planar)">DSD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dts)">DTS</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dts_96_24)">DTS 96/24</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dts_es)">DTS-ES</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dts_express)">DTS Express</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_hra)">DTS-HD HRA</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma)">DTS-HD MA</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma_x)">DTS-HD MA / DTS:X</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtshd_ma_x_imax)">DTS-HD MA / DTS:X IMAX</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),dtsma)">DTS-HD MA</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),eac3)">Dolby Digital Plus</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),eac3_ddp_atmos)">Dolby Digital Plus Atmos</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),flac)">FLAC</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),mp1)">MP1</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),mp2)">MP2</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),mp3)">MP3</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),mp3float)">MP3</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),ogg)">Ogg</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),opus)">Opus</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),pcm)">PCM</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),pcm_bluray)">PCM</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),pcm_s16le)">PCM</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),pcm_s24le)">PCM</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),truehd)">Dolby TrueHD</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),truehd_atmos)">Dolby TrueHD Atmos</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),vorbis)">Vorbis</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wav)">WAV</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wavpack)">WAVP</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wmapro)">WMA-PRO</value>
-        <value condition="Window.IsVisible(dialogselectaudio) + String.IsEqual(ListItem.Property(stream.codec),wmav2)">WMA</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),ass)">ASS</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),dvb_subtitle)">DVB-SUB</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),dvb_teletext)">DVB-Text</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),dvd_subtitle)">VobSub</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),hdmv_pgs_subtitle)">PGS</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),microdvd)">MicroDVD</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),mov_text)">Timed Text</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),mpl2)">MPL2</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),realtext)">RealText</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),sami)">SAMI</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),srt)">SubRip</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),ssa)">SSA</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),subrip)">Subrip</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),text)">Text</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),ttml)">TTML</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),vplayer)">VPlayer</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),webvtt)">WebVTT</value>
-		<value condition="Window.IsVisible(dialogselectsubtitle) + String.IsEqual(ListItem.Property(stream.codec),xsub)">XSUB</value>
-        <value>$INFO[ListItem.Property(stream.codec)]</value>
-    </variable>
-
-	<variable name="Label_Stream_AudioChannels">
-        <value>$INFO[ListItem.Property(stream.channels)]</value>
-	</variable>
-
-	<variable name="Label_Stream_HDRType">
-		<value condition="String.IsEqual(ListItem.Property(stream.hdrtype),dolbyvision)">Dolby Vision</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.hdrtype),hdr10)">HDR10</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.hdrtype),hlg)">HLG</value>
-		<value>$INFO[ListItem.Property(stream.hdrtype)]</value>
-	</variable>
-	
-	<variable name="Label_Stream_3D">
-		<value condition="!String.IsEmpty(ListItem.Property(stream.stereomode))">3D</value>
-	</variable>
-	
-	<variable name="Label_Stream_Bitrate">
-		<value condition="!String.IsEqual(ListItem.Property(stream.bitrate),0)">$INFO[ListItem.Property(stream.bitrate)]</value>
-	</variable>
-
-  	<variable name="Label_StreamList_Default">
-  		<value condition="ListItem.Property(Stream.IsDefault)">$LOCALIZE[13278], </value>
-  	</variable>
-
-	<variable name="Label_StreamList_Flags">
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true)+String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111], $LOCALIZE[39106], $LOCALIZE[39107]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true)+String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111], $LOCALIZE[39106], $LOCALIZE[39108]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isforced),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111], $LOCALIZE[39106]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111], $LOCALIZE[39107]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true) + String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111], $LOCALIZE[39108]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39106], $LOCALIZE[39107]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true) + String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39106], $LOCALIZE[39108]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.ishearingimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39107]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isvisualimpaired),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39108]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isforced),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39106]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isoriginal),true)">$VAR[Label_StreamList_Default]$LOCALIZE[39111]</value>
-		<value condition="String.IsEqual(ListItem.Property(stream.isdefault),true)">$LOCALIZE[13278]</value>
-	</variable>
-
-  	<variable name="Label_StreamList_Title">
-  		<value condition="Window.IsVisible(dialogselectvideo)">$VAR[Label_Stream_Codec]$VAR[Label_Stream_HDRType,  •  ]$VAR[Label_Stream_3D,  •  ]$VAR[Label_StreamList_Flags,  [LIGHT][,][/LIGHT]]</value>
-  		<value>$INFO[ListItem.Label]$VAR[Label_StreamList_Flags,  [LIGHT][,][/LIGHT]]</value>
-  	</variable>
-
-  	<variable name="Label_StreamList_Label2">
-  		<value condition="String.IsEqual(ListItem.Label,$LOCALIZE[24021])">$LOCALIZE[31937]</value>
-  		<value condition="Window.IsVisible(dialogselectvideo)">$INFO[ListItem.Property(stream.resolution)]$INFO[ListItem.Property(stream.stereomode),  •  ]$VAR[Label_Stream_Bitrate,  •  , kbps]$INFO[ListItem.Property(stream.fps),  •  , fps]$INFO[ListItem.Property(stream.description),  •  ]$INFO[ListItem.Property(stream.language), (,)]</value>
-  		<value condition="Window.IsVisible(dialogselectaudio)">$VAR[Label_Stream_Codec]$VAR[Label_Stream_AudioChannels, ,]$INFO[ListItem.Property(stream.language), (,)]</value>
-  		<value>$VAR[Label_Stream_Codec,, ]$INFO[ListItem.Property(stream.description), •  , ]$INFO[ListItem.Property(stream.language),(,)]</value>
-  	</variable>
-
     <variable name="Label_Furniture_VideoInfo">
         <value>$INFO[ListItem.VideoResolution]$VAR[Label_Video_Codec,  •  ,]$VAR[Label_Video_Aspect,  •  ,]$VAR[Label_Video_3D,  •  ,]$VAR[Label_Video_HdrType,  •  ,]</value>
     </variable>
@@ -1901,6 +1726,7 @@
     </variable>
 
     <variable name="Label_List_MediaInfo">
+        <value condition="Window.IsVisible(selectvideoversion)">$INFO[ListItem.VideoVersionName]$VAR[LabelDurationTimeCheck, (,)]</value>
         <value>$INFO[ListItem.Label]$VAR[LabelDurationTimeCheck, (,)]</value>
     </variable>
  
