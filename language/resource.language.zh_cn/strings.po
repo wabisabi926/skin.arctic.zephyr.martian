@@ -234,12 +234,8 @@ msgid "Random Artists"
 msgstr "随机艺术家"
 
 msgctxt "#31069"
-msgid "Next up"
+msgid "Next Up"
 msgstr "下个播放"
-
-msgctxt "#31070"
-msgid "Grouped Unwatched Episodes"
-msgstr "分组未观看剧集"
 
 msgctxt "#31071"
 msgid "Show fanart/landscape view"
