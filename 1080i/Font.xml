@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <fonts>
-    <fontset id="Default" unicode="false" idloc="15109">
+    <fontset id="Default" unicode="true" idloc="15109">
         <include>VideoLyrics_Fonts</include>
         <font>
             <name>WatchedIcon</name>
@@ -15,195 +15,195 @@
         </font>
         <font>
             <name>Music_Big</name>
-            <filename>Roboto-Light.ttf</filename>
+            <filename>RobotoNotoCJKsc-Light.ttf</filename>
             <size>80</size>
         </font>
         <font>
             <name>Music_Bigger</name>
-            <filename>Roboto-Light.ttf</filename>
+            <filename>RobotoNotoCJKsc-Light.ttf</filename>
             <size>130</size>
         </font>
         <font>
             <name>Music_Biggest</name>
-            <filename>Roboto-Light.ttf</filename>
+            <filename>RobotoNotoCJKsc-Light.ttf</filename>
             <size>210</size>
         </font>
         <font>
             <name>Null</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>0</size>
         </font>
         <font>
             <name>LargeBold</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>46</size>
         </font>
         <font>
             <name>Large</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>46</size>
         </font>
         <font>
             <name>LargeX2</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>70</size>
         </font>
         <font>
             <name>LargeNew</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>53</size>
         </font>
         <font>
             <name>LargeNetflix</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>66</size>
         </font>
         <font>
             <name>EpisodeNumber</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>96</size>
         </font>
         <font>
             <name>Lyrics</name>
-            <filename>Roboto-Light.ttf</filename>
+            <filename>RobotoNotoCJKsc-Light.ttf</filename>
             <size>46</size>
         </font>
         <font>
             <name>Medium</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>36</size>
-            <linespacing>1.06</linespacing>
+            <linespacing>1.05</linespacing>
         </font>
         <font>
             <name>MediumBold</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>36</size>
         </font>
         <font>
             <name>Small</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>Small33</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>27</size>
         </font>
         <font>
             <name>SmallBold</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>Tiny</name>
-            <filename>Roboto-Regular.ttf</filename>
-            <linespacing>1.15</linespacing>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
+            <linespacing>1.08</linespacing>
             <size>25</size>
         </font>
         <font>
             <name>Tiny24</name>
-            <filename>Roboto-Regular.ttf</filename>
-            <linespacing>1.08</linespacing>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
+            <linespacing>1.05</linespacing>
             <size>24</size>
         </font>
         <font>
             <name>TinyPlot</name>
-            <filename>Roboto-Regular.ttf</filename>
-            <linespacing>1.24</linespacing>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
+            <linespacing>1.21</linespacing>
             <size>25</size>
         </font>
         <font>
             <name>TinyBold</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>25</size>
         </font>
         <font>
             <name>Mini</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>23</size>
         </font>
         <font>
             <name>Hint</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>19</size>
         </font>
         <font>
             <name>HintBold</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>21</size>
             <aspect>0.95</aspect>
         </font>
         <font>
             <name>Button</name>
             <style>uppercase</style>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>24</size>
         </font>
         <font>
             <name>Flag</name>
             <style>uppercase</style>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>23</size>
         </font>
         <font>
             <name>EPGTimeline</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>19</size>
             <style>uppercase</style>
         </font>
         <font>
             <name>Home</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <style>uppercase</style>
             <size>30</size>
         </font>
         <font>
             <name>HomeFO</name>
             <style>uppercase</style>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>46</size>
         </font>
         <font>
             <name>HomeIcon</name>
             <style>uppercase</style>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>26</size>
         </font>
         <font>
             <name>HomeLarge</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <style>uppercase</style>
             <size>34</size>
         </font>
         <font>
             <name>ChannelInfo</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>26</size>
         </font>
          <font>
             <name>Progress</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>21</size>
         </font>
        <font>
             <name>WeatherTemp</name>
-            <filename>Roboto-Bold.ttf</filename>
+            <filename>RobotoNotoCJKsc-Bold.ttf</filename>
             <size>32</size>
         </font>
         <!-- Required for system -->
         <font>
             <name>font13</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>28</size>
         </font>
         <font>
             <name>Mono26</name>
-            <filename>RobotoMono-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>26</size>
         </font>
         <font>
             <name>Clock</name>
-            <filename>Roboto-Regular.ttf</filename>
+            <filename>RobotoNotoCJKsc-Regular.ttf</filename>
             <size>130</size>
         </font>
     </fontset>
