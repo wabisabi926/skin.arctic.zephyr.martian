@@ -237,6 +237,10 @@ msgctxt "#31069"
 msgid "Next Up"
 msgstr "下个播放"
 
+msgctxt "#31070"
+msgid "Recent Episodes Grouped"
+msgstr "分组的最近剧集"
+
 msgctxt "#31071"
 msgid "Show fanart/landscape view"
 msgstr "显示背景图/横版图视图"
