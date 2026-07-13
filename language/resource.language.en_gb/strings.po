@@ -174,7 +174,7 @@ msgid "Movie Sets"
 msgstr ""
 
 msgctxt "#31053"
-msgid "New Tv Shows"
+msgid "New TV Shows"
 msgstr ""
 
 msgctxt "#31054"
@@ -182,11 +182,11 @@ msgid "Recently Watched TV Shows"
 msgstr ""
 
 msgctxt "#31056"
-msgid "Random Tv Shows"
+msgid "Random TV Shows"
 msgstr ""
 
 msgctxt "#31057"
-msgid "Top Rated Tv Shows"
+msgid "Top Rated TV Shows"
 msgstr ""
 
 msgctxt "#31058"
@@ -234,7 +234,11 @@ msgid "Random Artists"
 msgstr ""
 
 msgctxt "#31069"
-msgid "Next up"
+msgid "Next Up"
+msgstr ""
+
+msgctxt "#31070"
+msgid "Recent Episodes Grouped"
 msgstr ""
 
 msgctxt "#31071"
@@ -538,7 +542,7 @@ msgid "Movies by"
 msgstr ""
 
 msgctxt "#31160"
-msgid "Tv Shows by"
+msgid "TV Shows by"
 msgstr ""
 
 msgctxt "#31161"
@@ -1158,7 +1162,7 @@ msgid "New Unwatched Episodes"
 msgstr ""
 
 msgctxt "#31323"
-msgid "New Unwatched Tv Shows"
+msgid "New Unwatched TV Shows"
 msgstr ""
 
 msgctxt "#31324"
@@ -1215,6 +1219,14 @@ msgstr ""
 
 msgctxt "#31340"
 msgid "Autoscroll"
+msgstr ""
+
+msgctxt "#31341"
+msgid "Recommended Movies"
+msgstr ""
+
+msgctxt "#31342"
+msgid "Recommended TV Shows"
 msgstr ""
 
 msgctxt "#31347"
@@ -1462,7 +1474,7 @@ msgid "Most played Songs"
 msgstr ""
 
 msgctxt "#31437"
-msgid "Use old jumpbar (requires script.embuary.helper)"
+msgid "Use Skin Info Service alphabet scrollbar"
 msgstr ""
 
 msgctxt "#31438"
@@ -1563,10 +1575,6 @@ msgstr ""
 
 msgctxt "#31469"
 msgid "Recommended add-ons"
-msgstr ""
-
-msgctxt "#31472"
-msgid "CoreELEC Settings"
 msgstr ""
 
 msgctxt "#31473"
@@ -1718,7 +1726,7 @@ msgid "Mini-EPG (vertical, only 5 Items)"
 msgstr ""
 
 msgctxt "#31518"
-msgid "Unwatched Tv Shows"
+msgid "Unwatched TV Shows"
 msgstr ""
 
 msgctxt "#31520"
@@ -1883,10 +1891,6 @@ msgstr ""
 
 msgctxt "#31632"
 msgid "Stop playback when item is no longer focused"
-msgstr ""
-
-msgctxt "#31643"
-msgid "LibreELEC Settings"
 msgstr ""
 
 msgctxt "#31650"
@@ -2087,6 +2091,10 @@ msgstr ""
 
 msgctxt "#31901"
 msgid "Bottom"
+msgstr ""
+
+msgctxt "#31902"
+msgid "Onyx"
 msgstr ""
 
 msgctxt "#31903"
