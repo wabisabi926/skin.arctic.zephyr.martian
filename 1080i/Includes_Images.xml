@@ -133,8 +133,9 @@
     </variable>
 
     <variable name="Image_RottenTomatoes_UserMeter">
-        <value condition="Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),59) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter))">ratings/popcorn.png</value>
-        <value condition="Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),0) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter))">ratings/popcorn_spilt.png</value>
+        <value condition="String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter_Image),hot)">ratings/hot.png</value>
+        <value condition="Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),59)">ratings/popcorn.png</value>
+        <value condition="Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter),0)">ratings/popcorn_spilt.png</value>
     </variable>
 
     <variable name="Image_DiscArt_Music">
@@ -286,6 +287,7 @@
     <variable name="Image_AudioCodec">
         <value condition="$EXP[IsAudioCodecATMOS]">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="$EXP[IsAudioCodecDTSX]">$VAR[MediaFlagsPath]/audio/dtshd_ma_x.png</value>
+        <value condition="$EXP[IsAudioCodecAuro3D]">$VAR[MediaFlagsPath]/audio/auro3d.png</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,eac3_ddp_atmos) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,eac3_ddp_atmos)]">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,truehd_atmos) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,truehd_atmos)]">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,aac_latm) | [VideoPlayer.IsFullscreen + String.IsEqual(VideoPlayer.AudioCodec,aac_latm)] | [Window.IsActive(visualisation) + String.IsEqual(MusicPlayer.Codec,aac_latm)]">$VAR[MediaFlagsPath]/audio/aac.png</value>
@@ -309,6 +311,7 @@
     <variable name="Image_AudioCodec_Hub">
         <value condition="$EXP[IsAudioCodecATMOSHub]">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="$EXP[IsAudioCodecDTSXHub]">$VAR[MediaFlagsPath]/audio/dtshd_ma_x.png</value>
+        <value condition="$EXP[IsAudioCodecAuro3DHub]">$VAR[MediaFlagsPath]/audio/auro3d.png</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,eac3_ddp_atmos)">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,truehd_atmos)">$VAR[MediaFlagsPath]/audio/atmos.png</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,aac_latm)">$VAR[MediaFlagsPath]/audio/aac.png</value>

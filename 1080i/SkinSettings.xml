@@ -309,9 +309,9 @@
                             <label>$LOCALIZE[31406]</label>
                             <label2>$VAR[Label_HomeMenuStyle]</label2>
                             <onclick condition="!Skin.HasSetting(home.showicons)">Skin.SetBool(home.showicons)</onclick>
-                            <onclick condition="Skin.HasSetting(home.showicons) + !Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.vertical)">Skin.SetBool(homemenu.only.icons)</onclick>
-                            <onclick condition="Skin.HasSetting(home.showicons) + [Skin.HasSetting(homemenu.only.icons) | !Skin.HasSetting(home.vertical)]">Skin.Reset(home.showicons)</onclick>
-                            <onclick condition="Skin.HasSetting(home.showicons) + [Skin.HasSetting(homemenu.only.icons) | !Skin.HasSetting(home.vertical)]">Skin.Reset(homemenu.only.icons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + !Skin.HasSetting(homemenu.only.icons)">Skin.SetBool(homemenu.only.icons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">Skin.Reset(home.showicons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">Skin.Reset(homemenu.only.icons)</onclick>
                         </control>
                         <control type="radiobutton" id="9817">
                             <width>1360</width>

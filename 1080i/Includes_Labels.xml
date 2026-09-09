@@ -150,9 +150,9 @@
         <value>$INFO[ListItem.Label2]</value>
     </variable>
 
-    <variable name="LabelDurationMusicFurniture">
-        <value condition="String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.Duration(mins))">$VAR[LabelDurationTimeCheck]</value>
-        <value>$INFO[ListItem.Duration(mins:ss),, $LOCALIZE[31102]]</value>
+    <variable name="LabelDurationFurniture">
+        <value condition="[String.IsEqual(ListItem.DBType,song) | String.IsEqual(ListItem.DBType,musicvideo)] + !String.IsEmpty(ListItem.Duration(ss))">$INFO[ListItem.Duration(mins:ss),, $LOCALIZE[31102]]</value>
+        <value>$VAR[LabelDurationTimeCheck]</value>
     </variable>
     
     <variable name="LabelPlotBox">
@@ -483,7 +483,7 @@
     </variable> 
 
     <variable name="Label_HomeMenuStyle">
-        <value condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.vertical)">$LOCALIZE[31409]</value>
+        <value condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">$LOCALIZE[31409]</value>
         <value condition="Skin.HasSetting(home.showicons)">$LOCALIZE[31408]</value>
         <value>$LOCALIZE[31407]</value>
     </variable>
@@ -1543,8 +1543,10 @@
     </variable>
 
     <variable name="Label_Audio_Codec">
+        <value condition="$EXP[IsAudioCodecAuro3D]">Auro-3D</value>
         <value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultCodecMap, VideoPlayer.AudioCodec]</value>
         <value condition="Window.IsActive(visualisation)">$MAP[DefaultCodecMap, MusicPlayer.Codec]</value>
+        <value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra) + $EXP[IsAudioCodecDTSX]">DTS-HD HRA / DTS:X</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma) + $EXP[IsAudioCodecDTSX]">DTS-HD MA / DTS:X</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,eac3) + $EXP[IsAudioCodecATMOS]">Dolby Digital Plus / Atmos</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,truehd) + $EXP[IsAudioCodecATMOS]">Dolby TrueHD / Atmos</value>
@@ -1552,15 +1554,19 @@
     </variable>
 
     <variable name="Label_Audio_Codec_Furniture">
+        <value condition="$EXP[IsAudioCodecAuro3D]">Auro-3D</value>
         <value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultAltAudioMap, VideoPlayer.AudioCodec]</value>
         <value condition="Window.IsActive(visualisation)">$MAP[DefaultAltAudioMap, MusicPlayer.Codec]</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,dtshd_ma) + $EXP[IsAudioCodecDTSX]">DTS:X</value>
+        <value condition="String.IsEqual(ListItem.AudioCodec,dtshd_hra) + $EXP[IsAudioCodecDTSX]">DTS:X</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,eac3) + $EXP[IsAudioCodecATMOS]">Atmos</value>
         <value condition="String.IsEqual(ListItem.AudioCodec,truehd) + $EXP[IsAudioCodecATMOS]">Atmos</value>
         <value>$MAP[DefaultAltAudioMap, ListItem.AudioCodec]</value>
     </variable>
 
     <variable name="Label_Audio_Codec_Furniture_Hub">
+        <value condition="$EXP[IsAudioCodecAuro3DHub]">Auro-3D</value>
+        <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,dtshd_hra) + $EXP[IsAudioCodecDTSXHub]">DTS:X</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,dtshd_ma) + $EXP[IsAudioCodecDTSXHub]">DTS:X</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,eac3) + $EXP[IsAudioCodecATMOSHub]">Atmos</value>
         <value condition="String.IsEqual(Container(9500).ListItem.AudioCodec,truehd) + $EXP[IsAudioCodecATMOSHub]">Atmos</value>

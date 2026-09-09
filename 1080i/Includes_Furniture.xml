@@ -1061,7 +1061,7 @@
 	                <height>64</height>
 	                <align>left</align>
 	                <aligny>center</aligny>
-	                <label>$VAR[LabelDurationTimeCheck] </label>
+	                <label>$VAR[LabelDurationFurniture] </label>
 	                <font>Flag</font>
 	                <textcolor>Dark1</textcolor>
 	                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
@@ -1340,7 +1340,7 @@
 	                <height>64</height>
 	                <align>left</align>
 	                <aligny>center</aligny>
-	                <label>$VAR[LabelDurationTimeCheck] </label>
+	                <label>$VAR[LabelDurationFurniture] </label>
 	                <font>Flag</font>
 	                <textcolor>Dark1</textcolor>
 	                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
@@ -2611,7 +2611,7 @@
                 <label>$INFO[ListItem.FileExtension]$VAR[LabelAudioChannels, ]  </label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>!Skin.HasSetting(furniture.flagicons)</visible>
+                <visible>!Skin.HasSetting(furniture.flagicons) + !String.IsEqual(ListItem.DBType,Album)</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -2752,7 +2752,7 @@
                 <centertop>50%</centertop>
                 <texture colordiffuse="Dark1">flags/time.png</texture>
                 <aspectratio align="left">scale</aspectratio>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -2761,10 +2761,10 @@
                 <left>15</left>
                 <align>left</align>
                 <aligny>center</aligny>
-                <label>$VAR[LabelDurationMusicFurniture]</label>
+                <label>$VAR[LabelDurationFurniture]</label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
         </control>
         <control type="grouplist">
@@ -2906,7 +2906,7 @@
                 <centertop>50%</centertop>
                 <texture colordiffuse="Dark1">flags/time.png</texture>
                 <aspectratio align="left">scale</aspectratio>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -2915,10 +2915,10 @@
                 <left>15</left>
                 <align>left</align>
                 <aligny>center</aligny>
-                <label>$VAR[LabelDurationMusicFurniture]</label>
+                <label>$VAR[LabelDurationFurniture]</label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
         </control>
     </include>
@@ -2955,7 +2955,7 @@
                 <label>$INFO[Container(9500).ListItem.FileExtension]$VAR[LabelHubAudioChannels, ]  </label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>!Skin.HasSetting(furniture.flagicons)</visible>
+                <visible>!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty()</visible>
             </control>
             <control type="label">
                 <width>auto</width>
