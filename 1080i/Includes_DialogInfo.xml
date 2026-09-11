@@ -662,8 +662,8 @@
                 <include>Animation.FadeOutDialogInfo</include>
                 <include>Animation.FadeInDialogInfo</include>
                 <left>20</left>
-                <right>0</right>
-                <bottom>30</bottom>
+                <right>-10</right>
+                <bottom>-10</bottom>
                 <height>210</height>
                 <onleft>$PARAM[controlid]</onleft>
                 <onright>$PARAM[controlid]</onright>
@@ -777,10 +777,102 @@
             <param name="icon" value="$PARAM[icon]" />
         </include>    
     </include>
+
+    <include name="DialogInfo_Navigation_Arrows">
+        <param name="top" default="28"/>
+        <param name="centerleft" default="550"/>
+        <param name="visible" default="false"/>
+        <definition>
+        <control type="group">
+            <include>Animation.DelayFadeIn</include>
+            <visible>$PARAM[visible]</visible>
+            <top>$PARAM[top]</top>
+            <height>72</height>
+            <control type="image">
+                <centertop>50%</centertop>
+                <centerleft>$PARAM[centerleft]</centerleft>
+                <include>arrowdimensions</include>
+                <texture colordiffuse="Dark1" flipx="true">common/arrow-small-right.png</texture>
+            </control>
+            <control type="image">
+                <centertop>50%</centertop>
+                <centerright>61</centerright>
+                <include>arrowdimensions</include>
+                <texture colordiffuse="Dark1" flipx="false">common/arrow-small-right.png</texture>
+            </control>
+        </control>
+        </definition>
+    </include>
+ 
+    <include name="DialogVideoInfo_Trailer_Click_Action">
+        <onclick condition="Skin.HasSetting(PlayTrailerWindowed) + !Skin.HasSetting(Use.IMDB.Trailer) + !String.IsEmpty(ListItem.Trailer)">PlayMedia($INFO[ListItem.Trailer],1)</onclick>
+        <onclick condition="Skin.HasSetting(PlayTrailerWindowed) + Skin.HasSetting(Use.IMDB.Trailer)">PlayMedia($VAR[ContentIMDbTrailer],1)</onclick>
+        <onclick condition="!Skin.HasSetting(PlayTrailerWindowed) + !Window.IsVisible(1190) + [Skin.HasSetting(Use.IMDB.Trailer) | !String.IsEmpty(ListItem.Trailer)]">Dialog.Close(movieinformation)</onclick>                
+        <onclick condition="!Skin.HasSetting(PlayTrailerWindowed) + !Window.IsVisible(1190) + !Skin.HasSetting(Use.IMDB.Trailer) + !String.IsEmpty(ListItem.Trailer)">SendClick(11)</onclick>
+        <onclick condition="!Skin.HasSetting(PlayTrailerWindowed) + !Window.IsVisible(1190) + Skin.HasSetting(Use.IMDB.Trailer)">PlayMedia($VAR[ContentIMDbTrailer])</onclick>                
+        <onclick condition="!Skin.HasSetting(PlayTrailerWindowed) + Window.IsVisible(1190) + !Skin.HasSetting(Use.IMDB.Trailer) + !String.IsEmpty(ListItem.Trailer)">RunScript(plugin.video.themoviedb.helper,close_dialog=1190,"playmedia=$INFO[ListItem.Trailer]")</onclick>
+        <onclick condition="!Skin.HasSetting(PlayTrailerWindowed) + Window.IsVisible(1190) + Skin.HasSetting(Use.IMDB.Trailer)">RunScript(plugin.video.themoviedb.helper,close_dialog=1190,"playmedia=$VAR[ContentIMDbTrailer]")</onclick>                
+    </include>
+
+    <include name="DialogVideoInfo_List_Click_Action">
+        <onclick condition="!String.IsEqual(ListItem.DBType,set)">SetProperty(origin_tmdb_type,$VAR[Tmdb_Type])</onclick>    
+        <onclick condition="!String.IsEqual(ListItem.DBType,set)">SetProperty(origin_dbid,$INFO[ListItem.DBID])</onclick>    
+    </include>
     
+    <include name="DialogVideoInfo_ExtendedImage">
+        <control type="button" id="$PARAM[buttonid]">
+            <include>HiddenButton</include>
+            <onleft>SetFocus($PARAM[containerid])</onleft>
+            <onleft>LEFT</onleft>
+            <onleft>SetFocus($PARAM[buttonid])</onleft>
+            <onright>SetFocus($PARAM[containerid])</onright>
+            <onright>RIGHT</onright>
+            <onright>SetFocus($PARAM[buttonid])</onright>
+            <ondown>$PARAM[containerid]</ondown>
+            <onback>$PARAM[containerid]</onback>
+        </control>
+        <control type="group">
+            <visible>Control.HasFocus($PARAM[buttonid])</visible>
+            <animation effect="fade" end="100" start="20" time="200" delay="200" easing="out">Visible</animation>
+            <animation effect="fade" end="0" start="100" time="200" easing="out">Hidden</animation>
+            <control type="image">
+                <left>0</left>
+                <top>0</top>
+                <width>1920</width>
+                <height>1080</height>
+                <texture>common/black.png</texture>
+            </control>
+            <control type="image">
+                <height>1080</height>
+                <fadetime>ImageViewerFadetime</fadetime>
+                <aspectratio align="center">keep</aspectratio>
+                <texture background="true">$INFO[Container($PARAM[containerid]).ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+ 
+    <variable name="VideoInfoNavigation_onleft_control_id">
+        <value condition="!Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)">11100</value>
+        <value condition="Control.IsVisible(10019)">10019</value>
+        <value condition="Control.IsVisible(10020)">10020</value>
+    </variable>
+
+    <variable name="VideoInfoNavigation_onright_control_id">
+        <value condition="!Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)">11100</value>
+        <value condition="Control.IsVisible(8)">8</value>
+        <value condition="Control.IsVisible(10001)">10001</value>
+        <value condition="Control.IsVisible(10002)">10002</value>
+        <value condition="Control.IsVisible(10003)">10003</value>
+        <value condition="Control.IsVisible(11001)">11001</value>
+        <value condition="Control.IsVisible(11002)">11002</value>
+        <value condition="Control.IsVisible(10008)">10008</value>
+        <value condition="Control.IsVisible(10015)">10015</value>
+        <value condition="Control.IsVisible(11005)">11005</value>
+    </variable>
+   
     <include name="DialogVideoInfoNavigation">
         <control type="grouplist" id="9000">
-            <bottom>224</bottom>
+            <top>28</top>
             <left>570</left>
             <right>81</right>
             <include>listdimensions</include>
@@ -797,7 +889,7 @@
                 </include>
                 <selected>ListItem.IsResumable</selected>
                 <visible>!ListItem.IsPlaying</visible>
-                <visible>!ListItem.IsFolder</visible>
+                <visible>![String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set)]</visible>
                 <visible>!Window.IsVisible(1190)</visible>
                 <visible>$EXP[IsVideoInfo]</visible>
             </control>
@@ -812,7 +904,7 @@
                 </include>
                 <selected>ListItem.IsResumable</selected>
                 <visible>!ListItem.IsPlaying</visible>
-                <visible>!ListItem.IsFolder</visible>
+                <visible>![String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set)]</visible>
                 <visible>Window.IsVisible(1190)</visible>
                 <visible>$EXP[IsVideoInfo]</visible>
             </control>
@@ -824,7 +916,7 @@
                 <include content="DialogVideoInfoButtons">
                     <param name="icon" value="buttonsdialogs/folder.png" />
                 </include>
-                <visible>ListItem.IsFolder</visible>
+                <visible>String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,set)</visible>
             </control>
 
             <control type="radiobutton" id="10003">
@@ -859,13 +951,22 @@
                 </include>
                 <include>DialogVideoInfo_Trailer_Click_Action</include>
                 <visible>!Skin.HasSetting(hidebutton.video.trailer)</visible>
-                <visible>[Skin.HasSetting(Use.IMDB.Trailer) + System.AddonIsEnabled(plugin.video.imdb.trailers) + [!String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.imdb_id)) | $EXP[IMDBNumberIsIMDbId]]] | [!Skin.HasSetting(Use.IMDB.Trailer) + !String.IsEmpty(ListItem.Trailer)]</visible>
+                <visible>[Skin.HasSetting(Use.IMDB.Trailer) + System.AddonIsEnabled(plugin.video.imdb.trailers) + [!String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.imdb_id)) | !String.IsEmpty(ListItem.UniqueId(imdb))]] | [!Skin.HasSetting(Use.IMDB.Trailer) + !String.IsEmpty(ListItem.Trailer)]</visible>
                 <visible>$EXP[IsVideoInfo]</visible>
+            </control>
+            <control type="radiobutton" id="10021">
+                <include content="DialogVideoInfoButtons">
+                    <param name="icon" value="buttonsdialogs/media_details.png" />
+                </include>
+				<onclick>SetProperty(content,15)</onclick>
+                <onclick>SetFocus(9300,0,absolute)</onclick>
+                <visible>!String.IsEmpty(ListItem.DBID) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)]</visible>
+                <visible>!Skin.HasSetting(hidebutton.video.mediadetails)</visible>
             </control>
 
             <!-- Cinema -->
             <control type="radiobutton" id="10006">
-                <description>Home Theatre</description>
+                 <description>Home Theatre</description>
                 <include content="DialogVideoInfoButtons">
                     <param name="icon" value="buttonsdialogs/playcinema.png" />
                 </include>
@@ -1064,22 +1165,40 @@
                     <param name="icon" value="buttonsdialogs/manage.png" />
                 </include>
                 <onclick>SetFocus(9400)</onclick>
-                <visible>!Skin.HasSetting(global.kioskmode) + ![String.IsEmpty(ListItem.DBID) | String.StartsWith(ListItem.Path,plugin://)]</visible>
+                <visible>!Skin.HasSetting(global.kioskmode) + !String.IsEmpty(ListItem.DBID) + [!String.StartsWith(ListItem.Path,plugin://) | System.AddonIsEnabled(script.skin.info.service)]</visible>
             </control>
             <control type="radiobutton" id="10020">
                 <include content="DialogVideoInfoButtons">
                     <param name="icon" value="buttonsdialogs/settings.png" />
                 </include>
-                <visible>!Skin.HasSetting(global.kioskmode) + [String.IsEmpty(ListItem.DBID) | String.StartsWith(ListItem.Path,plugin://)]</visible>
+                <visible>!Skin.HasSetting(global.kioskmode) + [String.IsEmpty(ListItem.DBID) | [String.StartsWith(ListItem.Path,plugin://) + !System.AddonIsEnabled(script.skin.info.service)]]</visible>
                 <onclick condition="$EXP[IsPersonInfo]">SetProperty(personinformation,1)</onclick>
                 <onclick>ActivateWindow(1123)</onclick>
             </control>
         </control>
     </include>
 
+    <variable name="MusicInfoNavigation_onleft_control_id">
+        <value condition="!Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)">11100</value>
+        <value>9008</value>
+    </variable>
+
+    <variable name="MusicInfoNavigation_onright_control_id">
+        <value condition="!Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)">11100</value>
+        <value condition="Control.IsVisible(9001)">9001</value>
+        <value condition="Control.IsVisible(9007)">9007</value>
+        <value condition="Control.IsVisible(9030)">9030</value>
+        <value condition="Control.IsVisible(9003)">9003</value>
+        <value condition="Control.IsVisible(9004)">9004</value>
+        <value condition="Control.IsVisible(9005)">9005</value>
+        <value condition="Control.IsVisible(9006)">9006</value>
+        <value condition="Control.IsVisible(9029)">9029</value>
+        <value>9008</value>
+    </variable>
+
     <include name="DialogMusicInfoNavigation">
         <control type="grouplist" id="9000">
-            <bottom>144</bottom>
+            <top>28</top>
             <left>783</left>
             <right>SidePad</right>
             <include>listdimensions</include>
@@ -1203,7 +1322,7 @@
 
     <include name="DialogAddonInfoNavigation">
         <control type="grouplist" id="9000">
-            <bottom>224</bottom>
+            <top>28</top>
             <left>783</left>
             <right>SidePad</right>
             <include>listdimensions</include>
@@ -1275,7 +1394,7 @@
 
     <include name="DialogPVRInfoNavigation">
         <control type="grouplist" id="9000">
-            <bottom>224</bottom>
+            <top>28</top>
             <left>783</left>
             <right>SidePad</right>
             <include>listdimensions</include>
@@ -1342,5 +1461,468 @@
             </control>
         </control>
     </include>
+
+    <include name="AudioStreamInfo">
+        <item>
+            <label>$LOCALIZE[460] $PARAM[stream]</label>
+            <label2>$VAR[Label_Audio_Codec_Track$PARAM[stream]]$INFO[ListItem.Property(AudioChannels.$PARAM[stream]),  •  , $LOCALIZE[10127]]$INFO[ListItem.Property(AudioLanguage.$PARAM[stream]),  •  [UPPERCASE],[/UPPERCASE]]</label2>
+            <icon>special://skin/extras/icons/volume.png</icon>
+            <visible>!String.IsEmpty(ListItem.Property(AudioCodec.$PARAM[stream]))</visible>
+        </item>
+    </include>
     
+    <include name="SubtitleStreamInfo">
+        <item>
+            <label>$LOCALIZE[462] $PARAM[stream]</label>
+            <label2>$INFO[ListItem.Property(SubtitleLanguage.$PARAM[stream]),[UPPERCASE],[/UPPERCASE]]</label2>
+            <icon>special://skin/extras/icons/cc.png</icon>
+            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.$PARAM[stream]))</visible>
+        </item> 
+    </include>
+
+    <include name="DialogInfoMediaDetails">
+    	<control type="group">
+            <visible allowhiddenfocus="true">String.IsEqual(Window.Property(content),15)</visible>
+            <animation effect="slide" start="0,0" end="-3000,-3000" time="0" condition="!String.IsEqual(Window.Property(content),15)">Conditional</animation>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <control type="image">
+                <include>Dimensions_Fullscreen</include>
+                <texture border="2">common/black-back.png</texture>
+            </control>
+ 
+	         <control type="group">
+	             <include content="DefDialogBackground">
+	                <param name="width" value="1180"/>
+	                <param name="height" value="900"/>
+	            </include>
+	
+	            <control type="label">
+	                <include>DefDialogHeader</include>
+	                <label>31203</label>
+	            </control>
+	
+	            <include content="Kodi_Logo">
+	                <param name="dimensions" value="40"/>
+	                <param name="top" value="40"/>
+	                <param name="left" value="40"/>
+	            </include>
+	
+	            <!-- Lines -->
+	            <control type="image">
+	                <top>95</top>
+	                <left>40</left>
+	                <right>40</right>
+	                <height>1</height>
+	                <bottom>10</bottom>
+	                <colordiffuse>Black12</colordiffuse>
+	                <texture>common/white.png</texture>
+	            </control>  
+	
+	           	<control type="list" id="9300">
+	                <left>8</left>
+	                <width>1064</width>
+	                <posy>115</posy>
+	                <height>696</height>
+					<onback>9000</onback>
+	                <onleft>9301</onleft>
+	                <onright>1723</onright>
+	                <pagecontrol>1723</pagecontrol>
+                    <include content="Def_ThumbnailListLayout">
+                        <param name="focused" value="Control.HasFocus(9300)" />
+                        <param name="default_icon" value="true" />
+                        <param name="indicators" value="false" />
+                        <param name="width" value="796" />
+                    </include>
+		            <content>
+		            	<item>
+		            		<label>Video</label>
+		            		<label2>$INFO[ListItem.VideoResolution,, ]$VAR[HDSD]$VAR[Label_Video_Codec,  •  ,]$VAR[Label_Video_Aspect,  •  ,]$VAR[Label_Video_3D,  •  ,]$VAR[Label_Video_HdrType1,  •  ,]$INFO[ListItem.Property(HdrDetail.1), P]$VAR[Label_Video_HdrType2, / ,]$INFO[ListItem.Property(HdrDetail.2), P]</label2>
+		            		<icon>special://skin/extras/icons/film.png</icon>
+		            		<visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+		            	</item>
+		            	<include content="AudioStreamInfo"><param name="stream" value="1" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="2" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="3" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="4" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="5" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="6" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="7" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="8" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="9" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="10" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="11" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="12" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="13" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="14" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="15" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="16" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="17" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="18" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="19" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="20" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="21" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="22" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="23" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="24" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="25" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="26" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="27" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="28" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="29" /></include>
+		            	<include content="AudioStreamInfo"><param name="stream" value="30" /></include>
+	
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="1" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="2" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="3" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="4" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="5" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="6" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="7" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="8" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="9" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="10" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="11" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="12" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="13" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="14" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="15" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="16" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="17" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="18" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="19" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="20" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="21" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="22" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="23" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="24" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="25" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="26" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="27" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="28" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="29" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="30" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="31" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="32" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="33" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="34" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="35" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="36" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="37" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="38" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="39" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="40" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="41" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="42" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="43" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="44" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="45" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="46" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="47" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="48" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="49" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="50" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="51" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="52" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="53" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="54" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="55" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="56" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="57" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="58" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="59" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="60" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="61" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="62" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="63" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="64" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="65" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="66" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="67" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="68" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="69" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="70" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="71" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="72" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="73" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="74" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="75" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="76" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="77" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="78" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="79" /></include>
+		            	<include content="SubtitleStreamInfo"><param name="stream" value="80" /></include>
+		            </content>
+	            </control>
+	
+	            <include content="Furniture_Scrollbar_Dialog">
+	                <param name="id" value="1723"/>
+	                <param name="onleft" value="9300"/>
+	                <param name="onright" value="9301"/>
+	            </include>
+	 
+	            <!-- Lines -->
+	            <control type="image">
+	                <top>115</top>
+	                <right>375</right>
+	                <height>687</height>
+	                <width>1</width>
+	                <texture colordiffuse="Black12">common/white.png</texture>
+	                <animation effect="fade" start="0" end="100" time="100" condition="!Control.HasFocus(1723) + !Container.Scrolling">Conditional</animation>
+	            </control>
+	
+	             <!-- Buttons -->           
+	            <control type="grouplist" id="9301">
+	                <top>115</top>              
+	                <right>42</right>
+	                <width>300</width>
+	                <itemgap>DialogButtonsItemgap</itemgap>
+	                <orientation>vertical</orientation>
+	                <onleft>1723</onleft>
+	                <onright>9300</onright>
+			        <control type="button" id="9302">
+			            <include>DefDialogButtons</include>
+						<label>15067</label>
+						<onclick>SetFocus(9000)</onclick>
+			        </control>
+	            </control>                
+	
+	            <control type="image">
+	                <description>Large Icon Image</description>
+	                <right>42</right>
+	                <top>351</top>
+	                <width>300</width>
+	                <height>450</height>
+	                <texture colordiffuse="Black70" fallback="DefaultAddonNone.png">$INFO[Container(9300).ListItem.Icon]</texture>
+	                <aspectratio align="center" aligny="bottom">keep</aspectratio>
+	            </control>
+	
+		        <control type="label">
+		            <include>Animation.FadeIn</include>
+		            <include>Animation.FadeOut</include>
+		            <right>40</right>
+		            <font>Tiny</font>
+		            <height>50</height>
+		            <bottom>30</bottom>
+		            <align>right</align>
+		            <textcolor>Black70</textcolor>
+		            <label>$INFO[Container(9300).CurrentItem] / $INFO[Container(9300).NumItems]</label>
+		        </control>
+	        </control>
+        </control>
+	</include>
+
+    <include name="DialogInfoCustomSettings">
+        <control type="group">
+            <visible allowhiddenfocus="true">ControlGroup(9400).HasFocus() + !Window.IsVisible(DialogBusy.xml)</visible>
+            <visible>![Window.IsVisible(DialogNumeric.xml) | Window.IsVisible(DialogSelect.xml) | Window.IsVisible(DialogKeyboard.xml)]</visible>
+            <animation effect="slide" start="0,0" end="-3000,-3000" time="0" condition="!ControlGroup(9400).HasFocus()">Conditional</animation>
+            <include>Animation.FadeIn</include>
+            <include>Animation.FadeOut</include>
+            <control type="image">
+                <include>Dimensions_Fullscreen</include>
+                <texture border="2">common/black-back.png</texture>
+            </control>
+            <control type="group">
+                <centerleft>50%</centerleft>
+                <width>466</width>
+                <top>184</top>
+                <height>690</height>
+                <control type="image">
+                    <visible>!Integer.IsGreater(Container(9400).NumItems,2)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>270</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsEqual(Container(9400).NumItems,3)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>340</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsEqual(Container(9400).NumItems,4)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>410</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsEqual(Container(9400).NumItems,5)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>480</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsEqual(Container(9400).NumItems,6)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>550</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsEqual(Container(9400).NumItems,7)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>620</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Integer.IsGreater(Container(9400).NumItems,7)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <right>0</right>
+                    <height>690</height>
+                    <colordiffuse>White100</colordiffuse>
+                    <texture border="16">common/rounded-shadow8.png</texture>
+                </control>
+                <control type="group">
+                    <top>25</top>
+                    <left>22</left>
+                    <right>22</right>
+                    <control type="label">
+                        <description>Header Label</description>
+                        <left>70</left>
+                        <width>1000</width>
+                        <font>MediumBold</font>
+                        <textcolor>Black70</textcolor>
+                        <label>16106</label>
+                    </control>
+                    <include>Kodi_Logo</include>
+
+                    <!-- Lines -->
+                    <control type="image">
+                        <top>70</top>
+                        <left>17</left>
+                        <right>17</right>
+                        <height>1</height>
+                        <colordiffuse>Black12</colordiffuse>
+                        <texture>common/white.png</texture>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>Container(9400).HasNext | Container(9400).HasPrevious</visible>
+                    <control type="image">
+                        <description>arrow image</description>
+                        <centerleft>50%</centerleft>
+                        <top>-16</top>
+                        <include>arrowdimensions</include>
+                        <texture colordiffuse="White70" flipy="true">common/arrow-small.png</texture>
+                    </control>
+                    <control type="image">
+                        <description>arrow image</description>
+                        <centerleft>50%</centerleft>
+                        <top>0r</top>
+                        <include>arrowdimensions</include>
+                        <texture colordiffuse="White70" flipy="false">common/arrow-small.png</texture>
+                    </control>
+                </control>
+                <include content="Def_Gradient_Settings_Image">
+                    <param name="controlid" value="9400"/>
+	                <param name="top" value="115"/>
+	                <param name="left" value="8"/>
+	                <param name="right" value="8"/>
+	                <param name="align_right" value="true"/>
+                </include>
+                <control type="grouplist" id="9400">
+                    <top>115</top>
+		            <left>8</left>
+		            <right>8</right>
+                    <bottom>15</bottom>
+                    <onback>9000</onback>
+                    <onleft>9000</onleft>
+                    <onright>9000</onright>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <scrolltime>0</scrolltime>
+                    <control type="button" id="91">
+                        <include>DefContextButtonGradient</include>
+                        <label>40000</label>
+                        <align>left</align>
+                        <onclick>SendClick(14)</onclick>
+                        <visible>!String.IsEmpty(ListItem.DBID) + !String.StartsWith(ListItem.Path,plugin://) + String.IsEqual(ListItem.DBTYPE,movie)</visible>
+                     </control>
+                    <control type="button" id="92">
+                        <include>DefContextButtonGradient</include>
+                        <label>40211</label>
+                        <align>left</align>
+                        <onclick>SendClick(15)</onclick>
+                        <visible>!String.IsEmpty(ListItem.DBID) + !String.StartsWith(ListItem.Path,plugin://) + String.IsEqual(ListItem.DBTYPE,movie) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+                    </control>
+                    <control type="button" id="93">
+                        <include>DefContextButtonGradient</include>
+                        <label>184</label>
+                        <align>left</align>
+                        <onclick>SendClick(6)</onclick>
+                        <visible>!String.IsEmpty(ListItem.DBID) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+                    </control>
+                    <control type="button" id="94">
+                        <include>DefContextButtonGradient</include>
+                        <label>31283</label>
+                        <align>left</align>
+                        <onclick>SendClick(10)</onclick>
+                        <visible>!String.IsEmpty(ListItem.DBID) + !String.StartsWith(ListItem.Path,plugin://)</visible>
+                    </control>
+                    <control type="button" id="95">
+                        <include>DefContextButtonGradient</include>
+                        <label>$ADDON[script.skin.info.service 32100]</label>
+                        <align>left</align>
+                        <onclick>RunScript(script.skin.info.service,action=review_artwork,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBType])</onclick>
+                        <onclick>SetFocus(9000)</onclick>
+                        <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album)</visible>
+                        <visible>System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(ListItem.DBID)</visible>
+                    </control>
+                    <control type="button" id="96">
+                        <include>DefContextButtonGradient</include>
+                        <label>$ADDON[script.skin.info.service 32290]</label>
+                        <align>left</align>
+                        <onclick>RunScript(script.skin.info.service,action=download_artwork,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBType])</onclick>
+                        <onclick>SetFocus(9000)</onclick>
+                        <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album)</visible>
+                        <visible>System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(ListItem.DBID)</visible>
+                    </control>
+                    <control type="button" id="97">
+                        <include>DefContextButtonGradient</include>
+                        <label>$ADDON[script.skin.info.service 32101]</label>
+                        <align>left</align>
+                        <onclick>RunScript(script.skin.info.service,action=update_ratings,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBType])</onclick>
+                        <onclick>SetFocus(9000)</onclick>
+                        <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)</visible>
+                        <visible>System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(ListItem.DBID)</visible>
+                    </control>
+                    <control type="button" id="98">
+                        <include>DefContextButtonGradient</include>
+                        <label>$ADDON[script.skin.info.service 32103]</label>
+                        <align>left</align>
+                        <onclick>RunScript(script.skin.info.service,action=edit,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBType])</onclick>
+                        <onclick>SetFocus(9000)</onclick>
+                        <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)</visible>
+                        <visible>System.AddonIsEnabled(script.skin.info.service) + !String.IsEmpty(ListItem.DBID)</visible>
+                    </control>
+                    <control type="button" id="99">
+                        <include>DefContextButtonGradient</include>
+                        <label>5</label>
+                        <align>left</align>
+                        <onclick>ActivateWindow(1123)</onclick>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+	
 </includes>

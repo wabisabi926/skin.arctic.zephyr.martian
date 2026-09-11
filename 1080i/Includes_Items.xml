@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <includes>
+    <include name="CustomSettings_Items.SkinColors">
+        <item>
+            <label>15109</label>
+            <property name="SettingsName">$LOCALIZE[31680]</property>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=SKINDEFAULT,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),SKINDEFAULT) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Dark with Dark Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Dark with Dark Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Dark with Dark Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Dark with Light Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Dark with Light Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Dark with Light Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Light with Dark Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Light with Dark Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Light with Dark Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Light with Light Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Light with Light Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Light with Light Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>31681</label>
+            <onclick>Skin.SetBool(daynight.autocolor)</onclick>
+            <onclick>Close</onclick>
+            <include condition="[Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+            <visible>System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)</visible>
+        </item>
+    </include>
+    
     <include name="CustomSettings_Items.BackgroundBrightness">
         <item>
             <label>$NUMBER[5]%</label>
@@ -1013,7 +1059,7 @@
     
     <include name="SettingsInfoItems">
         <item id="1">
-            <label>20077</label>
+            <label>31004</label>
             <label2>31166</label2>
             <icon>special://skin/extras/icons/paintbrush.png</icon>
             <property name="Fanart">$VAR[Image_Systeminfo]</property>
@@ -1117,7 +1163,7 @@
 
     <include name="CustomSettings_Items.Ratings">
     	<item id="1">
-            <property name="SettingsName">$LOCALIZE[31712]</property>
+            <property name="SettingsName">$LOCALIZE[31676]</property>
     		<label>231</label>
     		<onclick>Skin.Reset(Ratings.$PARAM[content].$PARAM[slot])</onclick>
     		<onclick>Close</onclick>
@@ -1146,7 +1192,15 @@
                 <param name="slot" value="$PARAM[slot]"/>
             </include>
         </item> 
-    	<item id="5">
+        <item id="5">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31491]"/>
+                <param name="flag" value="LB"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
+    	<item id="6">
     		<include content="RatingItem">
     			<param name="label" value="$LOCALIZE[31719]"/>
     			<param name="flag" value="MC"/>
@@ -1154,7 +1208,7 @@
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
     	</item>	
-    	<item id="6">
+    	<item id="7">
     		<include content="RatingItem">
     			<param name="label" value="$LOCALIZE[31720]"/>
     			<param name="flag" value="RT"/>
@@ -1170,6 +1224,22 @@
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
     	</item>
+    	<item id="8">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31490]"/>
+                <param name="flag" value="MDBList"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
+        <item id="9">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31488]"/>
+                <param name="flag" value="Awards"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
     </include>
     
     <include name="RatingItem">

@@ -37,10 +37,6 @@ msgctxt "#31009"
 msgid "Scroll entire page"
 msgstr "Desplazarse por toda la página"
 
-msgctxt "#31010"
-msgid "Alternate case"
-msgstr "Estuche alternativo"
-
 msgctxt "#31011"
 msgid "Show CD and case"
 msgstr "Mostrar estuche y CD"
@@ -52,6 +48,10 @@ msgstr "Finaliza a las"
 msgctxt "#31014"
 msgid "Netflix"
 msgstr "Netflix"
+
+msgctxt "#31015"
+msgid "Order"
+msgstr "Orden"
 
 msgctxt "#31017"
 msgid "Coloured icon media flags"
@@ -248,10 +248,6 @@ msgstr "Habilitar efecto de desenfoque"
 msgctxt "#31076"
 msgid "This view"
 msgstr "Esta vista"
-
-msgctxt "#31077"
-msgid "Misc"
-msgstr "Miscelánea"
 
 msgctxt "#31078"
 msgid "Global options"
@@ -505,13 +501,13 @@ msgctxt "#31153"
 msgid "Show clock"
 msgstr "Mostrar reloj"
 
-msgctxt "#31154"
-msgid "Show media flags"
-msgstr "Mostrar indicadores de contenido"
-
 msgctxt "#31155"
 msgid "Show now playing info"
 msgstr "Mostrar información de reproducción"
+
+msgctxt "#31156"
+msgid "No bookmarks created yet."
+msgstr "No se han creado marcadores aún."
 
 msgctxt "#31157"
 msgid "Extended info of"
@@ -641,10 +637,6 @@ msgctxt "#31189"
 msgid "Discography of"
 msgstr "Discografía de"
 
-msgctxt "#31190"
-msgid "Show icons"
-msgstr "Mostrar iconos"
-
 msgctxt "#31191"
 msgid "Directed by"
 msgstr "Dirigido por"
@@ -694,8 +686,8 @@ msgid "Use horizontal submenu"
 msgstr "Usar submenú horizontal"
 
 msgctxt "#31203"
-msgid "Artwork Beef"
-msgstr "Artwork Beef"
+msgid "Media Details"
+msgstr ""
 
 msgctxt "#31204"
 msgid "Similar to"
@@ -1329,10 +1321,6 @@ msgctxt "#31391"
 msgid "Prefer tags instead of rating"
 msgstr "Preferir etiquetas en lugar de valoración"
 
-msgctxt "#31393"
-msgid "Show icons only"
-msgstr "Mostrar sólo iconos"
-
 msgctxt "#31394"
 msgid "Multi-Widgets"
 msgstr "Multi-Widgets"
@@ -1364,6 +1352,22 @@ msgstr "Amanecer"
 msgctxt "#31405"
 msgid "Sunset at"
 msgstr "Anochecer"
+
+msgctxt "#31406"
+msgid "Menu bar style"
+msgstr ""
+
+msgctxt "#31407"
+msgid "Text"
+msgstr "Texto"
+
+msgctxt "#31408"
+msgid "Icons + Text"
+msgstr "Iconos y texto"
+
+msgctxt "#31409"
+msgid "Icons"
+msgstr "Iconos"
 
 msgctxt "#31410"
 msgid "Home menu bar"
@@ -1572,6 +1576,10 @@ msgstr "Trakt"
 msgctxt "#31487"
 msgid "CPU"
 msgstr "CPU"
+
+msgctxt "#31488"
+msgid "Awards"
+msgstr "Premios"
 
 msgctxt "#31489"
 msgid "Underlined home menu items"
@@ -1868,10 +1876,6 @@ msgstr "Mostrar información detallada cuando comience el vídeo (en segundos)"
 msgctxt "#31679"
 msgid "Colour presets"
 msgstr "Preajustes de colour"
-
-msgctxt "#31680"
-msgid "Preset"
-msgstr "Predefinido"
 
 msgctxt "#31689"
 msgid "Hide PVR recording dialog"

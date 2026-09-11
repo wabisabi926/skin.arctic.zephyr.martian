@@ -17,20 +17,28 @@
             <include>GlobalOverlay</include>
         </control>
         <control type="group">
-            <height>242</height>
+            <height>410</height>
             <include>Def9000Background</include>
+            <include>Def9000Header</include>
             <control type="grouplist" id="9000">
                 <include>Def9000GroupList</include>
+		        <control type="togglebutton" id="4">
+		            <description>Ascending</description>
+		            <include>DefContextButtonGradient</include>
+		            <align>left</align>
+		            <label>584</label>
+		            <altlabel>585</altlabel>
+		        </control>
                 <control type="button" id="21">
-                    <include>DefContextButton</include>
+                    <include>DefContextButtonGradient</include>
                     <align>left</align>
                 </control>
                 <control type="radiobutton" id="22">
-                    <include>DefContextButton</include>
+                    <include>DefContextButtonGradient</include>
                     <align>left</align>
                 </control>
                 <control type="button" id="20">
-                    <include>DefContextButton</include>
+                    <include>DefContextButtonGradient</include>
                     <align>left</align>
                     <label>192</label>
                 </control>

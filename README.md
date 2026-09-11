@@ -26,7 +26,7 @@ Instructions:
 
 Media can be flagged with following media source flags in Arctic: Zephyr (martian):
 
-* **Bluray**, if the filename contains BLURAY, BDRIP or BLU-RAY.
+* **Bluray**, if the filename contains BLURAY, BDRIP, BRRIP, BD25, BD50, BLU-RAY or REMUX.
 * **HDDVD**, if the filename contains HDDVD.
 * **DVD**, if the filename contains DVD.
 * **SDTV**, if the filename contains PDTV, SDTV or SD-TV.
@@ -37,7 +37,8 @@ On Kodi versions prior to Kodi 22 Piers HDR10+, Atmos and DTS:X could not be det
 
 * **HDR10+**, if the filename contains HDR10PLUS.
 * **Atmos**, if the filename contains ATMOS. 
-* **DTS:X**, if the filename contains DTSX oder DTS-X.
+* **DTS:X**, if the filename contains DTSX or DTS-X.
+* **Auro-3D**, if the filename contains AURO3D or AURO-3D.
  
 ## License 
 

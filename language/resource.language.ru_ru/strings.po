@@ -41,10 +41,6 @@ msgctxt "#31009"
 msgid "Scroll entire page"
 msgstr "Прокручивать всю страницу"
 
-msgctxt "#31010"
-msgid "Alternate case"
-msgstr "Альтернативная обложка"
-
 msgctxt "#31011"
 msgid "Show CD and case"
 msgstr "Показывать диск и обложку"
@@ -56,6 +52,10 @@ msgstr "Заканчивается в"
 msgctxt "#31014"
 msgid "Netflix"
 msgstr "Netflix"
+
+msgctxt "#31015"
+msgid "Order"
+msgstr "Порядок"
 
 msgctxt "#31017"
 msgid "Coloured icon media flags"
@@ -252,10 +252,6 @@ msgstr "Включить размытие"
 msgctxt "#31076"
 msgid "This view"
 msgstr "Этот вид"
-
-msgctxt "#31077"
-msgid "Misc"
-msgstr "Разное"
 
 msgctxt "#31078"
 msgid "Global options"
@@ -509,13 +505,13 @@ msgctxt "#31153"
 msgid "Show clock"
 msgstr "Показывать часы"
 
-msgctxt "#31154"
-msgid "Show media flags"
-msgstr "Показывать медиа флаги"
-
 msgctxt "#31155"
 msgid "Show now playing info"
 msgstr "Показывать информацию для воспроизводимого"
+
+msgctxt "#31156"
+msgid "No bookmarks created yet."
+msgstr "Закладки пока не созданы."
 
 msgctxt "#31157"
 msgid "Extended info of"
@@ -645,10 +641,6 @@ msgctxt "#31189"
 msgid "Discography of"
 msgstr "Дискография"
 
-msgctxt "#31190"
-msgid "Show icons"
-msgstr "Показывать значки"
-
 msgctxt "#31191"
 msgid "Directed by"
 msgstr "Режиссер"
@@ -698,8 +690,8 @@ msgid "Use horizontal submenu"
 msgstr "Использовать горизонтальное подменю"
 
 msgctxt "#31203"
-msgid "Artwork Beef"
-msgstr "Artwork Beef"
+msgid "Media Details"
+msgstr ""
 
 msgctxt "#31204"
 msgid "Similar to"
@@ -1337,10 +1329,6 @@ msgctxt "#31391"
 msgid "Prefer tags instead of rating"
 msgstr "Предпочитать теги вместо рейтинга"
 
-msgctxt "#31393"
-msgid "Show icons only"
-msgstr "Показывать только иконки"
-
 msgctxt "#31394"
 msgid "Multi-Widgets"
 msgstr "Мульти-виджеты"
@@ -1592,6 +1580,10 @@ msgstr "Trakt"
 msgctxt "#31487"
 msgid "CPU"
 msgstr "Процессор"
+
+msgctxt "#31488"
+msgid "Awards"
+msgstr "Награды"
 
 msgctxt "#31489"
 msgid "Underlined home menu items"
@@ -1888,10 +1880,6 @@ msgstr "Показывать подробности при старте виде
 msgctxt "#31679"
 msgid "Colour presets"
 msgstr "Цветовые предустановки"
-
-msgctxt "#31680"
-msgid "Preset"
-msgstr "Предустановка"
 
 msgctxt "#31689"
 msgid "Hide PVR recording dialog"

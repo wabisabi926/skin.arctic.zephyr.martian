@@ -37,10 +37,6 @@ msgctxt "#31009"
 msgid "Scroll entire page"
 msgstr ""
 
-msgctxt "#31010"
-msgid "Alternate case"
-msgstr ""
-
 msgctxt "#31011"
 msgid "Show CD and case"
 msgstr ""
@@ -247,10 +243,6 @@ msgstr ""
 
 msgctxt "#31076"
 msgid "This view"
-msgstr ""
-
-msgctxt "#31077"
-msgid "Misc"
 msgstr ""
 
 msgctxt "#31078"
@@ -501,10 +493,6 @@ msgctxt "#31153"
 msgid "Show clock"
 msgstr "Tunjuk jam"
 
-msgctxt "#31154"
-msgid "Show media flags"
-msgstr "Tunjuk bendera media"
-
 msgctxt "#31155"
 msgid "Show now playing info"
 msgstr "Tunjuk maklumat kini dimainkan"
@@ -637,10 +625,6 @@ msgctxt "#31189"
 msgid "Discography of"
 msgstr ""
 
-msgctxt "#31190"
-msgid "Show icons"
-msgstr "Tunjuk ikon"
-
 msgctxt "#31191"
 msgid "Directed by"
 msgstr "Diarah oleh"
@@ -690,7 +674,7 @@ msgid "Use horizontal submenu"
 msgstr "Guna submenu mengufuk"
 
 msgctxt "#31203"
-msgid "Artwork Beef"
+msgid "Media Details"
 msgstr ""
 
 msgctxt "#31204"
@@ -1321,10 +1305,6 @@ msgctxt "#31391"
 msgid "Prefer tags instead of rating"
 msgstr ""
 
-msgctxt "#31393"
-msgid "Show icons only"
-msgstr ""
-
 msgctxt "#31394"
 msgid "Multi-Widgets"
 msgstr ""
@@ -1860,10 +1840,6 @@ msgstr ""
 msgctxt "#31679"
 msgid "Colour presets"
 msgstr ""
-
-msgctxt "#31680"
-msgid "Preset"
-msgstr "Praset"
 
 msgctxt "#31689"
 msgid "Hide PVR recording dialog"

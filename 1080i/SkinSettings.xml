@@ -1,6 +1,7 @@
 <window>
     <defaultcontrol always="true">9101</defaultcontrol>
     <backgroundcolor>0</backgroundcolor>
+    <onload condition="System.AddonIsEnabled(script.skin.info.service)">RunScript(script.skin.info.service,action=get_setting,setting=lookandfeel.skincolors)</onload>
     <controls>
         <include>GlobalBackground</include>
         <include>Furniture_Header</include>
@@ -252,7 +253,7 @@
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>31247</label>
                             <label2>$VAR[LabelHomeWidgetStyle]</label2>
-                            <onclick>ActivateWindow(1105)</onclick>
+                            <onclick>ActivateWindow(1135)</onclick>
                         </control>
                         <control type="radiobutton" id="9815" description="Show Header">
                             <width>1360</width>
@@ -262,15 +263,6 @@
                             <selected>Skin.HasSetting(home.showheader)</selected>
                             <onclick>Skin.ToggleSetting(home.showheader)</onclick>
                             <visible>!Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.vertical.widgets)</visible>
-                        </control>
-                        <control type="radiobutton" id="9816">
-                            <width>1360</width>
-                            <visible>String.IsEqual(Window.Property(content),1)</visible>
-                            <include>DefSettingsButtonGradientSkinSettings</include>
-                            <label>$LOCALIZE[31154]</label>
-                            <selected>!Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)</selected>
-                            <onclick>Skin.ToggleSetting(home.hideflags)</onclick>
-                            <visible>Skin.HasSetting(home.vertical) + !Skin.HasSetting(furniture.flags)</visible>
                         </control>
                         <control type="radiobutton" id="9856" description="Always Show Weather Widget">
                             <width>1360</width>
@@ -310,22 +302,16 @@
                                 <label>$LOCALIZE[31410]</label>
                             </control>
                         </control>
-                        <control type="radiobutton" id="9809" description="Show Icons">
+                        <control type="button" id="9809" description="Home menu style">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),1)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
-                            <label>$LOCALIZE[31190]</label>
-                            <selected>Skin.HasSetting(home.showicons)</selected>
-                            <onclick>Skin.ToggleSetting(home.showicons)</onclick>
-                        </control>
-                        <control type="radiobutton" id="9810">
-                            <width>1360</width>
-                            <visible>String.IsEqual(Window.Property(content),1)</visible>
-                            <include>DefSettingsButtonGradientSkinSettings</include>
-                            <label>$LOCALIZE[31297]$LOCALIZE[31393]</label>
-                            <selected>Skin.HasSetting(homemenu.only.icons)</selected>
-                            <onclick>Skin.ToggleSetting(homemenu.only.icons)</onclick>
-                            <enable>Skin.HasSetting(home.showicons)</enable>
+                            <label>$LOCALIZE[31406]</label>
+                            <label2>$VAR[Label_HomeMenuStyle]</label2>
+                            <onclick condition="!Skin.HasSetting(home.showicons)">Skin.SetBool(home.showicons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + !Skin.HasSetting(homemenu.only.icons)">Skin.SetBool(homemenu.only.icons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">Skin.Reset(home.showicons)</onclick>
+                            <onclick condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">Skin.Reset(homemenu.only.icons)</onclick>
                         </control>
                         <control type="radiobutton" id="9817">
                             <width>1360</width>
@@ -335,7 +321,6 @@
                             <selected>!Skin.HasSetting(homemenu.hide.underline)</selected>
                             <onclick>Skin.ToggleSetting(homemenu.hide.underline)</onclick>
                             <visible>!$EXP[HomeIsVerticalAll]</visible>
-                            <enable>!Skin.HasSetting(home.showicons)</enable>
                         </control>
                         <control type="radiobutton" id="9898" description="Horz Sub">
                             <width>1360</width>
@@ -388,7 +373,7 @@
                             <label>$LOCALIZE[31297]$LOCALIZE[464]</label>
                             <label2>$VAR[FadeNetflixPreviewLabel]</label2>
                             <onclick>SetProperty(includesetting,FadeNetflixPreview,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                             <visible>[$EXP[HomeIsModernMultiWidgetsNetflix] | $EXP[HomeIsVerticalMultiWidgetsNetflix]] + !Skin.HasSetting(hide.homemenu.netflix.preview)</visible>
                         </control>
                         <control type="radiobutton" id="9878" description="ClearLogo">
@@ -447,8 +432,7 @@
                             <label>$LOCALIZE[31670]</label>
                             <selected>!Skin.HasSetting(hide.home.nowplaying.controls)</selected>
                             <onclick>Skin.ToggleSetting(hide.home.nowplaying.controls)</onclick>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="radiobutton" id="9721">
                             <width>1360</width>
@@ -458,8 +442,7 @@
                             <selected>Skin.HasSetting(extended.nowplaying.videowindow)</selected>
                             <onclick>Skin.ToggleSetting(extended.nowplaying.videowindow)</onclick>
                             <onclick condition="!Skin.HasSetting(extended.nowplaying.videowindow)">Skin.Reset(global.showvideo)</onclick>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="button" id="9726">
                             <width>1360</width>
@@ -471,8 +454,7 @@
                             <onclick condition="Skin.HasSetting(home.extended.nowplaying.tracklist)">Skin.ToggleSetting(home.extended.nowplaying.scrolling.text)</onclick>
                             <onclick condition="Skin.HasSetting(home.extended.nowplaying.scrolling.text)">Skin.Reset(home.extended.nowplaying.scrolling.text)</onclick>
                             <onclick condition="Skin.HasSetting(home.extended.nowplaying.tracklist)">Skin.Reset(home.extended.nowplaying.tracklist)</onclick>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="radiobutton" id="9722">
                             <width>1360</width>
@@ -482,8 +464,7 @@
                             <selected>Skin.HasSetting(extended.nowplaying.clearart)</selected>
                             <onclick>Skin.ToggleSetting(extended.nowplaying.clearart)</onclick>
                             <visible>!Skin.HasSetting(home.vertical) | Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)</visible>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="radiobutton" id="9723">
                             <width>1360</width>
@@ -492,8 +473,7 @@
                             <label>$LOCALIZE[31079]</label>
                             <selected>!Skin.HasSetting(extended.nowplaying.hidecd)</selected>
                             <onclick>Skin.ToggleSetting(extended.nowplaying.hidecd)</onclick>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="radiobutton" id="97231">
                             <width>1360</width>
@@ -502,8 +482,7 @@
                             <label>$LOCALIZE[31708]</label>
                             <selected>Skin.HasSetting(home.nowplaying.info.auto.show)</selected>
                             <onclick>Skin.ToggleSetting(home.nowplaying.info.auto.show)</onclick>
-                            <visible>[$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]]</visible>
-                            <enable>Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</enable>
+                            <visible>Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(extended.nowplaying) + !Skin.HasSetting(home.hide.nowplaying)</visible>
                         </control>
                         <control type="grouplist" id="9818">
                             <visible>String.IsEqual(Window.Property(content),1)</visible>
@@ -537,7 +516,7 @@
                             <label>31823</label>
                             <label2>$VAR[AutoscrollLabel]</label2>
                             <onclick>SetProperty(includesetting,Autoscroll,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="radiobutton" id="9844" description="more item">
                             <width>1360</width>
@@ -694,7 +673,7 @@
                             <align>left</align>
                             <label>5</label>
                             <visible>String.IsEqual(Window.Property(content),2)</visible>
-                            <onclick>ActivateWindow(1104)</onclick>
+                            <onclick>ActivateWindow(1134)</onclick>
                             <onfocus>Skin.Reset(NoBlurFoto)</onfocus>
                             <enable>Skin.HasSetting(TMDbHelper.EnableBlur) + Skin.HasSetting(EnableBlurSettings)</enable>
                         </control>         
@@ -721,7 +700,7 @@
                             <label>464</label>
                             <label2>$VAR[BackgroundBrightnessLabel]</label2>
                             <onclick>SetProperty(includesetting,BackgroundBrightness,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="button" id="9045">
                             <width>1360</width>
@@ -832,18 +811,18 @@
                             <selected>!Skin.HasSetting(osd.usetheme)</selected>
                             <onclick>Skin.ToggleSetting(osd.usetheme)</onclick>
                         </control>
-                        <control type="button" id="9207">
+                        <control type="button" id="9203">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>$LOCALIZE[31312]</label>
                             <label2>$VAR[Label_OSD_Timeout]</label2>
                             <onclick>SetProperty(includesetting,OSD_Timeout,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
 
                         <!-- Video -->
-                        <control type="grouplist" id="9208">
+                        <control type="grouplist" id="9204">
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <orientation>horizontal</orientation>
                             <enable>false</enable>
@@ -859,7 +838,7 @@
                                 <label>31301</label>
                             </control>
                         </control>
-                        <control type="button" id="9209" description="SELECT OSD">
+                        <control type="button" id="9205" description="SELECT OSD">
                             <width>1360</width>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
@@ -867,16 +846,16 @@
                             <label2>$VAR[OSDPositionLabel]</label2>
                             <onclick>Skin.ToggleSetting(videoosd.side)</onclick>
                         </control>
-                        <control type="button" id="9210" description="Show detailed info on start">
+                        <control type="button" id="9206" description="Show detailed info on start">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>31677</label>
                             <label2>$VAR[Label_OSD_Info]</label2>
                             <onclick>SetProperty(includesetting,OSD_Info,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
-                        <control type="radiobutton" id="9211" description="Show detailed info on pause">
+                        <control type="radiobutton" id="9207" description="Show detailed info on pause">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -884,7 +863,7 @@
                             <selected>Skin.HasSetting(osd.showinfoonpause)</selected>
                             <onclick>Skin.ToggleSetting(osd.showinfoonpause)</onclick>
                         </control>
-                        <control type="radiobutton" id="92111" description="Auto hide seekbar">
+                        <control type="radiobutton" id="9208" description="Auto hide seekbar">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -892,7 +871,7 @@
                             <selected>Skin.HasSetting(osd.autohideonpause)</selected>
                             <onclick>Skin.ToggleSetting(osd.autohideonpause)</onclick>
                         </control>
-                        <control type="radiobutton" id="92112" description="Pause video when opening info from OSD">
+                        <control type="radiobutton" id="9209" description="Pause video when opening info from OSD">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -900,7 +879,7 @@
                             <selected>!Skin.HasSetting(osd.disablepauseoninfo)</selected>
                             <onclick>Skin.ToggleSetting(osd.disablepauseoninfo)</onclick>
                         </control>
-                        <control type="radiobutton" id="9212" description="Show clearart">
+                        <control type="radiobutton" id="9210" description="Show clearart">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -908,7 +887,7 @@
                             <selected>Skin.HasSetting(ShowClearArtOSD)</selected>
                             <onclick>Skin.ToggleSetting(ShowClearArtOSD)</onclick>
                         </control>
-                        <control type="radiobutton" id="9217" description="Show poster">
+                        <control type="radiobutton" id="9211" description="Show poster">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -918,7 +897,7 @@
                             <enable>!Skin.HasSetting(videoosd.side)</enable>
                             <visible>!Skin.HasSetting(osd.usetheme)</visible>
                         </control>
-                        <control type="radiobutton" id="9213" description="Show discartosd">
+                        <control type="radiobutton" id="9212" description="Show discartosd">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -928,7 +907,7 @@
                             <enable>!Skin.HasSetting(videoosd.side)</enable>
                             <visible>Skin.HasSetting(osd.usetheme)</visible>
                         </control>
-                        <control type="radiobutton" id="92131" description="Show discartosd">
+                        <control type="radiobutton" id="9213" description="Show discartosd">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -937,7 +916,7 @@
                             <onclick>Skin.ToggleSetting(discartOSD)</onclick>
                             <visible>!Skin.HasSetting(osd.usetheme) + !Skin.HasSetting(osd.disableposter) + !Skin.HasSetting(videoosd.side)</visible>
                         </control>
-                        <control type="radiobutton" id="9216">
+                        <control type="radiobutton" id="9214">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -946,7 +925,7 @@
                             <onclick>Skin.ToggleSetting(osd.showplot)</onclick>
                             <enable>!Skin.HasSetting(videoosd.side)</enable>
                         </control>
-                        <control type="radiobutton" id="9218">
+                        <control type="radiobutton" id="9215">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -954,7 +933,7 @@
 		                    <selected>Skin.HasSetting(chapter.markers)</selected>
 		                    <onclick>Skin.ToggleSetting(chapter.markers)</onclick>
 		                </control>
-		                <control type="radiobutton" id="9219">
+		                <control type="radiobutton" id="9216">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -962,7 +941,15 @@
 		                    <selected>Skin.HasSetting(cutlist.markers)</selected>
 		                    <onclick>Skin.ToggleSetting(cutlist.markers)</onclick>
 		                </control>
-                        <control type="radiobutton" id="9220">
+                        <control type="radiobutton" id="9217">
+                            <width>1360</width>
+                            <visible>String.IsEqual(Window.Property(content),5)</visible>
+                            <include>DefSettingsButtonGradientSkinSettings</include>
+                            <label>$LOCALIZE[31982]</label>
+                            <selected>Skin.HasSetting(bookmark.markers)</selected>
+                            <onclick>Skin.ToggleSetting(bookmark.markers)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9218">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -970,7 +957,7 @@
                             <selected>Skin.HasSetting(ClockOSD)</selected>
                             <onclick>Skin.ToggleSetting(ClockOSD)</onclick>
                         </control>
-                        <control type="radiobutton" id="9221">
+                        <control type="radiobutton" id="9219">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
@@ -979,14 +966,13 @@
                             <onclick>Skin.ToggleSetting(pvr.showtechnicalinfo)</onclick>
                             <enable>!Skin.HasSetting(videoosd.side)</enable>
                         </control>
-                        <control type="radiobutton" id="9222">
+                        <control type="radiobutton" id="9220">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),5)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <selected>Skin.HasSetting(videoosd.hideflags)</selected>
                             <onclick>Skin.ToggleSetting(videoosd.hideflags)</onclick>
                             <label>31975</label>
-                            <visible>!Skin.HasSetting(furniture.flags)</visible>
                        </control>
 
                         <!-- AUDIO -->
@@ -1122,7 +1108,6 @@
                             <selected>Skin.HasSetting(musicosd.hideflags)</selected>
                             <onclick>Skin.ToggleSetting(musicosd.hideflags)</onclick>
                             <label>31975</label>
-                            <visible>!Skin.HasSetting(furniture.flags)</visible>
                             <enable>!Skin.HasSetting(musicosd.side)</enable>                            
                         </control>
                     </control>
@@ -1137,7 +1122,8 @@
                         <ondown>9600</ondown>
                         <orientation>vertical</orientation>
                         <visible>String.IsEqual(Window.Property(content),3)</visible>
-                        <control type="grouplist" id="9050">
+                        <!-- GLOBAL -->
+                        <control type="grouplist" id="9601">
                             <visible>String.IsEqual(Window.Property(content),3)</visible>
                             <orientation>horizontal</orientation>
                             <enable>false</enable>
@@ -1150,17 +1136,37 @@
                                 <width>1310</width>
                                 <disabledcolor>PanelWhite30</disabledcolor>
                                 <height>70</height>
-                                <label>$LOCALIZE[31679]</label>
+                                <label>31078</label>
                             </control>
                         </control>
-                        <control type="button" id="9051" description="Set Custom Colour">
+                        <control type="radiobutton" id="9602" description="Autocolor">
+                            <width>1360</width>
+                            <visible>String.IsEqual(Window.Property(content),3)</visible>
+                            <include>DefSettingsButtonGradientSkinSettings</include>
+                            <label>$LOCALIZE[31680] $LOCALIZE[14013] $LOCALIZE[33027]/$LOCALIZE[33028]</label>
+                            <selected>Skin.HasSetting(daynight.autocolor)</selected>
+                            <onclick>Skin.ToggleSetting(daynight.autocolor)</onclick>
+                            <visible>System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)</visible>
+                            <visible>!System.AddonIsEnabled(script.skin.info.service)</visible>
+                        </control>
+                        <control type="button" id="9603" description="Color Theme">
                             <width>1360</width>
                             <visible>String.IsEqual(Window.Property(content),3)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>$LOCALIZE[31680]</label>
+                            <label2>$VAR[Label_ColorScheme]</label2>
+                            <onclick>SetProperty(includesetting,SkinColors,home)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
+                            <visible>System.AddonIsEnabled(script.skin.info.service)</visible>
+                        </control>
+                        <control type="button" id="9604" description="Set Colour Presets">
+                            <width>1360</width>
+                            <visible>String.IsEqual(Window.Property(content),3)</visible>
+                            <include>DefSettingsButtonGradientSkinSettings</include>
+                            <label>$LOCALIZE[31679]</label>
                             <label2>$VAR[Label_ColorSetting]</label2>
                             <onclick>SetProperty(includesetting,ColorSettings,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="grouplist" id="9650">
                             <visible>String.IsEqual(Window.Property(content),3)</visible>
@@ -1214,7 +1220,7 @@
                             <label>31110</label>
                             <label2>$VAR[Label_BackgroundImage]</label2>
                             <onclick>SetProperty(includesetting,BackgroundImageSettings,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="grouplist" id="9675">
                             <visible>String.IsEqual(Window.Property(content),3)</visible>
@@ -1751,15 +1757,6 @@
                             <selected>Skin.HasSetting(labels.autoscroll)</selected>
                             <onclick>Skin.ToggleSetting(labels.autoscroll)</onclick>
                         </control>
-                        <control type="radiobutton" id="9804" description="Autocolor">
-                            <width>1360</width>
-                            <visible>String.IsEqual(Window.Property(content),4)</visible>
-                            <include>DefSettingsButtonGradientSkinSettings</include>
-                            <label>$LOCALIZE[14078] $LOCALIZE[15111] $LOCALIZE[14013] $LOCALIZE[33027]/$LOCALIZE[33028]</label>
-                            <selected>Skin.HasSetting(daynight.autocolor)</selected>
-                            <onclick>Skin.ToggleSetting(daynight.autocolor)</onclick>
-                            <visible>System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)</visible>
-                        </control>
                         <control type="grouplist" id="92720">
                             <visible>String.IsEqual(Window.Property(content),4)</visible>
                             <orientation>horizontal</orientation>
@@ -1773,7 +1770,7 @@
                                 <width>1310</width>
                                 <disabledcolor>PanelWhite30</disabledcolor>
                                 <height>70</height>
-                                <label>31712</label>
+                                <label>31676</label>
                             </control>
                         </control>
                         <control type="radiobutton" id="92721">
@@ -1791,7 +1788,7 @@
                             <label>$LOCALIZE[31713]</label>
                             <label2>$VAR[Label_Settings_Movie_Rating_1]</label2>
                             <onclick>SetProperty(includesetting,AdditionalMovieRating1,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="button" id="92723" description="Additional Movie Rating 2">
                             <width>1360</width>
@@ -1800,7 +1797,7 @@
                             <label>$LOCALIZE[31714]</label>
                             <label2>$VAR[Label_Settings_Movie_Rating_2]</label2>
                             <onclick>SetProperty(includesetting,AdditionalMovieRating2,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control>
                         <control type="button" id="92724" description="Additional TV Show Rating">
                             <width>1360</width>
@@ -1809,7 +1806,7 @@
                             <label>$LOCALIZE[31715]</label>
                             <label2>$VAR[Label_Settings_TvShows_Rating]</label2>
                             <onclick>SetProperty(includesetting,AdditionalTVShowRating,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                         </control> 
                         <control type="grouplist" id="9259">
                             <visible>String.IsEqual(Window.Property(content),4)</visible>
@@ -1857,7 +1854,7 @@
                             <visible>String.IsEqual(Window.Property(content),4)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>$LOCALIZE[31442]</label>
-                            <onclick>ActivateWindow(1103)</onclick>
+                            <onclick>ActivateWindow(1133)</onclick>
                         </control>
                         <control type="radiobutton" id="9264" description="Numeric Rating">
                             <width>1360</width>
@@ -1910,7 +1907,7 @@
                             <visible>String.IsEqual(Window.Property(content),4)</visible>
                             <include>DefSettingsButtonGradientSkinSettings</include>
                             <label>$LOCALIZE[31716]</label>
-                            <onclick>ActivateWindow(1102)</onclick>
+                            <onclick>ActivateWindow(1132)</onclick>
                             <enable>!Skin.HasSetting(hide.markers)</enable>
                         </control>
                         <control type="grouplist" id="9274">
@@ -1959,7 +1956,7 @@
                             <label>$LOCALIZE[31297]$LOCALIZE[31599]</label>
                             <label2>$VAR[NetflixTrailerDelayLabel] $LOCALIZE[31425]</label2>
                             <onclick>SetProperty(includesetting,NetflixTrailerDelay,home)</onclick>
-                            <onclick>ActivateWindow(1100)</onclick>
+                            <onclick>ActivateWindow(1130)</onclick>
                             <visible>Skin.HasSetting(home.netflix.autoplay.trailer)</visible>
                         </control>
                         <control type="button" id="988103" description="Auto Trailer Black Bars">
@@ -2295,17 +2292,17 @@
                     <label>5</label>
                     <textcolor>PanelWhite100</textcolor>
                 </control>
-                <control type="label">
+                <control type="textbox">
                     <left>30</left>
                     <right>30</right>
-                    <posy>77</posy>
-                    <height>30</height>
-                    <font>Tiny</font>
+                    <posy>74</posy>
+                    <height>40</height>
+                    <font>TinyPlot</font>
                     <textcolor>PanelWhite70</textcolor>
-                    <scroll>true</scroll>
                     <align>left</align>
                     <textoffsetx>0</textoffsetx>
                     <label>$INFO[System.ProfileName]</label>
+                    <autoscroll>false</autoscroll>
                 </control>
                 <control type="group">
                     <visible>!String.IsEqual(Window.Property(content),9)</visible>
@@ -2317,15 +2314,15 @@
                         <label>$VAR[Label_SettingsHeader]</label>
                         <textcolor>PanelWhite100</textcolor>
                     </control>
-                    <control type="label">
+                    <control type="textbox">
                         <left>480</left>
                         <right>30</right>
-                        <posy>77</posy>
-                        <height>30</height>
-                        <font>Tiny</font>
+                        <posy>74</posy>
+                        <height>40</height>
+                        <font>TinyPlot</font>
                         <textcolor>PanelWhite70</textcolor>
-                        <scroll>true</scroll>
                         <label>19055</label>
+                        <autoscroll>false</autoscroll>
                     </control>
                 </control>
             </control>

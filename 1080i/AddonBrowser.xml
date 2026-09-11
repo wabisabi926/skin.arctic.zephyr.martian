@@ -16,52 +16,24 @@
         <include>Furniture_Weather</include>
         <include>Furniture_Jumpbar</include>
         <include>View_50_List_Square</include>
-        <control type="group">
-            <include>Animation.FadeIn</include>
-            <include>Animation.FadeOut</include>
-            <visible>ControlGroup(9000).HasFocus()</visible>
-            <include>GlobalOverlay</include>
-        </control>
-        <control type="group">
-            <height>550</height>
-            <include>Def9000Background</include>
-            <include content="Def9000Arrows"><param name="arrow_bottom" value="550" /></include>
-            <include>Def9000Header</include>
-            <include content="Def_Gradient_Settings_Image">
-                <param name="controlid" value="9000"/>
-                <param name="left" value="8"/>
-                <param name="top" value="112"/>
-                <param name="width" value="450"/>
-            </include>
+
+        <include content="View_SideBlade">
             <control type="grouplist" id="9000">
-                <top>112</top>
-                <scrolltime>0</scrolltime>
-                <include content="Def9000GroupList">
-                    <param name="height" value="490"/>
-                </include>
-                <control type="button" id="3">
-                    <description>Sort</description>
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                </control>
-                <control type="togglebutton" id="4">
-                    <description>Ascending/Descending</description>
-                    <include>DefContextButtonGradient</include>
-                    <label>584</label>
-                    <align>left</align>
-                    <altlabel>585</altlabel>
-                </control>
+                <include>Def9000GroupList</include>
+                <include>View_SideBlade_Common</include>
                 <control type="radiobutton" id="7">
                     <description>Hide foreign</description>
                     <align>left</align>
                     <include>DefContextButtonGradient</include>
                     <label>$LOCALIZE[25001]</label>
+                    <visible>Control.IsEnabled(7)</visible>
                 </control>
                 <control type="radiobutton" id="8">
                     <description>Hide incompatible</description>
                     <align>left</align>
                     <include>DefContextButtonGradient</include>
                     <label>$LOCALIZE[24999]</label>
+                    <visible>Control.IsEnabled(8)</visible>
                 </control>
                 <control type="button" id="9">
                     <description>Check for updates</description>
@@ -75,7 +47,8 @@
                     <align>left</align>
                     <include>DefContextButtonGradient</include>
                 </control>
+                <include>View_SideBlade_NowPlaying</include>                
             </control>
-        </control>
+        </include>
     </controls>
 </window>

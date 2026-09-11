@@ -5,51 +5,7 @@
 		<views>50,550,505,506,507,508,509,511,512,513,56,57,53,55,555,59,54,51,58,52,500,503,514,515,516,517,519,521,522,523,524,526</views>
 	</include>
 
-	<include name="View_Includes">
-		<include condition="$EXP[Exp_View_50_Include] + !Skin.HasSetting(50list.low)">View_50_List</include>
-		<include condition="$EXP[Exp_View_50_Include] + Skin.HasSetting(50list.low)">View_50_LowList</include>
-		<include condition="$EXP[Exp_View_51_Include] + Skin.HasSetting(51bigwide.showinfo)">View_51_BigWide_Info</include>
-		<include condition="$EXP[Exp_View_51_Include] + Skin.HasSetting(51bigwide.showinfo.alternative)">View_51_BigWide</include>
-		<include condition="$EXP[Exp_View_51_Include] + !Skin.HasSetting(51bigwide.showinfo) + !Skin.HasSetting(51bigwide.showinfo.alternative)">View_51_BigWide_Classic</include>
-		<include condition="$EXP[Exp_View_52_Include] + Skin.HasSetting(52biglist.singlepane)">View_52_BigList_SinglePane</include>
-		<include condition="$EXP[Exp_View_52_Include] + !Skin.HasSetting(52biglist.singlepane)">View_52_BigList_DoublePane</include>
-		<include condition="$EXP[Exp_View_53_Include]">View_53_Poster</include>
-		<include condition="$EXP[Exp_View_54_Include]">View_54_Banner</include>
-		<include condition="$EXP[Exp_View_55_Include] + Skin.HasSetting(55wall.showinfo)">View_55_Wall_Info</include>
-		<include condition="$EXP[Exp_View_55_Include] + Skin.HasSetting(55wall.showposter)">View_55_Wall_Poster</include>
-		<include condition="$EXP[Exp_View_55_Include] + !Skin.HasSetting(55wall.showinfo) + !Skin.HasSetting(55wall.showposter)">View_55_Wall</include>
-		<include condition="$EXP[Exp_View_56_Include] + !Skin.HasSetting(56media.showinfo) + !Skin.HasSetting(56media.low)">View_56_MediaInfo</include>
-		<include condition="$EXP[Exp_View_56_Include] + Skin.HasSetting(56media.showinfo) + !Skin.HasSetting(56media.low)">View_56_MediaInfo2</include>
-		<include condition="$EXP[Exp_View_56_Include] + Skin.HasSetting(56media.low)">View_56_MediaInfo3</include>
-		<include condition="$EXP[Exp_View_57_Include] + !Skin.HasSetting(57list.low)">View_57_ExtraInfo</include>
-		<include condition="$EXP[Exp_View_57_Include] + Skin.HasSetting(57list.low)">View_57_ExtraInfo_LowList</include>
-		<include condition="$EXP[Exp_View_58_Include]">View_58_Cards</include>
-		<include condition="$EXP[Exp_View_59_Include]">View_59_BannerWall</include>
-		<include condition="$EXP[Exp_View_500_Include]">View_500_Thumbnails</include>
-		<include condition="$EXP[Exp_View_503_Include]">View_503_Poster_Square</include>
-		<include condition="$EXP[Exp_View_505_Include]">View_505_Wall</include>
-		<include condition="$EXP[Exp_View_506_Include]">View_506_Wall</include>
-		<include condition="$EXP[Exp_View_507_Include]">View_507_Wall</include>
-		<include condition="$EXP[Exp_View_508_Include]">View_508_Fanart2</include>
-		<include condition="$EXP[Exp_View_509_Include]">View_509_Shift</include>
-		<include condition="$EXP[Exp_View_511_Include]">View_511_Double</include>
-		<include condition="$EXP[Exp_View_512_Include]">View_512_Double_Banner</include>
-		<include condition="$EXP[Exp_View_513_Include]">View_513_Shifted</include>
-		<include condition="$EXP[Exp_View_514_Include]">View_514_Albums</include>
-		<include condition="$EXP[Exp_View_515_Include]">View_515_SideCards</include>
-		<include condition="$EXP[Exp_View_516_Include]">View_516_SeasonsInfo</include>
-		<include condition="$EXP[Exp_View_517_Include]">View_517_WallSmall</include>
-		<include condition="$EXP[Exp_View_519_Include]">View_519_Shift_Modern</include>
-		<include condition="$EXP[Exp_View_521_Include]">View_521_Minimal_V2</include>
-		<include condition="$EXP[Exp_View_522_Include]">View_522_Minimal_V2_Episodes</include>
-		<include condition="$EXP[Exp_View_523_Include]">View_523_Minimal_V2_Music</include>
-		<include condition="$EXP[Exp_View_524_Include]">View_524_Minimal_V2_Seasons</include>
-		<include condition="$EXP[Exp_View_526_Include]">View_526_SeasonsInfo_V2</include>
-		<include condition="$EXP[Exp_View_550_Include]">View_550_List</include>
-		<include condition="$EXP[Exp_View_555_Include]">View_555_Wall_Episodes</include>
-	</include>
-
-    <variable name="View_Current_ViewID">
+    <variable name="View_CurrentID">
         <value condition="Control.IsVisible(50)">50</value>
         <value condition="Control.IsVisible(51)">51</value>
         <value condition="Control.IsVisible(52)">52</value>
@@ -84,8 +40,53 @@
         <value condition="Control.IsVisible(555)">555</value>
     </variable>
 
+	<include name="View_Includes">
+		<include condition="$EXP[Exp_View_50_Include] + !Skin.HasSetting(50list.low)">View_50_List</include>
+		<include condition="$EXP[Exp_View_50_Include] + Skin.HasSetting(50list.low)">View_50_LowList</include>
+		<include condition="$EXP[Exp_View_51_Include] + Skin.HasSetting(51bigwide.showinfo)">View_51_BigWide_Info</include>
+		<include condition="$EXP[Exp_View_51_Include] + Skin.HasSetting(51bigwide.showinfo.alternative)">View_51_BigWide</include>
+		<include condition="$EXP[Exp_View_51_Include] + !Skin.HasSetting(51bigwide.showinfo) + !Skin.HasSetting(51bigwide.showinfo.alternative)">View_51_BigWide_Classic</include>
+		<include condition="$EXP[Exp_View_52_Include] + Skin.HasSetting(52biglist.singlepane)">View_52_BigList_SinglePane</include>
+		<include condition="$EXP[Exp_View_52_Include] + !Skin.HasSetting(52biglist.singlepane)">View_52_BigList_DoublePane</include>
+		<include condition="$EXP[Exp_View_53_Include]">View_53_Poster</include>
+		<include condition="$EXP[Exp_View_54_Include]">View_54_Banner</include>
+		<include condition="$EXP[Exp_View_55_Include] + Skin.HasSetting(55wall.showinfo)">View_55_Wall_Info</include>
+		<include condition="$EXP[Exp_View_55_Include] + Skin.HasSetting(55wall.showposter)">View_55_Wall_Poster</include>
+		<include condition="$EXP[Exp_View_55_Include] + !Skin.HasSetting(55wall.showinfo) + !Skin.HasSetting(55wall.showposter)">View_55_Wall</include>
+		<include condition="$EXP[Exp_View_56_Include] + !Skin.HasSetting(56media.showinfo) + !Skin.HasSetting(56media.low)">View_56_MediaInfo</include>
+		<include condition="$EXP[Exp_View_56_Include] + Skin.HasSetting(56media.showinfo) + !Skin.HasSetting(56media.low)">View_56_MediaInfo2</include>
+		<include condition="$EXP[Exp_View_56_Include] + Skin.HasSetting(56media.low)">View_56_MediaInfo3</include>
+		<include condition="$EXP[Exp_View_57_Include] + !Skin.HasSetting(57list.low)">View_57_ExtraInfo</include>
+		<include condition="$EXP[Exp_View_57_Include] + Skin.HasSetting(57list.low)">View_57_ExtraInfo_LowList</include>
+		<include condition="$EXP[Exp_View_58_Include]">View_58_Cards</include>
+		<include condition="$EXP[Exp_View_59_Include]">View_59_BannerWall</include>
+		<include condition="$EXP[Exp_View_500_Include]">View_500_Thumbnails</include>
+		<include condition="$EXP[Exp_View_503_Include]">View_503_Poster_Square</include>
+		<include condition="$EXP[Exp_View_505_Include]">View_505_Wall</include>
+		<include condition="$EXP[Exp_View_506_Include]">View_506_Wall</include>
+		<include condition="$EXP[Exp_View_507_Include]">View_507_Wall</include>
+		<include condition="$EXP[Exp_View_508_Include]">View_508_Fanart</include>
+		<include condition="$EXP[Exp_View_509_Include]">View_509_Shift</include>
+		<include condition="$EXP[Exp_View_511_Include]">View_511_Double</include>
+		<include condition="$EXP[Exp_View_512_Include]">View_512_Double_Banner</include>
+		<include condition="$EXP[Exp_View_513_Include]">View_513_Shifted</include>
+		<include condition="$EXP[Exp_View_514_Include]">View_514_Albums</include>
+		<include condition="$EXP[Exp_View_515_Include]">View_515_SideCards</include>
+		<include condition="$EXP[Exp_View_516_Include]">View_516_SeasonsInfo</include>
+		<include condition="$EXP[Exp_View_517_Include]">View_517_WallSmall</include>
+		<include condition="$EXP[Exp_View_519_Include]">View_519_Shift_Modern</include>
+		<include condition="$EXP[Exp_View_521_Include]">View_521_Minimal_V2</include>
+		<include condition="$EXP[Exp_View_522_Include]">View_522_Minimal_V2_Episodes</include>
+		<include condition="$EXP[Exp_View_523_Include]">View_523_Minimal_V2_Music</include>
+		<include condition="$EXP[Exp_View_524_Include]">View_524_Minimal_V2_Seasons</include>
+		<include condition="$EXP[Exp_View_526_Include]">View_526_SeasonsInfo_V2</include>
+		<include condition="$EXP[Exp_View_550_Include]">View_550_List</include>
+		<include condition="$EXP[Exp_View_555_Include]">View_555_Wall_Episodes</include>
+	</include>
+
 	<variable name="View_ModeSwitch">
         <value condition="Container.Content(episodes) + Window.IsVisible(MyGames.xml)">games</value>
+        <value condition="Container.Content(movies) + String.StartsWith(Container.FolderPath,videodb://movies/sets/)">movies-sets</value>
         <value condition="Container.Content(movies) + String.IsEmpty(Container.PluginName) + !String.StartsWith(Container.FolderPath,videodb://) + !String.StartsWith(Container.FolderPath,special://)">movies-files</value>
         <value condition="Container.Content(tvshows) + String.IsEmpty(Container.PluginName) + !String.StartsWith(Container.FolderPath,videodb://) + !String.StartsWith(Container.FolderPath,special://)">tvshows-files</value>
         <value condition="Container.Content(episodes) + String.IsEmpty(Container.PluginName) + !String.StartsWith(Container.FolderPath,videodb://) + !String.StartsWith(Container.FolderPath,special://)">episodes-files</value>
@@ -102,32 +103,151 @@
 		<value>none</value>
 	</variable>
 
+    <expression name="UsePreviewImageSquare">
+        [ !String.Contains(Control.GetLabel(1),(movies)) 
+        + !String.Contains(Control.GetLabel(1),(movies-files)) 
+        + !String.Contains(Control.GetLabel(1),(movies-sets)) 
+        + !String.Contains(Control.GetLabel(1),(sets)) 
+        + !String.Contains(Control.GetLabel(1),(tvshows)) 
+        + !String.Contains(Control.GetLabel(1),(tvshows-files)) 
+        + !String.Contains(Control.GetLabel(1),(episode-groups-tvshows)) 
+        + !String.Contains(Control.GetLabel(1),(seasons)) 
+        + !String.Contains(Control.GetLabel(1),(episode-groups-seasons)) 
+        + !String.Contains(Control.GetLabel(1),(episodes)) 
+        + !String.Contains(Control.GetLabel(1),(episodes-files)) 
+        + !String.Contains(Control.GetLabel(1),(actors)) 
+        + !String.Contains(Control.GetLabel(1),(games)) 
+        + !String.Contains(Control.GetLabel(1),(none-games)) 
+        + !String.Contains(Control.GetLabel(1),(videoversions)) 
+        + !String.Contains(Control.GetLabel(1),(videoextras)) 
+        + !String.Contains(Control.GetLabel(1),(videoassets)) ]
+    </expression>
+
+    <expression name="UsePreviewImageMusic">
+        [ String.Contains(Control.GetLabel(1),(albums)) 
+        | String.Contains(Control.GetLabel(1),(songs)) 
+        | String.Contains(Control.GetLabel(1),(artists)) 
+        | String.Contains(Control.GetLabel(1),(musicvideos))]
+    </expression>
+        
+    <expression name="HasViewOptionsLabel">Control.IsVisible(55553)</expression>
+    <expression name="HasExtraOptionsLabel">Control.IsVisible(55554)</expression>
+    
+    <include name="View_SideBlade">
+        <definition>
+            <control type="group">
+                <include>Animation.FadeIn</include>
+                <include>Animation.FadeOut</include>
+                <visible>ControlGroup(9000).HasFocus()</visible>
+                <include>GlobalOverlay</include>
+            </control>
+            <control type="group">
+	            <include>View_SideBlade_Background</include>
+	            <include>Def9000Arrows</include>
+	            <include>Def9000Header</include>
+	            <nested />
+            </control>
+        </definition>  
+    </include>
+    
+    <include name="View_SideBlade_Background">
+        <definition>
+            <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus()</visible>
+            <animation effect="slide" start="0,0" end="-3000,-3000" time="0" condition="!ControlGroup(9000).HasFocus()">Conditional</animation>
+            <include>Animation.ZoomIn</include>
+            <include>Animation.FadeOut</include>
+            <top>184</top>
+            <centerleft>50%</centerleft>
+            <height>690</height>
+            <width>466</width>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>490</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,1)</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>420</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,2) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,1) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>350</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,3) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,2) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsEqual(Container(9000).NumItems,1) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>280</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,4) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,3) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsEqual(Container(9000).NumItems,2) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>210</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,5) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,4) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsEqual(Container(9000).NumItems,3) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>140</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,6) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,5) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsEqual(Container(9000).NumItems,4) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>70</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsEqual(Container(9000).NumItems,7) + !$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | Integer.IsEqual(Container(9000).NumItems,6) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsEqual(Container(9000).NumItems,5) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <control type="image">
+                <description>background image</description>
+                <top>0</top>
+                <left>0</left>
+                <right>0</right>
+                <bottom>0</bottom>
+                <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
+                <visible>Integer.IsGreater(Container(9000).NumItems,7) | Integer.IsGreater(Container(9000).NumItems,6) + [$EXP[HasViewOptionsLabel] + !$EXP[HasExtraOptionsLabel] | !$EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]] | Integer.IsGreater(Container(9000).NumItems,5) + $EXP[HasViewOptionsLabel] + $EXP[HasExtraOptionsLabel]</visible>
+            </control>
+            <include content="Def_Gradient_Settings_Image">
+                <param name="controlid" value="9000"/>
+                <param name="top" value="115"/>
+                <param name="left" value="8"/>
+                <param name="right" value="8"/>
+                <param name="align_right" value="true"/>
+                <param name="overlayfix" value="true"/>
+                <param name="delay" value="20"/>
+                <param name="visible" value="!ControlGroup(6150).HasFocus()"/>
+            </include>
+        </definition>
+    </include>
+
 	<include name="View_Options">
-		<!-- Sort Options -->
-		<control type="button" id="9100">
-			<description>View</description>
-			<include>DefContextButtonGradient</include>
-			<align>left</align>
-			<label>$LOCALIZE[582]: $INFO[Container.Viewmode]</label>
-			<onclick>Runscript(script.skinvariables,action=buildviews,contentid=$VAR[View_ModeSwitch],pluginname=$INFO[Container.PluginName])</onclick>
-		</control>
-
-		<control type="button" id="3">
-			<description>Sort</description>
-			<include>DefContextButtonGradient</include>
-			<align>left</align>
-		</control>
-
-		<control type="togglebutton" id="4">
-			<description>Ascending</description>
-			<include>DefContextButtonGradient</include>
-			<align>left</align>
-			<label>584</label>
-			<altlabel>585</altlabel>
-		</control>
-
 		<!-- View Options -->
-		<control type="button" id="9001">
+		<control type="button" id="55553">
             <visible>
                 Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53)
 				| Control.IsVisible(54) + !Container.Content(episodes) + !Container.Content(albums) + !Container.Content(songs)
@@ -141,7 +261,7 @@
 			<label>31076</label>
 		</control>
 
-		<control type="radiobutton" id="9002" description="Extended List (50)">
+		<control type="radiobutton" id="9001" description="Extended List (50)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31264</label>
@@ -151,7 +271,7 @@
 			<visible>Control.IsVisible(50) + [Skin.HasSetting(50list.low) | $EXP[HasEnableExtendedListInfo]]</visible>
 		</control>
 
-        <control type="radiobutton" id="9003" description="Extended List (56)">
+        <control type="radiobutton" id="9002" description="Extended List (56)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31264</label>
@@ -161,7 +281,7 @@
             <visible>Control.IsVisible(56) + [Skin.HasSetting(56media.low) | $EXP[HasEnableExtendedListInfo]]</visible>
         </control>
 
-        <control type="radiobutton" id="9004" description="Extended List (57)">
+        <control type="radiobutton" id="9003" description="Extended List (57)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31264</label>
@@ -171,7 +291,7 @@
             <visible>Control.IsVisible(57) + [Skin.HasSetting(57list.low) | $EXP[HasEnableExtendedListInfo]]</visible>
         </control>
 
-		<control type="radiobutton" id="9005" description="Disable Poster (50)">
+		<control type="radiobutton" id="9004" description="Disable Poster (50)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31262</label>
@@ -181,7 +301,7 @@
 			<visible>Control.IsVisible(50) + !Skin.HasSetting(50list.low)</visible>
 		</control>
 
-		<control type="radiobutton" id="9006" description="Low List (50)">
+		<control type="radiobutton" id="9005" description="Low List (50)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31564</label>
@@ -191,7 +311,7 @@
 			<visible>Control.IsVisible(50)</visible>
 		</control>
 
-		<control type="radiobutton" id="9007" description="Hide Rating (50,57,56)">
+		<control type="radiobutton" id="9006" description="Hide Rating (50,57,56)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31676</label>
@@ -201,7 +321,7 @@
 			<visible>$EXP[HasEnableRatingInfo]</visible>
 		</control>
 
-        <control type="radiobutton" id="9008" description="No Wrap (53)">
+        <control type="radiobutton" id="9007" description="No Wrap (53)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31148</label>
@@ -211,7 +331,7 @@
             <visible>Control.IsVisible(53)</visible>
         </control>
 
-		<control type="radiobutton" id="9009" description="Info Wall (55)">
+		<control type="radiobutton" id="9008" description="Info Wall (55)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31147</label>
@@ -222,7 +342,7 @@
 			<visible>Control.IsVisible(55)</visible>
 		</control>
 
-		<control type="radiobutton" id="9010" description="Poster Wall (55)">
+		<control type="radiobutton" id="9009" description="Poster Wall (55)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31185</label>
@@ -233,7 +353,7 @@
 			<visible>Control.IsVisible(55)</visible>
 		</control>
 
-		<control type="radiobutton" id="9011" description="Title Overlay (55)">
+		<control type="radiobutton" id="9010" description="Title Overlay (55)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31007</label>
@@ -243,7 +363,7 @@
 			<onclick>ReloadSkin()</onclick>
 		</control>
 
-		<control type="radiobutton" id="9012" description="Slider Info (55)">
+		<control type="radiobutton" id="9011" description="Slider Info (55)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31537</label>
@@ -252,7 +372,7 @@
 			<visible>Control.IsVisible(55) + !Skin.HasSetting(55wall.showinfo) + !Skin.HasSetting(55wall.showposter)</visible>
 		</control>
 
-		<control type="radiobutton" id="9013" description="Info Media (56)">
+		<control type="radiobutton" id="9012" description="Info Media (56)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31147</label>
@@ -263,7 +383,7 @@
 			<visible>Control.IsVisible(56)</visible>
 		</control>
 
-		<control type="radiobutton" id="9014" description="Low List Media (56)">
+		<control type="radiobutton" id="9013" description="Low List Media (56)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31564</label>
@@ -274,7 +394,7 @@
 			<visible>Control.IsVisible(56)</visible>
 		</control>
 
-		<control type="radiobutton" id="9015" description="Low List (57)">
+		<control type="radiobutton" id="9014" description="Low List (57)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31564</label>
@@ -284,7 +404,7 @@
 			<visible>Control.IsVisible(57)</visible>
 		</control>
 
-		<control type="radiobutton" id="9016" description="Big Wide Info (51)">
+		<control type="radiobutton" id="9015" description="Big Wide Info (51)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31147</label>
@@ -296,7 +416,7 @@
 			<visible>Control.IsVisible(51)</visible>
 		</control>
 
-		<control type="radiobutton" id="9017" description="Big Wide Alternative (51)">
+		<control type="radiobutton" id="9016" description="Big Wide Alternative (51)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31432</label>
@@ -308,7 +428,7 @@
 			<visible>Control.IsVisible(51)</visible>
 		</control>
 
-		<control type="radiobutton" id="9018" description="Show Plot (51)">
+		<control type="radiobutton" id="9017" description="Show Plot (51)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31214</label>
@@ -317,7 +437,7 @@
 			<visible>Control.IsVisible(51) + !Skin.HasSetting(51bigwide.showinfo) + !Skin.HasSetting(51bigwide.showinfo.alternative)</visible>
 		</control>
 
-		<control type="radiobutton" id="9019" description="Banner show poster (54)">
+		<control type="radiobutton" id="9018" description="Banner show poster (54)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>207</label>
@@ -326,7 +446,7 @@
 			<visible>Control.IsVisible(54) + !Container.Content(episodes) + !Container.Content(albums) + !Container.Content(songs)</visible>
 		</control>
 
-		<control type="radiobutton" id="9020" description="Big List Double Pane (52)">
+		<control type="radiobutton" id="9019" description="Big List Double Pane (52)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31038</label>
@@ -336,7 +456,7 @@
 			<visible>Control.IsVisible(52)</visible>
 		</control>
 
-		<control type="radiobutton" id="9023" description="Disable Scrolling (508)">
+		<control type="radiobutton" id="9020" description="Disable Scrolling (508)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31009</label>
@@ -345,7 +465,7 @@
 			<visible>Control.IsVisible(508)</visible>
 		</control>
 
-		<control type="radiobutton" id="9024" description="Show progress (55,56,57,508)">
+		<control type="radiobutton" id="9021" description="Show progress (55,56,57,508)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31577</label>
@@ -355,7 +475,7 @@
             <visible>$EXP[HasEnableProgressInfo]</visible>
 		</control>
 
-		<control type="radiobutton" id="9025" description="List Show Mediainfo (50,56,57)">
+		<control type="radiobutton" id="9022" description="List Show Mediainfo (50,56,57)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31989</label>
@@ -365,7 +485,7 @@
             <visible>$EXP[IsVideoAssets]</visible>
 		</control>
 
-		<control type="radiobutton" id="9027" description="Discart (508)">
+		<control type="radiobutton" id="9023" description="Discart (508)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31459</label>
@@ -374,16 +494,7 @@
 			<visible>Control.IsVisible(508)</visible>
 		</control>
 
-		<control type="radiobutton" id="9028" description="Alternative CD Case (508)">
-			<include>DefContextButtonGradient</include>
-			<align>left</align>
-			<label>31010</label>
-			<selected>Skin.HasSetting(ModernCase)</selected>
-			<onclick>Skin.ToggleSetting(ModernCase)</onclick>
-			<visible>Control.IsVisible(508)</visible>
-		</control>
-
-		<control type="radiobutton" id="9029" description="Show Clearlogo (509)">
+		<control type="radiobutton" id="9025" description="Show Clearlogo (509)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31569</label>
@@ -392,7 +503,7 @@
 			<visible>Control.IsVisible(509)</visible>
 		</control>
 
-		<control type="radiobutton" id="9030" description="Show Fanart (509)">
+		<control type="radiobutton" id="9026" description="Show Fanart (509)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31071</label>
@@ -401,7 +512,7 @@
 			<visible>Control.IsVisible(509)</visible>
 		</control>
 
-		<control type="radiobutton" id="9031" description="Clearlogo overlay (509)">
+		<control type="radiobutton" id="9027" description="Clearlogo overlay (509)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>$LOCALIZE[31297]$LOCALIZE[31330]</label>
@@ -410,7 +521,7 @@
 			<visible>Control.IsVisible(509) + Skin.HasSetting(509fanart)</visible>
 		</control>
 
-		<control type="button" id="9032" description="Centered List (509)">
+		<control type="button" id="9028" description="Centered List (509)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>$LOCALIZE[31380]:</label>
@@ -421,7 +532,7 @@
 			<onclick>ReloadSkin()</onclick>
 		</control>
 
-        <control type="radiobutton" id="90321" description="Show CLearart (511,512)">
+        <control type="radiobutton" id="9029" description="Show CLearart (511,512)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31569</label>
@@ -430,7 +541,7 @@
             <visible>Control.IsVisible(511) | Control.IsVisible(512)</visible>
         </control>
 
-        <control type="radiobutton" id="90322" description="List View (511,512)">
+        <control type="radiobutton" id="9030" description="List View (511,512)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31083</label>
@@ -440,7 +551,7 @@
             <onclick>ReloadSkin()</onclick>
         </control>
 
-        <control type="radiobutton" id="90323" description="Extended List (511,512)">
+        <control type="radiobutton" id="9031" description="Extended List (511,512)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31264</label>
@@ -449,7 +560,7 @@
             <visible>[Control.IsVisible(511) | Control.IsVisible(512)] + Skin.HasSetting(ListView511) + $EXP[HasEnableExtendedListInfo]</visible>
         </control>
 
-		<control type="radiobutton" id="9033">
+		<control type="radiobutton" id="9032">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31383</label>
@@ -459,7 +570,7 @@
 			<visible>Skin.HasSetting(FullscreenFanart511)</visible>
 		</control>
 
-		<control type="radiobutton" id="9034">
+		<control type="radiobutton" id="9033">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31085</label>
@@ -469,7 +580,7 @@
 			<visible>Control.IsVisible(511)</visible>
 		</control>
 
-		<control type="radiobutton" id="9035">
+		<control type="radiobutton" id="9034">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31082</label>
@@ -479,7 +590,7 @@
 			<visible>!Skin.HasSetting(FullscreenFanart511)</visible>
 		</control>
 
-		<control type="radiobutton" id="9036">
+		<control type="radiobutton" id="9035">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31098</label>
@@ -488,7 +599,7 @@
 			<visible>Control.IsVisible(511)</visible>
 		</control>
 
-		<control type="radiobutton" id="9037">
+		<control type="radiobutton" id="9036">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31080</label>
@@ -498,7 +609,7 @@
 			<visible>Control.IsVisible(511)</visible>
 		</control>
 
-		<control type="radiobutton" id="9038">
+		<control type="radiobutton" id="9037">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31092</label>
@@ -507,7 +618,7 @@
 			<visible>Control.IsVisible(512)</visible>
 		</control>
 
-		<control type="radiobutton" id="9039">
+		<control type="radiobutton" id="9038">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31098</label>
@@ -516,7 +627,7 @@
 			<visible>Control.IsVisible(512)</visible>
 		</control>
 
-		<control type="radiobutton" id="9040" description="Show CLearart (514)">
+		<control type="radiobutton" id="9039" description="Show CLearart (514)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31569</label>
@@ -525,7 +636,7 @@
 			<visible>Control.IsVisible(514)</visible>
 		</control>
 
-		<control type="button" id="9041" description="Centered List (514)">
+		<control type="button" id="9040" description="Centered List (514)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>$LOCALIZE[31380]:</label>
@@ -536,7 +647,7 @@
 			<onclick>ReloadSkin()</onclick>
 		</control>
 
-        <control type="radiobutton" id="90411" description="Extended List (516)">
+        <control type="radiobutton" id="9041" description="Extended List (516)">
             <include>DefContextButtonGradient</include>
             <align>left</align>
             <label>31264</label>
@@ -574,7 +685,7 @@
 			<visible>Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(524)</visible>
 		</control>
 
-		<control type="radiobutton" id="9047" description="Netflix Preview Window (521,522,523,524)">
+		<control type="radiobutton" id="9045" description="Netflix Preview Window (521,522,523,524)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31475</label>
@@ -584,20 +695,20 @@
 			<visible>!Skin.HasSetting(TMDbHelper.EnableBlur)</visible>
 		</control>
 
-		<control type="button" id="9048" description="Preview Window Brightness (521,522,523,524)">
+		<control type="button" id="9046" description="Preview Window Brightness (521,522,523,524)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>$LOCALIZE[31297]$LOCALIZE[464]:</label>
 			<label2>$VAR[FadeNetflixPreviewLabel]</label2>
 			<onclick>SetProperty(includesetting,FadeNetflixPreview,home)</onclick>
-			<onclick>ActivateWindow(1100)</onclick>
+			<onclick>ActivateWindow(1130)</onclick>
 			<visible>Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(524)</visible>
 			<visible>!Skin.HasSetting(TMDbHelper.EnableBlur)</visible>
 			<enable>!Skin.HasSetting(hide.views.netflix.preview)</enable>
 			<onclick>ReloadSkin()</onclick>
 		</control>
 
-		<control type="radiobutton" id="9051" description="Show Poster (526)">
+		<control type="radiobutton" id="9047" description="Show Poster (526)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31098</label>
@@ -607,7 +718,7 @@
 			<onclick>ReloadSkin()</onclick>
 		</control>
 
-		<control type="radiobutton" id="9053" description="Extended List (550)">
+		<control type="radiobutton" id="9048" description="Extended List (550)">
 			<include>DefContextButtonGradient</include>
 			<align>left</align>
 			<label>31264</label>
@@ -617,4 +728,168 @@
 		</control>
 	</include>
 
+    <include name="View_SideBlade_ViewMode">
+        <control type="button" id="9100">
+            <description>View</description>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <label>$LOCALIZE[582]: $INFO[Container.Viewmode]</label>
+            <onclick>Runscript(script.skinvariables,action=buildviews,contentid=$VAR[View_ModeSwitch],pluginname=$INFO[Container.PluginName])</onclick>
+        </control>    
+    </include>
+    
+    <include name="View_SideBlade_Common">
+        <include>View_SideBlade_Sort</include>
+
+        <control type="button" id="9091">
+            <description>Global Search</description>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <label>137</label>
+            <onclick condition="System.AddonIsEnabled(script.globalsearch)">RunScript(script.globalsearch,$VAR[Def_GlobalSearch_Query])</onclick>
+            <onclick condition="System.HasAddon(script.globalsearch) + !System.AddonIsEnabled(script.globalsearch)">EnableAddon(script.globalsearch)</onclick>
+            <onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+            <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)</visible>
+        </control>
+
+        <control type="button" id="19">
+            <label>587</label>
+            <description>Filter (hidden)</description>
+            <align>left</align>
+            <include>DefContextButtonGradient</include>
+            <visible>!Container.CanFilterAdvanced</visible>
+        </control>
+
+        <control type="radiobutton" id="98">
+            <visible>Container.CanFilterAdvanced</visible>
+            <description>Filter</description>
+            <include>DefContextButtonGradient</include>
+            <label>587</label>
+            <align>left</align>
+            <onclick>SetFocus(50)</onclick>
+            <onclick>Filter</onclick>
+            <selected>Container.Filtered</selected>
+        </control>    
+    </include>
+
+    <include name="View_SideBlade_Sort">
+        <!-- Sort Options -->
+        <control type="button" id="3">
+            <description>Sort</description>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <visible>Control.IsEnabled(3)</visible>
+        </control>
+
+        <control type="togglebutton" id="4">
+            <description>Ascending</description>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <label>$LOCALIZE[31015]: $INFO[Container.SortOrder]</label>
+            <visible>Control.IsEnabled(4)</visible>
+        </control>
+    </include>
+        
+    <include name="View_SideBlade_Playlist">
+        <control type="button" id="6148">
+            <description>Music playlist</description>
+            <label>13350</label>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <onclick>ActivateWindow(musicplaylist)</onclick>
+            <visible>!String.IsEqual(Playlist.Length(music),0) + Window.IsVisible(MyMusicNav.xml)</visible>
+        </control>
+        <control type="button" id="6149">
+            <description>Video playlist</description>
+            <label>13350</label>
+            <include>DefContextButtonGradient</include>
+            <align>left</align>
+            <onclick>ActivateWindow(videoplaylist)</onclick>
+            <visible>!String.IsEqual(Playlist.Length(video),0) + Window.IsVisible(MyVideoNav.xml)</visible>
+        </control>
+    </include>
+
+    <include name="View_SideBlade_NowPlaying">
+        <param name="onback" default="50" />
+        <definition>
+            <control type="grouplist" id="6150">
+                <visible>Player.HasMedia | Player.Playing</visible>
+                <usecontrolcoords>true</usecontrolcoords>
+                <top>14</top>
+                <left>8</left>
+                <right>8</right>
+                <height>56</height>
+                <align>center</align>
+                <itemgap>10</itemgap>
+                <include>ScrolltimeViewsList</include>
+                <orientation>horizontal</orientation>
+                <onup>9000</onup>
+                <ondown>9000</ondown>
+                <onleft>6150</onleft>
+                <onright>6150</onright>
+                <onback>$PARAM[onback]</onback>
+                <control type="button" id="6151">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]" flipx="true">osd/next.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70" flipx="true">osd/next.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick>PlayerControl(Previous)</onclick>
+                </control>
+                <control type="button" id="6152">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]" flipx="true">osd/ff.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70" flipx="true">osd/ff.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick>PlayerControl(Rewind)</onclick>
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="33" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+                </control>
+                <control type="togglebutton" id="6153">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/pause.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70">osd/pause.png</texturenofocus>
+                    <alttexturefocus colordiffuse="$VAR[ColorHighlight]">osd/play.png</alttexturefocus>
+                    <alttexturenofocus colordiffuse="Black70">osd/play.png</alttexturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+                    <onclick>PlayerControl(Play)</onclick>
+                    <enable>Player.PauseEnabled</enable>
+                    <animation effect="fade" start="100" end="33" time="100" condition="!Player.PauseEnabled">Conditional</animation>
+                </control>
+                <control type="button" id="6154">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/stop.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70">osd/stop.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick>PlayerControl(Stop)</onclick>
+                    <onclick>AlarmClock(refocus,SetFocus(9000),00:00,silent)</onclick>
+                </control>
+                <control type="button" id="6155">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/ff.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70">osd/ff.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick>PlayerControl(Forward)</onclick>
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="33" time="100" condition="!Player.SeekEnabled">Conditional</animation>
+                </control>
+                <control type="button" id="6156">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/next.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70">osd/next.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick>PlayerControl(Next)</onclick>
+                </control>
+                <control type="button" id="6157">
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/fullscreen.png</texturefocus>
+                    <texturenofocus colordiffuse="Black70">osd/fullscreen.png</texturenofocus>
+                    <width>48</width>
+                    <height>48</height>
+                    <onclick condition="Player.HasVideo">ActivateWindow(fullscreenvideo)</onclick>
+                    <onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
+                </control>
+            </control>
+        </definition>
+    </include>
+   
 </includes>

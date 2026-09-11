@@ -29,6 +29,10 @@ msgctxt "#31003"
 msgid "Animated fanarts"
 msgstr ""
 
+msgctxt "#31004"
+msgid "Skin"
+msgstr ""
+
 msgctxt "#31007"
 msgid "Title-overlays (symbols-view, deprecated)"
 msgstr ""
@@ -41,10 +45,6 @@ msgctxt "#31009"
 msgid "Scroll entire page"
 msgstr ""
 
-msgctxt "#31010"
-msgid "Alternate case"
-msgstr ""
-
 msgctxt "#31011"
 msgid "Show CD and case"
 msgstr ""
@@ -55,6 +55,10 @@ msgstr ""
 
 msgctxt "#31014"
 msgid "Netflix"
+msgstr ""
+
+msgctxt "#31015"
+msgid "Order"
 msgstr ""
 
 msgctxt "#31017"
@@ -261,10 +265,6 @@ msgctxt "#31076"
 msgid "This view"
 msgstr ""
 
-msgctxt "#31077"
-msgid "Misc"
-msgstr ""
-
 msgctxt "#31078"
 msgid "Global options"
 msgstr ""
@@ -465,6 +465,10 @@ msgctxt "#31130"
 msgid "File sources"
 msgstr ""
 
+msgctxt "#31131"
+msgid "item"
+msgstr ""
+
 msgctxt "#31133"
 msgid "Hide watched"
 msgstr ""
@@ -538,11 +542,15 @@ msgid "Show clock"
 msgstr ""
 
 msgctxt "#31154"
-msgid "Show media flags"
+msgid "Show media flags in footer"
 msgstr ""
 
 msgctxt "#31155"
 msgid "Show now playing info"
+msgstr ""
+
+msgctxt "#31156"
+msgid "No bookmarks created yet."
 msgstr ""
 
 msgctxt "#31157"
@@ -673,10 +681,6 @@ msgctxt "#31189"
 msgid "Discography of"
 msgstr ""
 
-msgctxt "#31190"
-msgid "Show icons"
-msgstr ""
-
 msgctxt "#31191"
 msgid "Directed by"
 msgstr ""
@@ -726,7 +730,7 @@ msgid "Use horizontal submenu"
 msgstr ""
 
 msgctxt "#31203"
-msgid "Artwork Beef"
+msgid "Media Details"
 msgstr ""
 
 msgctxt "#31204"
@@ -1397,10 +1401,6 @@ msgctxt "#31391"
 msgid "Prefer tags instead of rating"
 msgstr ""
 
-msgctxt "#31393"
-msgid "Show icons only"
-msgstr ""
-
 msgctxt "#31394"
 msgid "Multi-Widgets"
 msgstr ""
@@ -1431,6 +1431,22 @@ msgstr ""
 
 msgctxt "#31405"
 msgid "Sunset at"
+msgstr ""
+
+msgctxt "#31406"
+msgid "Menu bar style"
+msgstr ""
+
+msgctxt "#31407"
+msgid "Text"
+msgstr ""
+
+msgctxt "#31408"
+msgid "Icons + Text"
+msgstr ""
+
+msgctxt "#31409"
+msgid "Icons"
 msgstr ""
 
 msgctxt "#31410"
@@ -1665,8 +1681,20 @@ msgctxt "#31487"
 msgid "CPU"
 msgstr ""
 
+msgctxt "#31488"
+msgid "Awards"
+msgstr ""
+
 msgctxt "#31489"
 msgid "Underlined home menu items"
+msgstr ""
+
+msgctxt "#31490"
+msgid "MDBList"
+msgstr ""
+
+msgctxt "#31491"
+msgid "Letterboxd"
 msgstr ""
 
 msgctxt "#31492"
@@ -1982,7 +2010,11 @@ msgid "Colour presets"
 msgstr ""
 
 msgctxt "#31680"
-msgid "Preset"
+msgid "Skin colour theme"
+msgstr ""
+
+msgctxt "#31681"
+msgid "Auto day and night mode"
 msgstr ""
 
 msgctxt "#31689"
@@ -2038,7 +2070,7 @@ msgid "Wikipedia"
 msgstr ""
 
 msgctxt "#31712"
-msgid "Ratings"
+msgid "Additional ratings"
 msgstr ""
 
 msgctxt "#31713"
@@ -2311,6 +2343,10 @@ msgstr ""
 
 msgctxt "#31981"
 msgid "Default (Unicode)"
+msgstr ""
+
+msgctxt "#31982"
+msgid "Show bookmarks"
 msgstr ""
 
 msgctxt "#31983"

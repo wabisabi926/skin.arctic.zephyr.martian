@@ -4,7 +4,7 @@
 	    <icons>
 	        <source>special://skin/extras/icons/</source>
 		    <icon replace="DefaultShortcut.png">shortcut.png</icon>
-		    <icon replace="DefaultVideo.png">video.png</icon>
+		    <icon replace="DefaultVideo.png">videoplay.png</icon>
 		    <icon replace="DefaultMovies.png">film.png</icon>
 		    <icon replace="DefaultTVShows.png">tv.png</icon>
 		    <icon replace="DefaultAudio.png">songs.png</icon>
@@ -74,15 +74,29 @@
 			<label>31103</label>
 			<label2>$ADDON[script.skinshortcuts 32034]</label2>
 			<icon>special://skin/extras/icons/livetv.png</icon>
-			<action>ActivateWindow(Tvchannels)</action>
+			<action>ActivateWindow(TVChannels)</action>
 			<visible>Pvr.HasTVChannels</visible>
 		</item>
+        <item name="radio" submenu="radio">
+            <label>19021</label>
+            <label2>$ADDON[script.skinshortcuts 32034]</label2>
+            <icon>special://skin/extras/icons/radio.png</icon>
+            <action>ActivateWindow(RadioChannels)</action>
+            <visible>Pvr.HasRadioChannels</visible>
+        </item>
         <item name="videos" submenu="videos">
             <label>3</label>
             <label2>$ADDON[script.skinshortcuts 32034]</label2>
-            <icon>special://skin/extras/icons/video-addons.png</icon>
+            <icon>special://skin/extras/icons/videoplay.png</icon>
             <action>ActivateWindow(videos,library://video/,return)</action>
             <visible>!Library.HasContent(Movies) + !Library.HasContent(TVShows)</visible>
+        </item>
+        <item name="playdisc" submenu="playdisc">
+            <label>341</label>
+            <label2>$ADDON[script.skinshortcuts 32034]</label2>
+            <icon>special://skin/extras/icons/cd.png</icon>
+            <action>PlayDisc</action>
+            <visible>System.HasMediaDVD | System.HasMediaAudioCD</visible>
         </item>
 		<item name="settings" submenu="settings">
 			<label>10004</label>
@@ -661,7 +675,7 @@
 			<action>ActivateWindow(TVRecordings)</action>
 		</item>
 		<item name="tv-providers">
-			<label>19348</label>
+			<label>19334</label>
 			<label2>$ADDON[script.skinshortcuts 32017]</label2>
 			<icon>special://skin/extras/icons/antenna.png</icon>
 			<action>ActivateWindow(TVProviders)</action>
@@ -694,7 +708,7 @@
 			<action>ActivateWindow(RadioRecordings)</action>
 		</item>
 		<item name="radio-providers">
-			<label>19348</label>
+			<label>19334</label>
 			<label2>$ADDON[script.skinshortcuts 32087]</label2>
 			<icon>special://skin/extras/icons/antenna.png</icon>
 			<action>ActivateWindow(RadioProviders)</action>
@@ -800,7 +814,7 @@
             <shortcut name="tmdbhelper-episodes" label="31212" icon="special://skin/extras/icons/director.png">
                 <action>ActivateWindow(1125)</action>
             </shortcut>
-			<shortcut name="videos" label="3" icon="special://skin/extras/icons/video.png">
+			<shortcut name="videos" label="3" icon="special://skin/extras/icons/videoplay.png">
 				<action>ActivateWindow(Videos,library://video/,return)</action>
 			</shortcut>
 			<shortcut name="movies" label="342" icon="special://skin/extras/icons/film.png">
@@ -810,7 +824,7 @@
 				<action>ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
 			</shortcut>
 			<shortcut name="livetv" label="31103" icon="special://skin/extras/icons/livetv.png" visible="Pvr.HasTVChannels">
-				<action>ActivateWindow(Tvchannels)</action>
+				<action>ActivateWindow(TVChannels)</action>
 				<visible>Pvr.HasTVChannels</visible>
 			</shortcut>
 			<shortcut name="radio" label="19021" icon="special://skin/extras/icons/radio.png" visible="PVR.HasRadioChannels">
@@ -915,7 +929,7 @@
         </group>
 
         <!-- Video Library -->
-        <group name="video-library" label="3" icon="special://skin/extras/icons/video.png">
+        <group name="video-library" label="3" icon="special://skin/extras/icons/videoplay.png">
             <content source="nodes" target="videos" />
             <shortcut name="search-video" label="137" icon="special://skin/extras/icons/search.png" visible="System.AddonIsEnabled(script.globalsearch)">
                 <action>RunScript(script.globalsearch,tvshows=true&amp;episodes=true&amp;movies=true&amp;actors=true&amp;directors=true)</action>
@@ -970,9 +984,7 @@
             <shortcut name="tv-lastchannel" label="19324" icon="special://skin/extras/icons/livetv.png">
                 <action>PlayPvrTV</action>
             </shortcut>
-            <group name="tv-channels-group" label="10700" icon="special://skin/extras/icons/files.png">
-                <content source="pvr" target="tv" />
-            </group>
+            <content source="pvr" target="tv" folder="10700" icon="special://skin/extras/icons/files.png" />
         </group>       
 
         <!-- Radio -->
@@ -1001,28 +1013,18 @@
             <shortcut name="radio-lastchannel" label="19324" icon="special://skin/extras/icons/radio.png">
                 <action>PlayPvrRadio</action>
             </shortcut>
-            <group name="radio-channels-group" label="19024" icon="special://skin/extras/icons/files.png">
-                <content source="pvr" target="radio" />
-            </group>
+            <content source="pvr" target="radio" folder="19024" icon="special://skin/extras/icons/files.png" />
         </group>
 
         <!-- Add-ons -->
         <group name="addons" label="24001" icon="special://skin/extras/icons/addons.png">
-            <group name="program-addons" label="10001" icon="special://skin/extras/icons/addons.png">
-                <content source="addons" target="programs" label="10001" />
-                <shortcut name="apps" label="20244" icon="special://skin/extras/icons/addons.png" visible="System.Platform.Android">
-                    <action>ActivateWindow(programs,androidapp://sources/apps/,return)</action>
-                 </shortcut>
-            </group>
-            <group name="video-addons" label="1037" icon="special://skin/extras/icons/video-addons.png">
-                <content source="addons" target="videos" icon="special://skin/extras/icons/video-addons.png"/>
-            </group>
-            <group name="music-addons" label="1038" icon="special://skin/extras/icons/songs.png">
-                <content source="addons" target="music" label="1038" />
-            </group>
-            <group name="picture-addons" label="1039" icon="special://skin/extras/icons/pictures.png">
-                <content source="addons" target="pictures" label="1039" />
-            </group>
+           	<content source="addons" target="videos" folder="1037" icon="special://skin/extras/icons/video-addons.png"/>
+            <content source="addons" target="music" folder="1038" icon="special://skin/extras/icons/songs.png" />
+            <content source="addons" target="pictures" folder="1039" icon="special://skin/extras/icons/pictures.png" />
+            <content source="addons" target="programs" folder="1043" icon="special://skin/extras/icons/addons.png" />
+            <shortcut name="apps" label="20244" type="addons" target="programs" icon="special://skin/extras/icons/android.png" visible="System.Platform.Android">
+                <action>ActivateWindow(programs,androidapp://sources/apps/,return)</action>
+            </shortcut>
             <shortcut name="game-addons" label="35049" icon="special://skin/extras/icons/xbox.png">
                 <action>ActivateWindow(Games,addons://sources/game/,return)</action>
             </shortcut>
@@ -1030,31 +1032,17 @@
 		       
 		<!-- Playlists -->
 		<group name="playlists" label="136" icon="special://skin/extras/icons/playlist.png">
-            <group name="video-playlists" label="20012" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" target="videos" />
-            </group>
-            <group name="music-playlists" label="20011" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" target="music" />
-            </group>
-            <group name="skin-playlists" label="31514" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" path="special://skin/extras/playlists/" />
-            </group>
+            <content source="playlists" target="videos" folder="20012" icon="special://skin/extras/icons/playlist.png" />
+            <content source="playlists" target="music" folder="20011" icon="special://skin/extras/icons/playlist.png" />
+            <content source="playlists" folder="31514" path="special://skin/extras/playlists/" icon="special://skin/extras/icons/playlist.png"/>
 		</group> 
 
 		<!-- Sources -->
 		<group name="sources" label="39031" icon="special://skin/extras/icons/files.png">
-	        <group name="video-sources" label="31127" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="videos" />
-	        </group>
-	        <group name="music-sources" label="31128" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="music" />
-	        </group>
-	        <group name="picture-sources" label="31129" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="pictures" />
-	        </group>
-	        <group name="file-sources" label="31130" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="files" />
-	        </group>
+			<content source="sources" target="videos" folder="31127" icon="special://skin/extras/icons/files.png" />
+            <content source="sources" target="music" folder="31128" icon="special://skin/extras/icons/files.png" />
+            <content source="sources" target="pictures"  folder="31129" icon="special://skin/extras/icons/files.png" />
+            <content source="sources" target="files" folder="31130" icon="special://skin/extras/icons/files.png" />
 		</group> 
 		
         <!-- Favourites -->
@@ -1133,4 +1121,8 @@
 		<subdialog buttonID="9308" menu="x1118" />
 		<subdialog buttonID="9309" menu="x1119" />
 	</dialogs>
+	
+	<!-- Disable context menu -->
+    <contextmenu>false</contextmenu>
+    	
 </menus>

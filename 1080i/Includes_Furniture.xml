@@ -239,11 +239,11 @@
         </control>
         <control type="button" id="290001">
             <include>HiddenButton</include>
-            <onleft>SetFocus($VAR[View_Current_ViewID])</onleft>
-            <onright>SetFocus($VAR[View_Current_ViewID])</onright>
-            <onback>SetFocus($VAR[View_Current_ViewID])</onback>
-            <onclick>SetFocus($VAR[View_Current_ViewID])</onclick>
-            <ondown>SetFocus($VAR[View_Current_ViewID])</ondown>
+            <onleft>SetFocus($VAR[View_CurrentID])</onleft>
+            <onright>SetFocus($VAR[View_CurrentID])</onright>
+            <onback>SetFocus($VAR[View_CurrentID])</onback>
+            <onclick>SetFocus($VAR[View_CurrentID])</onclick>
+            <ondown>SetFocus($VAR[View_CurrentID])</ondown>
             <ondown>Action(nextletter)</ondown>
             <ondown condition="Integer.IsEqual(Container.CurrentPage, Container.NumPages) | !Container.SortDirection(descending) + String.IsEqual(ListItem.SortLetter,Z) | Container.SortDirection(descending) + $EXP[SortLetterIsNumber]">Action(firstpage)</ondown>
             <ondown condition="!Container.SortDirection(descending) + [Integer.IsEqual(Container.CurrentPage, Container.NumPages) | String.IsEqual(ListItem.SortLetter,Z)]">Action(jumpsms2)</ondown>
@@ -252,7 +252,7 @@
             <ondown condition="Integer.IsEqual(Container.CurrentPage, Container.NumPages) | !Container.SortDirection(descending) + String.IsEqual(ListItem.SortLetter,Z) | Container.SortDirection(descending) + $EXP[SortLetterIsNumber]">Action(prevletter)</ondown>
             <ondown condition="Integer.IsEqual(Container.CurrentPage, Container.NumPages) | !Container.SortDirection(descending) + String.IsEqual(ListItem.SortLetter,Z) | Container.SortDirection(descending) + $EXP[SortLetterIsNumber]">Action(prevletter)</ondown>
             <ondown>SetFocus(290001)</ondown>
-            <onup>SetFocus($VAR[View_Current_ViewID])</onup>
+            <onup>SetFocus($VAR[View_CurrentID])</onup>
             <onup>Action(prevletter)</onup>
             <onup condition="Integer.IsEqual(Container.CurrentPage,1) | !Container.SortDirection(descending) + $EXP[SortLetterIsNumber] | !Container.SortDirection(descending) + String.IsEqual(ListItem.SortLetter,A)">Action(lastpage)</onup>
             <onup condition="!Container.SortDirection(descending) + [Integer.IsEqual(Container.CurrentPage,1) | $EXP[SortLetterIsNumber]]">Action(jumpsms9)</onup>
@@ -337,7 +337,7 @@
                     <textcolor>$VAR[ColorHighlight]</textcolor>
                 </control>
             </focusedlayout>
-            <content>plugin://script.skin.info.service/?action=letter_jump&amp;target=$VAR[View_Current_ViewID]&amp;available=true&amp;reload=$INFO[Container($VAR[View_Current_ViewID]).NumItems]$INFO[Container($VAR[View_Current_ViewID]).SortMethod]$INFO[Container($VAR[View_Current_ViewID]).SortOrder]$INFO[Container($VAR[View_Current_ViewID]).FolderPath]</content>
+            <content>plugin://script.skin.info.service/?action=letter_jump&amp;target=$VAR[View_CurrentID]&amp;available=true&amp;reload=$INFO[Container($VAR[View_CurrentID]).NumItems]$INFO[Container($VAR[View_CurrentID]).SortMethod]$INFO[Container($VAR[View_CurrentID]).SortOrder]$INFO[Container($VAR[View_CurrentID]).FolderPath]</content>
         </control>
     </include>
     
@@ -766,7 +766,7 @@
  
     <include name="Furniture_Flags_DialogInfo">
         <control type="group">
-            <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags)">
+            <include content="Furniture_Flags_Include">
                 <param name="position_low" value="false" />
             </include>
         </control>
@@ -774,7 +774,7 @@
     
     <include name="Furniture_Flags">
         <control type="group">
-    		<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + [!ListItem.IsFolder | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + ![String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + [!Window.IsVisible(script-globalsearch.xml) | Control.HasFocus(555)]</visible>
+    		<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets] | String.StartsWith(ListItem.FolderPath,pvr://) + !Window.IsVisible(DialogPVRGuideControls.xml) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.tmdb_id))] + [!ListItem.IsFolder | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + ![String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + [!Window.IsVisible(script-globalsearch.xml) | Control.HasFocus(555)]</visible>
             <include>Animation.FurnitureVisible</include>
             <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags)">
                 <param name="position_low" value="true" />
@@ -797,27 +797,17 @@
         <control type="grouplist">
             <visible>![Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)]</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <include content="def_top" condition="!$PARAM[position_low]">
+                <param name="top" value="76" />
+            </include>
             <include content="def_left" condition="!$PARAM[position_low]">
                 <param name="left" value="-10" />
             </include>
-            <left>70</left>
-            <include content="def_top" condition="!$PARAM[position_low]">
-                <param name="top" value="72" />
+            <include content="DefFurnitureFlagsGroupList">
+                <param name="position_low" value="$PARAM[position_low]" />
             </include>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes)] | [!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]]] | ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(ListItem.VideoResolution)]</visible>
+                <visible>[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)] | ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(ListItem.VideoResolution)]</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -1071,19 +1061,19 @@
 	                <height>64</height>
 	                <align>left</align>
 	                <aligny>center</aligny>
-	                <label>$VAR[LabelDurationTimeCheck] </label>
+	                <label>$VAR[LabelDurationFurniture] </label>
 	                <font>Flag</font>
 	                <textcolor>Dark1</textcolor>
 	                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
 	            </control>
 	            <control type="image" description="MPAA">
-	                <width min="20" max="100">auto</width>
+	                <width min="20" max="80">auto</width>
 	                <height>64</height>
 	                <left>5</left>
 	                <centertop>50%</centertop>
-	                <texture colordiffuse="Dark1" fallback="flags/fallback.png">flags/monochrome/mpaa/$VAR[RatingFlagVar]</texture>
+	                <texture colordiffuse="Dark1" fallback="flags/fallback.png">flags/monochrome/mpaa/$VAR[MPAA_ImageConvert]</texture>
 	                <aspectratio align="center">keep</aspectratio>
-	                <visible>Skin.HasSetting(furniture.flags.mpaa) + !String.IsEmpty(ListItem.MPAA)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.mpaa) + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.MPAA))]</visible>
 	            </control>
 	            <control type="image" description="IMDB Top 250">
 	                <width>80</width>
@@ -1091,7 +1081,7 @@
 	                <height>64</height>
 	                <aspectratio aligny="center" align="center">keep</aspectratio>
 	                <texture colordiffuse="Dark1">flags/monochrome/ratings/imdbtop250.png</texture>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(ListItem.Top250)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))]</visible>
 	            </control>
 	            <control type="label" description="IMDB Top 250">
 	                <centertop>50%</centertop>
@@ -1100,8 +1090,8 @@
 	                <font>Flag</font>
 	                <left>-20</left>
 	                <textcolor>Dark1</textcolor>
-	                <label>$INFO[ListItem.Top250,#,]</label>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(ListItem.Top250) + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
+	                <label>$VAR[Label_Top250,#,]</label>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))] + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
 	            </control>
 	            <control type="image" description="User rating">
 	                <visible>!String.IsEmpty(ListItem.UserRating) + Skin.HasSetting(furniture.showuserrating) + !Skin.HasSetting(userrating.override.rating)</visible>
@@ -1126,27 +1116,17 @@
         <control type="grouplist">
             <visible>Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <include content="def_top" condition="!$PARAM[position_low]">
+                <param name="top" value="76" />
+            </include>
             <include content="def_left" condition="!$PARAM[position_low]">
                 <param name="left" value="-10" />
             </include>
-            <left>70</left>
-            <include content="def_top" condition="!$PARAM[position_low]">
-                <param name="top" value="72" />
+            <include content="DefFurnitureFlagsGroupList">
+                <param name="position_low" value="$PARAM[position_low]" />
             </include>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
             <control type="group">
-                <visible>[[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes)] | [!String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]]] | ListItem.IsCollection</visible>
+                <visible>[Container.Content(tvshows) | Container.Content(seasons) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)] + [[!String.IsEmpty(ListItem.Property(TotalEpisodes)) | !String.IsEmpty(ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)] | ListItem.IsCollection</visible>
                 <centertop>50%</centertop>
                 <width>75</width>
                 <height>45</height>
@@ -1360,18 +1340,18 @@
 	                <height>64</height>
 	                <align>left</align>
 	                <aligny>center</aligny>
-	                <label>$VAR[LabelDurationTimeCheck] </label>
+	                <label>$VAR[LabelDurationFurniture] </label>
 	                <font>Flag</font>
 	                <textcolor>Dark1</textcolor>
 	                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
 	            </control>
 	            <control type="image" description="MPAA">
-	                <width min="20" max="100">auto</width>
+	                <width min="20" max="90">auto</width>
 	                <height>64</height>
 	                <centertop>50%</centertop>
-	                <texture fallback="flags/fallback.png">flags/color/mpaa/$VAR[RatingFlagVar]</texture>
+	                <texture fallback="flags/fallback.png">flags/color/mpaa/$VAR[MPAA_ImageConvert]</texture>
 	                <aspectratio align="center">keep</aspectratio>
-	                <visible>Skin.HasSetting(furniture.flags.mpaa) + !String.IsEmpty(ListItem.MPAA)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.mpaa) + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.MPAA))]</visible>
 	            </control>
 	            <control type="image" description="IMDB Top 250">
 	                <width>80</width>
@@ -1379,7 +1359,7 @@
 	                <height>64</height>
 	                <aspectratio aligny="center" align="center">keep</aspectratio>
 	                <texture colordiffuse="Dark1">flags/monochrome/ratings/imdbtop250.png</texture>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(ListItem.Top250)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))]</visible>
 	            </control>
 	            <control type="label" description="IMDB Top 250">
 	                <centertop>50%</centertop>
@@ -1388,8 +1368,8 @@
 	                <font>Flag</font>
 	                <left>-20</left>
 	                <textcolor>Dark1</textcolor>
-	                <label>$INFO[ListItem.Top250,#,]</label>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(ListItem.Top250) + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
+	                <label>$VAR[Label_Top250,#,]</label>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))] + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
 	            </control>
 	            <control type="image" description="User rating">
 	                <visible>!String.IsEmpty(ListItem.UserRating) + Skin.HasSetting(furniture.showuserrating) + !Skin.HasSetting(userrating.override.rating)</visible>
@@ -1410,44 +1390,6 @@
 	                <label>$INFO[ListItem.UserRating].0</label>
 	            </control>
 	            <include condition="!ListItem.IsCollection">ExtendedRatingFlags_Furniture_Color</include>
-            </control>
-        </control>
-        <control type="grouplist">
-            <include>Animation.FurnitureVisible</include>
-            <visible>Skin.HasSetting(furniture.flags)</visible>
-            <visible>Container.Content(movies) | Container.Content(files) | Container.Content(episodes)</visible>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <left>SidePad</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>10</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
-            <control type="image" description="Duration">
-                <width>48</width>
-                <height>64</height>
-                <centertop>50%</centertop>
-                <texture colordiffuse="Dark1">flags/time.png</texture>
-                <aspectratio align="left">scale</aspectratio>
-                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
-            </control>
-            <control type="label" description="Duration">
-                <width>auto</width>
-                <centertop>50%</centertop>
-                <height>64</height>
-                <align>left</align>
-                <aligny>center</aligny>
-                <label>$VAR[LabelDurationTimeCheck] </label>
-                <font>Flag</font>
-                <textcolor>Dark1</textcolor>
-                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
         </control>
     </include>
@@ -1475,19 +1417,7 @@
         <control type="grouplist">
             <visible>![Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)]</visible>
             <visible>!String.IsEqual(Container(9500).ListItem.Label,..)</visible>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <include>DefFurnitureFlagsGroupList</include>
             <control type="group">
                 <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [[!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]] | Container(9500).ListItem.IsCollection | [!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(Container(9500).ListItem.VideoResolution)]</visible>
                 <centertop>50%</centertop>
@@ -1709,13 +1639,13 @@
                     <visible>$EXP[IsVideoSourceDVDHub]</visible>
 	            </control>
                 <control type="image" description="MPAA">
-	                <width min="20" max="100">auto</width>
+	                <width min="20" max="80">auto</width>
 	                <height>64</height>
 	                <left>5</left>
 	                <centertop>50%</centertop>
-	                <texture colordiffuse="Dark1" fallback="flags/fallback.png">flags/monochrome/mpaa/$VAR[RatingFlagVarHub]</texture>
+	                <texture colordiffuse="Dark1" fallback="flags/fallback.png">flags/monochrome/mpaa/$VAR[MPAA_ImageConvert_Hub]</texture>
 	                <aspectratio align="center">keep</aspectratio>
-	                <visible>Skin.HasSetting(furniture.flags.mpaa) + !String.IsEmpty(Container(9500).ListItem.MPAA)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.mpaa) + [!String.IsEmpty(Container(9500).ListItem.MPAA) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.MPAA))]</visible>
 	            </control>
 	            <control type="image" description="IMDB Top 250">
 	                <width>80</width>
@@ -1723,7 +1653,7 @@
 	                <height>64</height>
 	                <aspectratio aligny="center" align="center">keep</aspectratio>
 	                <texture colordiffuse="Dark1">flags/monochrome/ratings/imdbtop250.png</texture>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(Container(9500).ListItem.Top250)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(Container(9500).ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))]</visible>
 	            </control>
 	            <control type="label" description="IMDB Top 250">
 	                <centertop>50%</centertop>
@@ -1732,8 +1662,8 @@
 	                <font>Flag</font>
 	                <left>-20</left>
 	                <textcolor>Dark1</textcolor>
-	                <label>$INFO[Container(9500).ListItem.Top250,#,]</label>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(Container(9500).ListItem.Top250) + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
+	                <label>$VAR[Label_Top250_Hub,#,]</label>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(Container(9500).ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))] + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
 	            </control>
 	            <control type="image" description="User rating">
 	                <visible>!String.IsEmpty(Container(9500).ListItem.UserRating) + Skin.HasSetting(furniture.showuserrating) + !Skin.HasSetting(userrating.override.rating)</visible>
@@ -1759,19 +1689,7 @@
             <visible>Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)</visible>
             <visible>String.IsEqual(Container(9500).ListItem.DBType,movie) | String.IsEqual(Container(9500).ListItem.DBType,set) | String.IsEqual(Container(9500).ListItem.DBType,episode) | String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)</visible>
             <visible>!String.IsEqual(Container(9500).ListItem.Label,..)</visible>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <include>DefFurnitureFlagsGroupList</include>
             <control type="group">
                 <visible>[[String.IsEqual(Container(9500).ListItem.DBType,tvshow) | String.IsEqual(Container(9500).ListItem.DBType,season)] + [[!String.IsEmpty(Container(9500).ListItem.Property(TotalEpisodes)) | !String.IsEmpty(Container(9500).ListItem.Episode)] + !Skin.HasSetting(ShowUnwatchedEpisodes) | !String.IsEmpty(Container(9500).ListItem.Property(UnWatchedEpisodes)) + Skin.HasSetting(ShowUnwatchedEpisodes)]] | Container(9500).ListItem.IsCollection</visible>
                 <centertop>50%</centertop>
@@ -1954,12 +1872,12 @@
                 <include condition="Skin.HasSetting(furniture.show.audiotracks)">Audiostreams_Furniture_Hub</include>
                 <include condition="Skin.HasSetting(furniture.showsubtitles)">Subtitles_Furniture_Hub</include>
 	            <control type="image" description="MPAA">
-	                <width min="20" max="100">auto</width>
+	                <width min="20" max="90">auto</width>
 	                <height>64</height>
 	                <centertop>50%</centertop>
-	                <texture fallback="flags/fallback.png">flags/color/mpaa/$VAR[RatingFlagVarHub]</texture>
+	                <texture fallback="flags/fallback.png">flags/color/mpaa/$VAR[MPAA_ImageConvert_Hub]</texture>
 	                <aspectratio align="center">keep</aspectratio>
-	                <visible>Skin.HasSetting(furniture.flags.mpaa) + !String.IsEmpty(Container(9500).ListItem.MPAA)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.mpaa) + [!String.IsEmpty(Container(9500).ListItem.MPAA) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.MPAA))]</visible>
 	            </control>
 	            <control type="image" description="IMDB Top 250">
 	                <width>80</width>
@@ -1967,7 +1885,7 @@
 	                <height>64</height>
 	                <aspectratio aligny="center" align="center">keep</aspectratio>
 	                <texture colordiffuse="Dark1">flags/monochrome/ratings/imdbtop250.png</texture>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(Container(9500).ListItem.Top250)</visible>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(Container(9500).ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))]</visible>
 	            </control>
 	            <control type="label" description="IMDB Top 250">
 	                <centertop>50%</centertop>
@@ -1976,8 +1894,8 @@
 	                <font>Flag</font>
 	                <left>-20</left>
 	                <textcolor>Dark1</textcolor>
-	                <label>$INFO[Container(9500).ListItem.Top250,#,]</label>
-	                <visible>Skin.HasSetting(furniture.flags.top250) + !String.IsEmpty(Container(9500).ListItem.Top250) + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
+	                <label>$VAR[Label_Top250_Hub,#,]</label>
+	                <visible>Skin.HasSetting(furniture.flags.top250) + [!String.IsEmpty(Container(9500).ListItem.Top250) | !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.Top250))] + Skin.HasSetting(furniture.flags.top250.enable.labels)</visible>
 	            </control>
 	            <control type="image" description="User rating">
 	                <visible>!String.IsEmpty(Container(9500).ListItem.UserRating) + Skin.HasSetting(furniture.showuserrating) + !Skin.HasSetting(userrating.override.rating)</visible>
@@ -2004,17 +1922,17 @@
 
     <include name="Furniture_Home_Flags">
     	<control type="group">    	
-        	<visible>[Control.HasFocus(301) | ControlGroup(301).HasFocus] + !Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)</visible>
+        	<visible>[Control.HasFocus(301) | ControlGroup(301).HasFocus] + !Skin.HasSetting(furniture.flags)</visible>
             <include>Animation.FurnitureVisible</include>
 	        <control type="group">
-	        	<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,file)</visible>
-	            <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)">
+	        	<visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,file) | String.StartsWith(ListItem.FolderPath,pvr://) + !String.IsEmpty(Window(home).Property(TMDbHelper.ListItem.tmdb_id))</visible>
+	            <include content="Furniture_Flags_Include" condition="!Skin.HasSetting(furniture.flags)">
 	                <param name="position_low" value="true" />
 	            </include>
 	        </control>
             <control type="group">
                 <visible>String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)</visible>
-                <include content="Furniture_Flags_Audio_Include" condition="!Skin.HasSetting(furniture.flags) + !Skin.HasSetting(home.hideflags)">
+                <include content="Furniture_Flags_Audio_Include" condition="!Skin.HasSetting(furniture.flags)">
                     <param name="position_low" value="true" />
                 </include>
             </control>
@@ -2046,7 +1964,7 @@
         <value condition="String.Contains(Container.FolderPath,videodb://tvshows/,Left)">special://skin/extras/icons/tv.png</value>
         <value condition="String.Contains(Container.FolderPath,plugin://,Left)">special://skin/extras/icons/video-addons.png</value>
         <value condition="$EXP[InGameMode]">special://skin/extras/icons/games.png</value>
-        <value condition="Container.Content(movies)">special://skin/extras/icons/film.png</value>
+        <value condition="Container.Content(movies) | $EXP[IsVideoAssets]">special://skin/extras/icons/film.png</value>
         <value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">special://skin/extras/icons/tv.png</value>
         <value condition="Container.Content(songs)">special://skin/extras/icons/songs.png</value>
         <value condition="Container.Content(livetv)">special://skin/extras/icons/livetv.png</value>
@@ -2055,8 +1973,8 @@
         <value condition="Container.Content(addons)">special://skin/extras/icons/addons.png</value>
         <value condition="String.Contains(Container.FolderPath,videodb://musicvideos/,Left)">special://skin/extras/icons/musicvideo.png</value>
         <value condition="Window.IsVisible(DialogColorPicker.xml)">special://skin/extras/icons/wand.png</value>
-        <value condition="Window.IsVisible(tvchannels) | Window.IsVisible(tvsearch) | Window.IsVisible(tvtimers) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimerrules)">special://skin/extras/icons/livetv.png</value>
-        <value condition="Window.IsVisible(radiochannels) | Window.IsVisible(radiosearch) | Window.IsVisible(radiotimers) | Window.IsVisible(radioguide) | Window.IsVisible(radiorecordings) | Window.IsVisible(radiotimerrules)">special://skin/extras/icons/radio.png</value>
+        <value condition="Window.IsVisible(tvchannels) | Window.IsVisible(tvsearch) | Window.IsVisible(tvtimers) | Window.IsVisible(tvguide) | Window.IsVisible(tvrecordings) | Window.IsVisible(tvtimerrules) | Window.IsVisible(tvproviders)">special://skin/extras/icons/livetv.png</value>
+        <value condition="Window.IsVisible(radiochannels) | Window.IsVisible(radiosearch) | Window.IsVisible(radiotimers) | Window.IsVisible(radioguide) | Window.IsVisible(radiorecordings) | Window.IsVisible(radiotimerrules) | Window.IsVisible(radioproviders)">special://skin/extras/icons/radio.png</value>
         <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">special://skin/extras/icons/songs.png</value>
         <value condition="Window.IsVisible(MyPics.xml)">special://skin/extras/icons/pictures.png</value>
         <value condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">special://skin/extras/icons/addons.png</value>
@@ -2066,7 +1984,7 @@
         <value condition="Window.IsVisible(FileManager.xml)">special://skin/extras/icons/database.png</value>
         <value condition="Window.IsVisible(Home.xml)">special://skin/extras/icons/home.png</value>
         <value condition="Window.IsVisible(MyVideoNav.xml)">special://skin/extras/icons/video-addons.png</value>
-        <value condition="Window.IsVisible(1104)">special://skin/extras/icons/wand.png</value>
+        <value condition="Window.IsVisible(1134)">special://skin/extras/icons/wand.png</value>
         <value condition="String.EndsWith(Window.Property(xmlfile),_Hub.xml)">$INFO[Window(home).Property(WindowIcon)]</value>
         <value>special://skin/extras/icons/artist.png</value>
     </variable>
@@ -2099,12 +2017,14 @@
         <value condition="Window.IsVisible(radiotimers)">$LOCALIZE[10708]</value>
         <value condition="Window.IsVisible(radiosearch)">$LOCALIZE[10709]</value>
         <value condition="Window.IsVisible(radiotimerrules)">$LOCALIZE[10711]</value>
+        <value condition="Window.IsVisible(radioproviders)">$LOCALIZE[19334]</value>
         <value condition="Window.IsVisible(tvguide)">$LOCALIZE[10702]</value>
         <value condition="Window.IsVisible(tvchannels)">$LOCALIZE[10700]</value>
         <value condition="Window.IsVisible(tvrecordings)">$LOCALIZE[10701]</value>
         <value condition="Window.IsVisible(tvtimers)">$LOCALIZE[10703]</value>
         <value condition="Window.IsVisible(tvsearch)">$LOCALIZE[10704]</value>
         <value condition="Window.IsVisible(tvtimerrules)">$LOCALIZE[10710]</value>
+        <value condition="Window.IsVisible(tvproviders)">$LOCALIZE[19334]</value>
         <value condition="!String.IsEmpty(Container.FolderName) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)]">$INFO[Container.FolderName]</value>
         <value condition="Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">$LOCALIZE[2]</value>
         <value condition="Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(service-CoreELEC-Settings-mainWindow.xml) | Window.IsVisible(service-LibreELEC-Settings-mainWindow.xml)">$LOCALIZE[5]</value>
@@ -2115,7 +2035,6 @@
         <value condition="Window.IsVisible(AddonBrowser.xml)">$LOCALIZE[24001]</value>
         <value condition="Window.IsVisible(MyPlaylist.xml)">$LOCALIZE[13350]</value>
         <value condition="Window.IsVisible(FileManager.xml)">$LOCALIZE[744]</value>
-        <value condition="Window.IsVisible(1104)">$LOCALIZE[31580]</value>
         <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),1)">$LOCALIZE[31211]</value>
         <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),2)">$LOCALIZE[31210]</value>
         <value condition="Window.IsVisible(1124) + String.IsEqual(Window(1124).Property(content),3)">$LOCALIZE[31209]</value>
@@ -2124,6 +2043,7 @@
         <value condition="Window.IsVisible(1125) + String.IsEqual(Window(1125).Property(content),2)">$LOCALIZE[31210]</value>
         <value condition="Window.IsVisible(1125) + String.IsEqual(Window(1125).Property(content),3)">$LOCALIZE[31212]</value>
         <value condition="Window.IsVisible(1125)">$LOCALIZE[31213]</value>
+        <value condition="Window.IsVisible(1134)">$LOCALIZE[31580]</value>
         <value condition="String.EndsWith(Window.Property(xmlfile),_Hub.xml)">$INFO[Window(home).Property(WindowTitle)]</value>
         <value>$LOCALIZE[10000]</value>
     </variable>
@@ -2655,25 +2575,15 @@
             <visible>!Control.HasFocus(9501)</visible>
             <visible>!Control.HasFocus(160)</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <include content="def_top" condition="!$PARAM[position_low]">
+                <param name="top" value="216" />
+            </include>
             <include content="def_left" condition="!$PARAM[position_low]">
                 <param name="left" value="-10" />
             </include>
-            <include content="def_top" condition="!$PARAM[position_low]">
-                <param name="top" value="166" />
+            <include content="DefFurnitureFlagsGroupList">
+                <param name="position_low" value="$PARAM[position_low]" />
             </include>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
             <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="FlagstarSong" />
@@ -2701,7 +2611,7 @@
                 <label>$INFO[ListItem.FileExtension]$VAR[LabelAudioChannels, ]  </label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>!Skin.HasSetting(furniture.flagicons)</visible>
+                <visible>!Skin.HasSetting(furniture.flagicons) + !String.IsEqual(ListItem.DBType,Album)</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -2842,7 +2752,7 @@
                 <centertop>50%</centertop>
                 <texture colordiffuse="Dark1">flags/time.png</texture>
                 <aspectratio align="left">scale</aspectratio>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -2851,10 +2761,10 @@
                 <left>15</left>
                 <align>left</align>
                 <aligny>center</aligny>
-                <label>$VAR[LabelDurationMusicFurniture]</label>
+                <label>$VAR[LabelDurationFurniture]</label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
         </control>
         <control type="grouplist">
@@ -2862,25 +2772,15 @@
             <visible>!Control.HasFocus(9501)</visible>
             <visible>!Control.HasFocus(160)</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <include content="def_top" condition="!$PARAM[position_low]">
+                <param name="top" value="216" />
+            </include>
             <include content="def_left" condition="!$PARAM[position_low]">
                 <param name="left" value="-10" />
             </include>
-            <include content="def_top" condition="!$PARAM[position_low]">
-                <param name="top" value="166" />
+            <include content="DefFurnitureFlagsGroupList">
+                <param name="position_low" value="$PARAM[position_low]" />
             </include>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
             <include>AlbumCount</include>
             <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="FlagstarSong" />
@@ -3006,7 +2906,7 @@
                 <centertop>50%</centertop>
                 <texture colordiffuse="Dark1">flags/time.png</texture>
                 <aspectratio align="left">scale</aspectratio>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -3015,10 +2915,10 @@
                 <left>15</left>
                 <align>left</align>
                 <aligny>center</aligny>
-                <label>$VAR[LabelDurationMusicFurniture]</label>
+                <label>$VAR[LabelDurationFurniture]</label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>$EXP[ShowFurnitureFlagsAudioDuration]</visible>
+                <visible>$EXP[ShowFurnitureFlagsDuration]</visible>
             </control>
         </control>
     </include>
@@ -3027,19 +2927,7 @@
         <control type="grouplist">
             <visible>![Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)]</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <include>DefFurnitureFlagsGroupList</include>
             <include>AlbumCount</include>
             <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="HubFlagstar" />
@@ -3067,7 +2955,7 @@
                 <label>$INFO[Container(9500).ListItem.FileExtension]$VAR[LabelHubAudioChannels, ]  </label>
                 <font>Flag</font>
                 <textcolor>Dark1</textcolor>
-                <visible>!Skin.HasSetting(furniture.flagicons)</visible>
+                <visible>!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty()</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -3206,19 +3094,7 @@
         <control type="grouplist">
             <visible>Skin.HasSetting(furniture.flagicons) + Skin.HasSetting(furniture.coloredicons)</visible>
             <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <include>DefFurnitureFlagsGroupList</include>
             <include>AlbumCount</include>
             <include content="Furniture_RatingFlags" condition="!Skin.HasSetting(furniture.hide.musicrating)">
                 <param name="Star" value="HubFlagstar" />
@@ -3346,19 +3222,7 @@
             <include>Animation.FurnitureVisible</include>
             <visible>!Skin.HasSetting(furniture.flags)</visible>
             <visible>!ListItem.IsFolder + !String.IsEmpty(Container.PluginName) + $EXP[InGameMode]</visible>
-            <left>70</left>
-            <centerbottom>NavBarPad</centerbottom>
-            <include content="def_right" condition="Skin.HasSetting(furniture.clock)">
-                <param name="right" value="SidePad" />
-            </include>
-            <include content="def_right" condition="!Skin.HasSetting(furniture.clock)">
-                <param name="right" value="440" />
-            </include>
-            <height>120</height>
-            <orientation>horizontal</orientation>
-            <align>left</align>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <include>DefFurnitureFlagsGroupList</include>
             <control type="group">
                 <visible>!Skin.HasSetting(furniture.flagicons) + !String.IsEmpty(Control.GetLabel(6601))</visible>
                 <centertop>50%</centertop>
@@ -3786,6 +3650,23 @@
             <textcolor>Dark1</textcolor>
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)]</label>
         </control>
+        <control type="image" description="Letterboxd Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating),0) + Skin.HasSetting(furniture.showletterboxd)</visible>
+            <centertop>50%</centertop>
+            <width>33</width>
+            <height>33</height>
+            <left>15</left>
+            <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/letterboxd.png</texture>
+        </control>
+        <control type="label" description="Letterboxd Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating),0) + Skin.HasSetting(furniture.showletterboxd)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)]</label>
+        </control>
         <control type="image" description="Metacritic">
             <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating)) + Skin.HasSetting(furniture.showmetacritic)</visible>
             <centertop>50%</centertop>
@@ -3839,6 +3720,60 @@
             <textcolor>Dark1</textcolor>
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter)]%</label>
         </control>        
+        <control type="image" description="MDBList Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0) + Skin.HasSetting(furniture.showmdblist)</visible>
+            <centertop>50%</centertop>
+            <width>33</width>
+            <height>33</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/mdblist.png</texture>
+        </control>
+        <control type="label" description="MDBList Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0) + Skin.HasSetting(furniture.showmdblist)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),,%]</label>
+        </control>          
+        <control type="image" description="Oscars">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>34</width>
+            <height>33</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/oscar.png</texture>
+        </control>
+        <control type="label" description="Oscars">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)]</label>
+        </control>          
+        <control type="image" description="Emmys">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>33</width>
+            <height>33</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/emmy.png</texture>
+        </control>
+        <control type="label" description="Emmys">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)]</label>
+        </control>          
     </include>
     
     <include name="ExtendedRatingFlags_Furniture_Color">
@@ -3894,6 +3829,23 @@
             <textcolor>Dark1</textcolor>
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Trakt_Rating)]</label>
         </control>
+        <control type="image" description="Letterboxd Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating),0) + Skin.HasSetting(furniture.showletterboxd)</visible>
+            <centertop>50%</centertop>
+            <width>34</width>
+            <height>34</height>
+            <left>15</left>
+            <texture background="true">$VAR[ColorTheme,flags/color/ratings/letterboxd_,.png]</texture>
+        </control>
+        <control type="label" description="Letterboxd Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating),0) + Skin.HasSetting(furniture.showletterboxd)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Letterboxd_Rating)]</label>
+        </control>
         <control type="image" description="Metacritic">
             <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Metacritic_Rating)) + Skin.HasSetting(furniture.showmetacritic)</visible>
             <centertop>50%</centertop>
@@ -3947,6 +3899,79 @@
             <textcolor>Dark1</textcolor>
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.RottenTomatoes_UserMeter)]%</label>
         </control>
+        <control type="image" description="MDBList Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0) + Skin.HasSetting(furniture.showmdblist)</visible>
+            <centertop>50%</centertop>
+            <width>34</width>
+            <height>34</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture background="true">flags/color/ratings/mdblist.png</texture>
+        </control>
+        <control type="label" description="MDBList Rating">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0) + Skin.HasSetting(furniture.showmdblist)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),,%]</label>
+        </control>
+        <control type="image" description="Oscars">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>34</width>
+            <height>34</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture background="true">flags/color/ratings/oscar.png</texture>
+        </control>
+        <control type="label" description="Oscars">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins)]</label>
+        </control>          
+        <control type="image" description="Emmys">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>34</width>
+            <height>34</height>
+            <left>15</left>
+            <aspectratio align="left">keep</aspectratio>
+            <texture background="true">flags/color/ratings/emmy.png</texture>
+        </control>
+        <control type="label" description="Emmys">
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)) + Skin.HasSetting(furniture.showawards)</visible>
+            <centertop>50%</centertop>
+            <width>auto</width>
+            <height>64</height>
+            <font>Flag</font>
+            <textcolor>Dark1</textcolor>
+            <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins)]</label>
+        </control>          
+    </include>
+
+    <include name="DefFurnitureFlagsGroupList">
+        <param name="position_low" default="true" />
+        <definition>        
+            <left>70</left>
+            <include content="def_right" condition="Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
+                <param name="right" value="SidePad" />
+            </include>
+            <include content="def_right" condition="!Skin.HasSetting(furniture.clock) + $PARAM[position_low]">
+                <param name="right" value="495" />
+            </include>
+            <height>120</height>
+            <centerbottom>NavBarPad</centerbottom>
+            <orientation>horizontal</orientation>
+            <align>left</align>
+            <itemgap>0</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+        </definition>                      
     </include>
 
 </includes>
