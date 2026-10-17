@@ -52,7 +52,6 @@
             <include>View_521_Minimal_V2_Content</include>
             <include content="Furniture_Scrollbar_Horizontal">
                 <param name="id" value="1611" />
-                <param name="jumpbar" value="true" />
             </include>
             <include content="DefListControl">
                 <param name="id" value="521" />
@@ -75,6 +74,7 @@
                 <visible>!Skin.HasSetting(view.netflix.clearlogo) | [Skin.HasSetting(view.netflix.clearlogo) + !$EXP[TitleClearlogoAvailable]]</visible>
             </control>
             <control type="grouplist">
+                <visible>!String.IsEqual(ListItem.Label,..)</visible>
                 <visible>!Skin.HasSetting(view.netflix.clearlogo) | [Skin.HasSetting(view.netflix.clearlogo) + !$EXP[TitleClearlogoAvailable]]</visible>
                 <orientation>vertical</orientation>
                 <itemgap>0</itemgap>

@@ -744,14 +744,14 @@
             <include>Furniture_Clock</include>
             <control type="group">
                 <control type="image">
-                    <visible>Integer.IsGreater(Container(300).NumItems,6)</visible>
+                    <visible>Container(300).HasNext | Container(300).HasPrevious</visible>
                     <top>962</top>
-                    <left>52</left>
+                    <left>32</left>
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark2" flipx="true">common/arrow-small-right.png</texture>
                 </control>
                 <control type="image">
-                    <visible>Integer.IsGreater(Container(300).NumItems,6)</visible>
+                    <visible>Container(300).HasNext | Container(300).HasPrevious</visible>
                     <visible>!Skin.HasSetting(furniture.clock)</visible>
                     <top>962</top>
                     <right>480</right>
@@ -759,10 +759,10 @@
                     <texture colordiffuse="Dark2" flipx="false">common/arrow-small-right.png</texture>
                 </control>
                 <control type="image">
-                    <visible>Integer.IsGreater(Container(300).NumItems,6)</visible>
+                    <visible>Container(300).HasNext | Container(300).HasPrevious</visible>
                     <visible>Skin.HasSetting(furniture.clock)</visible>
                     <top>962</top>
-                    <right>42</right>
+                    <right>32</right>
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark2" flipx="false">common/arrow-small-right.png</texture>
                 </control>
@@ -788,13 +788,79 @@
                     <onright>300</onright>
                     <orientation>horizontal</orientation>
                     <scrolltime>200</scrolltime>
-                    <include condition="Skin.HasSetting(home.showicons)">HomeContentIcon</include>
+                    <include condition="Skin.HasSetting(home.showicons) + !Skin.HasSetting(homemenu.only.icons)">HomeContentIcon</include>
+                    <include condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">HomeContentIconOnly</include>
                     <include condition="!Skin.HasSetting(home.showicons)">HomeContentNoIcon</include>
                 </control>
             </control>
         </control>
         
     </include>
+
+    <include name="HomeSubMenu_Left">
+        <centerleft>181</centerleft>
+	    <animation effect="slide" start="0" end="44" condition="Container(300).Position(0)">Conditional</animation>
+	    <animation effect="slide" start="0" end="222" condition="Container(300).Position(1)">Conditional</animation>
+	    <animation effect="slide" start="0" end="444" condition="Container(300).Position(2)">Conditional</animation>
+	    <animation effect="slide" start="0" end="666" condition="Container(300).Position(3)">Conditional</animation>
+	    <animation effect="slide" start="0" end="888" condition="Container(300).Position(4)">Conditional</animation>
+	    <animation effect="slide" start="0" end="1110" condition="Container(300).Position(5)">Conditional</animation>
+	    <animation effect="slide" start="0" end="1332" condition="Container(300).Position(6)">Conditional</animation>
+	    <animation effect="slide" start="0" end="1514" condition="Container(300).Position(7)">Conditional</animation>
+    </include>
+
+    <include name="HomeSubMenu_Left_IconOnly">
+        <centerleft>125</centerleft>
+        <animation effect="slide" start="0" end="100" condition="Container(300).Position(0)">Conditional</animation>
+        <animation effect="slide" start="0" end="111" condition="Container(300).Position(1)">Conditional</animation>
+        <animation effect="slide" start="0" end="222" condition="Container(300).Position(2)">Conditional</animation>
+        <animation effect="slide" start="0" end="333" condition="Container(300).Position(3)">Conditional</animation>
+        <animation effect="slide" start="0" end="444" condition="Container(300).Position(4)">Conditional</animation>
+        <animation effect="slide" start="0" end="555" condition="Container(300).Position(5)">Conditional</animation>
+        <animation effect="slide" start="0" end="666" condition="Container(300).Position(6)">Conditional</animation>
+        <animation effect="slide" start="0" end="777" condition="Container(300).Position(7)">Conditional</animation>
+        <animation effect="slide" start="0" end="888" condition="Container(300).Position(8)">Conditional</animation>
+        <animation effect="slide" start="0" end="999" condition="Container(300).Position(9)">Conditional</animation>
+        <animation effect="slide" start="0" end="1110" condition="Container(300).Position(10)">Conditional</animation>
+        <animation effect="slide" start="0" end="1221" condition="Container(300).Position(11)">Conditional</animation>
+        <animation effect="slide" start="0" end="1332" condition="Container(300).Position(12)">Conditional</animation>
+        <animation effect="slide" start="0" end="1443" condition="Container(300).Position(13)">Conditional</animation>
+        <animation effect="slide" start="0" end="1554" condition="Container(300).Position(14)">Conditional</animation>
+        <animation effect="slide" start="0" end="1570" condition="Container(300).Position(15)">Conditional</animation>
+    </include>
+    
+    <include name="HomeSubMenu_Reposition">
+        <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,8)">Conditional</animation>
+        <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,7)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,6)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,5)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,4)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,3)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,2)">Conditional</animation>
+	    <animation effect="slide" end="0,80" condition="!Integer.IsGreater(Container(302).NumItems,1)">Conditional</animation>
+    </include>
+
+    <include name="HomeSubMenu_Reposition_VerticalMenu">
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,9)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,8)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,7)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,6)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,5)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,4)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,3)">Conditional</animation>
+        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,2)">Conditional</animation>
+    </include>
+        
+	<include name="HomeSubMenu_Reposition_VerticalMenuWidgets">
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,0) + !Integer.IsGreater(Container(302).NumItems,8)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,1) + !Integer.IsGreater(Container(302).NumItems,7)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,2) + !Integer.IsGreater(Container(302).NumItems,6)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,3) + !Integer.IsGreater(Container(302).NumItems,5)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,4) + !Integer.IsGreater(Container(302).NumItems,4)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,5) + !Integer.IsGreater(Container(302).NumItems,3)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,6) + !Integer.IsGreater(Container(302).NumItems,2)">Conditional</animation>
+	    <animation effect="slide" start="0,0" end="0,80" condition="Integer.IsGreater(Container(300).Position,7) + !Integer.IsGreater(Container(302).NumItems,1)">Conditional</animation>
+	</include>    
 
     <include name="HomeSubMenu">
 
@@ -804,93 +870,89 @@
                 <effect type="fade" start="0" end="100" time="250" delay="0" tween="cubic" easing="inout"/>
                 <effect type="slide" start="0,48" end="0" center="auto" tween="back" easing="out" time="400" delay="0"/>
             </animation>
-            <animation effect="slide" end="0,20" start="0,0" time="0" reversible="false" condition="Skin.HasSetting(home.modernwidgets)">Conditional</animation>
             <animation effect="fade" end="0" start="100" time="0" condition="!Control.HasFocus(302)" reversible="false">Conditional</animation>
             <include>Animation.FadeOut</include>
-            <animation effect="slide" start="0" end="222" condition="Container(300).Position(1)">Conditional</animation>
-            <animation effect="slide" start="0" end="444" condition="Container(300).Position(2)">Conditional</animation>
-            <animation effect="slide" start="0" end="666" condition="Container(300).Position(3)">Conditional</animation>
-            <animation effect="slide" start="0" end="888" condition="Container(300).Position(4)">Conditional</animation>
-            <animation effect="slide" start="0" end="1110" condition="Container(300).Position(5)">Conditional</animation>
-            <animation effect="slide" start="0" end="1332" condition="Container(300).Position(6)">Conditional</animation>
-            <animation effect="slide" start="0" end="1554" condition="Container(300).Position(7)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,8)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,7)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,6)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,5)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,4)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,3)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,2)">Conditional</animation>
-            <animation effect="slide" end="0,70" condition="!Integer.IsGreater(Container(302).NumItems,1)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,250" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,250" time="150">WindowClose</animation>
-            <animation effect="slide" end="0" start="0,250" time="150">WindowOpen</animation>
-            <posy>245</posy>
-            <centerleft>185</centerleft>
-            <width>346</width>
-            <height>662</height>
+            <include condition="!Skin.HasSetting(home.vertical) + !Skin.HasSetting(homemenu.only.icons)">HomeSubMenu_Left</include>
+            <include condition="!Skin.HasSetting(home.vertical) + Skin.HasSetting(homemenu.only.icons)">HomeSubMenu_Left_IconOnly</include>
+            <include condition="!Skin.HasSetting(home.vertical)">HomeSubMenu_Reposition</include>
+            <include condition="Skin.HasSetting(home.vertical) + !Skin.HasSetting(home.vertical.widgets)">HomeSubMenu_Reposition_VerticalMenu</include>
+            <include condition="Skin.HasSetting(home.vertical) + Skin.HasSetting(home.vertical.widgets)">HomeSubMenu_Reposition_VerticalMenuWidgets</include>
+
+	        <animation effect="slide" start="0" end="0,1000" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
+	        <animation effect="slide" start="0" end="0,1000" time="150">WindowClose</animation>
+	        <animation effect="slide" end="0" start="0,1000" time="150">WindowOpen</animation>
+            <include content="def_top" condition="Skin.HasSetting(home.vertical)">
+                <param name="top" value="200" />
+            </include>
+            <include content="def_left" condition="Skin.HasSetting(home.vertical)">
+                <param name="left" value="144" />
+            </include>
+            <top>175</top>
+            <width>426</width>
+            <height>752</height>
+ 
             <control type="image">
                 <description>9 Option Menu</description>
                 <width>100%</width>
-                <height>662</height>
+                <height>752</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
                 <visible>Integer.IsGreater(Container(302).NumItems,8)</visible>
             </control>
             <control type="image">
                 <description>8 Option Menu</description>
                 <width>100%</width>
-                <height>592</height>
+                <height>672</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,7) + !Integer.IsGreater(Container(302).NumItems,8)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,8)</visible>
             </control>
             <control type="image">
                 <description>7 Option Menu</description>
                 <width>100%</width>
-                <height>522</height>
+                <height>592</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,6) + !Integer.IsGreater(Container(302).NumItems,7)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,7)</visible>
             </control>
             <control type="image">
                 <description>6 Option Menu</description>
                 <width>100%</width>
-                <height>452</height>
+                <height>512</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,5) + !Integer.IsGreater(Container(302).NumItems,6)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,6)</visible>
             </control>
             <control type="image">
                 <description>5 Option Menu</description>
                 <width>100%</width>
-                <height>382</height>
+                <height>432</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,4) + !Integer.IsGreater(Container(302).NumItems,5)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,5)</visible>
             </control>
             <control type="image">
                 <description>4 Option Menu</description>
                 <width>100%</width>
-                <height>312</height>
+                <height>352</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,3) + !Integer.IsGreater(Container(302).NumItems,4)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,4)</visible>
             </control>
             <control type="image">
                 <description>3 Option Menu</description>
                 <width>100%</width>
-                <height>242</height>
+                <height>272</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,2) + !Integer.IsGreater(Container(302).NumItems,3)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,3)</visible>
             </control>
             <control type="image">
                 <description>2 Option Menu</description>
                 <width>100%</width>
-                <height>172</height>
+                <height>192</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>Integer.IsGreater(Container(302).NumItems,1) + !Integer.IsGreater(Container(302).NumItems,2)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,2)</visible>
             </control>
             <control type="image">
                 <description>1 Option Menu</description>
                 <width>100%</width>
-                <height>102</height>
+                <height>112</height>
                 <texture border="16" colordiffuse="White100">common/rounded-shadow8.png</texture>
-                <visible>!Integer.IsGreater(Container(302).NumItems,1)</visible>
+                <visible>Integer.IsEqual(Container(302).NumItems,1)</visible>
             </control>
             <control type="list" id="302">
                 <include>Animation.FadeIn.Delay</include>
@@ -907,12 +969,12 @@
                 <onunfocus>SetFocus(300)</onunfocus>
                 <orientation>vertical</orientation>
                 <scrolltime>200</scrolltime>
-                <itemlayout height="70">
+                <itemlayout height="80">
                     <control type="label">
                         <aligny>center</aligny>
                         <align>left</align>
-                        <left>26</left>
-                        <width>218</width>
+                        <left>30</left>
+                        <width>290</width>
                         <centertop>50%</centertop>
                         <height>100%</height>
                         <textcolor>Black70</textcolor>
@@ -920,15 +982,14 @@
                         <label>$INFO[ListItem.Label]</label>
                     </control>
                     <control type="image">
-                        <aligny>center</aligny>
-                        <right>12</right>
-                        <width>64</width>
-                        <height>64</height>
+                        <right>15</right>
+                        <width>70</width>
+                        <height>70</height>
                         <centertop>50%</centertop>
                         <texture colordiffuse="Black70">$INFO[ListItem.Icon]</texture>
                     </control>
                 </itemlayout>
-                <focusedlayout height="70">
+                <focusedlayout height="80">
                     <control type="image">
                         <width>100%</width>
                         <height>100%</height>
@@ -942,8 +1003,8 @@
                     <control type="label">
                         <aligny>center</aligny>
                         <align>left</align>
-                        <left>26</left>
-                        <width>218</width>
+                        <left>30</left>
+                        <width>290</width>
                         <centertop>50%</centertop>
                         <height>100%</height>
                         <textcolor>Selected</textcolor>
@@ -951,10 +1012,9 @@
                         <label>$INFO[ListItem.Label]</label>
                     </control>
                     <control type="image">
-                        <aligny>center</aligny>
-                        <right>12</right>
-                        <width>64</width>
-                        <height>64</height>
+                        <right>15</right>
+                        <width>70</width>
+                        <height>70</height>
                         <centertop>50%</centertop>
                         <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
                     </control>
@@ -1027,7 +1087,7 @@
                             <top>12</top>
                             <centerleft>45.7%</centerleft>
                             <include>arrowdimensions</include>
-                            <texture colordiffuse="Dark1" flipy="true">common/arrow-small.png</texture>
+                            <texture colordiffuse="Dark3" flipy="true">common/arrow-small.png</texture>
                             <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                         </control>
                     </control>
@@ -1406,10 +1466,10 @@
             <control type="group">
                 <include>Animation.FadeOut</include>
                 <animation effect="fade" end="100" start="0" delay="300" time="400" condition="Control.HasFocus(300) | Control.HasFocus(302)">Conditional</animation>
-                <visible>Integer.IsGreater(Container(300).NumItems,6)</visible>
+                <visible>Container(300).HasNext | Container(300).HasPrevious</visible>
                 <control type="image">
                     <top>962</top>
-                    <left>52</left>
+                    <left>32</left>
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark2" flipx="true">common/arrow-small-right.png</texture>
                 </control>
@@ -1423,7 +1483,7 @@
                 <control type="image">
                     <visible>Skin.HasSetting(furniture.clock)</visible>
                     <top>962</top>
-                    <right>42</right>
+                    <right>32</right>
                     <include>arrowdimensions</include>
                     <texture colordiffuse="Dark2" flipx="false">common/arrow-small-right.png</texture>
                 </control>
@@ -1442,7 +1502,8 @@
                 <onright>300</onright>
                 <orientation>horizontal</orientation>
                 <scrolltime>200</scrolltime>
-                <include condition="Skin.HasSetting(home.showicons)">HomeContentIcon</include>
+	            <include condition="Skin.HasSetting(home.showicons) + !Skin.HasSetting(homemenu.only.icons)">HomeContentIcon</include>
+	            <include condition="Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)">HomeContentIconOnly</include>
                 <include condition="!Skin.HasSetting(home.showicons)">HomeContentNoIcon</include>
             </control>
             <include>Furniture_Clock</include>
@@ -1474,6 +1535,7 @@
         <focusedlayout width="222" height="116">
             <control type="group">
                 <visible>Skin.HasSetting(homemenu.hide.underline)</visible>
+                <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
                 <control type="label">
                     <align>center</align>
                     <width>90%</width>
@@ -1482,13 +1544,12 @@
                     <textcolor>Dark1</textcolor>
                     <font>HomeLarge</font>
                     <label>$INFO[ListItem.Label]</label>
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302) + !Skin.HasSetting(home.vertical)">Conditional</animation>
                 </control>
                 <control type="image">
                     <top>83</top>
                     <centerleft>45.7%</centerleft>
                     <include>arrowdimensions</include>
-                    <texture colordiffuse="Dark1">common/arrow-small.png</texture>
+                    <texture colordiffuse="Dark3">common/arrow-small.png</texture>
                     <visible>Control.HasFocus(300)</visible>
                     <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
@@ -1496,6 +1557,7 @@
             </control>
             <control type="group">
                 <visible>!Skin.HasSetting(homemenu.hide.underline)</visible>
+                <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
                 <control type="label">
                     <align>center</align>
                     <centertop>50%</centertop>
@@ -1504,7 +1566,6 @@
                     <textcolor>Dark1</textcolor>
                     <font>HomeLarge</font>
                     <label>$INFO[ListItem.Label]</label>
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302) + !Skin.HasSetting(home.vertical)">Conditional</animation>
                 </control>
                 <control type="image">
                     <top>102</top>
@@ -1515,17 +1576,99 @@
                     <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                 </control>
+                <control type="image">
+                    <top>88</top>
+                    <centerleft>45.7%</centerleft>
+                    <width>90%</width>
+                    <height>4</height>
+                    <texture colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                </control>
+                <control type="image">
+                    <top>88</top>
+                    <centerleft>45.7%</centerleft>
+                    <width>90%</width>
+                    <height>4</height>
+                    <texture colordiffuse="$VAR[ColorGradient]">common/gradient-box.png</texture>
+                </control>
+            </control>
+
+            <!-- Set TMDbHelper WidgetContainer -->
+            <include condition="$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]">SetWidgetContainerForTMDB</include>
+        </focusedlayout>
+        <content>
+            <include>skinshortcuts-mainmenu</include>
+        </content>
+    </include>
+
+    <include name="HomeContentIcon">
+        <top>848</top>
+        <itemlayout width="222" height="220">
+            <control type="image">
+                <width>80</width>
+                <height>80</height>
+                <centerleft>45.7%</centerleft>
+                <centertop>44.5%</centertop>
+                <texture colordiffuse="Dark3">$INFO[ListItem.Icon]</texture>
+            </control>
+            <control type="label">
+                <align>center</align>
+                <width>180</width>
+                <centertop>148</centertop>
+                <centerleft>45.7%</centerleft>
+                <textcolor>Dark3</textcolor>
+                <font>HomeIcon</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </itemlayout>
+        <focusedlayout width="222" height="220">
+            <control type="group">
+                <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
+                <control type="image">
+	                <width>80</width>
+	                <height>80</height>
+                    <centerleft>45.7%</centerleft>
+                    <centertop>44.5%</centertop>
+                    <texture colordiffuse="Dark1">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <align>center</align>
+                    <width>180</width>
+                    <centertop>148</centertop>
+                    <centerleft>45.7%</centerleft>
+                    <textcolor>Dark1</textcolor>
+                    <font>HomeIcon</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="image">
+                    <visible>Skin.HasSetting(homemenu.hide.underline)</visible>
+                    <bottom>34</bottom>
+                    <centerleft>45.7%</centerleft>
+                    <include>arrowdimensions</include>
+                    <texture colordiffuse="Dark3">common/arrow-small.png</texture>
+                    <visible>Control.HasFocus(300)</visible>
+                    <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
+                    <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
+                </control>
                 <control type="group">
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302) + !Skin.HasSetting(home.vertical)">Conditional</animation>
+                    <visible>!Skin.HasSetting(homemenu.hide.underline)</visible>
                     <control type="image">
-                        <top>88</top>
+                        <bottom>14</bottom>
+                        <centerleft>45.7%</centerleft>
+                        <include>arrowdimensions</include>
+                        <texture colordiffuse="Dark3">common/arrow-small.png</texture>
+                        <visible>Control.HasFocus(300)</visible>
+                        <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
+                        <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <bottom>40</bottom>
                         <centerleft>45.7%</centerleft>
                         <width>90%</width>
                         <height>4</height>
                         <texture colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
                     </control>
                     <control type="image">
-                        <top>88</top>
+                        <bottom>40</bottom>
                         <centerleft>45.7%</centerleft>
                         <width>90%</width>
                         <height>4</height>
@@ -1542,98 +1685,64 @@
         </content>
     </include>
 
-    <include name="HomeContentIcon">
+    <include name="HomeContentIconOnly">
         <top>848</top>
-        <itemlayout width="222" height="220">
+        <itemlayout width="111" height="220">
             <control type="image">
-                <include content="def_width" condition="Skin.HasSetting(homemenu.only.icons)">
-                    <param name="width" value="100"/>
-                </include>
-                <include content="def_width" condition="!Skin.HasSetting(homemenu.only.icons)">
-                    <param name="width" value="100"/>
-                </include>
-                <include content="def_height" condition="Skin.HasSetting(homemenu.only.icons)">
-                    <param name="height" value="100"/>
-                </include>
-                <include content="def_height" condition="!Skin.HasSetting(homemenu.only.icons)">
-                    <param name="height" value="100"/>
-                </include>
-                <centerleft>45.7%</centerleft>
-                <centertop>45%</centertop>
+                <top>80</top>
+                <width>80</width>
+                <height>80</height>
+                <left>0</left>
                 <texture colordiffuse="Dark3">$INFO[ListItem.Icon]</texture>
-                <animation effect="slide" start="0,0" end="0,20" time="0" condition="Skin.HasSetting(homemenu.only.icons)">Conditional</animation>
             </control>
-            <control type="image" description="BottomBG">
-                <width>1</width>
-                <height>50</height>
-                <bottom>75</bottom>
-                <left>210</left>
-                <animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
-                <texture colordiffuse="Dark1">common/white.png</texture>
-                <visible>Skin.HasSetting(homemenu.only.icons)</visible>
-            </control>
-            <control type="label">
-                <align>center</align>
-                <width>180</width>
-                <centertop>150</centertop>
-                <centerleft>45.7%</centerleft>
-                <textcolor>Dark3</textcolor>
-                <font>HomeIcon</font>
-                <label>$INFO[ListItem.Label]</label>
-                <visible>!Skin.HasSetting(homemenu.only.icons)</visible>
-            </control>
-        </itemlayout>
-        <focusedlayout width="222" height="220">
+        </itemlayout>        
+        <focusedlayout width="111" height="220">
             <control type="group">
-                <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302) + !Skin.HasSetting(home.vertical)">Conditional</animation>
+                <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
                 <control type="image">
-                    <include content="def_width" condition="Skin.HasSetting(homemenu.only.icons)">
-                        <param name="width" value="100"/>
-                    </include>
-                    <include content="def_width" condition="!Skin.HasSetting(homemenu.only.icons)">
-                        <param name="width" value="100"/>
-                    </include>
-                    <include content="def_height" condition="Skin.HasSetting(homemenu.only.icons)">
-                        <param name="height" value="100"/>
-                    </include>
-                    <include content="def_height" condition="!Skin.HasSetting(homemenu.only.icons)">
-                        <param name="height" value="100"/>
-                    </include>
-                    <centerleft>45.7%</centerleft>
-                    <centertop>45%</centertop>
+                    <top>80</top>
+                    <width>80</width>
+                    <height>80</height>
+                    <left>0</left>
                     <texture colordiffuse="Dark1">$INFO[ListItem.Icon]</texture>
-                    <animation effect="slide" start="0,0" end="0,20" time="0" condition="Skin.HasSetting(homemenu.only.icons)">Conditional</animation>
-                </control>
-                <control type="label">
-                    <align>center</align>
-                    <width>180</width>
-                    <centertop>150</centertop>
-                    <centerleft>45.7%</centerleft>
-                    <textcolor>Dark1</textcolor>
-                    <font>HomeIcon</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>!Skin.HasSetting(homemenu.only.icons)</visible>
-                </control>
-                <control type="image" description="BottomBG">
-                    <width>1</width>
-                    <height>50</height>
-                    <bottom>75</bottom>
-                    <left>210</left>
-                    <animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
-                    <texture colordiffuse="Dark1">common/white.png</texture>
-                    <visible>Skin.HasSetting(homemenu.only.icons)</visible>
                 </control>
                 <control type="image">
-                    <bottom>30</bottom>
-                    <centerleft>45.7%</centerleft>
+                    <visible>Skin.HasSetting(homemenu.hide.underline)</visible>
+                    <bottom>52</bottom>
+                    <centerleft>40</centerleft>
                     <include>arrowdimensions</include>
-                    <texture colordiffuse="Dark1">common/arrow-small.png</texture>
+                    <texture colordiffuse="Dark3">common/arrow-small.png</texture>
                     <visible>Control.HasFocus(300)</visible>
                     <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
                     <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
                 </control>
+                <control type="group">
+                    <visible>!Skin.HasSetting(homemenu.hide.underline)</visible>
+                    <control type="image">
+                        <bottom>36</bottom>
+                        <centerleft>40</centerleft>
+                        <include>arrowdimensions</include>
+                        <texture colordiffuse="Dark3">common/arrow-small.png</texture>
+                        <visible>Control.HasFocus(300)</visible>
+                        <visible>Integer.IsGreater(Container(302).NumItems,0)</visible>
+                        <animation effect="fade" end="100" start="0" delay="300" time="400" reversible="false">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <bottom>62</bottom>
+                        <centerleft>40</centerleft>
+                        <width>80</width>
+                        <height>4</height>
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                    </control>
+                    <control type="image">
+                        <bottom>62</bottom>
+                        <centerleft>40</centerleft>
+                        <width>80</width>
+                        <height>4</height>
+                        <texture colordiffuse="$VAR[ColorGradient]">common/gradient-box.png</texture>
+                    </control>
+                </control>
             </control>
-
             <!-- Set TMDbHelper WidgetContainer -->
             <include condition="$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]">SetWidgetContainerForTMDB</include>
         </focusedlayout>
@@ -1664,141 +1773,84 @@
     </include>
 
 	<include name="HomeVerticalMenuListLayout">
-		<param name="height" default="80" />
-		<param name="iconsOnly" default="false" />
-		<definition>
-            <itemlayout width="427" height="$PARAM[height]">
-                <control type="label">
-                    <right>30</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark3</textcolor>
-                    <font>Home</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>!Skin.HasSetting(home.showicons)</visible>
-                </control>
-                <control type="label">
-                    <right>100</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark3</textcolor>
-                    <font>Home</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>!$PARAM[iconsOnly]</visible>
-                    <visible>Skin.HasSetting(home.showicons)</visible>
-                </control>
-                <control type="image">
-                    <include content="def_right" condition="$PARAM[iconsOnly]">
-                        <param name="right" value="40" />
-                    </include>
-                    <right>10</right>
-                    <top>1</top>
-                    <width>$PARAM[height]</width>
-                    <height>$PARAM[height]</height>
-                    <texture colordiffuse="Dark3">$INFO[ListItem.Icon]</texture>
-                    <visible>Skin.HasSetting(home.showicons)</visible>
-                </control>
-            </itemlayout>
-            <focusedlayout width="427" height="$PARAM[height]">
-                <control type="label">
-                    <right>30</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark1</textcolor>
-                    <font>HomeFO</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>!Skin.HasSetting(home.showicons)</visible>
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
-                </control>
-                <control type="label">
-                    <right>100</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark1</textcolor>
-                    <font>HomeFO</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>!$PARAM[iconsOnly]</visible>
-                    <visible>Skin.HasSetting(home.showicons)</visible>
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
-                </control>
-                <control type="image">
-                    <include content="def_right" condition="$PARAM[iconsOnly]">
-                        <param name="right" value="40" />
-                    </include>
-                    <right>10</right>
-                    <width>$PARAM[height]</width>
-                    <top>1</top>
-                    <height>$PARAM[height]</height>
-                    <texture colordiffuse="Dark1">$INFO[ListItem.Icon]</texture>
-                    <visible>Skin.HasSetting(home.showicons)</visible>
-                    <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
-                </control>
-
-                <!-- Set TMDbHelper WidgetContainer -->
-                <include condition="$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]">SetWidgetContainerForTMDB</include>
-            </focusedlayout>			
-		</definition>
-	</include>
-
-	<include name="HomeVerticalSubmenuHitrect">
-		<hitrect x="0" y="$PARAM[y]" h="720" w="510"/>
-	</include>
-	
-	<include name="HomeVerticalSubmenuListLayout">
-        <param name="height" default="80" />
-		<param name="iconsOnly" default="false" />
-		<definition>
-            <itemlayout width="427" height="$PARAM[height]">
-                <control type="label">
-                    <right>30</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark3</textcolor>
-                    <font>Home</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>![$PARAM[iconsOnly] + Skin.HasSetting(home.showicons)]</visible>
-                </control>
-                <control type="image">
-                    <right>40</right>
-                    <top>1</top>
-                    <width>$PARAM[height]</width>
-                    <height>$PARAM[height]</height>
-                    <texture colordiffuse="Dark3">$INFO[ListItem.Icon]</texture>
-                    <visible>$PARAM[iconsOnly] + Skin.HasSetting(home.showicons)</visible>
-                </control>
-            </itemlayout>
-            <focusedlayout width="427" height="$PARAM[height]">
-                <control type="label">
-                    <right>30</right>
-                    <left>0</left>
-                    <align>right</align>
-                    <aligny>center</aligny>
-                    <height>100%</height>
-                    <textcolor>Dark1</textcolor>
-                    <font>Home</font>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>![$PARAM[iconsOnly] + Skin.HasSetting(home.showicons)]</visible>
-                </control>
-               <control type="image">
-                    <right>40</right>
-                    <width>$PARAM[height]</width>
-                    <top>1</top>
-                    <height>$PARAM[height]</height>
-                    <texture colordiffuse="Dark1">$INFO[ListItem.Icon]</texture>
-                    <visible>$PARAM[iconsOnly] + Skin.HasSetting(home.showicons)</visible>
-                </control>
-            </focusedlayout>			
-		</definition>
+		<itemlayout width="427" height="80">
+		    <control type="label">
+		        <right>30</right>
+		        <left>0</left>
+		        <align>right</align>
+		        <aligny>center</aligny>
+		        <height>100%</height>
+		        <textcolor>Dark3</textcolor>
+		        <font>Home</font>
+		        <label>$INFO[ListItem.Label]</label>
+		        <visible>!Skin.HasSetting(home.showicons)</visible>
+		    </control>
+		    <control type="label">
+		        <right>90</right>
+		        <left>0</left>
+		        <align>right</align>
+		        <aligny>center</aligny>
+		        <height>100%</height>
+		        <textcolor>Dark3</textcolor>
+		        <font>Home</font>
+		        <label>$INFO[ListItem.Label]</label>
+		        <visible>!Skin.HasSetting(homemenu.only.icons)</visible>
+		        <visible>Skin.HasSetting(home.showicons)</visible>
+		    </control>
+		    <control type="image">
+		        <centertop>51%</centertop>
+		        <include content="def_right" condition="Skin.HasSetting(homemenu.only.icons)">
+		            <param name="right" value="45" />
+		        </include>
+		        <right>10</right>
+		        <width>70</width>
+		        <height>70</height>
+		        <texture colordiffuse="Dark3">$INFO[ListItem.Icon]</texture>
+		        <visible>Skin.HasSetting(home.showicons)</visible>
+		    </control>
+		</itemlayout>
+		<focusedlayout width="427" height="80">
+		    <control type="label">
+		        <right>30</right>
+		        <left>0</left>
+		        <align>right</align>
+		        <aligny>center</aligny>
+		        <height>100%</height>
+		        <textcolor>Dark1</textcolor>
+		        <font>HomeFO</font>
+		        <label>$INFO[ListItem.Label]</label>
+		        <visible>!Skin.HasSetting(home.showicons)</visible>
+		        <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
+		    </control>
+		    <control type="label">
+		        <right>90</right>
+		        <left>0</left>
+		        <align>right</align>
+		        <aligny>center</aligny>
+		        <height>100%</height>
+		        <textcolor>Dark1</textcolor>
+		        <font>HomeFO</font>
+		        <label>$INFO[ListItem.Label]</label>
+		        <visible>!Skin.HasSetting(homemenu.only.icons)</visible>
+		        <visible>Skin.HasSetting(home.showicons)</visible>
+		        <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
+		    </control>
+		    <control type="image">
+		        <centertop>51%</centertop>
+		        <include content="def_right" condition="Skin.HasSetting(homemenu.only.icons)">
+		            <param name="right" value="45" />
+		        </include>
+		        <right>10</right>
+		        <width>70</width>
+		        <height>70</height>
+		        <texture colordiffuse="Dark1">$INFO[ListItem.Icon]</texture>
+		        <visible>Skin.HasSetting(home.showicons)</visible>
+		        <animation effect="fade" start="100" end="50" delay="0" time="150" condition="!Control.HasFocus(300) + !Control.HasFocus(302)">Conditional</animation>
+		    </control>
+		
+		    <!-- Set TMDbHelper WidgetContainer -->
+		    <include condition="$EXP[HomeIsModernMultiWidgets] | $EXP[HomeIsVerticalMultiWidgets]">SetWidgetContainerForTMDB</include>
+		</focusedlayout>			
 	</include>
 
 	<include name="HomeWeatherItem">
@@ -1887,31 +1939,28 @@
         <include>Furniture_Weather</include>
         <include>Furniture_Home_Flags</include>
         <control type="group">
-            <animation effect="slide" start="0" end="-30" time="0" delay="0" condition="Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)">Conditional</animation>
-            <animation effect="slide" start="0" end="-120" time="300" delay="0" center="auto" tween="sine" easing="out" condition="Control.HasFocus(301) + [Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
-            <animation effect="slide" start="0" end="-450" time="300" delay="0" center="auto" tween="sine" easing="out" condition="Control.HasFocus(301) + ![Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
+            <animation effect="slide" start="0" end="-30" time="0" delay="0" condition="$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
+            <animation effect="slide" start="0" end="-120" time="300" delay="0" center="auto" tween="sine" easing="out" condition="Control.HasFocus(301) + $EXP[HomeMenuShowIconsOnly]">Conditional</animation>
+            <animation effect="slide" start="0" end="-450" time="300" delay="0" center="auto" tween="sine" easing="out" condition="Control.HasFocus(301) + !$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
 
             <!-- LEFT SIDE -->
             <control type="group">
                 <include>Animation.LeftSide.Vertical.Menu</include>
 				
                 <!-- Home List -->
-                <control type="panel" id="300">
-                    <animation effect="slide" start="0,0" end="-296,0" time="0" condition="Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)">Conditional</animation>
+                <control type="list" id="300">
+                    <animation effect="slide" start="0,0" end="-296,0" time="0" condition="$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
                     <animation effect="fade" start="100" end="0" time="300" condition="Control.HasFocus(301)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
-                    <include condition="![Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]">Animation.Slide.Vertical.Menu</include>
-                    <include condition="[Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]" content="Animation.Slide.Vertical.Menu">
-                        <param name="left" value="-50" />
-                    </include>                    
-                    <visible allowhiddenfocus="true">!Control.HasFocus(302)</visible>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
+			        <animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
+                    <include condition="!$EXP[HomeMenuShowIconsOnly]">Animation.Slide.Vertical.Menu</include>
+                    <visible allowhiddenfocus="true">!Control.HasFocus(302) | $EXP[HomeMenuShowIconsOnly]</visible>
                     <include>Animation.FadeIn</include>
                     <include>Animation.FadeOut</include>
                     <description>Home Wraplist</description>
@@ -1921,57 +1970,17 @@
                     <height>720</height>
                     <orientation>vertical</orientation>
                     <onright>301</onright>
-                    <onleft>302</onleft>
+                    <onleft condition="!$EXP[HomeMenuShowIconsOnly]">302</onleft>
+                    <onleft condition="$EXP[HomeMenuShowIconsOnly] + Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</onleft>
                     <scrolltime>200</scrolltime>
-                    <include content="HomeVerticalMenuListLayout">
-                        <param name="iconsOnly" value="Skin.HasSetting(homemenu.only.icons)" />
-                    </include>
+                    <include>HomeVerticalMenuListLayout</include>
                     <content>
                         <include>skinshortcuts-mainmenu</include>
                     </content>
                 </control>
 
                 <!-- SubMenu List -->
-                <control type="list" id="302">
-                    <visible allowhiddenfocus="true">Control.HasFocus(302)</visible>
-                    <animation effect="fade" start="100" end="33" time="400" condition="Control.HasFocus(301)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,9)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,8)">Conditional</animation>
-	            	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,7)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,6)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,5)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,4)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,3)">Conditional</animation>
-		           	<animation effect="slide" start="0,0" end="0,40" time="0" condition="Integer.IsLess(Container(302).NumItems,2)">Conditional</animation>
-                    <include condition="![Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]">Animation.Slide.Vertical.Submenu</include>
-                    <include condition="[Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]" content="Animation.Slide.Vertical.Submenu">
-                        <param name="left" value="-50" />
-                    </include>
-                    <animation effect="slide" start="0" end="-296" time="0" condition="[Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
-                    <include>Animation.FadeIn</include>
-                    <include>Animation.FadeOut</include>
-                    <description>Home Wraplist</description>
-                    <left>SidePad</left>
-                    <top>PosterPad</top>
-                    <width>PosterW</width>
-                    <height>720</height>
-                    <include content="HomeVerticalSubmenuHitrect">
-                    	<param name="y" value="PosterPad" />
-                    </include>
-                    <orientation>vertical</orientation>
-                    <onright>300</onright>
-                    <onleft>300</onleft>
-                    <ondown>302</ondown>
-                    <onup>302</onup>
-                    <onback>300</onback>
-                    <scrolltime>200</scrolltime>
-                    <include content="HomeVerticalSubmenuListLayout">
-                        <param name="iconsOnly" value="Skin.HasSetting(homemenu.only.icons)" />
-                    </include>
-                    <content>
-                        <include>skinshortcuts-mainmenu-submenu</include>
-                    </content>
-                </control>
+                <include condition="!$EXP[HomeMenuShowIconsOnly]">HomeVerticalSubMenu</include>
             </control>
 
             <!-- RIGHT SIDE -->
@@ -2140,7 +2149,7 @@
                         </control>
                     </control>
 
-                <!-- Widget -->
+                    <!-- Widget -->
                     <control type="group">
                         <include>skinshortcuts-template-widget-vertical</include>
                     </control>
@@ -2149,6 +2158,70 @@
         </control>
     </include>
 
+    <include name="HomeVerticalSubMenuHitrect">
+        <hitrect x="0" y="$PARAM[y]" h="720" w="510"/>
+    </include>
+
+    <include name="HomeVerticalSubMenu">
+	    <control type="list" id="302">
+	        <visible allowhiddenfocus="true">Control.HasFocus(302)</visible>
+	        <animation effect="fade" start="100" end="33" time="400" condition="Control.HasFocus(301)">Conditional</animation>
+            <include condition="!Skin.HasSetting(home.vertical.widgets)">Animation.LeftSide.Vertical.SubMenu</include>
+	        <include>Animation.FadeIn</include>
+	        <include>Animation.FadeOut</include>
+            <include>HomeSubMenu_Reposition_VerticalMenu</include>
+	        <description>Home Wraplist</description>
+            <left>SidePad</left>
+            <include condition="Skin.HasSetting(home.vertical.widgets)">HomeVerticalMenuWidgets_Top</include>
+            <top>PosterPad</top>
+            <width>PosterW</width>
+            <height>720</height>
+            <include content="HomeVerticalSubMenuHitrect" condition="!Skin.HasSetting(home.vertical.widgets)">
+                <param name="y" value="PosterPad" />
+            </include>
+            <include content="HomeVerticalSubMenuHitrect" condition="Skin.HasSetting(home.vertical.widgets) + Skin.HasSetting(homemenu.netflix)">
+                <param name="y" value="215" />
+            </include>
+            <include content="HomeVerticalSubMenuHitrect" condition="Skin.HasSetting(home.vertical.widgets) + !Skin.HasSetting(homemenu.netflix)">
+                <param name="y" value="147" />
+            </include>
+	        <orientation>vertical</orientation>
+	        <onright>300</onright>
+	        <onleft>300</onleft>
+	        <ondown>302</ondown>
+	        <onup>302</onup>
+	        <onback>300</onback>
+	        <scrolltime>200</scrolltime>
+            <itemlayout width="427" height="80">
+                <control type="label">
+                    <right>30</right>
+                    <left>0</left>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <height>100%</height>
+                    <textcolor>Dark3</textcolor>
+                    <font>Home</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </itemlayout>
+            <focusedlayout width="427" height="80">
+                <control type="label">
+                    <right>30</right>
+                    <left>0</left>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <height>100%</height>
+                    <textcolor>Dark1</textcolor>
+                    <font>Home</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </focusedlayout>            
+	        <content>
+                <include>skinshortcuts-mainmenu-submenu</include>
+	        </content>
+	    </control>
+    </include>
+	
 	<include name="HomeVerticalMenuWidgets_Top">
         <include content="def_top" condition="Skin.HasSetting(homemenu.netflix)">
             <param name="top" value="215" />
@@ -2164,9 +2237,9 @@
         <include>Furniture_Clock</include>
         <include>Furniture_Home_Flags</include>
         <control type="group">
-            <animation effect="slide" start="0" end="-30" time="0" delay="0" condition="Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)">Conditional</animation>
-            <animation effect="slide" start="0" end="-120" time="300" delay="0" center="auto" tween="sine" easing="out" condition="ControlGroup(301).HasFocus + [Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
-            <animation effect="slide" start="0" end="-450" time="300" delay="0" center="auto" tween="sine" easing="out" condition="ControlGroup(301).HasFocus + ![Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
+            <animation effect="slide" start="0" end="-30" time="0" delay="0" condition="$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
+            <animation effect="slide" start="0" end="-120" time="300" delay="0" center="auto" tween="sine" easing="out" condition="ControlGroup(301).HasFocus + $EXP[HomeMenuShowIconsOnly]">Conditional</animation>
+            <animation effect="slide" start="0" end="-450" time="300" delay="0" center="auto" tween="sine" easing="out" condition="ControlGroup(301).HasFocus + !$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
 
             <!-- LEFT SIDE -->
             <control type="group">
@@ -2174,13 +2247,10 @@
 
                 <!-- Home List -->
                 <control type="list" id="300">
-                    <animation effect="slide" start="0,0" end="-296,0" time="0" condition="Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)">Conditional</animation>
+                    <animation effect="slide" start="0,0" end="-296,0" time="0" condition="$EXP[HomeMenuShowIconsOnly]">Conditional</animation>
                     <animation effect="fade" start="100" end="0" time="300" condition="ControlGroup(301).HasFocus">Conditional</animation>
-                    <include condition="![Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]">Animation.Slide.Vertical.Menu</include>
-                    <include condition="[Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]" content="Animation.Slide.Vertical.Menu">
-                        <param name="left" value="-50" />
-                    </include>                    
-                    <visible allowhiddenfocus="true">!Control.HasFocus(302)</visible>
+                    <include condition="!$EXP[HomeMenuShowIconsOnly]">Animation.Slide.Vertical.Menu</include>
+                    <visible allowhiddenfocus="true">!Control.HasFocus(302) | $EXP[HomeMenuShowIconsOnly]</visible>
                     <include>Animation.FadeIn</include>
                     <include>Animation.FadeOut</include>
                     <description>Home Wraplist</description>
@@ -2192,55 +2262,20 @@
                     <onright condition="$EXP[ExtendedNowPlayingIsVisible] + Skin.HasSetting(hide.home.nowplaying.controls) + Skin.HasSetting(home.extended.nowplaying.tracklist) + Integer.IsGreater(Container(778).NumItems,0) + Player.HasAudio">778</onright>
                     <onright condition="$EXP[ExtendedNowPlayingIsVisible] + !Skin.HasSetting(hide.home.nowplaying.controls)">777</onright>
                     <onright>301</onright>
-                    <onleft>302</onleft>
+                    <onleft condition="!$EXP[HomeMenuShowIconsOnly]">302</onleft>
+                    <onleft condition="$EXP[HomeMenuShowIconsOnly] + Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</onleft>
                     <onfocus>ClearProperty(nowplayingautoshowtimer,home)</onfocus>
                     <onback condition="Skin.HasSetting(home.onback.go.to.first.widget) + Integer.IsGreater(Container(301).NumItems,0)">SetFocus(301)</onback>
                     <scrolltime>200</scrolltime>
                     <onfocus>ClearProperty(listitem.trailer,home)</onfocus>
-                    <include content="HomeVerticalMenuListLayout">
-						<param name="iconsOnly" value="Skin.HasSetting(homemenu.only.icons)" />
-					</include>
-                   <content>
+                    <include>HomeVerticalMenuListLayout</include>
+                    <content>
                         <include>skinshortcuts-mainmenu</include>
                     </content>
                 </control>
 
                 <!-- SubMenu List -->
-                <control type="list" id="302">
-                    <visible allowhiddenfocus="true">Control.HasFocus(302)</visible>
-                    <include condition="![Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]">Animation.Slide.Vertical.Submenu</include>
-                    <include condition="[Skin.HasSetting(home.showicons) + Skin.HasSetting(homemenu.only.icons)]" content="Animation.Slide.Vertical.Submenu">
-                        <param name="left" value="-50" />
-                    </include>
-                    <animation effect="slide" start="0" end="-296" time="0" condition="[Skin.HasSetting(homemenu.only.icons) + Skin.HasSetting(home.showicons)]">Conditional</animation>
-                    <include>Animation.FadeIn</include>
-                    <include>Animation.FadeOut</include>
-                    <description>Home Wraplist</description>
-                    <left>SidePad</left>
-                    <include>HomeVerticalMenuWidgets_Top</include>
-                    <width>PosterW</width>
-                    <height>720</height>
-                    <include content="HomeVerticalSubmenuHitrect" condition="Skin.HasSetting(homemenu.netflix)">
-                    	<param name="y" value="215" />
-                    </include>
-                    <include content="HomeVerticalSubmenuHitrect" condition="!Skin.HasSetting(homemenu.netflix)">
-                    	<param name="y" value="147" />
-                    </include>
-                    <orientation>vertical</orientation>
-                    <onright>300</onright>
-                    <onleft>300</onleft>
-                    <ondown>302</ondown>
-                    <onup>302</onup>
-                    <onback>300</onback>
-                    <scrolltime>200</scrolltime>
-                    <include content="HomeVerticalSubmenuListLayout">
-						<param name="height" value="80" />
-						<param name="iconsOnly" value="Skin.HasSetting(homemenu.only.icons)" />
-					</include>
-                   <content>
-                        <include>skinshortcuts-mainmenu-submenu</include>
-                    </content>
-                </control>
+                <include condition="!$EXP[HomeMenuShowIconsOnly]">HomeVerticalSubMenu</include>
             </control>
 
             <!-- RIGHT SIDE -->
@@ -2538,7 +2573,7 @@
                 ]
               + [
                   String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png)
-                  | String.IsEmpty(Container($PARAM[id]).ListItem.Overlay) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Integer.IsGreater(Container($PARAM[id]).ListItem.PlayCount,0)
+                  | Integer.IsGreater(Container($PARAM[id]).ListItem.PlayCount,0)
                   + [ String.IsEqual(ListItem.DBType,movie)
                     | String.IsEqual(ListItem.DBType,tvshow)
                     | String.IsEqual(ListItem.DBType,season)
@@ -2578,7 +2613,7 @@
                 ]
               + [
                   String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayUnwatched.png)
-                  | String.IsEmpty(Container($PARAM[id]).ListItem.Overlay) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Integer.IsEqual(Container($PARAM[id]).ListItem.PlayCount,0)
+                  | Integer.IsEqual(Container($PARAM[id]).ListItem.PlayCount,0)
                   + [ String.IsEqual(ListItem.DBType,movie)
                     | String.IsEqual(ListItem.DBType,tvshow)
                     | String.IsEqual(ListItem.DBType,season)
@@ -2659,9 +2694,46 @@
             </control>
         </control>
 
-        <!-- Unwatched -->
+        <!-- Versions -->
         <control type="grouplist">
-            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)] + !Container($PARAM[id]).ListItem.IsResumable + Skin.HasSetting(markers.unwatched) 
+            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Container($PARAM[id]).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)
+                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
+                + ![Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
+                + !String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
+            </visible>
+            <orientation>horizontal</orientation>                 
+            <control type="label">
+                <include>MultiWidgetsSubLabelDefinition</include>
+                <label>  •  </label>
+            </control>    
+            <control type="label">
+                <include>Def_Watched_Indicators_Clean</include>
+                <label>[COLOR=Dark2]&#63341;[/COLOR]</label>
+            </control>
+        </control>
+
+        <!-- Extras -->
+        <control type="grouplist">
+            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Container($PARAM[id]).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)
+                + [!Container($PARAM[id]).ListItem.HasVideoVersions | Skin.HasSetting(hide.markers.versions)]
+                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
+                + ![Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
+                + !String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
+            </visible>
+            <orientation>horizontal</orientation>                 
+            <control type="label">
+                <include>MultiWidgetsSubLabelDefinition</include>
+                <label>  •  </label>
+            </control>    
+            <control type="label">
+                <include>Def_Watched_Indicators_Clean</include>
+                <label>[COLOR=Dark2]&#61754;[/COLOR]</label>
+            </control>
+        </control>
+
+        <!-- Library -->
+        <control type="grouplist">
+            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(Item.Info)) + !Skin.HasSetting(hide.markers.library)
               + [![
                     [Container($PARAM[id]).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]
                   | [Container($PARAM[id]).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)]
@@ -2669,9 +2741,105 @@
                   | [Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
                   | String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
                 ]
+                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
+                + [Skin.HasSetting(hide.markers.watched) | ![String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(Container($PARAM[id]).ListItem.PlayCount,0)]]
+                + [Skin.HasSetting(hide.markers.inprogress) | ![Container($PARAM[id]).ListItem.IsResumable |
+                    [
+                      String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,tvshow) + !String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png)
+                      + [
+                          [!String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodes),Container($PARAM[id]).ListItem.Property(TotalEpisodes)) + !String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodes),0) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedEpisodes))] 
+                          | !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),0) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),100)
+                          | !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),100)
+                        ]
+                    ]
+                ]]            
+              + [Skin.HasSetting(hide.markers.newcontent) | ![
+                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,movie)
+                + [
+                    String.IsEqual(Window(Home).Property(LatestMovie.1.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.1.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.2.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.3.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.4.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.5.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.6.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.7.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.8.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.9.Year),Container($PARAM[id]).ListItem.Year)
+                    | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.10.Year),Container($PARAM[id]).ListItem.Year)
+                  ] |
+                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,tvshow)
+                + [
+                    String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),Container($PARAM[id]).ListItem.Title)
+                  ] |
+                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,episode)
+                + [
+                    String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                    | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
+                  ]
+              ]]
+            </visible>
+            <orientation>horizontal</orientation>                 
+            <control type="label">
+                <include>MultiWidgetsSubLabelDefinition</include>
+                <label>  •  </label>
+            </control>    
+            <control type="label">
+                <include>Def_Watched_Indicators_Clean</include>
+                <label>[COLOR=Dark2]&#62698;[/COLOR]</label>
+            </control>
+        </control>
+
+        <!-- Collection -->
+        <control type="grouplist">
+            <visible>Container($PARAM[id]).ListItem.IsCollection + !Skin.HasSetting(hide.markers.collection)
+                + [String.IsEmpty(Container($PARAM[id]).ListItem.DBID) | String.IsEmpty(Container($PARAM[id]).ListItem.Property(Item.Info)) | Skin.HasSetting(hide.markers.library)]
+                + [Skin.HasSetting(hide.markers.watched) | ![String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png) | Integer.IsGreater(Container($PARAM[id]).ListItem.PlayCount,0)]]
+                + [Skin.HasSetting(hide.markers.inprogress) | !Container($PARAM[id]).ListItem.IsResumable]
+            </visible>
+            <orientation>horizontal</orientation>                 
+            <control type="label">
+                <include>MultiWidgetsSubLabelDefinition</include>
+                <label>  •  </label>
+            </control>    
+            <control type="label">
+                <include>Def_Watched_Indicators_Clean</include>
+                <label>[COLOR=Dark2]&#59649;[/COLOR]</label>
+            </control>
+        </control>
+
+        <!-- Unwatched -->
+        <control type="grouplist">
+            <visible>Skin.HasSetting(markers.unwatched) + String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !Container($PARAM[id]).ListItem.IsResumable
+              + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]               
+              + [![
+                    [Container($PARAM[id]).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]
+                  | [Container($PARAM[id]).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)]
+                  ]
+                  | [Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
+                  | String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
+                ]
+              + [String.IsEmpty(Container($PARAM[id]).ListItem.Property(Item.Info)) | Skin.HasSetting(hide.markers.library)]
+              + [!Container($PARAM[id]).ListItem.IsCollection | Skin.HasSetting(hide.markers.collection)]
               + [
                   String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayUnwatched.png)
-                  | String.IsEmpty(Container($PARAM[id]).ListItem.Overlay) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Integer.IsEqual(Container($PARAM[id]).ListItem.PlayCount,0)
+                  | Integer.IsEqual(Container($PARAM[id]).ListItem.PlayCount,0)
                   + [ String.IsEqual(ListItem.DBType,movie)
                     | String.IsEqual(ListItem.DBType,tvshow)
                     | String.IsEqual(ListItem.DBType,season)
@@ -2749,119 +2917,6 @@
             <control type="label">
                 <include>Def_Watched_Indicators_Clean</include>
                 <label>[COLOR=Dark2]&#61833;[/COLOR]</label>
-            </control>
-        </control>
-
-        <!-- Versions -->
-        <control type="grouplist">
-            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Container($PARAM[id]).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)
-                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
-                + ![Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
-                + !String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
-            </visible>
-            <orientation>horizontal</orientation>                 
-            <control type="label">
-                <include>MultiWidgetsSubLabelDefinition</include>
-                <label>  •  </label>
-            </control>    
-            <control type="label">
-                <include>Def_Watched_Indicators_Clean</include>
-                <label>[COLOR=Dark2]&#63341;[/COLOR]</label>
-            </control>
-        </control>
-
-        <!-- Extras -->
-        <control type="grouplist">
-            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Container($PARAM[id]).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)
-                + [!Container($PARAM[id]).ListItem.HasVideoVersions | Skin.HasSetting(hide.markers.versions)]
-                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
-                + ![Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
-                + !String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
-            </visible>
-            <orientation>horizontal</orientation>                 
-            <control type="label">
-                <include>MultiWidgetsSubLabelDefinition</include>
-                <label>  •  </label>
-            </control>    
-            <control type="label">
-                <include>Def_Watched_Indicators_Clean</include>
-                <label>[COLOR=Dark2]&#61754;[/COLOR]</label>
-            </control>
-        </control>
-
-        <!-- Library -->
-        <control type="grouplist">
-            <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(Item.Info)) + !Skin.HasSetting(hide.markers.library)
-              + [![
-                    [Container($PARAM[id]).ListItem.HasVideoVersions + !Skin.HasSetting(hide.markers.versions)]
-                  | [Container($PARAM[id]).ListItem.HasVideoExtras + !Skin.HasSetting(hide.markers.extras)]
-                  ]
-                  | [Container($PARAM[id]).Content(videoversions) | Container($PARAM[id]).Content(videoassets) | Container($PARAM[id]).Content(videoextras)]
-                  | String.StartsWith(Container($PARAM[id]).FolderPath,videodb://movies/videoversions/)
-                ]
-                + [!Container($PARAM[id]).ListItem.IsPlaying | Skin.HasSetting(hide.markers.isplaying)]
-                + [!Skin.HasSetting(markers.unwatched) | ![String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayUnwatched.png) | String.IsEmpty(Container($PARAM[id]).ListItem.Overlay) + Integer.IsEqual(Container($PARAM[id]).ListItem.PlayCount,0)]]
-                + [Skin.HasSetting(hide.markers.watched) | ![String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png) | String.IsEmpty(Container($PARAM[id]).ListItem.Overlay) + Integer.IsGreater(Container($PARAM[id]).ListItem.PlayCount,0)]]
-                + [Skin.HasSetting(hide.markers.inprogress) | ![Container($PARAM[id]).ListItem.IsResumable |
-                    [
-                      String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,tvshow) + !String.IsEqual(Container($PARAM[id]).ListItem.Overlay,OverlayWatched.png)
-                      + [
-                          [!String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodes),Container($PARAM[id]).ListItem.Property(TotalEpisodes)) + !String.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodes),0) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedEpisodes))] 
-                          | !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),0) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedEpisodePercent),100)
-                          | !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),100)
-                        ]
-                    ]
-                ]]            
-              + [Skin.HasSetting(hide.markers.newcontent) | ![
-                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,movie)
-                + [
-                    String.IsEqual(Window(Home).Property(LatestMovie.1.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.1.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.2.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.3.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.4.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.5.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.6.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.7.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.8.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.9.Year),Container($PARAM[id]).ListItem.Year)
-                    | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),Container($PARAM[id]).ListItem.Title) + String.IsEqual(Window(Home).Property(LatestMovie.10.Year),Container($PARAM[id]).ListItem.Year)
-                  ] |
-                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,tvshow)
-                + [
-                    String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),Container($PARAM[id]).ListItem.Title)
-                  ] |
-                String.IsEqual(Container($PARAM[id]).ListItem.DBTYPE,episode)
-                + [
-                    String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                    | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),Container($PARAM[id]).ListItem.TvShowTitle) + String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeSeason),Container($PARAM[id]).ListItem.Season) + String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),Container($PARAM[id]).ListItem.Title)
-                  ]
-              ]]
-            </visible>
-            <orientation>horizontal</orientation>                 
-            <control type="label">
-                <include>MultiWidgetsSubLabelDefinition</include>
-                <label>  •  </label>
-            </control>    
-            <control type="label">
-                <include>Def_Watched_Indicators_Clean</include>
-                <label>[COLOR=Dark2]&#62698;[/COLOR]</label>
             </control>
         </control>
     </include>

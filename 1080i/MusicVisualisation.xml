@@ -15,6 +15,8 @@
             <animation effect="fade" start="0" end="100" time="450" delay="0" tween="sine" easing="in">WindowOpen</animation>            
             <control type="multiimage">
                 <aspectratio>scale</aspectratio>
+                <timeperimage>HomeTimePerImage</timeperimage>
+                <randomize>true</randomize>
                 <include>Dimensions_Fullscreen</include>
                 <include>BackgroundFanartFadetime</include>
                 <imagepath background="true">$VAR[Image_Visualisation_Background]</imagepath>
@@ -125,7 +127,7 @@
                 <animation effect="fade" start="0" end="100" time="200">Visible</animation>
                 <control type="image">
                     <visible>Skin.HasSetting(ShowClearArtMusicOSD)</visible>
-                    <animation effect="slide" start="0,0" end="0,-303" time="150" condition="[Player.ShowInfo | Skin.HasSetting(musicosd.alwaysshowinfo) | Window.IsVisible(script-cu-lrclyrics-main.xml) | $EXP[ShowInfoWithOSD]] + Skin.HasSetting(osd.artistinfos) + !Window.IsVisible(script-cu-lrclyrics-main.xml) + !MusicPlayer.Content(LiveTV)">Conditional</animation>
+                    <animation effect="slide" start="0,0" end="0,-314" time="150" condition="[Player.ShowInfo | Skin.HasSetting(musicosd.alwaysshowinfo) | Window.IsVisible(script-cu-lrclyrics-main.xml) | $EXP[ShowInfoWithOSD]] + Skin.HasSetting(osd.artistinfos) + !Window.IsVisible(script-cu-lrclyrics-main.xml) + !MusicPlayer.Content(LiveTV)">Conditional</animation>
                     <right>SidePad</right>
                     <bottom>110</bottom>
                     <width>400</width>
@@ -182,11 +184,19 @@
                 <align>right</align>
                 <itemgap>0</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
+                <control type="image">
+                    <animation effect="fade" end="100" start="0" time="150" condition="Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+                    <animation effect="fade" end="0" start="100" time="200" condition="!Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+                    <bottom>14</bottom>
+                    <width>30</width>
+                    <height>30</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="$VAR[OSDPanelWhite70]">osd/lyrics-active.png</texture>                     
+                </control>
                 <control type="label" description="Lyrics">
-		            <include>Animation.FadeIn</include>
 					<animation effect="fade" end="100" start="0" time="150" condition="Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
 					<animation effect="fade" end="0" start="100" time="200" condition="!Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
-                    <align>right</align>
+                    <left>3</left>
                     <width>auto</width>
                     <bottom>10</bottom>
                     <height>40</height>
@@ -251,7 +261,7 @@
                 <right>SidePad</right>
                 <control type="group">
                     <left>0</left>
-                    <right>250</right>
+                    <right>500</right>
                     <bottom>30</bottom>
                     <height>40</height>
 	                <control type="label">
@@ -282,34 +292,7 @@
                         <label>$VAR[PlayerTrackInfo]</label>
                     </control>
                 </control>
-                <control type="progress" description="cache">
-                    <description>Progress Bar</description>
-                    <width>100%</width>
-                    <bottom>10</bottom>
-                    <height>8</height>
-                    <info>Player.ProgressCache</info>
-                    <visible>!Pvr.IsPlayingRadio</visible>
-                    <texturebg colordiffuse="OSDProgressBarColor">osd/progress-bg.png</texturebg>
-                    <lefttexture colordiffuse="Highlight2">osd/progress-end.png</lefttexture>
-                    <midtexture colordiffuse="Highlight2">osd/progress-end.png</midtexture>
-                    <righttexture colordiffuse="Highlight2">osd/progress-end.png</righttexture>
-                </control>
-                <control type="progress" id="23">
-                    <description>Progress Bar</description>
-                    <width>100%</width>
-                    <bottom>10</bottom>
-                    <height>8</height>
-                    <info>Player.Progress</info>
-                    <visible>!Pvr.IsPlayingRadio</visible>
-                </control>
-                <control type="progress">
-                    <description>Progress Bar</description>
-                    <width>100%</width>
-                    <bottom>10</bottom>
-                    <height>8</height>
-                    <info>PVR.EpgEventProgress</info>
-                    <visible>Pvr.IsPlayingRadio</visible>
-                </control>
+                <include>ProgressBar</include>
             </control>
         </control>    
 
@@ -365,8 +348,8 @@
 	                <animation effect="fade" end="0" start="100" time="200">Hidden</animation>
 	                <animation effect="fade" end="0" start="100" time="200">WindowClose</animation>
                     <animation effect="slide" start="0,0" end="0,-80" time="0" condition="Skin.HasSetting(osd.artistinfos) + !MusicPlayer.Content(LiveTV)">Conditional</animation>
-                    <right>SidePadNewOSD</right>
-                    <bottom>220</bottom>
+                    <right>SidePad</right>
+                    <bottom>170</bottom>
                     <width>400</width>
                     <fadetime>ClearArtFadetime</fadetime>
                     <texture>$VAR[PlayerClearart]</texture>
@@ -379,23 +362,42 @@
 	                <animation effect="fade" start="0" end="100" time="250">WindowOpen</animation>
 	                <animation effect="fade" end="0" start="100" time="200">Hidden</animation>
 	                <animation effect="fade" end="0" start="100" time="200">WindowClose</animation>
-                    <right>SidePadNewOSD</right>
-                    <bottom>160</bottom>
+                    <right>SidePad</right>
+                    <bottom>110</bottom>
                     <width>400</width>
                     <fadetime>ClearArtFadetime</fadetime>
                     <texture>$VAR[PlayerClearart]</texture>
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
                 </control>
                 <control type="grouplist">
-                    <visible>MusicPlayer.Content(LiveTV) + Player.HasAudio</visible>
-                    <right>SidePadNewOSD</right>
-                    <bottom>88</bottom>
-                    <width>420</width>
+                    <right>SidePad</right>
+                    <bottom>38</bottom>
+                    <width>100%</width>
                     <height>64</height>
                     <align>right</align>
                     <orientation>horizontal</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
                     <itemgap>0</itemgap>
+	                <control type="image">
+                        <animation effect="fade" end="100" start="0" time="150" condition="Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+                        <animation effect="fade" end="0" start="100" time="200" condition="!Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+	                    <bottom>14</bottom>
+	                    <width>30</width>
+	                    <height>30</height>
+	                    <aspectratio>keep</aspectratio>
+	                    <texture colordiffuse="$VAR[OSDPanelWhite70]">osd/lyrics-active.png</texture>                     
+	                </control>
+	                <control type="label" description="Lyrics">
+                        <animation effect="fade" end="100" start="0" time="150" condition="Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+                        <animation effect="fade" end="0" start="100" time="200" condition="!Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
+                        <left>3</left>
+	                    <width>auto</width>
+	                    <bottom>10</bottom>
+	                    <height>40</height>
+	                    <font>Tiny</font>
+	                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
+	                    <label>$LOCALIZE[24013]  •  </label>
+	                </control>
 	                <control type="label">
 	                    <width>auto</width>
 	                    <align>right</align>
@@ -404,6 +406,7 @@
 	                    <font>Tiny</font>
 	                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
 	                    <label>$INFO[System.Time,, ]</label>
+                        <visible>MusicPlayer.Content(LiveTV) + Player.HasAudio</visible>
 	                </control>
 	                <control type="image">
 	                    <centertop>55%</centertop>
@@ -412,6 +415,7 @@
 	                    <align>right</align>
 	                    <colordiffuse>$VAR[OSDPanelWhite70]</colordiffuse>
 	                    <texture>kaitoast/finishtime2.png</texture>
+                        <visible>MusicPlayer.Content(LiveTV) + Player.HasAudio</visible>
 	                </control>
 	                <control type="label">
 	                    <width>auto</width>
@@ -421,6 +425,7 @@
 	                    <font>Tiny</font>
 	                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
 	                    <label>$VAR[LabelOSDPlayerEndTime, ,  •  ]</label>
+                        <visible>MusicPlayer.Content(LiveTV) + Player.HasAudio</visible>
 	                </control>
 	                <control type="label" description="Total Time">
 	                    <width>auto</width>
@@ -430,31 +435,31 @@
 	                    <font>Tiny</font>
 	                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
 	                    <label>$VAR[LabelOSDPlayerTime]</label>
+                        <visible>MusicPlayer.Content(LiveTV) + Player.HasAudio</visible>
+	                </control>
+	                <control type="label" description="Duration Total Time">
+	                    <width>auto</width>
+	                    <bottom>10</bottom>
+	                    <height>40</height>
+	                    <align>right</align>
+	                    <font>Tiny</font>
+	                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
+	                    <label>$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
+	                    <visible>!MusicPlayer.Content(LiveTV)</visible>
 	                </control>
                 </control>
-                <control type="label" description="Duration Total Time">
-                    <right>SidePadNewOSD</right>
-                    <bottom>88</bottom>
-                    <width>300</width>
-                    <height>64</height>
-                    <align>right</align>
-                    <font>Tiny</font>
-                    <textcolor>$VAR[OSDPanelWhite70]</textcolor>
-                    <label>$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
-                    <visible>!MusicPlayer.Content(LiveTV)</visible>
-                </control>
                 <control type="group">
-                    <top>110r</top>
-                    <bottom>0</bottom>
+                    <top>60r</top>
+                    <height>110</height>
 			        <control type="group">
 			            <include content="def_left" condition="!Skin.HasSetting(musicosd.disableposter) + ![Skin.HasSetting(musicosd.hidedisc) | MusicPlayer.Content(LiveTV)]">
-			                <param name="left" value="560" />
+			                <param name="left" value="520" />
 			            </include>
                         <include content="def_left" condition="!Skin.HasSetting(musicosd.disableposter) + [Skin.HasSetting(musicosd.hidedisc) | MusicPlayer.Content(LiveTV)]">
-                            <param name="left" value="440" />
+                            <param name="left" value="400" />
                         </include>
-			            <left>SidePadNewOSD</left>
-			            <right>SidePadNewOSD</right>
+			            <left>SidePad</left>
+			            <right>SidePad</right>
 			            <top>20</top>
 			            <animation effect="slide" start="0,0" end="0,-50" time="150" condition="true">Conditional</animation>
 			            <bottom>20</bottom>
@@ -466,12 +471,11 @@
 			                    <top>255</top>
 			                    <visible>Skin.HasSetting(osd.artistinfos) + !MusicPlayer.Content(LiveTV)</visible>
 			                    <control type="textbox">
-			                        <description>RSS feed</description>
 			                        <bottom>260</bottom>
 			                        <height>73</height>
 			                        <font>Tiny</font>
 			                        <align>justify</align>
-			                        <textcolor>$VAR[OSDPanelWhite70]</textcolor>
+			                        <textcolor>$VAR[OSDPanelWhite30]</textcolor>
 			                        <label fallback="19055">$VAR[PlayerArtistInfo]</label>
 			                    </control>
 			                </control>
@@ -487,7 +491,7 @@
 			            </control>
 			            <control type="group">
 			                <left>0</left>
-			                <right>150</right>
+			                <right>350</right>
 			                <height>64</height>
 			                <align>left</align>
 			                <bottom>7</bottom>
@@ -522,46 +526,7 @@
                                 <label>$VAR[PlayerTrackInfo]</label>
                             </control>
 			            </control>
-			            <control type="progress" description="cache">
-			                <description>Progress Bar</description>
-			                <width>100%</width>
-			                <bottom>10</bottom>
-			                <height>8</height>
-			                <info>Player.ProgressCache</info>
-			                <visible>!Pvr.IsPlayingRadio</visible>
-			                <texturebg colordiffuse="OSDProgressBarColor">osd/progress-bg.png</texturebg>
-			                <lefttexture colordiffuse="Highlight2">osd/progress-end.png</lefttexture>
-			                <midtexture colordiffuse="Highlight2">osd/progress-end.png</midtexture>
-			                <righttexture colordiffuse="Highlight2">osd/progress-end.png</righttexture>
-			            </control>
-			            <control type="progress">
-			                <description>Progress Bar</description>
-			                <width>100%</width>
-			                <bottom>10</bottom>
-			                <height>8</height>
-			                <info>Player.Progress</info>
-                            <visible>!Pvr.IsPlayingRadio</visible>
-			            </control>
-                        <control type="progress">
-                            <description>Progress Bar</description>
-                            <width>100%</width>
-                            <bottom>10</bottom>
-                            <height>8</height>
-                            <info>PVR.EpgEventProgress</info>
-                            <visible>Pvr.IsPlayingRadio</visible>
-                        </control>
-			            <control type="label" description="Lyrics">
-			                <include>Animation.FadeIn</include>
-			                <animation effect="fade" end="100" start="0" time="150" condition="Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
-			                <animation effect="fade" end="0" start="100" time="200" condition="!Window.IsVisible(script-cu-lrclyrics-main.xml)">Conditional</animation>
-			                <align>left</align>
-			                <width>auto</width>
-			                <bottom>-40</bottom>
-			                <height>40</height>
-			                <font>Tiny</font>
-			                <textcolor>$VAR[OSDPanelWhite70]</textcolor>
-			                <label>$LOCALIZE[24013]</label>
-			            </control>
+			            <include>ProgressBar</include>
 			        </control>
                 </control>
             </control>
@@ -572,17 +537,16 @@
             <visible>!Skin.HasSetting(musicosd.disableposter) | Skin.HasSetting(osd.usetheme)</visible>
             <visible>$EXP[MusicSeekbarIsVisible]</visible>
             <animation effect="slide" start="0" end="0,-74" time="150" condition="Window.IsVisible(musicosd) + !Skin.HasSetting(musicosd.side) + Skin.HasSetting(osd.usetheme)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-44" time="150" condition="Window.IsVisible(musicosd) + !Skin.HasSetting(musicosd.side) + !Skin.HasSetting(osd.usetheme)">Conditional</animation>
             <animation effect="slide" start="0" end="0,-60" time="150" condition="[Player.ShowInfo | Skin.HasSetting(musicosd.alwaysshowinfo) | Window.IsVisible(script-cu-lrclyrics-main.xml) | $EXP[ShowInfoWithOSD]] + Skin.HasSetting(osd.usetheme)">Conditional</animation>
-            <animation effect="slide" start="0,0" end="-50,-75" time="0" condition="Skin.HasSetting(osd.usetheme)">Conditional</animation>
+            <animation effect="slide" start="0,0" end="0,-85" time="0" condition="Skin.HasSetting(osd.usetheme)">Conditional</animation>
             <animation type="Hidden">
                 <effect type="slide" start="0,0" end="-520,0" tween="sine" easing="out" time="300" delay="0"/>
             </animation>
             <animation type="Visible">
                 <effect type="slide" start="-520,0" end="0,0" tween="sine" easing="out" time="300" delay="0"/>
             </animation>
-            <top>105</top>
-            <left>50</left>            
+            <top>115</top>
+            <left>0</left>            
             <control type="group">
                 <visible>![Skin.HasSetting(musicosd.hidedisc) | MusicPlayer.Content(LiveTV)]</visible>
                 <animation type="WindowClose" reversible="false">
@@ -614,25 +578,25 @@
                     <effect type="slide" start="-495,0" end="0,0" tween="sine" easing="out" time="400" delay="0"/>
                 </animation>
                 <control type="image">
-                    <top>637</top>
+                    <top>627</top>
                     <left>SidePad</left>
-                    <height>260</height>
-                    <width>260</width>
+                    <height>270</height>
+                    <width>270</width>
                     <texture colordiffuse="Fallback" diffuse="diffuse/wall.png">common/white.png</texture>
                 </control>
                 <control type="image">
-                    <top>637</top>
+                    <top>627</top>
                     <left>SidePad</left>
-                    <height>260</height>
-                    <width>260</width>
+                    <height>270</height>
+                    <width>270</width>
                     <aspectratio scalediffuse="false">keep</aspectratio>
                     <texture diffuse="diffuse/widgetsquare_new.png" fallback="DefaultAlbumCover.png">$INFO[Player.Art(thumb)]</texture>
                 </control>
                 <control type="image">
-                    <top>636</top>
+                    <top>626</top>
                     <left>79</left>
-                    <height>262</height>
-                    <width>262</width>
+                    <height>272</height>
+                    <width>272</width>
                     <texture colordiffuse="$VAR[MusicOSDBox]" border="4" infill="false">common/box21.png</texture>
 	                <visible>Skin.HasSetting(global.showborders)</visible>            
                 </control>
@@ -667,12 +631,12 @@
             <animation effect="slide" start="0" end="0,-60" time="0" condition="true">Conditional</animation>
             <animation effect="slide" start="0" end="0,-74" time="150" condition="Window.IsVisible(musicosd) + !Skin.HasSetting(musicosd.side)">Conditional</animation>
             <control type="group">            
-                <left>539</left>
-                <top>666</top>
+                <left>549</left>
+                <top>656</top>
                 <control type="image">
                     <top>-8</top>
-                    <height>276</height>
-                    <width>1316</width>
+                    <height>286</height>
+                    <width>1306</width>
                     <left>-8</left>
 	              	<texture border="16" colordiffuse="$VAR[OSDPanel]">common/rounded-shadow8.png</texture>
                     <animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
@@ -680,14 +644,14 @@
                 <control type="image">
                 	<top>-1</top>
                 	<left>-1</left>
-                    <height>262</height>
-                    <width>1302</width>
+                    <height>272</height>
+                    <width>1292</width>
                     <texture colordiffuse="BoxWidget" border="4" infill="false">common/box21.png</texture>
 	                <visible>Skin.HasSetting(global.showborders)</visible>            
                 </control>
                 <control type="label">
                     <left>35</left>
-                    <top>30</top>
+                    <top>23</top>
                     <height>40</height>
                     <font>MediumBold</font>
                     <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -695,8 +659,8 @@
                 </control>
                 <control type="textbox">
                     <left>35</left>
-                    <top>85</top>
-                    <height>138</height>
+                    <top>75</top>
+                    <height>170</height>
                     <right>120</right>
                     <font>Tiny</font>
                     <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -731,12 +695,12 @@
             <animation effect="slide" start="0" end="0,-60" time="0" condition="true">Conditional</animation>
             <animation effect="slide" start="0" end="0,-74" time="150" condition="Window.IsVisible(musicosd) + !Skin.HasSetting(musicosd.side)">Conditional</animation>
             <control type="group">            
-                <left>422</left>
-                <top>666</top>
+                <left>432</left>
+                <top>656</top>
                 <control type="image">
                     <top>-8</top>
-                    <height>276</height>
-                    <width>1432</width>
+                    <height>286</height>
+                    <width>1422</width>
                     <left>-8</left>
                     <texture border="16" colordiffuse="$VAR[OSDPanel]">common/rounded-shadow8.png</texture>
                     <animation effect="fade" start="100" end="80" condition="true">Conditional</animation>
@@ -744,14 +708,14 @@
                 <control type="image">
                     <top>-1</top>
                     <left>-1</left>
-                    <height>262</height>
-                    <width>1418</width>
+                    <height>272</height>
+                    <width>1408</width>
                     <texture colordiffuse="BoxWidget" border="4" infill="false">common/box21.png</texture>
                     <visible>Skin.HasSetting(global.showborders)</visible>            
                 </control>
                 <control type="label">
                     <left>35</left>
-                    <top>30</top>
+                    <top>23</top>
                     <height>40</height>
                     <font>MediumBold</font>
                     <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -759,8 +723,8 @@
                 </control>
                 <control type="textbox">
                     <left>35</left>
-                    <top>85</top>
-                    <height>138</height>
+                    <top>75</top>
+                    <height>170</height>
                     <right>120</right>
                     <font>Tiny</font>
                     <textcolor>$VAR[OSDPanelWhite70]</textcolor>

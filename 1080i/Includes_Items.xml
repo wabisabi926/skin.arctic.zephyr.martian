@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <includes>
+    <include name="CustomSettings_Items.SkinColors">
+        <item>
+            <label>15109</label>
+            <property name="SettingsName">$LOCALIZE[31680]</property>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=SKINDEFAULT,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),SKINDEFAULT) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Dark with Dark Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Dark with Dark Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Dark with Dark Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Dark with Light Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Dark with Light Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Dark with Light Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Light with Dark Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Light with Dark Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Light with Dark Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>Light with Light Dialogs</label>
+            <onclick>Skin.Reset(daynight.autocolor)</onclick>
+            <onclick>RunScript(script.skin.info.service,action=set_setting,setting=lookandfeel.skincolors,value=Light with Light Dialogs,noconfirm=true)</onclick>
+            <onclick>ReloadSkin()</onclick>
+            <include condition="String.IsEqual(Window(Home).Property(SkinInfo.Setting.lookandfeel.skincolors),Light with Light Dialogs) + ![Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+        </item>
+        <item>
+            <label>31681</label>
+            <onclick>Skin.SetBool(daynight.autocolor)</onclick>
+            <onclick>Close</onclick>
+            <include condition="[Skin.HasSetting(daynight.autocolor) + System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)]">Item_Selected</include>
+            <visible>System.AddonIsEnabled(script.arctic.zephyr.martian.autocolors)</visible>
+        </item>
+    </include>
+    
     <include name="CustomSettings_Items.BackgroundBrightness">
         <item>
             <label>$NUMBER[5]%</label>
@@ -247,7 +293,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/classic_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemeDefaultSelected]</property>
         </item>
@@ -259,7 +305,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/pink_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemeTropicalSelected]</property>
         </item>
@@ -271,7 +317,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/purple_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemeMiamiSelected]</property>
         </item>
@@ -283,7 +329,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/slate_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemeBlueSelected]</property>
         </item>
@@ -295,7 +341,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/coal_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemePurpleSelected]</property>
         </item>
@@ -307,7 +353,7 @@
             <onclick>Skin.Reset(fanart.fallback)</onclick>
             <onclick>Skin.Reset(indicatorcolorbackgroundnew.name)</onclick>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/slate_blur.jpg)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[ColorSchemeGreySelected]</property>
         </item>
@@ -319,7 +365,7 @@
             <property name="SettingsName">$LOCALIZE[31110]</property>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/classic_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageDefaultSelected]</property>
         </item>
@@ -327,7 +373,7 @@
             <label>$LOCALIZE[31954]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/purple_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImagePurpleSelected]</property>
         </item>
@@ -335,7 +381,7 @@
             <label>$LOCALIZE[762]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/blue_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageBlueSelected]</property>
         </item>
@@ -343,7 +389,7 @@
             <label>$LOCALIZE[13341]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/green_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageGreenSelected]</property>
         </item>
@@ -351,7 +397,7 @@
             <label>$LOCALIZE[31957]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/pink_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImagePinkSelected]</property>
         </item>
@@ -359,7 +405,7 @@
             <label>$LOCALIZE[13342]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/orange_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageOrangeSelected]</property>
         </item>
@@ -367,7 +413,7 @@
             <label>$LOCALIZE[31959]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/slate_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageSlateSelected]</property>
         </item>
@@ -375,7 +421,7 @@
             <label>$LOCALIZE[31960]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/coal_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageCoalSelected]</property>
         </item>
@@ -383,14 +429,14 @@
             <label>$LOCALIZE[31902]</label>
             <onclick>Skin.SetString(Background.Image,special://skin/extras/backgrounds/blur/onyx_blur.jpg)</onclick>
             <onclick>Skin.Reset(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageOnyxSelected]</property>
         </item>
         <item>
             <label>$LOCALIZE[636]</label>
             <onclick>Skin.SetImage(fanart.fallback)</onclick>
-            <onclick condition="Skin.HasSetting(TMDbHelper.EnableBlur)">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
+            <onclick condition="$EXP[TMDbHelperBlurEnabled]">RunScript(plugin.video.themoviedb.helper,blur_image='"$VAR[Image_SimpleBackground]"')</onclick>
             <onclick>Close</onclick>
             <property name="ItemSelected">$VAR[BackgroundImageCustomSelected]</property>
         </item>
@@ -1013,7 +1059,7 @@
     
     <include name="SettingsInfoItems">
         <item id="1">
-            <label>20077</label>
+            <label>31004</label>
             <label2>31166</label2>
             <icon>special://skin/extras/icons/paintbrush.png</icon>
             <property name="Fanart">$VAR[Image_Systeminfo]</property>
@@ -1117,7 +1163,7 @@
 
     <include name="CustomSettings_Items.Ratings">
     	<item id="1">
-            <property name="SettingsName">$LOCALIZE[31712]</property>
+            <property name="SettingsName">$LOCALIZE[31676]</property>
     		<label>231</label>
     		<onclick>Skin.Reset(Ratings.$PARAM[content].$PARAM[slot])</onclick>
     		<onclick>Close</onclick>
@@ -1146,7 +1192,24 @@
                 <param name="slot" value="$PARAM[slot]"/>
             </include>
         </item> 
-    	<item id="5">
+        <item id="5">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31491]"/>
+                <param name="flag" value="LB"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
+        <item id="6">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31507]"/>
+                <param name="flag" value="MAL"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+            <visible>!$PARAM[is_movierating]</visible>
+        </item> 
+    	<item id="7">
     		<include content="RatingItem">
     			<param name="label" value="$LOCALIZE[31719]"/>
     			<param name="flag" value="MC"/>
@@ -1154,15 +1217,40 @@
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
     	</item>	
-    	<item id="6">
+        <item id="8">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31506]"/>
+                <param name="flag" value="RE"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+            <visible>$PARAM[is_movierating]</visible>
+        </item> 
+    	<item id="9">
     		<include content="RatingItem">
     			<param name="label" value="$LOCALIZE[31720]"/>
     			<param name="flag" value="RT"/>
     			<param name="content" value="$PARAM[content]"/>
     			<param name="slot" value="$PARAM[slot]"/>
     		</include>
-    	</item>
-    	<item id="7">
+    	</item>	
+        <item id="10">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31490]"/>
+                <param name="flag" value="MDBList"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
+        <item id="11">
+            <include content="RatingItem">
+                <param name="label" value="$LOCALIZE[31488]"/>
+                <param name="flag" value="Awards"/>
+                <param name="content" value="$PARAM[content]"/>
+                <param name="slot" value="$PARAM[slot]"/>
+            </include>
+        </item> 
+    	<item id="12">
     		<include content="RatingItem">
     			<param name="label" value="Douban"/>
     			<param name="flag" value="Douban"/>

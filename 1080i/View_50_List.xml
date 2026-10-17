@@ -8,8 +8,8 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
-                <control type="panel" id="50">
-                    <visible>$EXP[Exp_View_50]</visible>
+                <control type="list" id="50">
+                    <visible>$EXP[Exp_View_50] | Window.IsVisible(videoplaylist)</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <include condition="Skin.HasSetting(disable.poster)" content="def_left"><param name="left" value="SidePad" /></include>
@@ -27,10 +27,10 @@
                     <itemlayout condition="!$EXP[ShowListInfo50]" width="auto" height="64">
                         <include>50itemlayout</include>
                     </itemlayout>
-                    <itemlayout condition="$EXP[ShowListInfo50]" width="auto" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo50]" width="auto" height="91">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout width="auto" height="91.4" condition="$EXP[ShowListInfo50]">
+                    <focusedlayout width="auto" height="91" condition="$EXP[ShowListInfo50]">
                         <include>50focuslayout_info</include>
                     </focusedlayout>
                     <focusedlayout width="auto" height="64" condition="!$EXP[ShowListInfo50]">
@@ -39,7 +39,6 @@
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1627" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include condition="!Skin.HasSetting(disable.poster)">View_50_SidePoster</include>
@@ -57,7 +56,7 @@
                 </include>
                 <top>320</top>
                 <control type="fixedlist" id="50">
-                    <visible>$EXP[Exp_View_50]</visible>
+                    <visible>$EXP[Exp_View_50] | Window.IsVisible(videoplaylist)</visible>
                     <top>PosterPad</top>
                     <include content="def_height" condition="$EXP[ShowListInfo50]">
                         <param name="height" value="270" />
@@ -109,12 +108,10 @@
                 </control>
 	            <include content="Furniture_Scrollbar" condition="!$EXP[ShowListInfo50]">
 	                <param name="id" value="1699" />
-	                <param name="jumpbar" value="true" />
                     <param name="height" value="320"/>
 	            </include>
                 <include content="Furniture_Scrollbar" condition="$EXP[ShowListInfo50]">
                     <param name="id" value="1699" />
-                    <param name="jumpbar" value="true" />
                     <param name="height" value="270"/>
                 </include>
             </control>
@@ -218,7 +215,7 @@
                 <param name="width" value="PosterH" /> 
                 <param name="is_square" value="true" /> 
                 <param name="fadetime" value="PosterFanartFadetime" />
-                <param name="diffuse" value="diffuse/listposter-widgets.png" />
+                <param name="diffuse" value="diffuse/listposter.png" />
                 <param name="genre_bordersize" value="160" />
             </include>
             <control type="image">
@@ -251,16 +248,16 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
-                <control type="panel" id="50">
+                <control type="list" id="50">
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <left>ListSquareX</left>
                     <right>SidePad</right>
                     <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
-                    <onright>1679</onright>
+                    <onright>60</onright>
                     <onup>50</onup>
                     <ondown>50</ondown>
-                    <pagecontrol>1679</pagecontrol>
+                    <pagecontrol>60</pagecontrol>
                     <viewtype label="535">list</viewtype>
                     <scrolltime>200</scrolltime>
                     <itemlayout width="ListSquareW" height="64">
@@ -270,10 +267,7 @@
                         <include>50focuslayout_square</include>
                     </focusedlayout>
                 </control>
-                <include content="Furniture_Scrollbar">
-                    <param name="id" value="1679" />
-                    <param name="jumpbar" value="true" />
-                </include>
+                <include>Furniture_Scrollbar</include>
             </control>
             <include>View_50_SidePoster_Square</include>
         </control>
@@ -285,34 +279,34 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(550)</visible>
             <control type="group">
-                <control type="panel" id="550">
-                    <visible>$EXP[Exp_View_550]</visible>
+                <control type="list" id="550">
+                    <visible>$EXP[Exp_View_550] | Window.IsVisible(musicplaylist)</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <left>ListSquareX</left>
                     <right>SidePad</right>
                     <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
-                    <onright>60</onright>
+                    <onright>1679</onright>
                     <onup>550</onup>
                     <ondown>550</ondown>
-                    <pagecontrol>60</pagecontrol>
+                    <pagecontrol>1679</pagecontrol>
                     <viewtype label="535">list</viewtype>
                     <scrolltime>200</scrolltime>
                     <itemlayout condition="!$EXP[ShowListInfo550]" width="ListSquareW" height="64">
                         <include>50itemlayout_square</include>
                     </itemlayout>
-                    <itemlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91">
                         <include>50itemlayout_square_info</include>
                     </itemlayout>
                     <focusedlayout condition="!$EXP[ShowListInfo550]" width="ListSquareW" height="64">
                         <include>50focuslayout_square</include>
                     </focusedlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91">
                         <include>50focuslayout_square_info</include>
                     </focusedlayout>
                 </control>
                 <include content="Furniture_Scrollbar">
-                    <param name="jumpbar" value="true" />
+                    <param name="id" value="1679" />
                 </include>
             </control>
             <include>View_50_SidePoster_Square</include>

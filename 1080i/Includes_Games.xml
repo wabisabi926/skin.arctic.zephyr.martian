@@ -60,6 +60,9 @@
 	</variable>
 
 	<include name="GameDialogControllers">
+        
+        <include>GlobalOverlay</include>
+        
 		<include content="DefDialog">
 			<param name="header_id" value="2" />
 			<param name="header_label" value="35058" />
@@ -191,11 +194,13 @@
                     <description>Install More Controllers</description>
                     <include>DefDialogButtons</include>
                     <label>$LOCALIZE[21452]</label>
+                    <visible>Control.IsEnabled(20)</visible>
                 </control>
                 <control type="button" id="22">
                     <description>Install All</description>
                     <include>DefDialogButtons</include>
                     <label>$LOCALIZE[35021]</label>
+                    <visible>Control.IsEnabled(22)</visible>
                 </control>
                 <control type="button" id="17">
                     <description>Help</description>
@@ -223,6 +228,9 @@
 	</include>
 	
 	<include name="GameDialogPorts">
+
+        <include>GlobalOverlay</include>
+
 		<include content="DefDialog">
 			<param name="width" value="1450" />
 			<param name="header_id" value="2" />
@@ -386,6 +394,9 @@
 	</include>	
 
 	<include name="GameDialogAgents">
+
+        <include>GlobalOverlay</include>
+
 		<include content="DefDialog">
 			<param name="width" value="1800" />
 			<param name="height" value="920" />
@@ -751,10 +762,33 @@
 	</include>
 	
 	<include name="GameDialogDiscManager">
-		<include content="DefDialog">
-			<param name="height" value="480" />
-			<param name="width" value="900" />					
-			<param name="header_label" value="$LOCALIZE[35272]" />
+       <control type="group">
+            <include content="DefDialogBackground">
+                <param name="width" value="900"/>
+                <param name="height" value="480"/>
+            </include>
+
+            <control type="label">
+                <include>DefDialogHeader</include>
+                <label>$LOCALIZE[35272]</label>
+            </control>
+
+            <include content="Kodi_Logo">
+                <param name="dimensions" value="40"/>
+                <param name="top" value="40"/>
+                <param name="left" value="40"/>
+            </include>
+
+            <!-- Lines -->
+            <control type="image">
+                <top>95</top>
+                <left>40</left>
+                <right>40</right>
+                <height>1</height>
+                <bottom>10</bottom>
+                <colordiffuse>Black12</colordiffuse>
+                <texture>common/white.png</texture>
+            </control>  
 
 			<include content="Def9000Arrows">
 				<param name="arrow_bottom" value="480" />
@@ -871,7 +905,7 @@
 				<onfocus condition="Control.IsEnabled(108323)">Control.SetFocus(108323)</onfocus>
 				<onfocus condition="Control.IsEnabled(108324)">Control.SetFocus(108324)</onfocus>
 			</control>
-		</include>	
+		</control>	
 	</include>
 		
 </includes>

@@ -27,43 +27,48 @@
             <param name="plotinfo" value="$INFO[ListItem.Tagline,[B],[/B][CR][CR]]$VAR[LabelPlot]" />
             <param name="ondirection" value="50" />
         </include>
-        <control type="group">
-            <include>Animation.FadeIn</include>
-            <include>Animation.FadeOut</include>
-            <visible>ControlGroup(9000).HasFocus()</visible>
-            <include>GlobalOverlay</include>
-        </control>
-        <control type="group">
-            <height>690</height>
-            <include>Def9000Background</include>
-            <include>Def9000Arrows</include>
-            <include>Def9000Header</include>
-            <include content="Def_Gradient_Settings_Image">
-                <param name="controlid" value="9000"/>
-                <param name="left" value="8"/>
-                <param name="top" value="112"/>
-                <param name="width" value="450"/>
-                <param name="overlayfix" value="true"/>
-                <param name="delay" value="20"/>
-                <param name="visible" value="!ControlGroup(6150).HasFocus()"/>
-            </include>
+        <include content="View_SideBlade">
             <control type="grouplist" id="9000">
-                <top>112</top>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Def9000GroupList"><param name="height" value="560" /></include>
-                <scrolltime>0</scrolltime>
-                <include>View_Options</include>
-                <!-- Other Options -->
-                <control type="button" id="55553">
-                    <include>DefContextMenuLabel</include>
-                    <label>587</label>
-                </control>
+                <include content="Def9000GroupList" />
+                <include>View_SideBlade_ViewMode</include>
+                <include>View_SideBlade_Common</include>
                 <control type="radiobutton" id="14">
                     <description>Hide watched</description>
                     <include>DefContextButtonGradient</include>
                     <align>left</align>
                     <label>31133</label>
                 </control>
+                <include>View_Options</include>
+                <!-- Other Options -->
+                <control type="button" id="55554">
+                    <include>DefContextMenuLabel</include>
+                    <label>14230</label>
+                    <visible>Control.IsVisible(11) | Control.IsVisible(16) | Control.IsVisible(20) | Control.IsVisible(6148) | Control.IsVisible(9099)</visible>
+                </control>
+                <control type="button" id="9098">
+                    <include>DefContextButtonGradient</include>
+                    <align>left</align>
+                    <label>14247</label>
+                    <onclick>CleanLibrary(video)</onclick>
+                    <visible>Control.IsEnabled(20)</visible>
+                </control>
+                <control type="togglebutton" id="20">
+                    <description>Update</description>
+                    <align>left</align>
+                    <label>653</label>
+                    <altlabel>13353</altlabel>
+                    <include>DefContextButtonGradient</include>
+                    <usealttexture>Library.IsScanningVideo</usealttexture>
+                    <visible>Control.IsEnabled(20)</visible>
+                </control>
+                <control type="radiobutton" id="16">
+                    <description>PartyMode</description>
+                    <include>DefContextButtonGradient</include>
+                    <align>left</align>
+                    <label>589</label>
+                    <visible>Container.Content(MusicVideos)</visible>
+                </control>
+                <include>View_SideBlade_Playlist</include>
                 <control type="radiobutton" id="11">
                     <description>Unlock Shares</description>
                     <include>DefContextButtonGradient</include>
@@ -73,75 +78,15 @@
                     <selected>system.ismaster</selected>
                     <visible>system.haslocks</visible>
                 </control>
-                <control type="radiobutton" id="16">
-                    <description>PartyMode</description>
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                    <label>589</label>
-                    <visible>Container.Content(MusicVideos)</visible>
-                </control>
-                <control type="edit" id="19">
-                    <label>587</label>
-                    <description>Filter (hidden)</description>
-                    <align>left</align>
-                    <include>DefContextButtonGradient</include>
-                    <visible>!Container.CanFilterAdvanced</visible>
-                </control>
-                <control type="radiobutton" id="98">
-                    <visible>Container.CanFilterAdvanced</visible>
-                    <description>Filter</description>
-                    <include>DefContextButtonGradient</include>
-                    <label>587</label>
-                    <align>left</align>
-                    <onclick>SetFocus(50)</onclick>
-                    <onclick>Filter</onclick>
-                    <selected>Container.Filtered</selected>
-                </control>
-                <control type="button" id="55554">
-                    <include>DefContextMenuLabel</include>
-                    <label>31077</label>
-                </control>
-                <control type="button" id="9091">
-                    <description>Global Search</description>
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                    <label>137</label>
-                    <onclick>SetFocus(50)</onclick>
-                    <include content="Def_GlobalSearch_Actions">
-                        <param name="query" value="movies=true&amp;tvshows=true&amp;episodes=true&amp;actors=true&amp;directors=true" />
-                    </include>
-                </control>
-                <control type="button" id="9098">
+                <control type="button" id="9099">
                     <include>DefContextButtonGradient</include>
                     <align>left</align>
 	                <label>10140</label>
 	                <onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
 	                <visible>!String.IsEmpty(Container.PluginName)</visible>
 	            </control>    
-                <control type="button" id="9099">
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                    <label>14247</label>
-                    <onclick>CleanLibrary(video)</onclick>
-                </control>
-                <control type="togglebutton" id="20">
-                    <description>Update</description>
-                    <align>left</align>
-                    <label>653</label>
-                    <altlabel>13353</altlabel>
-                    <include>DefContextButtonGradient</include>
-                    <usealttexture>Library.IsScanningVideo</usealttexture>
-                </control>
-                <include>ButtonPlaylist</include>
-                <control type="button" id="5555">
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                    <label>31195</label>
-                    <onclick>ReloadSkin()</onclick>
-                    <visible>Skin.HasSetting(DebugInfo)</visible>
-                </control>
-                <include>ControlButtons</include>
+                <include>View_SideBlade_NowPlaying</include>
             </control>
-        </control>
+        </include>
     </controls>
 </window>

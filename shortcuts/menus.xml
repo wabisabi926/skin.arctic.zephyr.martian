@@ -4,7 +4,7 @@
 	    <icons>
 	        <source>special://skin/extras/icons/</source>
 		    <icon replace="DefaultShortcut.png">shortcut.png</icon>
-		    <icon replace="DefaultVideo.png">video.png</icon>
+		    <icon replace="DefaultVideo.png">videoplay.png</icon>
 		    <icon replace="DefaultMovies.png">film.png</icon>
 		    <icon replace="DefaultTVShows.png">tv.png</icon>
 		    <icon replace="DefaultAudio.png">songs.png</icon>
@@ -13,7 +13,7 @@
 		    <icon replace="DefaultPicture.png">pictures.png</icon>
 		    <icon replace="DefaultProgram.png">addons.png</icon>
 		    <icon replace="DefaultDVDFull.png">cd.png</icon>
-		    <icon replace="DefaultFolder.png">files.png</icon>
+		    <icon replace="DefaultFolder.png">folder.png</icon>
 		    <icon replace="UnknownUser.png">actor.png</icon>
 		    <icon replace="DefaultVideoPlaylists.png">playlist.png</icon>
 		    <icon replace="DefaultMusicPlaylists.png">playlist.png</icon>
@@ -74,15 +74,29 @@
 			<label>31103</label>
 			<label2>$ADDON[script.skinshortcuts 32034]</label2>
 			<icon>special://skin/extras/icons/livetv.png</icon>
-			<action>ActivateWindow(Tvchannels)</action>
+			<action>ActivateWindow(TVChannels)</action>
 			<visible>Pvr.HasTVChannels</visible>
 		</item>
+        <item name="radio" submenu="radio">
+            <label>19021</label>
+            <label2>$ADDON[script.skinshortcuts 32034]</label2>
+            <icon>special://skin/extras/icons/radio.png</icon>
+            <action>ActivateWindow(RadioChannels)</action>
+            <visible>Pvr.HasRadioChannels</visible>
+        </item>
         <item name="videos" submenu="videos">
             <label>3</label>
             <label2>$ADDON[script.skinshortcuts 32034]</label2>
-            <icon>special://skin/extras/icons/video-addons.png</icon>
+            <icon>special://skin/extras/icons/videoplay.png</icon>
             <action>ActivateWindow(videos,library://video/,return)</action>
             <visible>!Library.HasContent(Movies) + !Library.HasContent(TVShows)</visible>
+        </item>
+        <item name="playdisc" submenu="playdisc">
+            <label>341</label>
+            <label2>$ADDON[script.skinshortcuts 32034]</label2>
+            <icon>special://skin/extras/icons/cd.png</icon>
+            <action>PlayDisc</action>
+            <visible>System.HasMediaDVD | System.HasMediaAudioCD</visible>
         </item>
 		<item name="settings" submenu="settings">
 			<label>10004</label>
@@ -110,11 +124,54 @@
 			<icon>special://skin/extras/icons/power.png</icon>
 			<action>ReloadSkin()</action>
 		</item>
+        <item name="exit">
+            <label2>Power Menu Shortcut</label2>
+            <label>13012</label>
+            <icon>special://skin/extras/icons/power.png</icon>
+            <action>Quit()</action>
+            <visible>System.ShowExitButton</visible>
+        </item>
+        <item name="powerdown">
+            <label2>Power Menu Shortcut</label2>
+            <label>13005</label>
+            <icon>special://skin/extras/icons/power.png</icon>
+            <action>Powerdown()</action>
+            <visible>System.CanPowerDown</visible>
+        </item>
+        <item name="suspend">
+            <label2>Power Menu Shortcut</label2>
+            <label>13011</label>
+            <icon>special://skin/extras/icons/power.png</icon>
+            <action>Suspend()</action>
+            <visible>System.CanSuspend</visible>
+        </item>
+        <item name="hibernate">
+            <label2>Power Menu Shortcut</label2>
+            <label>13010</label>
+            <icon>special://skin/extras/icons/power.png</icon>
+            <action>Hibernate()</action>
+            <visible>System.CanHibernate</visible>
+        </item>
+        <item name="reboot">
+            <label2>Power Menu Shortcut</label2>
+            <label>13013</label>
+            <icon>special://skin/extras/icons/power.png</icon>
+            <action>Reset()</action>
+            <visible>System.CanReboot</visible>
+        </item>
+        <item name="reboot to android" visible="System.AddonIsEnabled(service.coreelec.settings)">
+            <label2>Power Menu Shortcut</label2>
+            <label>31232</label>
+            <icon>special://skin/extras/icons/android.png</icon>
+            <action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
+            <action>Reboot()</action>
+            <visible>System.PathExist("/dev/system") | System.PathExist("/dev/super") | System.PathExist("/dev/userdata") | System.PathExist("/dev/data")</visible>
+        </item>
 		<item name="logoff">
 			<label2>Power Menu Shortcut</label2>
-			<label>31360</label>
+			<label>20126</label>
 	        <action>Dialog.Close(all,true)</action>
-			<action>SystemLogOff</action>
+			<action>System.LogOff</action>
 			<icon>special://skin/extras/icons/power.png</icon>
 			<visible>[System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)] + System.Loggedon</visible>
 		</item>
@@ -125,20 +182,20 @@
 			<action>mastermode</action>
 			<visible>System.HasLocks</visible>
 		</item>
-		<item name="exit">
-			<label2>Power Menu Shortcut</label2>
-			<label>13012</label>
-			<icon>special://skin/extras/icons/power.png</icon>
-			<action>Quit()</action>
-			<visible>System.ShowExitButton</visible>
-		</item>
-		<item name="powerdown">
-			<label2>Power Menu Shortcut</label2>
-			<label>13005</label>
-			<icon>special://skin/extras/icons/power.png</icon>
-			<action>Powerdown()</action>
-			<visible>System.CanPowerDown</visible>
-		</item>
+	    <item name="inhibit idle shutdown">
+	        <label2>Power Menu Shortcut</label2>
+	        <label>13017</label>
+	        <icon>special://skin/extras/icons/power.png</icon>
+	        <action>InhibitIdleShutdown(true)</action>
+	        <visible>System.HasShutdown + !System.IsInhibit</visible>
+	    </item>
+	    <item name="allow idle shutdown">
+	        <label2>Power Menu Shortcut</label2>
+	        <label>13018</label>
+	        <icon>special://skin/extras/icons/power.png</icon>
+	        <action>InhibitIdleShutdown(false)</action>
+	        <visible>System.HasShutdown + System.IsInhibit</visible>
+	    </item>
 		<item name="shutdowntimer">
 			<label2>Power Menu Shortcut</label2>
 			<label>20150</label>
@@ -152,35 +209,6 @@
 			<icon>special://skin/extras/icons/power.png</icon>
 			<action>CancelAlarm(shutdowntimer)</action>
 			<visible>System.HasAlarm(shutdowntimer)</visible>
-		</item>
-		<item name="suspend">
-			<label2>Power Menu Shortcut</label2>
-			<label>13011</label>
-			<icon>special://skin/extras/icons/power.png</icon>
-			<action>Suspend()</action>
-			<visible>System.CanSuspend</visible>
-		</item>
-		<item name="hibernate">
-			<label2>Power Menu Shortcut</label2>
-			<label>13010</label>
-			<icon>special://skin/extras/icons/power.png</icon>
-			<action>Hibernate()</action>
-			<visible>System.CanHibernate</visible>
-		</item>
-		<item name="reboot">
-			<label2>Power Menu Shortcut</label2>
-			<label>13013</label>
-			<icon>special://skin/extras/icons/power.png</icon>
-			<action>Reset()</action>
-			<visible>System.CanReboot</visible>
-		</item>
-		<item name="reboot to android" visible="System.Platform.Linux">
-			<label2>Power Menu Shortcut</label2>
-			<label>31232</label>
-			<icon>special://skin/extras/icons/android.png</icon>
-	        <action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
-	        <action>Reboot()</action>
-            <visible>System.PathExist("/dev/env")</visible>
 		</item>
 		<item name="settings">
 			<label>5</label>
@@ -200,7 +228,7 @@
             <icon>special://skin/extras/icons/film.png</icon>
         </item>
         <item name="recently-added-movies">
-            <label>31173</label>
+            <label>20382</label>
             <label2>Movie Hub item</label2>
             <action>ActivateWindow(Videos,RecentlyAddedMovies,return)</action>
             <icon>special://skin/extras/icons/recentlyadded.png</icon>
@@ -272,12 +300,6 @@
             <action>UpdateLibrary(video)</action>
             <icon>special://skin/extras/icons/update.png</icon>
         </item>
-        <item name="clean-library">
-            <label>14247</label>
-            <label2>Movie Hub item</label2>
-            <action>CleanLibrary(video)</action>
-            <icon>special://skin/extras/icons/wand.png</icon>
-        </item>
     </menu>
 
     <menu name="x1112" build="auto" action="ActivateWindow(1112)">
@@ -290,7 +312,7 @@
         </item>
         <item name="recently-added-episodes">
             <label2>Episode Hub item</label2>
-            <label>31173</label>
+            <label>20382</label>
             <action>ActivateWindow(Videos,RecentlyAddedEpisodes,return)</action>
             <icon>special://skin/extras/icons/recentlyadded.png</icon>
         </item>
@@ -361,12 +383,6 @@
             <action>UpdateLibrary(video)</action>
             <icon>special://skin/extras/icons/update.png</icon>
         </item>
-        <item name="clean-library">
-            <label>14247</label>
-            <label2>Episode Hub item</label2>
-            <action>CleanLibrary(video)</action>
-            <icon>special://skin/extras/icons/wand.png</icon>
-        </item>
     </menu>
 
     <menu name="x1113" build="auto" action="ActivateWindow(1113)">
@@ -423,17 +439,11 @@
 			<icon>special://skin/extras/icons/update.png</icon>
 			<action>UpdateLibrary(video)</action>
 		</item>
-		<item name="clean-library">
-			<label>14247</label>
-			<label2>14236</label2>
-			<icon>special://skin/extras/icons/wand.png</icon>
-			<action>CleanLibrary(video)</action>
-		</item>
 	</submenu>
 
 	<submenu name="movies" standalone="false">
 		<item name="recently-added">
-			<label>20386</label>
+			<label>20382</label>
 			<label2>342</label2>
 			<icon>special://skin/extras/icons/recentlyadded.png</icon>
 			<action>ActivateWindow(Videos,videodb://recentlyaddedmovies/,return)</action>
@@ -496,7 +506,7 @@
 
 	<submenu name="tvshows" standalone="false">
 		<item name="recently-added">
-			<label>20387</label>
+			<label>20382</label>
 			<label2>20343</label2>
 			<icon>special://skin/extras/icons/recentlyadded.png</icon>
 			<action>ActivateWindow(Videos,videodb://recentlyaddedepisodes/,return)</action>
@@ -553,17 +563,29 @@
 
 	<submenu name="music" standalone="false">
 		<item name="recently-added">
-			<label>359</label>
+			<label>20382</label>
 			<label2>$ADDON[script.skinshortcuts 32019]</label2>
 			<icon>special://skin/extras/icons/recentlyadded.png</icon>
 			<action>ActivateWindow(Music,musicdb://recentlyaddedalbums/,return)</action>
 		</item>
-		<item name="recently-played">
-			<label>517</label>
+		<item name="artists">
+			<label>133</label>
 			<label2>$ADDON[script.skinshortcuts 32019]</label2>
-			<icon>special://skin/extras/icons/recent.png</icon>
-			<action>ActivateWindow(Music,musicdb://recentlyplayedalbums/,return)</action>
+			<icon>special://skin/extras/icons/artist.png</icon>
+			<action>ActivateWindow(MusicLibrary,musicdb://artists/,return)</action>
 		</item>
+        <item name="albums">
+            <label>132</label>
+            <label2>$ADDON[script.skinshortcuts 32019]</label2>
+            <icon>special://skin/extras/icons/songs.png</icon>
+            <action>ActivateWindow(MusicLibrary,musicdb://albums/,return)</action>
+        </item>
+        <item name="songs">
+            <label>134</label>
+            <label2>$ADDON[script.skinshortcuts 32019]</label2>
+            <icon>special://skin/extras/icons/song.png</icon>
+            <action>ActivateWindow(MusicLibrary,musicdb://songs/,return)</action>
+        </item>
 		<item name="files">
 			<label>744</label>
 			<label2>$ADDON[script.skinshortcuts 32019]</label2>
@@ -588,17 +610,11 @@
 			<icon>special://skin/extras/icons/update.png</icon>
 			<action>UpdateLibrary(music)</action>
 		</item>
-		<item name="clean-library">
-			<label>14247</label>
-			<label2>14237</label2>
-			<icon>special://skin/extras/icons/wand.png</icon>
-			<action>CleanLibrary(music)</action>
-		</item>
 	</submenu>
 
 	<submenu name="musicvideos" standalone="false">
 		<item name="recently-added-musicvideos">
-			<label>20390</label>
+			<label>20382</label>
 			<label2>20389</label2>
 			<icon>special://skin/extras/icons/recentlyadded.png</icon>
 			<action>ActivateWindow(Videos,videodb://recentlyaddedmusicvideos/,return)</action>
@@ -661,7 +677,7 @@
 			<action>ActivateWindow(TVRecordings)</action>
 		</item>
 		<item name="tv-providers">
-			<label>19348</label>
+			<label>19334</label>
 			<label2>$ADDON[script.skinshortcuts 32017]</label2>
 			<icon>special://skin/extras/icons/antenna.png</icon>
 			<action>ActivateWindow(TVProviders)</action>
@@ -694,7 +710,7 @@
 			<action>ActivateWindow(RadioRecordings)</action>
 		</item>
 		<item name="radio-providers">
-			<label>19348</label>
+			<label>19334</label>
 			<label2>$ADDON[script.skinshortcuts 32087]</label2>
 			<icon>special://skin/extras/icons/antenna.png</icon>
 			<action>ActivateWindow(RadioProviders)</action>
@@ -785,7 +801,7 @@
 	    <item name="eventlog">
 	        <label>14111</label>
 	        <label2>$ADDON[script.skinshortcuts 32034]</label2>
-	        <icon>special://skin/extras/icons/recent.png</icon>
+	        <icon>special://skin/extras/icons/clipboard.png</icon>
 	        <action>ActivateWindow(EventLog,events://,return)</action>
 	    </item>    
     </submenu>	
@@ -800,7 +816,7 @@
             <shortcut name="tmdbhelper-episodes" label="31212" icon="special://skin/extras/icons/director.png">
                 <action>ActivateWindow(1125)</action>
             </shortcut>
-			<shortcut name="videos" label="3" icon="special://skin/extras/icons/video.png">
+			<shortcut name="videos" label="3" icon="special://skin/extras/icons/videoplay.png">
 				<action>ActivateWindow(Videos,library://video/,return)</action>
 			</shortcut>
 			<shortcut name="movies" label="342" icon="special://skin/extras/icons/film.png">
@@ -810,7 +826,7 @@
 				<action>ActivateWindow(Videos,videodb://tvshows/titles/,return)</action>
 			</shortcut>
 			<shortcut name="livetv" label="31103" icon="special://skin/extras/icons/livetv.png" visible="Pvr.HasTVChannels">
-				<action>ActivateWindow(Tvchannels)</action>
+				<action>ActivateWindow(TVChannels)</action>
 				<visible>Pvr.HasTVChannels</visible>
 			</shortcut>
 			<shortcut name="radio" label="19021" icon="special://skin/extras/icons/radio.png" visible="PVR.HasRadioChannels">
@@ -854,7 +870,7 @@
 			<shortcut name="systeminfo" label="10007" icon="special://skin/extras/icons/sysinfo.png">
 				<action>ActivateWindow(SystemInfo)</action>
 			</shortcut>
-			<shortcut name="events" label="14111" icon="special://skin/extras/icons/recent.png">
+			<shortcut name="events" label="14111" icon="special://skin/extras/icons/clipboard.png">
 				<action>ActivateWindow(EventLog,events://,return)</action>
 			</shortcut>
 			<shortcut name="favourites" label="1036" icon="special://skin/extras/icons/favourites2.png">
@@ -915,7 +931,7 @@
         </group>
 
         <!-- Video Library -->
-        <group name="video-library" label="3" icon="special://skin/extras/icons/video.png">
+        <group name="video-library" label="3">
             <content source="nodes" target="videos" />
             <shortcut name="search-video" label="137" icon="special://skin/extras/icons/search.png" visible="System.AddonIsEnabled(script.globalsearch)">
                 <action>RunScript(script.globalsearch,tvshows=true&amp;episodes=true&amp;movies=true&amp;actors=true&amp;directors=true)</action>
@@ -930,7 +946,7 @@
         </group>
 
         <!-- Music Library -->
-        <group name="music-library" label="2" icon="special://skin/extras/icons/songs.png">
+        <group name="music-library" label="2">
             <content source="nodes" target="music" />
             <shortcut name="search-music" label="137" icon="special://skin/extras/icons/search.png" visible="System.AddonIsEnabled(script.globalsearch)">
                 <action>RunScript(script.globalsearch,artists=true&amp;albums=true&amp;songs=true&amp;musicvideos=true)</action>
@@ -945,7 +961,7 @@
         </group>
  
          <!-- Live TV  -->
-        <group name="livetv" label="31103" icon="special://skin/extras/icons/livetv.png" visible="PVR.HasTVChannels">
+        <group name="livetv" label="31103" visible="PVR.HasTVChannels">
             <shortcut name="tv-channels" label="14301" icon="special://skin/extras/icons/livetv.png">
                 <action>ActivateWindow(TVChannels)</action>
             </shortcut>
@@ -970,13 +986,11 @@
             <shortcut name="tv-lastchannel" label="19324" icon="special://skin/extras/icons/livetv.png">
                 <action>PlayPvrTV</action>
             </shortcut>
-            <group name="tv-channels-group" label="10700" icon="special://skin/extras/icons/files.png">
-                <content source="pvr" target="tv" />
-            </group>
+            <content source="pvr" target="tv" folder="10700" />
         </group>       
 
         <!-- Radio -->
-        <group name="radio" label="19021" icon="special://skin/extras/icons/radio.png" visible="PVR.HasRadioChannels">
+        <group name="radio" label="19021" visible="PVR.HasRadioChannels">
             <shortcut name="radio-channels" label="14301" icon="special://skin/extras/icons/radio.png">
                 <action>ActivateWindow(RadioChannels)</action>
             </shortcut>
@@ -1001,69 +1015,45 @@
             <shortcut name="radio-lastchannel" label="19324" icon="special://skin/extras/icons/radio.png">
                 <action>PlayPvrRadio</action>
             </shortcut>
-            <group name="radio-channels-group" label="19024" icon="special://skin/extras/icons/files.png">
-                <content source="pvr" target="radio" />
-            </group>
+            <content source="pvr" target="radio" folder="19024" />
         </group>
 
         <!-- Add-ons -->
-        <group name="addons" label="24001" icon="special://skin/extras/icons/addons.png">
-            <group name="program-addons" label="10001" icon="special://skin/extras/icons/addons.png">
-                <content source="addons" target="programs" label="10001" />
-                <shortcut name="apps" label="20244" icon="special://skin/extras/icons/addons.png" visible="System.Platform.Android">
-                    <action>ActivateWindow(programs,androidapp://sources/apps/,return)</action>
-                 </shortcut>
-            </group>
-            <group name="video-addons" label="1037" icon="special://skin/extras/icons/video-addons.png">
-                <content source="addons" target="videos" icon="special://skin/extras/icons/video-addons.png"/>
-            </group>
-            <group name="music-addons" label="1038" icon="special://skin/extras/icons/songs.png">
-                <content source="addons" target="music" label="1038" />
-            </group>
-            <group name="picture-addons" label="1039" icon="special://skin/extras/icons/pictures.png">
-                <content source="addons" target="pictures" label="1039" />
-            </group>
+        <group name="addons" label="24001">
+           	<content source="addons" target="videos" folder="1037" icon="special://skin/extras/icons/video-addons.png"/>
+            <content source="addons" target="music" folder="1038" icon="special://skin/extras/icons/songs.png" />
+            <content source="addons" target="pictures" folder="1039" icon="special://skin/extras/icons/pictures.png" />
+            <content source="addons" target="programs" folder="1043" icon="special://skin/extras/icons/addons.png" />
+            <shortcut name="apps" label="20244" type="addons" target="programs" icon="special://skin/extras/icons/android.png" visible="System.Platform.Android">
+                <action>ActivateWindow(programs,androidapp://sources/apps/,return)</action>
+            </shortcut>
             <shortcut name="game-addons" label="35049" icon="special://skin/extras/icons/xbox.png">
                 <action>ActivateWindow(Games,addons://sources/game/,return)</action>
             </shortcut>
         </group>
 		       
 		<!-- Playlists -->
-		<group name="playlists" label="136" icon="special://skin/extras/icons/playlist.png">
-            <group name="video-playlists" label="20012" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" target="videos" />
-            </group>
-            <group name="music-playlists" label="20011" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" target="music" />
-            </group>
-            <group name="skin-playlists" label="31514" icon="special://skin/extras/icons/playlist.png">
-                <content source="playlists" path="special://skin/extras/playlists/" />
-            </group>
+		<group name="playlists" label="136">
+            <content source="playlists" target="videos" folder="20012" icon="special://skin/extras/icons/playlist.png" />
+            <content source="playlists" target="music" folder="20011" icon="special://skin/extras/icons/playlist.png" />
+            <content source="playlists" folder="31514" path="special://skin/extras/playlists/" icon="special://skin/extras/icons/playlist.png"/>
 		</group> 
 
 		<!-- Sources -->
-		<group name="sources" label="39031" icon="special://skin/extras/icons/files.png">
-	        <group name="video-sources" label="31127" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="videos" />
-	        </group>
-	        <group name="music-sources" label="31128" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="music" />
-	        </group>
-	        <group name="picture-sources" label="31129" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="pictures" />
-	        </group>
-	        <group name="file-sources" label="31130" icon="special://skin/extras/icons/files.png">
-	            <content source="sources" target="files" />
-	        </group>
+		<group name="sources" label="39031">
+			<content source="sources" target="videos" folder="31127" />
+            <content source="sources" target="music" folder="31128" />
+            <content source="sources" target="pictures"  folder="31129" />
+            <content source="sources" target="files" folder="31130" />
 		</group> 
 		
         <!-- Favourites -->
-        <group name="favourites" label="1036" icon="special://skin/extras/icons/favourites2.png">
+        <group name="favourites" label="1036">
             <content source="favourites" />
         </group>
 
         <!-- Settings -->
-        <group name="settings-grp" label="10004" icon="special://skin/extras/icons/configure.png">
+        <group name="settings-grp" label="10004">
             <content source="settings" />
             <shortcut name="libreelec-settings" label="LibreELEC" type="10001" icon="special://skin/extras/icons/libreelec.png" visible="System.HasAddon(service.libreelec.settings)">
                 <action>RunAddon(service.libreelec.settings)</action>
@@ -1074,22 +1064,25 @@
         </group>                
 
        <!-- Kodi Commands -->
-        <group name="commands-grp" label="$ADDON[script.skinshortcuts 32054]" icon="special://skin/extras/icons/power.png">
+        <group name="commands-grp" label="$ADDON[script.skinshortcuts 32054]">
             <content source="commands" />
-            <shortcut name="logoff" label="31360" icon="special://skin/extras/icons/power.png">
-		        <action>Dialog.Close(all,true)</action>
-				<action>SystemLogOff</action>
-                <visible>[System.HasLoginScreen | Integer.IsGreater(System.ProfileCount,1)] + System.Loggedon</visible>
-            </shortcut>
-            <shortcut name="reboot to android" label="31232" icon="special://skin/extras/icons/android.png" visible="System.Platform.Linux">
-		        <action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
+            <shortcut name="reboot to android" label="31232" icon="special://skin/extras/icons/android.png" visible="System.AddonIsEnabled(service.coreelec.settings)">
+                <action>System.ExecWait("/usr/sbin/rebootfromnand")</action>
                 <action>Reboot()</action>
-                <visible>System.PathExist("/dev/env")</visible>
+                <visible>System.PathExist("/dev/system") | System.PathExist("/dev/super") | System.PathExist("/dev/userdata") | System.PathExist("/dev/data")</visible>
             </shortcut>
             <shortcut name="mastermode" label="20045" icon="special://skin/extras/icons/artist.png">
                 <action>Mastermode</action>
                 <visible>System.HasLocks</visible>
             </shortcut>
+	        <shortcut name="inhibit idle shutdown" label="13017" icon="special://skin/extras/icons/power.png">
+	            <action>InhibitIdleShutdown(true)</action>
+	            <visible>System.HasShutdown + !System.IsInhibit</visible>
+	        </shortcut>
+	        <shortcut name="allow idle shutdown" label="13018" icon="special://skin/extras/icons/power.png">
+	            <action>InhibitIdleShutdown(false)</action>
+	            <visible>System.HasShutdown + System.IsInhibit</visible>
+	        </shortcut>
 		    <shortcut name="shutdowntimer" label="20150" icon="special://skin/extras/icons/power.png" visible="System.CanPowerDown | System.CanSuspend | System.CanHibernate">
 		        <action>AlarmClock(shutdowntimer,Shutdown())</action>
 		        <visible>!System.HasAlarm(shutdowntimer) + [System.CanPowerDown | System.CanSuspend | System.CanHibernate]</visible>
@@ -1098,9 +1091,6 @@
 		        <action>CancelAlarm(shutdowntimer)</action>
 		        <visible>System.HasAlarm(shutdowntimer)</visible>
 		    </shortcut>
-            <shortcut name="screensaver" label="24008" icon="special://skin/extras/icons/eye2.png">
-                <action>ActivateScreensaver</action>
-            </shortcut>
             <shortcut name="playdisc" label="341" icon="special://skin/extras/icons/cd.png">
                 <action>PlayDisc</action>
                 <visible>System.HasMediaDVD | System.HasMediaAudioCD</visible>
@@ -1133,4 +1123,8 @@
 		<subdialog buttonID="9308" menu="x1118" />
 		<subdialog buttonID="9309" menu="x1119" />
 	</dialogs>
+	
+	<!-- Disable context menu -->
+    <contextmenu>false</contextmenu>
+    	
 </menus>

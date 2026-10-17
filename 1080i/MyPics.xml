@@ -16,52 +16,22 @@
         <include>View_500_Thumbnails</include>
         <include>View_501_List_Squarepics</include>
         <include>View_502_Slider</include>
-        <control type="group">
-            <include>Animation.FadeIn</include>
-            <include>Animation.FadeOut</include>
-            <visible>ControlGroup(9000).HasFocus()</visible>
-            <include>GlobalOverlay</include>
-        </control>
-        <control type="group">
-            <height>480</height>
-            <include>Def9000Background</include>
-            <include content="Def9000Arrows"><param name="arrow_bottom" value="480" /></include>
-            <include>Def9000Header</include>
-            <include content="Def_Gradient_Settings_Image">
-                <param name="controlid" value="9000"/>
-                <param name="left" value="8"/>
-                <param name="top" value="112"/>
-                <param name="width" value="450"/>
-            </include>
+        <include content="View_SideBlade">
             <control type="grouplist" id="9000">
-                <top>112</top>
-                <height>350</height>
-                <scrolltime>0</scrolltime>
                 <include>Def9000GroupList</include>
                 <control type="button" id="2">
                     <description>View</description>
                     <include>DefContextButtonGradient</include>
                     <align>left</align>
                 </control>
-                <control type="button" id="3">
-                    <description>Sort</description>
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                </control>
-                <control type="togglebutton" id="4">
-                    <description>Ascending</description>
-                    <include>DefContextButtonGradient</include>
-                    <align>left</align>
-                    <label>584</label>
-                    <altlabel>585</altlabel>
-                </control>
+                <include>View_SideBlade_Common</include>
                 <control type="radiobutton" id="40">
                     <include>DefContextButtonGradient</include>
                     <align>left</align>
                     <label>Layout 2</label>
                     <selected>Skin.HasSetting(pics.layout.fanart)</selected>
                     <onclick>Skin.ToggleSetting(pics.layout.fanart)</onclick>
-                    <visible>Control.IsVisible(51)</visible>
+                    <visible>Control.IsVisible(501)</visible>
                 </control>
                 <control type="button" id="6">
                     <description>Slideshow</description>
@@ -83,7 +53,20 @@
                     <align>left</align>
                     <label>13319</label>
                 </control>
+                <control type="button" id="55554">
+                    <include>DefContextMenuLabel</include>
+                    <label>14230</label>
+                    <visible>!String.IsEmpty(Container.PluginName)</visible>
+                </control>
+                <control type="button" id="9099">
+                    <include>DefContextButtonGradient</include>
+                    <align>left</align>
+                    <label>10140</label>
+                    <onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
+                    <visible>!String.IsEmpty(Container.PluginName)</visible>
+                </control>    
+                <include>View_SideBlade_NowPlaying</include>                
             </control>
-        </control>
+        </include>
     </controls>
 </window>

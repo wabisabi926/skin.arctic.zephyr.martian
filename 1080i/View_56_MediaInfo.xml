@@ -8,7 +8,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(56)</visible>
             <control type="group">
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <height>458</height>
@@ -27,16 +27,15 @@
                     <focusedlayout condition="!$EXP[ShowListInfo56]" width="ListW" height="64">
                         <include>50focuslayout</include>
                     </focusedlayout>
-                    <itemlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91">
                         <include>50focuslayout_info</include>
                     </focusedlayout>
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1608" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include>View_50_SidePoster</include>
@@ -50,7 +49,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(56)</visible>
             <control type="group">
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
@@ -69,16 +68,15 @@
                     <focusedlayout condition="!$EXP[ShowListInfo56]" width="648" height="64">
                         <include>56focuslayout</include>
                     </focusedlayout>
-                    <itemlayout condition="$EXP[ShowListInfo56]" width="648" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo56]" width="648" height="91">
                         <include>56itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo56]" width="648" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo56]" width="648" height="91">
                         <include>56focuslayout_info</include>
                     </focusedlayout>
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1609" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include>View_50_SidePoster</include>
@@ -98,7 +96,7 @@
                     <param name="top" value="370" />
                 </include>
                 <top>320</top>
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <include content="def_height" condition="$EXP[ShowListInfo56]">
@@ -129,13 +127,11 @@
                 </control>
 	            <include content="Furniture_Scrollbar" condition="$EXP[ShowListInfo56]">
 	                <param name="id" value="1833" />
-	                <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="270"/>
 	            </include>
                 <include content="Furniture_Scrollbar" condition="!$EXP[ShowListInfo56]">
                     <param name="id" value="1833" />
-                    <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="325"/>
                 </include>

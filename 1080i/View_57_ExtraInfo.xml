@@ -8,7 +8,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(57)</visible>
             <control type="group">
-                <control type="panel" id="57">
+                <control type="list" id="57">
                     <visible>$EXP[Exp_View_57]</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
@@ -18,8 +18,6 @@
                     <onright>1612</onright>
                     <onup>57</onup>
                     <ondown>57</ondown>
-                    <focusposition>3</focusposition>
-                    <movement>3</movement>
                     <pagecontrol>1612</pagecontrol>
                     <viewtype label="31147">list</viewtype>
                     <include>ScrolltimeViewsList</include>
@@ -29,16 +27,15 @@
                     <focusedlayout condition="!$EXP[ShowListInfo57]" width="1100" height="64">
                         <include>50focuslayout</include>
                     </focusedlayout>
-                    <itemlayout condition="$EXP[ShowListInfo57]" width="1100" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo57]" width="1100" height="91">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo57]" width="1100" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo57]" width="1100" height="91">
                         <include>50focuslayout_info</include>
                     </focusedlayout>
                 </control>
                 <include content="Furniture_Scrollbar">
                     <param name="id" value="1612" />
-                    <param name="jumpbar" value="true" />
                 </include>
             </control>
             <include content="Fanart_Info">
@@ -109,12 +106,10 @@
                     </focusedlayout>
                 </control>
                 <include content="Furniture_Scrollbar" condition="$EXP[ShowListInfo57]">
-                    <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="270"/>
                 </include>
                 <include content="Furniture_Scrollbar" condition="!$EXP[ShowListInfo57]">
-                    <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="325"/>
                 </include>
@@ -163,7 +158,7 @@
                     <label>$VAR[LabelGenre]</label>
                 </control>
                 <control type="textbox">
-                    <top>126</top>
+                    <top>124</top>
                     <bottom>25</bottom>
                     <align>justify</align>
                     <font>TinyPlot</font>
@@ -213,7 +208,7 @@
                         <bottom>10</bottom>
                         <fadetime>PosterFanartFadetime</fadetime>
                         <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-                        <texture diffuse="diffuse/widgetfanart_new.png" background="true">$VAR[LandscapeImage]</texture>
+                        <texture diffuse="diffuse/widgetfanart_new.png" background="true">$VAR[LandscapeImage_Parent]</texture>
                     </control>
                     <control type="image">
                         <left>10</left>

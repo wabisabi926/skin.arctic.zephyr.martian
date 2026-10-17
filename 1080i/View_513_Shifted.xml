@@ -7,7 +7,7 @@
         <control type="group">
             <include>Animation.Common</include>
             <visible>Control.IsVisible(513)</visible>
-            <control type="panel" id="513">
+            <control type="list" id="513">
                 <top>200</top>
                 <right>SidePad</right>
                 <left>70</left>
@@ -119,7 +119,6 @@
             </control>
             <include content="Furniture_Scrollbar">
                 <param name="id" value="1689" />
-                <param name="jumpbar" value="true" />
             </include>
             <control type="image">
                 <visible>Control.HasFocus(513) + !Container(513).OnPrevious</visible>

@@ -15,7 +15,7 @@
                 <font>MediumBold</font>
                 <label fallback="19055">$INFO[ListItem.Label]</label>
             </control>
-            <control type="panel" id="519">
+            <control type="list" id="519">
                 <visible>$EXP[Exp_View_519]</visible>
                 <top>180</top>
                 <left>70</left>
@@ -50,10 +50,10 @@
             </control>
             <include content="Furniture_Scrollbar_Horizontal">
                 <param name="id" value="1734" />
-                <param name="jumpbar" value="true" />
                 <param name="bottom" value="560"/>
             </include>
             <control type="grouplist">
+                <visible>!String.IsEqual(ListItem.Label,..)</visible>
                 <left>SidePad</left>
                 <top>600</top>
                 <width>1270</width>
