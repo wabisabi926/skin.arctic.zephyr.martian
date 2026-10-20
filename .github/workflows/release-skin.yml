@@ -1,0 +1,124 @@
+name: Build Kodi Skin Release
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force packaging even if the version did not change'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: skin-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read addon metadata and detect version bump
+        id: meta
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          set -euo pipefail
+
+          read -r ADDON_ID VERSION <<< "$(python3 - <<'PY'
+          import xml.etree.ElementTree as ET
+          root = ET.parse('addon.xml').getroot()
+          print(root.get('id'), root.get('version'))
+          PY
+          )"
+
+          BRANCH="${GITHUB_REF_NAME}"
+          SAFE_BRANCH="${BRANCH//\//-}"
+          ZIP_NAME="${ADDON_ID}-${SAFE_BRANCH}-${VERSION}.zip"
+          TAG="v${VERSION}-${SAFE_BRANCH}"
+
+          CHANGED=false
+          if [ "${FORCE:-false}" = "true" ]; then
+            CHANGED=true
+          elif [ -z "${BEFORE_SHA:-}" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            CHANGED=true
+          elif git cat-file -e "${BEFORE_SHA}^{commit}" 2>/dev/null; then
+            OLD_VERSION=$(git show "${BEFORE_SHA}:addon.xml" | python3 -c "import sys, xml.etree.ElementTree as ET; print(ET.fromstring(sys.stdin.read()).get('version'))")
+            echo "Previous version: ${OLD_VERSION}"
+            if [ "$OLD_VERSION" != "$VERSION" ]; then
+              CHANGED=true
+            fi
+          else
+            CHANGED=true
+          fi
+
+          echo "Addon: ${ADDON_ID}"
+          echo "Version: ${VERSION}"
+          echo "Branch: ${BRANCH}"
+          echo "Changed: ${CHANGED}"
+
+          {
+            echo "addon_id=${ADDON_ID}"
+            echo "version=${VERSION}"
+            echo "branch=${BRANCH}"
+            echo "zip_name=${ZIP_NAME}"
+            echo "tag=${TAG}"
+            echo "changed=${CHANGED}"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "ADDON_ID=${ADDON_ID}"
+            echo "VERSION=${VERSION}"
+            echo "BRANCH=${BRANCH}"
+            echo "ZIP_NAME=${ZIP_NAME}"
+            echo "TAG=${TAG}"
+          } >> "$GITHUB_ENV"
+
+      - name: Build zip
+        if: steps.meta.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          git archive \
+            --format=zip \
+            --prefix="${ADDON_ID}/" \
+            -o "dist/${ZIP_NAME}" \
+            HEAD
+          unzip -l "dist/${ZIP_NAME}"
+          {
+            echo "### Package"
+            echo ""
+            echo "- Addon: \`${ADDON_ID}\`"
+            echo "- Version: \`${VERSION}\`"
+            echo "- Branch: \`${BRANCH}\`"
+            echo "- Asset: \`${ZIP_NAME}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish release
+        if: steps.meta.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: ${{ steps.meta.outputs.addon_id }} ${{ steps.meta.outputs.version }} (${{ steps.meta.outputs.branch }})
+        run: |
+          set -euo pipefail
+          ZIP="dist/${ZIP_NAME}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release ${TAG} already exists, uploading asset"
+            gh release upload "$TAG" "$ZIP" --clobber
+          else
+            gh release create "$TAG" "$ZIP" \
+              --target "$GITHUB_SHA" \
+              --title "$TITLE" \
+              --generate-notes
+          fi
