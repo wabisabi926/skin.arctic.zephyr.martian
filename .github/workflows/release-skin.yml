@@ -105,6 +105,21 @@ jobs:
             echo "- Asset: \`${ZIP_NAME}\`"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Generate release notes (zh_CN)
+        if: steps.meta.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/release_notes.py
+          {
+            echo "### Release notes"
+            echo ""
+            echo '```markdown'
+            cat dist/release-notes.md
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Publish release
         if: steps.meta.outputs.changed == 'true'
         env:
@@ -113,12 +128,14 @@ jobs:
         run: |
           set -euo pipefail
           ZIP="dist/${ZIP_NAME}"
+          NOTES="dist/release-notes.md"
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release ${TAG} already exists, uploading asset"
+            echo "Release ${TAG} already exists, refreshing notes and uploading asset"
+            gh release edit "$TAG" --notes-file "$NOTES"
             gh release upload "$TAG" "$ZIP" --clobber
           else
             gh release create "$TAG" "$ZIP" \
               --target "$GITHUB_SHA" \
               --title "$TITLE" \
-              --generate-notes
+              --notes-file "$NOTES"
           fi
