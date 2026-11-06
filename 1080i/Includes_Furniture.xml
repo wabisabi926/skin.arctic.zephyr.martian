@@ -3669,7 +3669,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),,%]</label>
         </control>          
         <control type="image" description="Douban Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
             <centertop>50%</centertop>
             <width>33</width>
             <height>33</height>
@@ -3678,7 +3678,7 @@
             <texture colordiffuse="Dark1" background="true">flags/monochrome/ratings/douban.png</texture>
         </control>
         <control type="label" description="Douban Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>
@@ -3900,7 +3900,7 @@
             <label>$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),,%]</label>
         </control>
         <control type="image" description="Douban Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
             <centertop>50%</centertop>
             <width>34</width>
             <height>34</height>
@@ -3909,7 +3909,7 @@
             <texture background="true">flags/color/ratings/douban.png</texture>
         </control>
         <control type="label" description="Douban Rating">
-            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.douban_rating)) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0) + Skin.HasSetting(furniture.showdouban)</visible>
             <centertop>50%</centertop>
             <width>auto</width>
             <height>64</height>

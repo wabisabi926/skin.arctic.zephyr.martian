@@ -1123,7 +1123,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),  •  , Oscar]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),  •  , Oscars]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_2">
@@ -1137,7 +1137,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),  •  , Oscar]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Oscar_Wins),  •  , Oscars]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
     </variable>
     
 	<variable name="Label_Movie_Ratings">
@@ -1155,7 +1155,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.Player.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Oscar_Wins),  •  , Oscar]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Oscar_Wins),  •  , Oscars]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.1),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Movie_Rating_Player_2">
@@ -1169,7 +1169,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.Player.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Oscar_Wins),  •  , Oscar]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.Oscar_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Oscar_Wins),  •  , Oscars]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.Movies.2),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
     </variable>
 
 	<variable name="Label_Movie_Ratings_Player">
@@ -1187,7 +1187,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins),  •  , Emmy]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.ListItem.Emmy_Wins),  •  , Emmys]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.ListItem.douban_rating),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_TvShow_Ratings_Player">
@@ -1201,7 +1201,7 @@
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),MDBList) + Integer.IsGreater(Window(Home).Property(TMDbHelper.ListItem.MDBList_Rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.MDBList_Rating),  •  MDB ,%]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Awards) + Integer.IsEqual(Window(Home).Property(TMDbHelper.Player.Emmy_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Emmy_Wins),  •  , Emmy]</value>
         <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Awards) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.Emmy_Wins),1)">$INFO[Window(Home).Property(TMDbHelper.Player.Emmy_Wins),  •  , Emmys]</value>
-        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + !String.StartsWith(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
+        <value condition="String.IsEqual(Skin.String(Ratings.TvShows.1),Douban) + Integer.IsGreater(Window(Home).Property(TMDbHelper.Player.douban_rating),0)">$INFO[Window(Home).Property(TMDbHelper.Player.douban_rating),  •  Douban ,]</value>
     </variable>
 
     <variable name="Label_Settings_Movie_Rating_1">
