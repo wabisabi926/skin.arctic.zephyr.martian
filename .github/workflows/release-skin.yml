@@ -130,9 +130,13 @@ jobs:
           git -C "$KODI_SRC" sparse-checkout set \
             tools/depends/native/TexturePacker/src xbmc/guilib xbmc/utils
 
+          # 独立构建时 CMakeLists 里的 ${ARCH_DEFINES} 默认为空，而 cmdlineargs.h
+          # 在 TARGET_POSIX 未定义时会 #include <windows.h>，Linux runner 直接编译失败。
+          # Kodi 官方 Makefile.am 用 AM_CFLAGS=-DTARGET_POSIX，这里按同样语义显式传入。
           cmake -S "$KODI_SRC/tools/depends/native/TexturePacker/src" \
             -B "$TP_BUILD" \
             -DKODI_SOURCE_DIR="$KODI_SRC" \
+            -DARCH_DEFINES=TARGET_POSIX \
             -DCMAKE_BUILD_TYPE=Release
           cmake --build "$TP_BUILD" --parallel 2
 
