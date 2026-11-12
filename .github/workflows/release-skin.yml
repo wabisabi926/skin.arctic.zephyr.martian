@@ -19,6 +19,11 @@ concurrency:
   group: skin-release-${{ github.ref }}
   cancel-in-progress: false
 
+env:
+  # Kodi 22 "Piers" 分支：XBTF_VERSION=3，TexturePacker 自报 "Version 3"。
+  # 如需钉死版本，把此处改成具体 commit SHA 并在下方 clone 后 checkout。
+  KODI_REF: Piers
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -85,16 +90,91 @@ jobs:
             echo "TAG=${TAG}"
           } >> "$GITHUB_ENV"
 
-      - name: Build zip
+      - name: Detect texture layout
+        id: textures
         if: steps.meta.outputs.changed == 'true'
         run: |
           set -euo pipefail
-          mkdir -p dist
-          git archive \
-            --format=zip \
-            --prefix="${ADDON_ID}/" \
-            -o "dist/${ZIP_NAME}" \
-            HEAD
+          # 仅检查 media/ 下的散图；themes/ 的主题散图按约定保留原样。
+          LOOSE=$(find media -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' \) -print -quit)
+          if [ -f media/Textures.xbt ] && [ -z "$LOOSE" ]; then
+            echo "mode=skip" >> "$GITHUB_OUTPUT"
+            echo "needs_pack=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::media/ 仅有 Textures.xbt 且无散图，跳过重新打包"
+          elif [ -n "$LOOSE" ]; then
+            echo "mode=pack" >> "$GITHUB_OUTPUT"
+            echo "needs_pack=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::media/ 存在散图，将用 Kodi 22 TexturePacker V3 生成 Textures.xbt"
+          else
+            echo "mode=none" >> "$GITHUB_OUTPUT"
+            echo "needs_pack=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::media/ 既无 Textures.xbt 也无散图，按原样归档"
+          fi
+
+      - name: Build TexturePacker V3 (Kodi 22 / XBT3)
+        if: steps.meta.outputs.changed == 'true' && steps.textures.outputs.needs_pack == 'true'
+        run: |
+          set -euo pipefail
+          KODI_SRC="$RUNNER_TEMP/kodi-src"
+          TP_BUILD="$RUNNER_TEMP/tp-build"
+          rm -rf "$KODI_SRC" "$TP_BUILD"
+
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            cmake make g++ zip unzip \
+            liblzo2-dev libpng-dev libgif-dev libjpeg-dev
+
+          # 只取 TexturePacker 与其编译所需的 Kodi 头文件/源文件
+          git clone --depth 1 --filter=blob:none --sparse \
+            --branch "$KODI_REF" https://github.com/xbmc/xbmc.git "$KODI_SRC"
+          git -C "$KODI_SRC" sparse-checkout set \
+            tools/depends/native/TexturePacker/src xbmc/guilib xbmc/utils
+
+          cmake -S "$KODI_SRC/tools/depends/native/TexturePacker/src" \
+            -B "$TP_BUILD" \
+            -DKODI_SOURCE_DIR="$KODI_SRC" \
+            -DCMAKE_BUILD_TYPE=Release
+          cmake --build "$TP_BUILD" --parallel 2
+
+          # 断言打包器确为 V3（XBT3 / Piers），格式变更时直接失败而非产出旧格式
+          "$TP_BUILD/TexturePacker" -help > "$TP_BUILD/tp-version.txt" 2>&1 || true
+          grep -q "Texture Packer Version 3" "$TP_BUILD/tp-version.txt" || {
+            cat "$TP_BUILD/tp-version.txt"
+            echo "::error::未取得 Kodi 22 的 TexturePacker V3"
+            exit 1
+          }
+          cat "$TP_BUILD/tp-version.txt"
+          echo "TEXTUREPACKER=$TP_BUILD/TexturePacker" >> "$GITHUB_ENV"
+
+      - name: Build zip
+        if: steps.meta.outputs.changed == 'true'
+        env:
+          PACK_MODE: ${{ steps.textures.outputs.mode }}
+        run: |
+          set -euo pipefail
+          mkdir -p dist stage
+          rm -rf "dist/${ADDON_ID}"
+          # git archive 会应用 .gitattributes 的 export-ignore（.github 等不入库）
+          git archive --format=tar HEAD | tar -x -C stage
+
+          PKG="dist/${ADDON_ID}"
+          mkdir -p "$PKG"
+          cp -a stage/. "$PKG/"
+
+          if [ "$PACK_MODE" = "pack" ]; then
+            if [ -z "${TEXTUREPACKER:-}" ]; then
+              echo "::error::TexturePacker V3 未构建"
+              exit 1
+            fi
+            XBT="$PKG/media/Textures.xbt"
+            "$TEXTUREPACKER" -input "$PKG/media/" -output "$XBT" -dupecheck
+            # 散图不进发布包；themes/ 下的主题散图保留
+            find "$PKG/media" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' \) -delete
+            find "$PKG/media" -type d -empty -delete
+            echo "Packed: $(du -h "$XBT" | cut -f1) -> ${XBT}"
+          fi
+
+          (cd dist && zip -r -q "${ZIP_NAME}" "${ADDON_ID}")
           unzip -l "dist/${ZIP_NAME}"
           {
             echo "### Package"
@@ -103,6 +183,7 @@ jobs:
             echo "- Version: \`${VERSION}\`"
             echo "- Branch: \`${BRANCH}\`"
             echo "- Asset: \`${ZIP_NAME}\`"
+            echo "- Textures: ${PACK_MODE}"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Generate release notes (zh_CN)
