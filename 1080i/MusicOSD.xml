@@ -76,7 +76,7 @@
                 <height>1100</height>
                 <colordiffuse>$VAR[OSDPanel]</colordiffuse>
                 <texture border="16">common/rounded-shadow8.png</texture>
-                <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
+                <animation effect="fade" start="100" end="90" condition="Skin.HasSetting(osd.usetheme)">Conditional</animation>
             </control>
             <control type="group">
                 <visible>!MusicPlayer.Content(LiveTV)</visible>
@@ -123,7 +123,7 @@
                     <left>30</left>
                     <width>260</width>
                     <height>260</height>
-                    <texture border="5" colordiffuse="Fallback">common/box.png</texture>
+                    <texture border="5" colordiffuse="$VAR[OSDFallback]">common/box.png</texture>
                     <aspectratio>keep</aspectratio>
                     <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
                 </control>
@@ -181,7 +181,6 @@
                     </control>
                     <control type="label" description="AlbumYear">
                         <align>center</align>
-                        <font>Small</font>
                         <top>4</top>
                         <height>40</height>
                         <textcolor>$VAR[OSDPanelWhite30]</textcolor>
@@ -191,7 +190,6 @@
                     </control>
                     <control type="label" description="Duration">
                         <height>40</height>
-                        <font>Small</font>
                         <align>center</align>
                         <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                         <label>$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
@@ -229,7 +227,6 @@
                             <left>30</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>left</align>
                             <font>SmallBold</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -241,7 +238,6 @@
                             <left>70</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>left</align>
                             <font>SmallBold</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -253,20 +249,10 @@
                             <left>30</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>right</align>
-                            <font>Small</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                             <label>$INFO[ListItem.Label2]</label>
                             <selectedcolor>Dark1</selectedcolor>
-                        </control>
-                        <control type="image">
-                            <width>803</width>
-                            <height>1</height>
-                            <left>-45</left>
-                            <top>0</top>
-                            <texture colordiffuse="Dark1">common/line1.png</texture>
-                            <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
                         </control>
                     </itemlayout>
                     <focusedlayout height="60" width="700">
@@ -284,7 +270,6 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -296,7 +281,6 @@
                                 <left>70</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -308,9 +292,7 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>right</align>
-                                <font>Small</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                                 <label>$INFO[ListItem.Label2]</label>
                                 <selectedcolor>$VAR[OSDPanelWhite70]</selectedcolor>
@@ -335,7 +317,6 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>Selected</textcolor>
@@ -347,7 +328,6 @@
                                 <left>70</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>Selected</textcolor>
@@ -359,21 +339,11 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>right</align>
-                                <font>Small</font>
                                 <textcolor>Selected</textcolor>
                                 <label>$INFO[ListItem.Label2]</label>
                                 <selectedcolor>Selected</selectedcolor>
                             </control>
-                        </control>
-                        <control type="image">
-                            <width>803</width>
-                            <height>1</height>
-                            <left>-45</left>
-                            <top>0</top>
-                            <texture colordiffuse="Dark1">common/line1.png</texture>
-                            <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
                         </control>
                     </focusedlayout>
                     <content>
