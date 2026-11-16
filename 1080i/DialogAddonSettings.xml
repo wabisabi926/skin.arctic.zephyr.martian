@@ -21,8 +21,7 @@
                 <left>70</left>
                 <width>1000</width>
                 <posy>0</posy>
-                <include>FontTop</include>
-                <textcolor>Black70</textcolor>
+                <font>MediumBold</font>
                 <label />
             </control>
             <include>Kodi_Logo</include>
@@ -44,6 +43,7 @@
                 <width>387</width>
                 <height>342</height>
                 <itemgap>3</itemgap>
+                <onback>28</onback>
                 <onright>5</onright>
                 <onup>9</onup>
                 <ondown>9</ondown>
@@ -56,6 +56,7 @@
                 <width>969</width>
                 <height>687</height>
                 <itemgap>3</itemgap>
+                <onback>28</onback>
                 <onup>5</onup>
                 <ondown>9001</ondown>
                 <onleft>3</onleft>
@@ -81,8 +82,6 @@
             </control>
             <control type="spincontrolex" id="9">
                 <description>Default spincontrolex</description>
-                <reverse>yes</reverse>
-                <align>left</align>
                 <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/box.png</texturefocus>
             </control>
             <control type="label" id="14">

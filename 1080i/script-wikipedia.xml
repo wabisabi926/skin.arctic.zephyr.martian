@@ -29,14 +29,11 @@
                     <onright>1500</onright>
                     <onup>9902</onup>
                     <ondown>9902</ondown>
-                    <focusposition>2</focusposition>
-                    <viewtype label="535">list</viewtype>
                     <include>ScrolltimeViewsList</include>
                     <itemlayout width="428" height="64" condition="!Window.IsVisible(DialogMusicInfo.xml)">
                         <control type="label">
                             <posx>30</posx>
                             <width>370</width>
-                            <aligny>center</aligny>
                             <height>64</height>
                             <font>SmallBold</font>
                             <label>$INFO[ListItem.Label]</label>
@@ -58,7 +55,6 @@
                         <control type="label">
                             <posx>30</posx>
                             <width>370</width>
-                            <aligny>center</aligny>
                             <height>64</height>
                             <font>SmallBold</font>
                             <label>$INFO[ListItem.Label]</label>
@@ -70,7 +66,6 @@
                         <control type="label">
                             <posx>30</posx>
                             <width>580</width>
-                            <aligny>center</aligny>
                             <height>64</height>
                             <font>SmallBold</font>
                             <label>$INFO[ListItem.Label]</label>
@@ -92,7 +87,6 @@
                         <control type="label">
                             <posx>30</posx>
                             <width>580</width>
-                            <aligny>center</aligny>
                             <height>64</height>
                             <font>SmallBold</font>
                             <label>$INFO[ListItem.Label]</label>

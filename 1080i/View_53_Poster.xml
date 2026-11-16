@@ -74,7 +74,7 @@
                     <width>PosterW</width>
                     <height>PosterH</height>
                     <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-                    <texture diffuse="diffuse/listposter.png" background="true" fallback="DefaultMovies.png">$VAR[PosterImage]</texture>
+                    <texture diffuse="diffuse/listposter.png" background="true" fallback="$VAR[Image_Fallback_Icon]">$VAR[PosterImage]</texture>
                 </control>
                 <control type="image">
                     <width>PosterW</width>
@@ -83,8 +83,8 @@
                     <visible>Skin.HasSetting(global.showborders)</visible>
                 </control>
                 <include content="IndicatorPoster" condition="!Skin.HasSetting(hide.markers)">
-                    <param name="right" value="-138" />
-                    <param name="top" value="-10" />
+                    <param name="right" value="-136" />
+                    <param name="top" value="-8" />
                 </include>
             </control>
         </focusedlayout>
@@ -103,7 +103,6 @@
             </include>
             <include content="Furniture_Scrollbar_Horizontal">
                 <param name="id" value="1633" />
-                <param name="jumpbar" value="true" />
             </include>
             <control type="grouplist">
                 <left>540</left>

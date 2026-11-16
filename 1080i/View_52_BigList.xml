@@ -2,10 +2,6 @@
 <!-- Foundation -->
 <includes>
 
-    <include name="View_52_BigList">
-        <include>View_52_BigList_SinglePane</include>
-    </include>
-
     <include name="View_52_BigList_SinglePane">
         <description>List View (id=52)</description>
         <control type="group">
@@ -35,7 +31,6 @@
             </control>
             <include content="Furniture_Scrollbar">
                 <param name="id" value="1626" />
-                <param name="jumpbar" value="true" />
             </include>
         </control>
     </include>
@@ -99,7 +94,6 @@
             </control>
             <include content="Furniture_Scrollbar">
                 <param name="id" value="1625" />
-                <param name="jumpbar" value="true" />
             </include>
         </control>
     </include>
@@ -117,7 +111,7 @@
             <font>SmallBold</font>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
         </control>
         <control type="label">
             <left>130</left>
@@ -130,7 +124,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$INFO[ListItem.Label2]</label>
-            <visible>Skin.HasSetting(hide.markers) | ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos)  | Container.Content(files)]</visible>
+            <visible>Skin.HasSetting(hide.markers) | ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(files)]</visible>
         </control>
         <control type="label">
             <left>130</left>
@@ -156,7 +150,8 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>!Skin.HasSetting(hide.markers) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(files)]</visible>
         </control>
     </include>
 
@@ -180,7 +175,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
         </control>
         <control type="label">
             <left>130</left>
@@ -193,7 +188,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$INFO[ListItem.Label2]</label>
-            <visible>Skin.HasSetting(hide.markers) | ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos)  | Container.Content(files)]</visible>
+            <visible>Skin.HasSetting(hide.markers) | ![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(files)]</visible>
         </control>
         <control type="label">
             <left>130</left>
@@ -219,7 +214,8 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>!Skin.HasSetting(hide.markers) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(videos) | Container.Content(files)]</visible>
         </control>
     </include>
     

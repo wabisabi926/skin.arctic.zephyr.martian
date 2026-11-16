@@ -38,9 +38,9 @@
         	<visible>!Skin.HasSetting(musicosd.side) + !Skin.HasSetting(osd.usetheme)</visible>
             <visible>Player.HasMedia</visible>
             <height>74</height>
-            <left>560</left>
-            <right>SidePadNewOSD</right>
-            <bottom>110</bottom>
+            <left>SidePad</left>
+            <right>SidePad</right>
+            <bottom>60</bottom>
             <animation type="WindowOpen">
                 <effect type="fade" start="0" end="100" time="150" delay="150"/>
             </animation>
@@ -48,7 +48,7 @@
                 <effect type="fade" end="0" start="100" time="150"/>
             </animation>
             <animation effect="fade" start="100" end="0" time="150" condition="Window.IsVisible(DialogPlayerProcessInfo.xml)">Conditional</animation>
-            <animation effect="slide" start="0,0" end="-215,0" time="150" condition="Skin.HasSetting(musicosd.disableposter)">Conditional</animation>
+            <animation effect="slide" start="0,0" end="220,0" time="150" condition="!Skin.HasSetting(musicosd.disableposter)">Conditional</animation>
             <animation effect="slide" start="0,0" end="-60,0" time="150" condition="!Skin.HasSetting(musicosd.disableposter) + [Skin.HasSetting(musicosd.hidedisc) | MusicPlayer.Content(LiveTV)]">Conditional</animation>
 
             <control type="grouplist" id="101">
@@ -76,7 +76,7 @@
                 <height>1100</height>
                 <colordiffuse>$VAR[OSDPanel]</colordiffuse>
                 <texture border="16">common/rounded-shadow8.png</texture>
-                <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
+                <animation effect="fade" start="100" end="90" condition="Skin.HasSetting(osd.usetheme)">Conditional</animation>
             </control>
             <control type="group">
                 <visible>!MusicPlayer.Content(LiveTV)</visible>
@@ -123,6 +123,14 @@
                     <left>30</left>
                     <width>260</width>
                     <height>260</height>
+                    <texture border="5" colordiffuse="$VAR[OSDFallback]">common/box.png</texture>
+                    <aspectratio>keep</aspectratio>
+                    <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
+                </control>
+                <control type="image">
+                    <left>30</left>
+                    <width>260</width>
+                    <height>260</height>
                     <texture diffuse="diffuse/wall.png" fallback="DefaultAlbumCover.png">$VAR[PlayerPoster]</texture>
                     <aspectratio aligny="center" align="center">keep</aspectratio>
                 </control>
@@ -131,7 +139,7 @@
                     <top>-1</top>
                     <width>262</width>
                     <height>262</height>
-                    <texture colordiffuse="$VAR[MusicOSDBox]" border="4" infill="false">common/box21.png</texture>
+                    <texture colordiffuse="$VAR[OSDBox2]" border="4" infill="false">common/box21.png</texture>
                     <visible>Skin.HasSetting(global.showborders)</visible>
                 </control>
                 <control type="grouplist">
@@ -167,12 +175,12 @@
                         <top>8</top>
                         <itemgap>12</itemgap>
                         <usecontrolcoords>true</usecontrolcoords>
-                        <visible>true</visible>
-                        <include>MusicOSDRatingFlags</include>
+		                <include content="OSDRatingFlags">
+		                    <param name="Star" value="OSDMusicFlagstar" />
+		                </include>
                     </control>
                     <control type="label" description="AlbumYear">
                         <align>center</align>
-                        <font>Small</font>
                         <top>4</top>
                         <height>40</height>
                         <textcolor>$VAR[OSDPanelWhite30]</textcolor>
@@ -182,7 +190,6 @@
                     </control>
                     <control type="label" description="Duration">
                         <height>40</height>
-                        <font>Small</font>
                         <align>center</align>
                         <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                         <label>$INFO[Player.Time]$INFO[Player.Duration, / ,]</label>
@@ -220,7 +227,6 @@
                             <left>30</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>left</align>
                             <font>SmallBold</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -232,7 +238,6 @@
                             <left>70</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>left</align>
                             <font>SmallBold</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -244,20 +249,10 @@
                             <left>30</left>
                             <right>30</right>
                             <height>100%</height>
-                            <aligny>center</aligny>
                             <align>right</align>
-                            <font>Small</font>
                             <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                             <label>$INFO[ListItem.Label2]</label>
                             <selectedcolor>Dark1</selectedcolor>
-                        </control>
-                        <control type="image">
-                            <width>803</width>
-                            <height>1</height>
-                            <left>-45</left>
-                            <top>0</top>
-                            <texture colordiffuse="Dark1">common/line1.png</texture>
-                            <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
                         </control>
                     </itemlayout>
                     <focusedlayout height="60" width="700">
@@ -275,7 +270,6 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -287,7 +281,6 @@
                                 <left>70</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
@@ -299,9 +292,7 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>right</align>
-                                <font>Small</font>
                                 <textcolor>$VAR[OSDPanelWhite70]</textcolor>
                                 <label>$INFO[ListItem.Label2]</label>
                                 <selectedcolor>$VAR[OSDPanelWhite70]</selectedcolor>
@@ -326,7 +317,6 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>Selected</textcolor>
@@ -338,7 +328,6 @@
                                 <left>70</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>left</align>
                                 <font>SmallBold</font>
                                 <textcolor>Selected</textcolor>
@@ -350,21 +339,11 @@
                                 <left>30</left>
                                 <right>30</right>
                                 <height>100%</height>
-                                <aligny>center</aligny>
                                 <align>right</align>
-                                <font>Small</font>
                                 <textcolor>Selected</textcolor>
                                 <label>$INFO[ListItem.Label2]</label>
                                 <selectedcolor>Selected</selectedcolor>
                             </control>
-                        </control>
-                        <control type="image">
-                            <width>803</width>
-                            <height>1</height>
-                            <left>-45</left>
-                            <top>0</top>
-                            <texture colordiffuse="Dark1">common/line1.png</texture>
-                            <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
                         </control>
                     </focusedlayout>
                     <content>

@@ -2,14 +2,14 @@
 <!-- Foundation -->
 <window id="2003">
     <defaultcontrol always="true">9000</defaultcontrol>
-    <onload condition="Control.IsVisible(11005)">SetFocus(11005)</onload>
-    <onload condition="Control.IsVisible(11003)">SetFocus(11003)</onload>
-    <onload condition="Control.IsVisible(11002)">SetFocus(11002)</onload>
-    <onload condition="Control.IsVisible(11001)">SetFocus(11001)</onload>
-    <onload condition="Control.IsVisible(10003)">SetFocus(10003)</onload>
-    <onload condition="Control.IsVisible(10002)">SetFocus(10002)</onload>
-    <onload condition="Control.IsVisible(10001)">SetFocus(10001)</onload>
-    <onload condition="Control.IsVisible(8)">SetFocus(8)</onload>
+    <onload condition="Control.IsVisible(11005)">AlarmClock(refocus,SetFocus(11005),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(11003)">AlarmClock(refocus,SetFocus(11003),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(11002)">AlarmClock(refocus,SetFocus(11002),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(11001)">AlarmClock(refocus,SetFocus(11001),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(10003)">AlarmClock(refocus,SetFocus(10003),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(10002)">AlarmClock(refocus,SetFocus(10002),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(10001)">AlarmClock(refocus,SetFocus(10001),0:00,silent)</onload>
+    <onload condition="Control.IsVisible(8)">AlarmClock(refocus,SetFocus(8),0:00,silent)</onload>
     <onload>Control.Move(50,$INFO[Container(50).CurrentItem,-])</onload>
     <onload>Control.Move(50,1)</onload>
     <onload>Control.Move(52,$INFO[Container(52).CurrentItem,-])</onload>
@@ -38,16 +38,22 @@
     <onload>Control.Move(73,1)</onload>
     <zorder>0</zorder>
     <onload>ClearProperty(videodirector)</onload>
+    <onload>ClearProperty(videocast)</onload>
     <onload>ClearProperty(videocrew)</onload>
     <onload>ClearProperty(videoset)</onload>
     <onload>ClearProperty(videosimilar)</onload>
     <onload>ClearProperty(videostudio)</onload>
     <onload>ClearProperty(videoyoutube)</onload>
     <onload>ClearProperty(videoseasons)</onload>
+    <onload>ClearProperty(videofanart)</onload>
     <onload>ClearProperty(actormovies)</onload>
     <onload>ClearProperty(actortvshows)</onload>
+    <onload>ClearProperty(actorcrew)</onload>
     <onload>ClearProperty(ShowDisc)</onload>
     <onload>ClearProperty(origin_tmdb_type)</onload>
+    <onload>ClearProperty(origin_tmdb_id)</onload>
+    <onload>ClearProperty(origin_season)</onload>
+    <onload>ClearProperty(origin_episode)</onload>
     <onload>ClearProperty(origin_dbid)</onload>
     <onload>ClearProperty(content)</onload>
     <onunload>ClearProperty(SetUserRating,home)</onunload>
@@ -91,7 +97,7 @@
                             <effect type="slide" start="0,0" end="0,100" delay="0" time="200" tween="quadratic" easing="out"/>
                         </animation>
                         <animation type="Conditional" condition="String.IsEqual(Window.Property(ShowDisc),1)">
-                            <effect type="slide" start="0,0" end="0,-220" delay="0" time="200" tween="quadratic" easing="out"/>
+                            <effect type="slide" start="0,0" end="0,-205" delay="0" time="200" tween="quadratic" easing="out"/>
                         </animation>
                         <visible>Control.HasFocus(11100) + !String.IsEmpty(ListItem.Art(discart)) + !Skin.HasSetting(hide.discart)</visible>
                         <top>200</top>
@@ -113,7 +119,7 @@
                 <control type="list" id="9911">
                     <include>HiddenListControl</include>
                     <visible>String.IsEqual(ListItem.DBType,tvshow) + Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),0) + !String.IsEmpty(ListItem.DBID)</visible>
-                    <content sortby="playcount" sortorder="ascending" limit="1" browse="never">$VAR[UpNextEpisodePath]</content>
+                    <content sortby="playcount" sortorder="ascending" limit="1" browse="never">$VAR[Path_VideoInfo_UpNextEpisodes]</content>
                 </control>
                 <control type="button" id="7011">
                     <include>HiddenButton</include>
@@ -128,15 +134,15 @@
 
                 <!-- Control Buttons -->
                 <control type="group">
-                    <bottom>-80</bottom>
+                    <top>856</top>
                     <include>Animation.VideoFadeOut</include>
                     <include>DialogVideoInfoNavigation</include>
-                    <include content="ArrowsNavigation">
+                    <include content="DialogInfo_Navigation_Arrows">
                         <param name="visible" value="Integer.IsGreater(Container(9000).NumItems,8) + ControlGroup(9000).HasFocus()" />
                     </include>
                 </control>
                 <control type="group">
-                    <top>930</top>
+                    <top>950</top>
                     <right>SidePad</right>
                     <width>1400</width>
                     <control type="label">
@@ -147,7 +153,6 @@
                         <scrollspeed>40</scrollspeed>
                         <textcolor>Dark3</textcolor>
                         <label>$VAR[Label_FileNameAndPath]</label>
-                        <aligny>center</aligny>
                         <align>right</align>
                         <visible>ControlGroup(9000).HasFocus()</visible>
                         <visible>$EXP[IsVideoInfo]</visible>
@@ -160,7 +165,6 @@
                         <scroll>false</scroll>
                         <textcolor>Dark3</textcolor>
                         <label>$VAR[DialogInfoLabel]</label>
-                        <aligny>center</aligny>
                         <align>right</align>
                         <visible>ControlGroup(9000).HasFocus()</visible>
                         <include>Animation.ButtonLabel</include>
@@ -191,7 +195,6 @@
                             <font>Tiny</font>
                             <textcolor>Dark1</textcolor>
                             <label>$VAR[Label_DialogVideoInfo_Tagline]</label>
-                            <aligny>center</aligny>
                         </control>
                     </control>
                     <control type="group">
@@ -211,7 +214,6 @@
                                 <label>$INFO[ListItem.Property(numitems.tmdb.movies.cast)] $LOCALIZE[342]</label>
                                 <width>auto</width>
                                 <height>36</height>
-                                <aligny>center</aligny>
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <visible>Integer.IsGreater(ListItem.Property(numitems.tmdb.movies.cast),0)</visible>
@@ -220,7 +222,6 @@
                                 <label> / </label>
                                 <width>auto</width>
                                 <height>36</height>
-                                <aligny>center</aligny>
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <visible>Integer.IsGreater(ListItem.Property(numitems.tmdb.movies.cast),0) + Integer.IsGreater(ListItem.Property(numitems.tmdb.tvshows.cast),0)</visible>
@@ -229,7 +230,6 @@
                                 <label>$INFO[ListItem.Property(numitems.tmdb.tvshows.cast)] $LOCALIZE[20343]</label>
                                 <width>auto</width>
                                 <height>36</height>
-                                <aligny>center</aligny>
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <visible>Integer.IsGreater(ListItem.Property(numitems.tmdb.tvshows.cast),0)</visible>
@@ -238,7 +238,6 @@
                                 <label>$VAR[LabelKnownFor]</label>
                                 <width>auto</width>
                                 <height>36</height>
-                                <aligny>center</aligny>
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                             </control>
@@ -254,14 +253,14 @@
                     <right>SidePad</right>
                     <height>80</height>
                     <aspectratio align="right" aligny="top">keep</aspectratio>
-                    <texture colordiffuse="Dark1">$VAR[Image_StudioLogo]</texture>
+                    <texture colordiffuse="$VAR[ColorStudioIcons]">$VAR[Image_StudioLogo]</texture>
                     <visible>$EXP[IsVideoInfo]</visible>
                 </control>
 
                 <!-- Arrows -->
-                <include content="ArrowsNavigation">
+                <include content="DialogInfo_Navigation_Arrows">
                     <param name="visible" value="Control.HasFocus(10055) + Integer.IsGreater(Container(55).NumItems,1)" />
-                    <param name="centerbottom" value="560" />
+                    <param name="top" value="500" />
                 </include>
 
                 <!-- FANART -->
@@ -269,22 +268,21 @@
                     <visible>String.IsEqual(Window.Property(content),5)</visible>
                     <include>Animation.FadeInDialogInfo</include>
                     <include>Animation.FadeOutDialogInfo</include>
+                    <top>PosterPad</top>
                     <left>570</left>
                     <right>SidePad</right>
-                    <bottom>184</bottom>
-                    <top>335</top>
+                    <height>PosterH</height>
                     <control type="image">
-                        <left>0</left>
-                        <top>-119</top>
-                        <right>0</right>
-                        <bottom>71</bottom>
+                        <width>100%</width>
+                        <height>100%</height>
                         <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
+                        <visible>Skin.HasSetting(global.showborders)</visible>
                     </control>
                     <control type="group">
                         <left>-7</left>
-                        <top>-126</top>
+                        <top>-7</top>
                         <right>-7</right>
-                        <bottom>64</bottom>
+                        <bottom>-7</bottom>
                         <control type="image">
                             <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
                             <animation condition="Control.HasFocus(10055)" effect="fade" end="100" start="0" time="150">Conditional</animation>
@@ -297,40 +295,40 @@
                         </control>
                     </control>
                     <control type="image">
-                        <height>607</height>
-                        <width>1268</width>
                         <left>1</left>
-                        <top>-118</top>
+                        <top>1</top>
+                        <right>1</right>
+                        <bottom>1</bottom>
                         <texture colordiffuse="Background" border="4">common/box.png</texture>
                     </control>
                     <include content="DialogInfo_List_Updating">
                         <param name="visi" value="String.IsEqual(Window.Property(content),5)"/>
                         <param name="controlid" value="55"/>
-                        <param name="top" value="-118"/>
+                        <param name="top" value="1"/>
                         <param name="left" value="1"/>
                         <param name="width" value="1268"/>
-                        <param name="height" value="607"/>
+                        <param name="height" value="638"/>
                     </include>
                     <control type="fixedlist" id="55">
-                        <top>-118</top>
+                        <top>1</top>
                         <left>1</left>
+                        <right>1</right>
+                        <bottom>1</bottom>
                         <ondown>9000</ondown>
                         <onback>9000</onback>
                         <onup>9000</onup>
-                        <width>1268</width>
                         <preloaditems>2</preloaditems>
                         <autoscroll time="5000">ControlGroup(9000).HasFocus()</autoscroll>
-                        <viewtype>fixedlist</viewtype>
                         <orientation>horizontal</orientation>
                         <include>ScrolltimeDetailsList</include>
                         <visible allowhiddenfocus="true">!Skin.HasSetting(showartwork.video.tmdbhelper) | [!Container(55).IsUpdating + Skin.HasSetting(showartwork.video.tmdbhelper)]</visible>
-                        <itemlayout width="1268" height="607">
+                        <itemlayout width="1268" height="638">
                             <control type="image">
                                 <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
                                 <texture diffuse="diffuse/bigwiderolodex.png" fallback="DefaultAddonPicture.png">$VAR[Image_Thumb_Label]</texture>
                             </control>
                         </itemlayout>
-                        <focusedlayout width="1268" height="607">
+                        <focusedlayout width="1268" height="638">
                             <control type="image">
                                 <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
                                 <texture diffuse="diffuse/bigwiderolodex.png" fallback="DefaultAddonPicture.png">$VAR[Image_Thumb_Label]</texture>
@@ -370,7 +368,7 @@
                                 <visible>!$EXP[ShowTmdbArtwork] + !String.IsEmpty(ListItem.Art(fanart7)) + !Skin.HasSetting(hideartwork.video.fanart)</visible>
                             </item>
                             <item id="8">
-                                <label>$INFO[ListItem.Art(fanart18)]</label>
+                                <label>$INFO[ListItem.Art(fanart8)]</label>
                                 <visible>!$EXP[ShowTmdbArtwork] + !String.IsEmpty(ListItem.Art(fanart8)) + !Skin.HasSetting(hideartwork.video.fanart)</visible>
                             </item>
                             <item id="9">
@@ -434,11 +432,11 @@
                                 <visible>!$EXP[ShowTmdbArtwork] + !String.IsEmpty(ListItem.Art(landscape)) + !Skin.HasSetting(hideartwork.video.landscape)</visible>
                             </item>
                         </content>
-                        <content>$VAR[Def_Fanart_List]</content>
+                        <content>$VAR[Path_VideoInfo_OnlineFanart]</content>
                     </control>
                     <control type="image">
                         <right>40</right>
-                        <bottom>100</bottom>
+                        <bottom>40</bottom>
                         <width>50</width>
                         <height>50</height>
                         <aspectratio>keep</aspectratio>
@@ -453,20 +451,21 @@
                     <visible>String.IsEqual(Window.Property(content),6) + !Window.IsVisible(DialogBusy.xml)</visible>
                     <include>Animation.FadeInDialogInfo</include>
                     <include>Animation.FadeOutDialogInfo</include>
+                    <top>PosterPad</top>
                     <left>570</left>
                     <right>SidePad</right>
-                    <bottom>184</bottom>
-                    <top>217</top>
+                    <height>PosterH</height>
                     <control type="image">
-                        <top>-1</top>
-                        <bottom>71</bottom>
+                        <height>100%</height>
+                        <width>100%</width>
                         <texture colordiffuse="Box2" border="4" background="true" infill="false">common/box21.png</texture>
+                        <visible>Skin.HasSetting(global.showborders)</visible>
                     </control>
                     <control type="group">
+                        <top>-7</top>
                         <left>-7</left>
-                        <top>-8</top>
-                        <right>-7</right>
-                        <bottom>64</bottom>
+                        <right>-7</right>    
+                        <bottom>-7</bottom>
                         <control type="image">
                             <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
                             <animation condition="Control.HasFocus(7011)" effect="fade" end="100" start="0" time="150">Conditional</animation>
@@ -478,50 +477,46 @@
                             <animation condition="!Control.HasFocus(7011)" effect="fade" end="0" start="100" time="100">Conditional</animation>
                         </control>
                     </control>
-                    <control type="image">
-                        <height>607</height>
-                        <width>1268</width>
-                        <left>1</left>
-                        <texture colordiffuse="FF000000" border="4">common/box.png</texture>
-                    </control>
                     <control type="group">
-                        <height>607</height>
-                        <width>1268</width>
+                        <top>1</top>
                         <left>1</left>
+                        <right>1</right>    
+                        <bottom>1</bottom>
+	                    <control type="image">
+	                        <height>100%</height>
+	                        <width>100%</width>
+	                        <texture colordiffuse="FF000000" border="4">common/box.png</texture>
+	                    </control>
                         <control type="videowindow">
                             <visible>String.IsEqual(Window.Property(content),6)</visible>
                             <animation type="Hidden" reversible="false">
                                 <effect type="fade" start="100" end="0" time="150" />
                                 <effect type="zoom" center="auto" start="100" end="0" time="1" />
                             </animation>
-                            <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
                         </control>
-                    </control>
-                    <control type="group">
-                        <left>50</left>
-                        <top>-120</top>
-                        <visible>!Player.HasVideo</visible>
-                        <control type="group">
-                            <left>560</left>
-                            <control type="image" description="Back">
-                                <left>0</left>
-                                <centertop>55%</centertop>
-                                <width>60</width>
-                                <height>60</height>
-                                <aspectratio align="center" aligny="center">keep</aspectratio>
-                                <texture colordiffuse="$VAR[ColorHighlight]">osd/play2.png</texture>
-                                <visible>Control.HasFocus(7011)</visible>
-                            </control>
-                            <control type="image" description="Back">
-                                <left>0</left>
-                                <centertop>55%</centertop>
-                                <width>60</width>
-                                <height>60</height>
-                                <aspectratio align="center" aligny="center">keep</aspectratio>
-                                <texture colordiffuse="PanelWhite70">osd/play2.png</texture>
-                                <visible>!Control.HasFocus(7011)</visible>
-                            </control>
-                        </control>
+	                    <control type="group">
+	                        <visible>!Player.HasVideo</visible>
+	                        <control type="group">
+	                            <control type="image" description="Back">
+	                                <centerleft>50%</centerleft>
+	                                <centertop>50%</centertop>
+	                                <width>60</width>
+	                                <height>60</height>
+	                                <aspectratio align="center" aligny="center">keep</aspectratio>
+	                                <texture colordiffuse="$VAR[ColorHighlight]">osd/play2.png</texture>
+	                                <visible>Control.HasFocus(7011)</visible>
+	                            </control>
+	                            <control type="image" description="Back">
+                                    <centerleft>50%</centerleft>
+                                    <centertop>50%</centertop>
+	                                <width>60</width>
+	                                <height>60</height>
+	                                <aspectratio align="center" aligny="center">keep</aspectratio>
+	                                <texture colordiffuse="PanelWhite70">osd/play2.png</texture>
+	                                <visible>!Control.HasFocus(7011)</visible>
+	                            </control>
+	                        </control>
+	                    </control>
                     </control>
                 </control>
 
@@ -554,14 +549,12 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[345][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <font>Tiny</font>
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[2050][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -573,14 +566,12 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Set.Years)]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <height>36</height>
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$VAR[LabelDurationTimeCheck]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -592,14 +583,12 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[515][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <font>Tiny</font>
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[563][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -611,14 +600,12 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Set.Genres)]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <height>36</height>
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$VAR[RatingAndVotesLabelInfo]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                             </control>
@@ -636,7 +623,6 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[20473][/B]</label>
-                                        <aligny>center</aligny>
                                         <visible>!String.IsEmpty(ListItem.Premiered) + ![String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
                                     </control>
                                     <control type="label">
@@ -644,7 +630,6 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[20416][/B]</label>
-                                        <aligny>center</aligny>
                                         <visible>!String.IsEmpty(ListItem.Premiered) + [String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
                                     </control>
                                     <control type="label">
@@ -652,7 +637,6 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[345][/B]</label>
-                                        <aligny>center</aligny>
                                         <visible>String.IsEmpty(ListItem.Premiered)</visible>
                                     </control>
                                     <control type="label">
@@ -660,7 +644,6 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[2050][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -672,7 +655,6 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$INFO[ListItem.Premiered]</label>
-                                        <aligny>center</aligny>
                                         <visible>!String.IsEmpty(ListItem.Premiered)</visible>
                                     </control>
                                     <control type="label">
@@ -680,7 +662,6 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$INFO[ListItem.Year]</label>
-                                        <aligny>center</aligny>
                                         <visible>String.IsEmpty(ListItem.Premiered)</visible>
                                     </control>
                                     <control type="label">
@@ -688,7 +669,6 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$VAR[LabelDurationTimeCheck]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -700,14 +680,12 @@
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[515][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <font>Tiny</font>
                                         <height>36</height>
                                         <textcolor>Dark1</textcolor>
                                         <label>[B]$LOCALIZE[563][/B]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                                 <control type="grouplist">
@@ -719,25 +697,17 @@
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$INFO[ListItem.Genre]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                     <control type="label">
                                         <height>36</height>
                                         <font>Tiny</font>
                                         <textcolor>Dark2</textcolor>
                                         <label fallback="19055">$VAR[RatingAndVotesLabelInfo]</label>
-                                        <aligny>center</aligny>
                                     </control>
                                 </control>
                             </control>
                             <control type="textbox">
-                                <include content="def_top" condition="Skin.HasSetting(furniture.flags)">
-                                    <param name="top" value="102" />
-                                </include>
-                                <top>176</top>
-                                <include content="def_height" condition="Skin.HasSetting(furniture.flags)">
-                                    <param name="height" value="221" />
-                                </include>
+                                <top>188</top>
                                 <height>148</height>
                                 <left>0</left>
                                 <right>0</right>
@@ -750,7 +720,7 @@
                         <!-- DETAILS -->
                         <control type="group">
                             <width>100%</width>
-                            <top>333</top>
+                            <top>351</top>
                             <control type="grouplist">
                                 <orientation>vertical</orientation>
                                 <itemgap>-30</itemgap>
@@ -760,7 +730,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[40003][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEmpty(ListItem.VideoVersionName)</visible>
                                 </control>
@@ -768,15 +737,13 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[31952][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
-                                    <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Creator))</visible>
+                                    <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Creator))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[20339][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEmpty(ListItem.Director) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director))</visible>
                                 </control>
@@ -784,7 +751,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[20417][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEmpty(ListItem.Writer) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Writer))</visible>
                                 </control>
@@ -792,7 +758,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[572][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio))</visible>
                                 </control>
@@ -800,7 +765,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[31023][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Awards))</visible>
                                 </control>
@@ -808,7 +772,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]IMDb 250[/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                     <visible>!String.IsEmpty(ListItem.Top250) | !String.IsEqual(ListItem.DBType,musicvideo) +  !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))</visible>
                                 </control>
@@ -816,24 +779,21 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[31814] / $LOCALIZE[31813][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
-                                    <visible>![!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))] + !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue))</visible>
+                                    <visible>![!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Budget)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Budget),$0) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Revenue),$0)</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[574][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
-                                    <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Country))</visible>
+                                    <visible>!String.IsEmpty(ListItem.Country) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Country))</visible>
                                 </control>
                                 <control type="label">
                                     <visible>[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)] + [!String.IsEmpty(ListItem.Property(AudioLanguage.1)) | !String.IsEmpty(ListItem.Property(SubtitleLanguage.1))]</visible>
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[445][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                 </control>
                                 <control type="label">
@@ -841,7 +801,6 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark1</textcolor>
                                     <label>[B]$LOCALIZE[19101][/B]</label>
-                                    <aligny>center</aligny>
                                     <align>left</align>
                                 </control>
                             </control>
@@ -855,35 +814,30 @@
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$INFO[ListItem.VideoVersionName]</label>
-                                    <aligny>center</aligny>
                                     <visible>!String.IsEmpty(ListItem.VideoVersionName)</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Creator)]</label>
-                                    <aligny>center</aligny>
-                                    <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Creator))</visible>
+                                    <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Creator))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$VAR[Label_Director]</label>
-                                    <aligny>center</aligny>
                                     <visible>!String.IsEmpty(ListItem.Director) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Director))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$VAR[Label_Writer]</label>
-                                    <aligny>center</aligny>
                                     <visible>!String.IsEmpty(ListItem.Writer) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Writer))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$VAR[Label_Studio]</label>
-                                    <aligny>center</aligny>
                                     <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Studio))</visible>
                                 </control>
                                 <control type="label">
@@ -891,29 +845,25 @@
                                     <scroll>true</scroll>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Awards)]</label>
-                                    <aligny>center</aligny>
                                     <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Awards))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
-                                    <label fallback="19055">$VAR[Label_Top250]</label>
-                                    <aligny>center</aligny>
+                                    <label fallback="19055">$VAR[Label_Top250,, / 250]</label>
                                     <visible>!String.IsEmpty(ListItem.Top250) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
                                     <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Revenue)] / $INFO[Window(Home).Property(TMDbHelper.ListItem.Budget)]</label>
-                                    <aligny>center</aligny>
-                                    <visible>![!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))] + !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Budget)) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue))</visible>
+                                    <visible>![!String.IsEmpty(ListItem.Top250) | !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Top250))] + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Budget)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Budget),$0) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Revenue)) + !String.IsEqual(Window(Home).Property(TMDbHelper.ListItem.Revenue),$0)</visible>
                                 </control>
                                 <control type="label">
                                     <font>Tiny</font>
                                     <textcolor>Dark2</textcolor>
-                                    <label fallback="19055">$INFO[Window(Home).Property(TMDbHelper.ListItem.Country)]</label>
-                                    <aligny>center</aligny>
-                                    <visible>!String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Country))</visible>
+                                    <label fallback="19055">$VAR[Label_Country]</label>
+                                    <visible>!String.IsEmpty(ListItem.Country) | !String.IsEqual(ListItem.DBType,musicvideo) + !String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Country))</visible>
                                 </control>
                                 <control type="grouplist">
                                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode)</visible>
@@ -922,7 +872,6 @@
                                     <control type="image">
                                         <top>20</top>
                                         <width>28</width>
-                                        <aligny>center</aligny>
                                         <height>28</height>
                                         <texture>$INFO[ListItem.Property(AudioLanguage.1),flags/color/lang/,.png]</texture>
                                         <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
@@ -1020,7 +969,7 @@
                             </control>
                             <control type="image" description="clearart">
                                 <fadetime>ClearArtFadetime</fadetime>
-                                <bottom>240</bottom>
+                                <bottom>224</bottom>
                                 <right>0</right>
                                 <width>350</width>
                                 <aspectratio scalediffuse="true" align="right" aligny="bottom">keep</aspectratio>
@@ -1032,7 +981,6 @@
                     <control type="grouplist">
                         <visible>!$EXP[IsVideoInfo]</visible>
                         <itemgap>0</itemgap>
-                        <orentation>vertical</orentation>
                         <control type="group">
                             <height>36</height>
                             <control type="label">
@@ -1041,7 +989,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <label>[B]$LOCALIZE[21893][/B]</label>
-                                <aligny>center</aligny>
                             </control>
                             <control type="label">
                                 <left>210</left>
@@ -1050,7 +997,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark2</textcolor>
                                 <label fallback="19055">$INFO[ListItem.Property(Birthday)]</label>
-                                <aligny>center</aligny>
                             </control>
                         </control>
                         <control type="group">
@@ -1061,7 +1007,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <label>[B]$LOCALIZE[31807][/B]</label>
-                                <aligny>center</aligny>
                             </control>
                             <control type="label">
                                 <left>210</left>
@@ -1070,7 +1015,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark2</textcolor>
                                 <label fallback="19055">$INFO[ListItem.Property(Born)]</label>
-                                <aligny>center</aligny>
                             </control>
                         </control>
                         <control type="group">
@@ -1081,7 +1025,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <label>[B]$LOCALIZE[31806][/B]</label>
-                                <aligny>center</aligny>
                             </control>
                             <control type="label">
                                 <left>210</left>
@@ -1090,7 +1033,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark2</textcolor>
                                 <label fallback="19055">$INFO[ListItem.Property(Age),, ]$INFO[ListItem.Property(Deathday), ($LOCALIZE[31233] ,)]</label>
-                                <aligny>center</aligny>
                             </control>
                         </control>
                         <control type="group">
@@ -1102,7 +1044,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark1</textcolor>
                                 <label>[B]$LOCALIZE[31256][/B]</label>
-                                <aligny>center</aligny>
                             </control>
                             <control type="label">
                                 <left>210</left>
@@ -1111,7 +1052,6 @@
                                 <font>Tiny</font>
                                 <textcolor>Dark2</textcolor>
                                 <label fallback="19055">$INFO[ListItem.Property(Homepage)]</label>
-                                <aligny>center</aligny>
                             </control>
                         </control>
                         <control type="group">
@@ -1133,24 +1073,24 @@
                     <!-- Local Cast / Sets -->
                     <include content="DialogInfo_List_Poster">
                         <param name="fallbackpicture" value="$VAR[Image_DialogInfo_List_Poster_Fallback]"/>
-                        <param name="visi" value="String.IsEqual(Window.Property(content),1) + [Skin.HasSetting(extended.info.local.cast) | Skin.HasSetting(extended.info.local.sets)]"/>
+                        <param name="visi" value="[String.IsEqual(Window.Property(content),1) + [!$EXP[TMDbHelperDataEnabled] | Skin.HasSetting(extended.info.local.cast) | Skin.HasSetting(extended.info.local.collections)]]"/>
                         <param name="controlid" value="50"/>
                         <param name="issets" value="String.IsEqual(ListItem.DBType,set)"/>
                         <param name="labeltwovisible" value="!String.IsEqual(ListItem.DBType,set)"/>
                         <param name="includecontent" value="false" />
-                        <param name="uparrow" value="true" />
-                        <param name="onup1" value="$VAR[Def_CastList_Item]" />
-                        <param name="onup2" value="SetProperty(TMDbHelper.HideView,1,Home)" />
+                        <param name="uparrow" value="$EXP[TMDbHelperDataEnabled] + !String.IsEqual(ListItem.DBType,set)" />
+                        <param name="onup1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onup2" value="$VAR[Path_VideoInfo_OnClickAction]" />
                     </include>
 
                     <!-- Cast -->
                     <include content="DialogInfo_List_Poster">
                         <param name="fallbackpicture" value="DefaultActor.png"/>
-                        <param name="visi" value="String.IsEqual(Window.Property(content),1) + !Skin.HasSetting(extended.info.local.cast)"/>
+                        <param name="visi" value="[String.IsEqual(Window.Property(content),1) + $EXP[TMDbHelperDataEnabled] + !Skin.HasSetting(extended.info.local.cast) + !String.IsEqual(ListItem.DBType,set)]"/>
                         <param name="controlid" value="52"/>
-                        <param name="onclick1" value="$VAR[Def_CastList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Cast_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_OnlineCast]" />
                     </include>
 
                     <!-- By Director -->
@@ -1158,10 +1098,10 @@
                         <param name="fallbackpicture" value="DefaultMovieTitle.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),7)"/>
                         <param name="controlid" value="62"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
                         <param name="labeltwovisible" value="false"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Director_List]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_OnlineDirector]" />
                     </include>
 
                     <!-- By Sets -->
@@ -1169,9 +1109,9 @@
                         <param name="fallbackpicture" value="DefaultMovieTitle.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),8)"/>
                         <param name="controlid" value="57"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Set_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_OnlineCollection]" />
                     </include>
 
                     <!-- Crew -->
@@ -1179,9 +1119,9 @@
                         <param name="fallbackpicture" value="DefaultActor.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),9)"/>
                         <param name="controlid" value="56"/>
-                        <param name="onclick1" value="$VAR[Def_CastList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Crew_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_OnlineCrew]" />
                     </include>
 
                     <!-- Similar -->
@@ -1189,9 +1129,9 @@
                         <param name="fallbackpicture" value="$VAR[Image_VideoListSimilar_Fallback]"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),2)"/>
                         <param name="controlid" value="53"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Similar_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_Similar]" />
                     </include>
 
                     <!-- Studio -->
@@ -1199,9 +1139,9 @@
                         <param name="fallbackpicture" value="$VAR[Image_VideoListSimilar_Fallback]"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),3)"/>
                         <param name="controlid" value="60"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Studio_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_OnlineStudio]" />
                     </include>
 
                     <!-- Youtube -->
@@ -1214,7 +1154,7 @@
                         <param name="controlid" value="54"/>
                         <param name="onclick1" value="Dialog.Close(all,force)"/>
                         <param name="onclick2" value="PlayMedia($ESCINFO[Container($PARAM[controlid]).ListItem.FileNameAndPath()])"/>
-                        <param name="ContentToLoad" value="$VAR[ContentVideoYoutube]" />
+                        <param name="ContentToLoad" value="$VAR[Path_VideoInfo_Youtube]" />
                         <param name="target" value="videos" />
                         <param name="limit" value="25" />
                         <param name="sortby" value="file" />
@@ -1225,9 +1165,9 @@
                         <param name="fallbackpicture" value="DefaultMovieTitle.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),11)"/>
                         <param name="controlid" value="70"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Actor_in_Movies_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_PersonInfo_Movies]" />
                     </include>
 
                     <!-- Actor in TV Shows -->
@@ -1235,9 +1175,9 @@
                         <param name="fallbackpicture" value="DefaultTVShowTitle.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),12)"/>
                         <param name="controlid" value="71"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Actor_in_TVShows_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_PersonInfo_TVShows]" />
                     </include>
 
                     <!-- Crew -->
@@ -1245,9 +1185,9 @@
                         <param name="fallbackpicture" value="DefaultMovieTitle.png"/>
                         <param name="visi" value="String.IsEqual(Window.Property(content),13)"/>
                         <param name="controlid" value="72"/>
-                        <param name="onclick1" value="$VAR[Def_VideoList_Item]"/>
-                        <param name="onclick2" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
-                        <param name="ContentToLoad" value="$VAR[Def_Crew_In_Both_List]" />
+                        <param name="onclick1" value="SetProperty(TMDbHelper.HideView,1,Home)"/>
+                        <param name="onclick2" value="$VAR[Path_VideoInfo_OnClickAction]" />
+                        <param name="ContentToLoad" value="$VAR[Path_PersonInfo_CrewInBoth]" />
                     </include>
  
                     <!-- Images -->
@@ -1256,7 +1196,7 @@
                         <param name="visi" value="String.IsEqual(Window.Property(content),14)"/>
                         <param name="controlid" value="73"/>
                         <param name="onclick1" value="SetFocus(161)" />
-                        <param name="ContentToLoad" value="$VAR[Def_Actor_Image_List]" />
+                        <param name="ContentToLoad" value="$VAR[Path_PersonInfo_Fanart]" />
                         <param name="labeltwovisible" value="false"/>
                     </include>
                 </control>
@@ -1296,6 +1236,10 @@
             <onright>RIGHT</onright>
             <onright>SetFocus(160)</onright>
         </control>
+        <control type="list" id="4001">
+            <include>HiddenListControl</include>
+            <content>$VAR[Path_VideoInfo_Encoder]</content>
+        </control>
         <control type="group">
             <visible>Control.HasFocus(160)</visible>
             <animation effect="fade" end="100" start="20" time="200" tween="sine" easing="in" condition="Control.HasFocus(160)">Conditional</animation>
@@ -1314,15 +1258,15 @@
                 <texture fallback="DefaultBrokenImage.png" background="true">$VAR[Image_55_Thumb_Label]</texture>
             </control>
         </control>
-        <include content="Container_NumItems">
+        <include content="DialogInfo_ImageViewer_NumItems">
             <param name="id" value="55" />
             <param name="visible" value="Control.HasFocus(160)" />
         </include>
-        <include content="ExtendedImage">
+        <include content="DialogVideoInfo_ExtendedImage">
             <param name="buttonid" value="161"/>
             <param name="containerid" value="73"/>
         </include>
-        <include content="Container_NumItems">
+        <include content="DialogInfo_ImageViewer_NumItems">
             <param name="id" value="73" />
             <param name="visible" value="Control.HasFocus(161)" />
         </include>         
@@ -1330,6 +1274,6 @@
             <param name="headerinfo" value="$INFO[ListItem.Title]" />
             <param name="plotinfo" value="$VAR[LabelExtendedInfoPlot]" />
         </include>        
-        <include>DialogCustomSettings</include>
+        <include>DialogInfoCustomSettings</include>
     </controls>
 </window>

@@ -2,6 +2,8 @@
 <window>
     <defaultcontrol always="true">3012</defaultcontrol>
     <zorder>20</zorder>
+    <onload>Dialog.Close(fullscreeninfo,true)</onload>
+    <onload>Dialog.Close(videoosd,true)</onload>
     <controls>
         <control type="label" id="4000">
             <visible>false</visible>
@@ -19,16 +21,14 @@
                 <bottom>-8</bottom>
                 <left>-8</left>
                 <right>-8</right>
-                <animation effect="fade" start="100" end="90" condition="true">Conditional</animation>
+                <animation effect="fade" start="100" end="90" condition="Skin.HasSetting(osd.usetheme)">Conditional</animation>
                 <texture border="16" diffuse="diffuse/wall-fanart.png" colordiffuse="$VAR[OSDPanel]">common/rounded-shadow8.png</texture>
             </control>
             <control type="label" description="text">
                 <left>20</left>
                 <right>20</right>
                 <height>64</height>
-                <aligny>center</aligny>
-                <font>Small</font>
-                <label>[CAPITALIZE]$ADDON[service.upnext 30024][/CAPITALIZE]</label>
+                <label>$ADDON[service.upnext 30024]</label>
                 <textcolor>$VAR[OSDPanelWhite100]</textcolor>
             </control>
             <control type="image" description="fanart">
@@ -41,6 +41,7 @@
                 <texture>$VAR[Image_UpNext]</texture>
             </control>
             <control type="image">
+                <visible>!Integer.IsGreater(Player.TimeRemaining,59)</visible>
                 <height>64</height>
                 <width>64</width>
                 <centertop>50%</centertop>
@@ -49,6 +50,7 @@
                 <texture colordiffuse="dfffffff">common/circle2.png</texture>
             </control>
             <control type="label">
+                <visible>!Integer.IsGreater(Player.TimeRemaining,59)</visible>
                 <description>Remaining</description>
                 <centertop>50%</centertop>
                 <centerleft>50%</centerleft>
@@ -63,8 +65,6 @@
                 <right>120</right>
                 <height>64</height>
                 <bottom>2</bottom>
-                <aligny>center</aligny>
-                <font>Small</font>
                 <label>$INFO[Window.Property(season),S,]$INFO[Window.Property(episode),E, - ]$INFO[Window.Property(title)]</label>
                 <textcolor>$VAR[OSDPanelWhite100]</textcolor>
             </control>
@@ -75,16 +75,13 @@
                 <width>48</width>
                 <height>48</height>
                 <label/>
-                <align>center</align>
-                <aligny>center</aligny>
                 <textoffsetx>0</textoffsetx>
                 <onleft>3013</onleft>
                 <onright>3013</onright>
                 <font>Null</font>
                 <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-                <texturenofocus />
             </control>
-           <control type="image">
+            <control type="image">
                 <description>Play</description>
                 <right>72</right>
                 <bottom>16</bottom>
@@ -100,14 +97,7 @@
                 <bottom>16</bottom>
                 <width>32</width>
                 <height>32</height>
-                <include content="def_texture" condition="Skin.HasSetting(osd.usetheme)">
-                    <param name="texture" value="indicator/playwhite.png" />
-                    <param name="colordiffuse" value="Dark1" />
-                </include>
-                <include content="def_texture" condition="!Skin.HasSetting(osd.usetheme)">
-                    <param name="texture" value="indicator/playwhite.png" />
-                    <param name="colordiffuse" value="PanelWhite100" />
-                </include>
+                <texture colordiffuse="$VAR[OSDPanelWhite100]">indicator/playwhite.png</texture>
                 <aspectratio>keep</aspectratio>
                 <visible>!Control.HasFocus(3012)</visible>
             </control>
@@ -118,14 +108,11 @@
                 <width>48</width>
                 <height>48</height>
                 <label/>
-                <align>center</align>
-                <aligny>center</aligny>
                 <textoffsetx>0</textoffsetx>
                 <onleft>3012</onleft>
                 <onright>3012</onright>
                 <font>Null</font>
                 <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-                <texturenofocus />
             </control>
             <control type="image">
                 <description>Play</description>
@@ -143,14 +130,7 @@
                 <bottom>16</bottom>
                 <width>32</width>
                 <height>32</height>
-                <include content="def_texture" condition="Skin.HasSetting(osd.usetheme)">
-                    <param name="texture" value="buttons/close.png" />
-                    <param name="colordiffuse" value="Dark1" />
-                </include>
-                <include content="def_texture" condition="!Skin.HasSetting(osd.usetheme)">
-                    <param name="texture" value="buttons/close.png" />
-                    <param name="colordiffuse" value="PanelWhite100" />
-                </include>
+                <texture colordiffuse="$VAR[OSDPanelWhite100]">buttons/close.png</texture>
                 <aspectratio>keep</aspectratio>
                 <visible>!Control.HasFocus(3013)</visible>
             </control>

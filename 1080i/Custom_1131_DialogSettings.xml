@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="1131">
+    <onunload>ClearProperty(CustomDialogSettingsContent,home)</onunload>
+    <zorder>1</zorder>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <controls>
+        <include content="DialogSettingsLayout" condition="String.IsEqual(Window(home).Property(CustomDialogSettingsContent),videosettings)">
+            <param name="content_include" value="DialogVideoSettingsContent"/>
+        </include>
+        <include content="DialogSettingsLayout" condition="String.IsEqual(Window(home).Property(CustomDialogSettingsContent),musicsettings)">
+            <param name="height" value="690"/>
+            <param name="content_include" value="DialogMusicSettingsContent"/>
+        </include>
+        <include content="DialogSettingsLayout" condition="String.IsEqual(Window(home).Property(CustomDialogSettingsContent),gamesettings)">
+            <param name="content_include" value="DialogGameSettingsContent"/>
+            <param name="width" value="700" />
+        </include>
+    </controls>
+</window>

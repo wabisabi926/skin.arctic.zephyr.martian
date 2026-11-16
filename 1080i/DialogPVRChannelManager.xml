@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="605">
-    <defaultcontrol always="true">20</defaultcontrol>
+    <defaultcontrol always="true">4</defaultcontrol>
     <onunload>ClearProperty(Focus)</onunload>
     <controls>
         <include>GlobalOverlay</include>
@@ -14,8 +14,7 @@
                 <left>105</left>
                 <width>1000</width>
                 <posy>22</posy>
-                <include>FontTop</include>
-                <textcolor>Black70</textcolor>
+                <font>MediumBold</font>
                 <label>$LOCALIZE[19199] • $LOCALIZE[19023]</label>
             </control>
             <include content="Kodi_Logo">
@@ -58,12 +57,21 @@
                                 <width>56</width>
                                 <height>56</height>
                                 <aspectratio align="left">keep</aspectratio>
-                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <texture background="true">$INFO[ListItem.Property(icon)]</texture>
                             </control>
                             <control type="label">
                                 <left>SidePad</left>
-                                <right>30</right>
+                                <right>60</right>
                                 <label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
+                            </control>
+                            <control type="image">
+                                <top>10</top>
+                                <right>12</right>
+                                <width>48</width>
+                                <height>48</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="Black70" background="true">special://skin/extras/icons/locked.png</texture>
+                                <visible>ListItem.Property(ParentalLocked)</visible>
                             </control>
                         </control>
                     </itemlayout>
@@ -76,11 +84,11 @@
                                 <width>56</width>
                                 <height>56</height>
                                 <aspectratio align="left">keep</aspectratio>
-                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <texture background="true">$INFO[ListItem.Property(icon)]</texture>
                             </control>
                             <control type="label">
                                 <left>SidePad</left>
-                                <right>30</right>
+                                <right>60</right>
                                 <label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
                             </control>
                             <control type="label">
@@ -90,6 +98,15 @@
                                 <font>Mini</font>
                                 <right>30</right>
                                 <label>$INFO[ListItem.Property(ClientName),$LOCALIZE[19210]: ,]</label>
+                            </control>
+                            <control type="image">
+                                <top>10</top>
+                                <right>11</right>
+                                <width>48</width>
+                                <height>48</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="Black70" background="true">special://skin/extras/icons/locked.png</texture>
+                                <visible>ListItem.Property(ParentalLocked)</visible>
                             </control>
                         </control>
                         <control type="group">
@@ -105,11 +122,11 @@
                                 <width>56</width>
                                 <height>56</height>
                                 <aspectratio align="left">keep</aspectratio>
-                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <texture background="true">$INFO[ListItem.Property(icon)]</texture>
                             </control>
                             <control type="label">
                                 <left>SidePad</left>
-                                <right>30</right>
+                                <right>60</right>
                                 <textcolor>Selected</textcolor>
                                 <label>$INFO[ListItem.Property(Number),(,) ]$INFO[ListItem.Property(Name)]</label>
                             </control>
@@ -121,6 +138,15 @@
                                 <height>50</height>
                                 <textcolor>Selected</textcolor>
                                 <label>$INFO[ListItem.Property(ClientName),$LOCALIZE[19210]: ,]</label>
+                            </control>
+                            <control type="image">
+                                <top>10</top>
+                                <right>12</right>
+                                <width>48</width>
+                                <height>48</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="Selected" background="true">special://skin/extras/icons/locked.png</texture>
+                                <visible>ListItem.Property(ParentalLocked)</visible>
                             </control>
                         </control>
                     </focusedlayout>
@@ -138,25 +164,21 @@
                     <control type="radiobutton" id="7">
                         <description>Channel activated</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19074</label>
-                        <radioposx>550</radioposx>
+                        <radioposx>540</radioposx>
                     </control>
                     <control type="edit" id="8">
                         <description>Channel name</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19201</label>
-                        <textcolor>Black70</textcolor>
                     </control>
                     <control type="button" id="9">
                         <description>Channel logo Button</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19202</label>
@@ -164,34 +186,36 @@
                     <control type="radiobutton" id="12">
                         <description>EPG activated</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19206</label>
-                        <radioposx>550</radioposx>
+                        <radioposx>540</radioposx>
                     </control>
                     <control type="spincontrolex" id="13">
                         <description>EPG source</description>
                         <width>600</width>
-                        <height>66</height>
-                        <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19200</label>
                     </control>
                     <control type="radiobutton" id="14">
                         <description>Parental locked</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
-                        <radioposx>550</radioposx>
+                        <radioposx>540</radioposx>
                         <label>19267</label>
                     </control>
-                    <control type="button" id="30">
+                    <control type="button" id="35">
                         <posy>30</posy>
+                        <description>Refresh channel logos Button</description>
+                        <width>600</width>
+                        <align>left</align>
+                        <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
+                        <label>19041</label>
+                    </control>
+                    <control type="button" id="30">
                         <description>Group Manager Button</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19205</label>
@@ -199,7 +223,6 @@
                     <control type="button" id="34">
                         <description>TV/Radio Button</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>$LOCALIZE[19021] / $LOCALIZE[19020]</label>
@@ -207,11 +230,18 @@
                     <control type="button" id="31">
                         <description>Create channel Button</description>
                         <width>600</width>
-                        <height>66</height>
                         <align>left</align>
                         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                         <label>19204</label>
                     </control>
+                </control>
+                <control type="image">
+                    <top>175</top>
+                    <right>44</right>
+                    <width>56</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Property(icon)]</texture>
                 </control>
             </control>
             <control type="grouplist" id="8003">
@@ -234,14 +264,14 @@
                 </control>
                 <control type="button" id="5">
                     <description>Apply</description>
-                    <label>$LOCALIZE[118]</label>
+                    <label>$LOCALIZE[31032]</label>
                     <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                     <texturenofocus colordiffuse="Black12" border="5">common/box.png</texturenofocus>
                     <include>DefDialogButtons</include>
                 </control>
                 <control type="button" id="6">
                     <description>Cancel</description>
-                    <label>$LOCALIZE[117]</label>
+                    <label>$LOCALIZE[222]</label>
                     <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
                     <texturenofocus colordiffuse="Black12" border="5">common/box.png</texturenofocus>
                     <include>DefDialogButtons</include>

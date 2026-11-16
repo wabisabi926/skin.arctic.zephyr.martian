@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <fonts>
-    <fontset id="Default" unicode="false" idloc="15109">
+    <fontset id="Default" idloc="15109">
         <include>VideoLyrics_Fonts</include>
         <font>
             <name>WatchedIcon</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>WatchedIconSmall</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>20</size>
         </font>
         <font>
@@ -78,6 +78,7 @@
             <name>MediumBold</name>
             <filename>Roboto-Bold.ttf</filename>
             <size>36</size>
+            <linespacing>1.06</linespacing>
         </font>
         <font>
             <name>Small</name>
@@ -199,7 +200,7 @@
         <font>
             <name>Mono26</name>
             <filename>RobotoMono-Regular.ttf</filename>
-            <size>26</size>
+            <size>24</size>
         </font>
         <font>
             <name>Clock</name>
@@ -207,16 +208,16 @@
             <size>130</size>
         </font>
     </fontset>
-    <fontset id="Default (Unicode)" unicode="true" idloc="31981">
+    <fontset id="Default (Unicode)" idloc="31981">
         <include>VideoLyrics_Fonts</include>
         <font>
             <name>WatchedIcon</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>WatchedIconSmall</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>20</size>
         </font>
         <font>
@@ -405,7 +406,7 @@
         <font>
             <name>Mono26</name>
             <filename>RobotoNotoCJKsc-Regular.ttf</filename>
-            <size>26</size>
+            <size>25</size>
         </font>
         <font>
             <name>Clock</name>
@@ -413,16 +414,16 @@
             <size>130</size>
         </font>
     </fontset>
-    <fontset id="Condensed (Classic)" unicode="false">
+    <fontset id="Condensed (Classic)">
         <include>VideoLyrics_Fonts</include>
         <font>
             <name>WatchedIcon</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>22</size>
         </font>
         <font>
             <name>WatchedIconSmall</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>20</size>
         </font>
         <font>
@@ -609,7 +610,7 @@
         <font>
             <name>Mono26</name>
             <filename>RobotoMono-Regular.ttf</filename>
-            <size>26</size>
+            <size>24</size>
         </font>
         <font>
             <name>Clock</name>
@@ -617,17 +618,17 @@
             <size>130</size>
         </font>
     </fontset>
-    <fontset id="DejaVu Sans (Fallback)" unicode="true">
+    <fontset id="DejaVu Sans (Fallback)">
         <include>VideoLyrics_Fonts</include>
         <font>
             <name>WatchedIcon</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>22</size>
             <aspect>0.9</aspect>
         </font>
         <font>
             <name>WatchedIconSmall</name>
-            <filename>symbol.ttf</filename>
+            <filename>martian-icons.ttf</filename>
             <size>20</size>
         </font>
         <font>
@@ -716,6 +717,7 @@
             <style>bold</style>
             <size>34</size>
             <aspect>0.9</aspect>
+            <linespacing>1.12</linespacing>
         </font>
         <font>
             <name>Small</name>
@@ -861,7 +863,7 @@
         <font>
             <name>Mono26</name>
             <filename>arial.ttf</filename>
-            <size>26</size>
+            <size>25</size>
             <aspect>0.9</aspect>
         </font>
         <font>

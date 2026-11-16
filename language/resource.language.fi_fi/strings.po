@@ -37,10 +37,6 @@ msgctxt "#31009"
 msgid "Scroll entire page"
 msgstr "Vieritä kokonainen sivu"
 
-msgctxt "#31010"
-msgid "Alternate case"
-msgstr "Vaihtoehtoinen kotelo"
-
 msgctxt "#31011"
 msgid "Show CD and case"
 msgstr "Näytä CD ja kotelo"
@@ -52,6 +48,10 @@ msgstr "Video päättyy"
 msgctxt "#31014"
 msgid "Netflix"
 msgstr "Netflix"
+
+msgctxt "#31015"
+msgid "Order"
+msgstr "Järjestys"
 
 msgctxt "#31017"
 msgid "Coloured icon media flags"
@@ -96,6 +96,10 @@ msgstr "Widgettien häivytysanimaatio"
 msgctxt "#31030"
 msgid "movies in the library"
 msgstr "elokuvaa kirjastossa"
+
+msgctxt "#31032"
+msgid "Apply"
+msgstr "Käytä"
 
 msgctxt "#31035"
 msgid "Show PVR technical info"
@@ -245,10 +249,6 @@ msgctxt "#31076"
 msgid "This view"
 msgstr "Tämä näkymä"
 
-msgctxt "#31077"
-msgid "Misc"
-msgstr "Sekalaiset"
-
 msgctxt "#31078"
 msgid "Global options"
 msgstr "Yleiset valinnat"
@@ -256,6 +256,10 @@ msgstr "Yleiset valinnat"
 msgctxt "#31079"
 msgid "Show discart"
 msgstr "Näytä levyetiketti"
+
+msgctxt "#31080"
+msgid "Fullsize fanart"
+msgstr "Täysikokoinen fanart"
 
 msgctxt "#31081"
 msgid "Double-Flix"
@@ -501,13 +505,13 @@ msgctxt "#31153"
 msgid "Show clock"
 msgstr "Näytä kello"
 
-msgctxt "#31154"
-msgid "Show media flags"
-msgstr "Näytä mediatunnisteet"
-
 msgctxt "#31155"
 msgid "Show now playing info"
 msgstr "Näytä nykyisen toiston tiedot"
+
+msgctxt "#31156"
+msgid "No bookmarks created yet."
+msgstr "Kirjanmerkkejä ei ole vielä luotu."
 
 msgctxt "#31157"
 msgid "Extended info of"
@@ -636,10 +640,6 @@ msgstr "Sarjaesiintymiset näyttelijältä"
 msgctxt "#31189"
 msgid "Discography of"
 msgstr "Diskografia esittäjältä"
-
-msgctxt "#31190"
-msgid "Show icons"
-msgstr "Näytä valikon kuvakkeet"
 
 msgctxt "#31191"
 msgid "Directed by"
@@ -1233,10 +1233,6 @@ msgctxt "#31359"
 msgid "Customise power menu"
 msgstr "Mukauta virtavalikkoa"
 
-msgctxt "#31360"
-msgid "Log off: $INFO[system.profilename]"
-msgstr "Kirjaudu ulos: $INFO[system.profilename]"
-
 msgctxt "#31363"
 msgid "Power menu"
 msgstr "Virtavalikko"
@@ -1324,10 +1320,6 @@ msgstr "Vinyyli"
 msgctxt "#31391"
 msgid "Prefer tags instead of rating"
 msgstr "Suosi tunnisteita arvioiden sijaan"
-
-msgctxt "#31393"
-msgid "Show icons only"
-msgstr "Näytä valikossa vain kuvakkeet"
 
 msgctxt "#31394"
 msgid "Multi-Widgets"
@@ -1576,6 +1568,10 @@ msgstr "Trakt"
 msgctxt "#31487"
 msgid "CPU"
 msgstr "Prosessori"
+
+msgctxt "#31488"
+msgid "Awards"
+msgstr "Palkinnot"
 
 msgctxt "#31489"
 msgid "Underlined home menu items"
@@ -1873,10 +1869,6 @@ msgctxt "#31679"
 msgid "Colour presets"
 msgstr "Värien esiasetukset"
 
-msgctxt "#31680"
-msgid "Preset"
-msgstr "Esiastus"
-
 msgctxt "#31689"
 msgid "Hide PVR recording dialog"
 msgstr "Piilota television tallennusilmoitus"
@@ -2004,6 +1996,42 @@ msgstr "Äänittämisestä"
 msgctxt "#31952"
 msgid "Creator"
 msgstr "Kehittäjä"
+
+msgctxt "#31954"
+msgid "Purple"
+msgstr "Violetti"
+
+msgctxt "#31957"
+msgid "Pink"
+msgstr "Vaalenpunainen"
+
+msgctxt "#31959"
+msgid "Slate"
+msgstr "Tasainen"
+
+msgctxt "#31960"
+msgid "Coal"
+msgstr "Hiili"
+
+msgctxt "#31961"
+msgid "Aqua"
+msgstr "Aqua"
+
+msgctxt "#31962"
+msgid "Tropical Sunset"
+msgstr ""
+
+msgctxt "#31963"
+msgid "Miami Vaporwave"
+msgstr ""
+
+msgctxt "#31964"
+msgid "Simple Gray"
+msgstr ""
+
+msgctxt "#31971"
+msgid "Midnight Purple"
+msgstr "Keskiyön violetti"
 
 msgctxt "#31977"
 msgid "Visualisation settings"

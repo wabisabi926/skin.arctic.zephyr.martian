@@ -31,6 +31,7 @@
 	                <align>center</align>
 	                <font>MediumBold</font>
 	                <textcolor>PanelWhite100</textcolor>
+                    <autoscroll delay="6000" time="3000" repeat="10000" />
 	            </control>
 	            <control type="group">
 	                <left>140</left>
@@ -55,7 +56,6 @@
 		                <width>375</width>
 		                <height>75</height>
 		                <align>center</align>
-		                <textcolor>Black70</textcolor>
 		            </control>
 		            <control type="group">
 		                <posx>12</posx>
@@ -187,7 +187,7 @@
 					        <radioposy>26</radioposy>
 		                    <include>buttondimensionsnumpad</include>
 		                    <include content="buttontexturesnumpad">
-		                        <param name="icon" value="buttonsdialogs/backspace.png"/>
+		                        <param name="icon" value="icons/backspace.png"/>
 		                    </include>
 		                    <posx>306</posx>
 		                    <posy>0</posy>
@@ -200,7 +200,7 @@
 		                    <ondown>21</ondown>
 		                    <include>buttondimensionsnumpad</include>
 		                    <include content="buttontexturesnumpad">
-		                        <param name="icon" value="buttonsdialogs/disable.png"/>
+		                        <param name="icon" value="icons/disable.png"/>
 		                    </include>
 		                    <posx>306</posx>
 		                    <posy>96</posy>
@@ -215,7 +215,7 @@
 		        				<param name="radioposy" value="74" />
 		                    </include>
 		                    <include content="buttontexturesnumpad">
-		                        <param name="icon" value="buttonsdialogs/enabled.png" />
+		                        <param name="icon" value="icons/enabled.png" />
 		                    </include>
 		                    <posx>306</posx>
 		                    <posy>192</posy>
@@ -226,7 +226,7 @@
 		                    <posy>288</posy>
 		                    <include>buttondimensionsnumpad</include>
 		                    <include content="buttontexturesnumpad">
-		                        <param name="icon" value="buttonsdialogs/play.png"/>
+		                        <param name="icon" value="icons/play.png"/>
 		                        <param name="flipx" value="true"/>
 		                    </include>
 		                    <onleft>21</onleft>
@@ -253,10 +253,9 @@
 		                    <posy>288</posy>
 		                    <include>buttondimensionsnumpad</include>
 		                    <include content="buttontexturesnumpad">
-		                        <param name="icon" value="buttonsdialogs/play.png"/>
+		                        <param name="icon" value="icons/play.png"/>
 		                        <param name="flipx" value="false"/>
 		                    </include>
-		                    <width>92</width>
 		                    <onleft>10</onleft>
 		                    <onright>21</onright>
 		                    <onup>19</onup>

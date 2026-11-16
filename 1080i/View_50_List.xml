@@ -8,8 +8,8 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
-                <control type="panel" id="50">
-                    <visible>$EXP[Exp_View_50]</visible>
+                <control type="list" id="50">
+                    <visible>$EXP[Exp_View_50] | Window.IsVisible(videoplaylist)</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <include condition="Skin.HasSetting(disable.poster)" content="def_left"><param name="left" value="SidePad" /></include>
@@ -27,10 +27,10 @@
                     <itemlayout condition="!$EXP[ShowListInfo50]" width="auto" height="64">
                         <include>50itemlayout</include>
                     </itemlayout>
-                    <itemlayout condition="$EXP[ShowListInfo50]" width="auto" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo50]" width="auto" height="91">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout width="auto" height="91.4" condition="$EXP[ShowListInfo50]">
+                    <focusedlayout width="auto" height="91" condition="$EXP[ShowListInfo50]">
                         <include>50focuslayout_info</include>
                     </focusedlayout>
                     <focusedlayout width="auto" height="64" condition="!$EXP[ShowListInfo50]">
@@ -39,7 +39,6 @@
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1627" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include condition="!Skin.HasSetting(disable.poster)">View_50_SidePoster</include>
@@ -57,7 +56,7 @@
                 </include>
                 <top>320</top>
                 <control type="fixedlist" id="50">
-                    <visible>$EXP[Exp_View_50]</visible>
+                    <visible>$EXP[Exp_View_50] | Window.IsVisible(videoplaylist)</visible>
                     <top>PosterPad</top>
                     <include content="def_height" condition="$EXP[ShowListInfo50]">
                         <param name="height" value="270" />
@@ -109,12 +108,10 @@
                 </control>
 	            <include content="Furniture_Scrollbar" condition="!$EXP[ShowListInfo50]">
 	                <param name="id" value="1699" />
-	                <param name="jumpbar" value="true" />
                     <param name="height" value="320"/>
 	            </include>
                 <include content="Furniture_Scrollbar" condition="$EXP[ShowListInfo50]">
                     <param name="id" value="1699" />
-                    <param name="jumpbar" value="true" />
                     <param name="height" value="270"/>
                 </include>
             </control>
@@ -134,7 +131,7 @@
                 <height>PosterH</height>
                 <fadetime>PosterFanartFadetime</fadetime>
                 <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-                <texture flipy="true" diffuse="diffuse/listposter-ref-widgets.png" background="true">$VAR[PosterImage]</texture>
+                <texture flipy="true" diffuse="diffuse/listposter-ref-widgets.png" background="true" fallback="$VAR[Image_Fallback_Icon]">$VAR[PosterImage]</texture>
                 <visible>Skin.HasSetting(show.reflections)</visible>
             </control>
             <control type="image">
@@ -161,7 +158,7 @@
                 <height>PosterH</height>
                 <fadetime>PosterFanartFadetime</fadetime>
                 <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
-                <texture diffuse="diffuse/listposter.png" background="true">$VAR[PosterImage]</texture>
+                <texture diffuse="diffuse/listposter.png" background="true" fallback="$VAR[Image_Fallback_Icon]">$VAR[PosterImage]</texture>
             </control>
             <control type="image">
                 <width>PosterW</width>
@@ -218,7 +215,7 @@
                 <param name="width" value="PosterH" /> 
                 <param name="is_square" value="true" /> 
                 <param name="fadetime" value="PosterFanartFadetime" />
-                <param name="diffuse" value="diffuse/listposter-widgets.png" />
+                <param name="diffuse" value="diffuse/listposter.png" />
                 <param name="genre_bordersize" value="160" />
             </include>
             <control type="image">
@@ -251,16 +248,16 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(50)</visible>
             <control type="group">
-                <control type="panel" id="50">
+                <control type="list" id="50">
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <left>ListSquareX</left>
                     <right>SidePad</right>
                     <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
-                    <onright>1679</onright>
+                    <onright>60</onright>
                     <onup>50</onup>
                     <ondown>50</ondown>
-                    <pagecontrol>1679</pagecontrol>
+                    <pagecontrol>60</pagecontrol>
                     <viewtype label="535">list</viewtype>
                     <scrolltime>200</scrolltime>
                     <itemlayout width="ListSquareW" height="64">
@@ -270,10 +267,7 @@
                         <include>50focuslayout_square</include>
                     </focusedlayout>
                 </control>
-                <include content="Furniture_Scrollbar">
-                    <param name="id" value="1679" />
-                    <param name="jumpbar" value="true" />
-                </include>
+                <include>Furniture_Scrollbar</include>
             </control>
             <include>View_50_SidePoster_Square</include>
         </control>
@@ -285,34 +279,34 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(550)</visible>
             <control type="group">
-                <control type="panel" id="550">
-                    <visible>$EXP[Exp_View_550]</visible>
+                <control type="list" id="550">
+                    <visible>$EXP[Exp_View_550] | Window.IsVisible(musicplaylist)</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
                     <left>ListSquareX</left>
                     <right>SidePad</right>
                     <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
-                    <onright>60</onright>
+                    <onright>1679</onright>
                     <onup>550</onup>
                     <ondown>550</ondown>
-                    <pagecontrol>60</pagecontrol>
+                    <pagecontrol>1679</pagecontrol>
                     <viewtype label="535">list</viewtype>
                     <scrolltime>200</scrolltime>
                     <itemlayout condition="!$EXP[ShowListInfo550]" width="ListSquareW" height="64">
                         <include>50itemlayout_square</include>
                     </itemlayout>
-                    <itemlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91">
                         <include>50itemlayout_square_info</include>
                     </itemlayout>
                     <focusedlayout condition="!$EXP[ShowListInfo550]" width="ListSquareW" height="64">
                         <include>50focuslayout_square</include>
                     </focusedlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo550]" width="ListSquareW" height="91">
                         <include>50focuslayout_square_info</include>
                     </focusedlayout>
                 </control>
                 <include content="Furniture_Scrollbar">
-                    <param name="jumpbar" value="true" />
+                    <param name="id" value="1679" />
                 </include>
             </control>
             <include>View_50_SidePoster_Square</include>
@@ -345,7 +339,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <animation effect="slide" start="0" end="-90" time="0" condition="!Container.Content(movies) | [Container.Content(movies) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
             <visible>!Container.Content(episodes) + !Container.Content(tvshows)</visible>
         </control>
@@ -357,7 +351,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <visible>Container.Content(episodes) | Container.Content(tvshows)</visible>
         </control>
         <control type="label">
@@ -383,7 +377,7 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="60" time="0" condition="Skin.HasSetting(hide.markers)">Conditional</animation>
             <animation effect="slide" start="0" end="66" time="0" condition="!$EXP[ShowRatingInfo]">Conditional</animation>
         </control>
@@ -397,7 +391,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_Rating]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>$EXP[ShowRatingInfo]</visible>
         </control>
     </include>
@@ -420,7 +414,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <animation effect="slide" start="0" end="-90" time="0" condition="!Container.Content(movies) | [Container.Content(movies) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
@@ -432,7 +426,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>Container.Content(episodes) | Container.Content(tvshows)</visible>
@@ -460,7 +454,7 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="60" time="0" condition="Skin.HasSetting(hide.markers)">Conditional</animation>
             <animation effect="slide" start="0" end="66" time="0" condition="!$EXP[ShowRatingInfo]">Conditional</animation>
         </control>
@@ -474,7 +468,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_Rating]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>$EXP[ShowRatingInfo]</visible>
         </control>
     </include>
@@ -497,7 +491,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -510,7 +504,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -523,7 +517,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -536,7 +530,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -552,7 +546,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_Extended_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="-130" time="0" condition="String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">Conditional</animation>
         </control>
@@ -567,7 +561,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_Extended_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
         </control>
         <control type="label">
@@ -581,7 +575,7 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
             <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] + !Window.IsVisible(MyPlaylist.xml)</visible>
         </control>
         <control type="image">
@@ -591,7 +585,7 @@
             <height>30</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture colordiffuse="Dark1">flags/star10.png</texture>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <top>-5</top>
@@ -604,7 +598,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label fallback="-">$INFO[ListItem.UserRating,,.0]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <top>28</top>
@@ -643,7 +637,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -656,7 +650,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -669,7 +663,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -682,7 +676,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -698,7 +692,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_Extended_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="-130" time="0" condition="String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">Conditional</animation>
         </control>
@@ -713,7 +707,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_Extended_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
         </control>
         <control type="label">
@@ -727,7 +721,7 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
             <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] + !Window.IsVisible(MyPlaylist.xml)</visible>
         </control>
         <control type="image">
@@ -737,7 +731,7 @@
             <height>30</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture colordiffuse="Light1">flags/star10.png</texture>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <top>-5</top>
@@ -750,7 +744,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label fallback="-">$INFO[ListItem.UserRating,,.0]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <top>28</top>
@@ -782,7 +776,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -794,7 +788,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -806,7 +800,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -818,7 +812,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -833,8 +827,8 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="-130" time="0" condition="String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">Conditional</animation>
         </control>
         <control type="label">
@@ -847,8 +841,8 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
         </control>
         <control type="label">
             <right>35</right>
@@ -860,8 +854,8 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
-            <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] + !Window.IsVisible(MyPlaylist.xml)</visible>
+            <visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
+            <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] + !Window.IsVisible(MyPlaylist.xml)</visible>
         </control>
         <control type="image">
             <right>97</right>
@@ -870,7 +864,7 @@
             <height>30</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture colordiffuse="Dark1">flags/star10.png</texture>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <right>30</right>
@@ -882,7 +876,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label fallback="-">$INFO[ListItem.UserRating,,.0]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
     </include>
 
@@ -909,7 +903,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -921,7 +915,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -933,7 +927,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>!ListItem.IsPlaying | ![Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -945,7 +939,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <visible>ListItem.IsPlaying + [Container.Content(songs) | Window.IsVisible(MyPlaylist.xml)]</visible>
@@ -960,8 +954,8 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="-130" time="0" condition="String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">Conditional</animation>
         </control>
         <control type="label">
@@ -974,8 +968,8 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_LabelTwo]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
-            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) | ![Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] | Window.IsVisible(MyPlaylist.xml) | Skin.HasSetting(hide.markers)]</visible>
         </control>
         <control type="label">
             <right>35</right>
@@ -987,8 +981,8 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
-            <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files)] + !Window.IsVisible(MyPlaylist.xml)</visible>
+            <visible>!ListItem.IsParentFolder + !String.IsEqual(Container.SortMethod,$LOCALIZE[38018]) + !Skin.HasSetting(hide.markers)</visible>
+            <visible>[Container.Content(videos) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(addons)] + !Window.IsVisible(MyPlaylist.xml)</visible>
         </control>
         <control type="image">
             <right>97</right>
@@ -997,7 +991,7 @@
             <height>30</height>
             <aspectratio aligny="top">keep</aspectratio>
             <texture colordiffuse="Light1">flags/star10.png</texture>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
         <control type="label">
             <right>30</right>
@@ -1009,7 +1003,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label fallback="-">$INFO[ListItem.UserRating,,.0]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
+            <visible>!ListItem.IsParentFolder + String.IsEqual(Container.SortMethod,$LOCALIZE[38018])</visible>
         </control>
     </include>
 
@@ -1041,7 +1035,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <animation effect="slide" start="0" end="-90" time="0" condition="!Container.Content(movies) | String.IsEmpty(ListItem.Year)">Conditional</animation>
         </control>
         <control type="group">
@@ -1095,7 +1089,7 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="60" time="0" condition="Skin.HasSetting(hide.markers)">Conditional</animation>
             <animation effect="slide" start="0" end="66" time="0" condition="Container.Content(Seasons) | !$EXP[ShowRatingInfo]">Conditional</animation>
         </control>
@@ -1110,7 +1104,7 @@
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
             <label>$VAR[Label_List_50_Rating]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>!Container.Content(seasons) + $EXP[ShowRatingInfo]</visible>
         </control>
     </include>
@@ -1135,7 +1129,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$VAR[Label_List_50_Title]</label>
+            <label>$VAR[Label_List_50_Extended_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <animation effect="slide" start="0" end="-90" time="0" condition="!Container.Content(movies) | String.IsEmpty(ListItem.Year)">Conditional</animation>
@@ -1176,7 +1170,7 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
             <animation effect="slide" start="0" end="60" time="0" condition="Skin.HasSetting(hide.markers)">Conditional</animation>
             <animation effect="slide" start="0" end="66" time="0" condition="!$EXP[ShowRatingInfo]">Conditional</animation>
         </control>
@@ -1191,7 +1185,7 @@
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
             <label>$VAR[Label_List_50_Rating]</label>
-            <visible>!String.IsEqual(ListItem.Label,..)</visible>
+            <visible>!ListItem.IsParentFolder</visible>
             <visible>$EXP[ShowRatingInfo]</visible>
         </control>
     </include>

@@ -4,6 +4,7 @@
     <onunload>ClearProperty(Backg,Home)</onunload>
     <onunload>ClearProperty(skinshortcuts-Widget,Home)</onunload>
     <controls>
+        <include>GlobalOverlay</include>
         <include content="DefDialog">
 	        <param name="header_id" value="500"/>
 	        <param name="header_label" value=""/>
@@ -223,7 +224,7 @@
                     <label2>$INFO[Container(211).ListItem.Label]</label2>
                     <include>Def_Skinshortcuts_Buttons</include>
                 </control>
-                <control type="button" id="311" description="Select Icon">
+                <control type="button" id="306" description="Select Icon">
                     <label>31477</label>
                     <include>Def_Skinshortcuts_Buttons</include>
                     <visible>!$EXP[Skinshortcuts_Widgets_Active]</visible>
@@ -347,10 +348,10 @@
         <control type="button" id="111">
             <include>HiddenButton</include>
         </control>
-        <control type="button" id="306">
+        <control type="button" id="309">
             <include>HiddenButton</include>
         </control>
-        <control type="button" id="309">
+        <control type="button" id="311">
             <include>HiddenButton</include>
         </control>
         <control type="button" id="312">

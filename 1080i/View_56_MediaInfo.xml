@@ -8,7 +8,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(56)</visible>
             <control type="group">
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <height>458</height>
@@ -27,16 +27,15 @@
                     <focusedlayout condition="!$EXP[ShowListInfo56]" width="ListW" height="64">
                         <include>50focuslayout</include>
                     </focusedlayout>
-                    <itemlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91">
                         <include>50itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo56]" width="ListW" height="91">
                         <include>50focuslayout_info</include>
                     </focusedlayout>
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1608" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include>View_50_SidePoster</include>
@@ -50,7 +49,7 @@
             <include>Animation.Common</include>
             <visible>Control.IsVisible(56)</visible>
             <control type="group">
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <height>PosterH</height>
@@ -69,16 +68,15 @@
                     <focusedlayout condition="!$EXP[ShowListInfo56]" width="648" height="64">
                         <include>56focuslayout</include>
                     </focusedlayout>
-                    <itemlayout condition="$EXP[ShowListInfo56]" width="648" height="91.4">
+                    <itemlayout condition="$EXP[ShowListInfo56]" width="648" height="91">
                         <include>56itemlayout_info</include>
                     </itemlayout>
-                    <focusedlayout condition="$EXP[ShowListInfo56]" width="648" height="91.4">
+                    <focusedlayout condition="$EXP[ShowListInfo56]" width="648" height="91">
                         <include>56focuslayout_info</include>
                     </focusedlayout>
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1609" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
             <include>View_50_SidePoster</include>
@@ -98,7 +96,7 @@
                     <param name="top" value="370" />
                 </include>
                 <top>320</top>
-                <control type="panel" id="56">
+                <control type="list" id="56">
                     <visible>$EXP[Exp_View_56]</visible>
                     <top>PosterPad</top>
                     <include content="def_height" condition="$EXP[ShowListInfo56]">
@@ -129,13 +127,11 @@
                 </control>
 	            <include content="Furniture_Scrollbar" condition="$EXP[ShowListInfo56]">
 	                <param name="id" value="1833" />
-	                <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="270"/>
 	            </include>
                 <include content="Furniture_Scrollbar" condition="!$EXP[ShowListInfo56]">
                     <param name="id" value="1833" />
-                    <param name="jumpbar" value="true" />
                     <param name="top" value="216"/>
                     <param name="height" value="325"/>
                 </include>
@@ -202,7 +198,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
         </control>
         <control type="label">
             <align>right</align>
@@ -214,7 +210,7 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
         </control>
         <control type="label">
             <right>70</right>
@@ -238,7 +234,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
         </control>
@@ -252,7 +248,7 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
         </control>
         <control type="label">
             <right>70</right>
@@ -277,7 +273,7 @@
             <aligny>center</aligny>
             <height>64</height>
             <font>SmallBold</font>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
             <textcolor>Dark1</textcolor>
             <selectedcolor>Dark1</selectedcolor>
         </control>
@@ -303,7 +299,7 @@
             <selectedcolor>Dark1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
         </control>
         <control type="label">
             <top>-5</top>
@@ -337,7 +333,7 @@
             <font>SmallBold</font>
             <textcolor>Light1</textcolor>
             <selectedcolor>Light1</selectedcolor>
-            <label>$INFO[ListItem.Label]</label>
+            <label>$VAR[Label_List_50_Title]</label>
         </control>
         <control type="group">
             <control type="label">
@@ -376,7 +372,7 @@
             <selectedcolor>Light1</selectedcolor>
             <font>WatchedIcon</font>
             <label>$VAR[LabelPercentWatched]</label>
-            <visible>!String.IsEqual(ListItem.Label,..) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
+            <visible>!ListItem.IsParentFolder + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(files) | Container.Content(videos) | $EXP[IsVideoAssets]] + !Skin.HasSetting(hide.markers)</visible>
         </control>
         <control type="label">
             <top>-5</top>

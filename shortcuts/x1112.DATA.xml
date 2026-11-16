@@ -8,7 +8,7 @@
     </shortcut>
     <shortcut>
         <label2>Episode Hub Shortcut</label2>
-        <label>31173</label>
+        <label>20382</label>
         <action>ActivateWindow(Videos,RecentlyAddedEpisodes,return)</action>
         <icon>special://skin/extras/icons/recentlyadded.png</icon>
     </shortcut>
@@ -78,11 +78,5 @@
         <label>$VAR[VideoScanLabel]</label>
         <action>UpdateLibrary(video)</action>
         <icon>special://skin/extras/icons/update.png</icon>
-    </shortcut>
-    <shortcut>
-        <label>14247</label>
-        <label2>Episode Hub Shortcut</label2>
-        <action>CleanLibrary(video)</action>
-        <icon>special://skin/extras/icons/paintbrush.png</icon>
     </shortcut>
 </shortcuts>

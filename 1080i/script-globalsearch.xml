@@ -27,7 +27,7 @@
                         <width>410</width>
                         <onup>990</onup>
                         <ondown>990</ondown>
-                        <onleft>1645</onleft>
+                        <onleft>555</onleft>
                         <onright>555</onright>
                         <scrolltime tween="cubic" easing="out">500</scrolltime>
                         <itemlayout height="80" width="410">
@@ -51,7 +51,6 @@
                                 <width>340</width>
                                 <height>100%</height>
                                 <align>right</align>
-                                <font>Small</font>
                                 <textcolor>Dark2</textcolor>
                                 <label>$INFO[ListItem.Label2]</label>
                             </control>
@@ -86,7 +85,6 @@
 	                                <width>340</width>
 	                                <height>100%</height>
 	                                <align>right</align>
-	                                <font>Small</font>
 	                                <textcolor>Light1</textcolor>
 	                                <selectedcolor>Light1</selectedcolor>
 	                                <label>$INFO[ListItem.Label2]</label>
@@ -114,7 +112,6 @@
 	                                <width>340</width>
 	                                <height>100%</height>
 	                                <align>right</align>
-	                                <font>Small</font>
 	                                <textcolor>Dark1</textcolor>
 	                                <label>$INFO[ListItem.Label2]</label>
 	                            </control>
@@ -132,7 +129,6 @@
                         <textwidth>294</textwidth>
                         <textcolor>Dark2</textcolor>
                         <focusedcolor>Light1</focusedcolor>
-                        <texturenofocus></texturenofocus>
                         <texturefocus colordiffuse="Dark1" border="8">common/box.png</texturefocus>
                         <textureradioonfocus colordiffuse="Light1">special://skin/extras/icons/search.png</textureradioonfocus>
                         <textureradioonnofocus colordiffuse="Dark2">special://skin/extras/icons/search.png</textureradioonnofocus>
@@ -157,12 +153,12 @@
                     <right>70</right>
                     <height>674</height>
                     <onleft>9000</onleft>
-                    <onright>1645</onright>
+                    <onright>60</onright>
                     <onfocus condition="String.IsEmpty(Window(home).Property(GlobalSearchWindowOpen))">SetFocus(9000)</onfocus>
                     <onfocus condition="String.IsEmpty(Window(home).Property(GlobalSearchWindowOpen))">DOWN</onfocus>
                     <onfocus condition="String.IsEmpty(Window(home).Property(GlobalSearchWindowOpen))">UP</onfocus>
                     <onfocus condition="String.IsEmpty(Window(home).Property(GlobalSearchWindowOpen))">SetProperty(GlobalSearchWindowOpen,1,home)</onfocus>
-                    <pagecontrol>1645</pagecontrol>
+                    <pagecontrol>60</pagecontrol>
                     <viewtype label="31258">list</viewtype>
                     <preloaditems>2</preloaditems>
                     <animation effect="fade" time="200">VisibleChange</animation>
@@ -393,7 +389,6 @@
                     </focusedlayout>
                 </control>
 	            <include content="Furniture_Scrollbar">
-	                <param name="id" value="1645" />
 	                <param name="onleft" value="555" />
 	                <param name="onright" value="9000" />
 	            </include>

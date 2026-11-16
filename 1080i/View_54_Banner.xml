@@ -90,7 +90,7 @@
                                 <selectedcolor>Dark2</selectedcolor>
                                 <font>WatchedIconSmall</font>
                                 <label>$VAR[LabelPercentWatched]</label>
-                                <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                                <visible>!ListItem.IsParentFolder</visible>
                             </control>
                             <control type="label">
                                 <top>85</top>
@@ -241,7 +241,7 @@
                             <width>207</width>
                             <height>310</height>
                             <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/cardposter.png" background="true">$VAR[PosterImage]</texture>
+                            <texture diffuse="diffuse/cardposter.png" background="true" fallback="$VAR[Image_Fallback_Icon]">$VAR[PosterImage]</texture>
                         </control>
                         <control type="image">
                             <left>109</left>
@@ -390,7 +390,7 @@
                                 <top>24</top>
                                 <width>480</width>
                                 <height>270</height>
-                                <texture diffuse="diffuse/banner.png" background="true">$VAR[LandscapeImage]</texture>
+                                <texture diffuse="diffuse/banner.png" background="true" fallback="$VAR[Image_Fallback_Icon]">$VAR[LandscapeImage]</texture>
                                 <aspectratio scalediffuse="false">scale</aspectratio>
                             </control>
                             <control type="image">
@@ -438,7 +438,7 @@
                                     <selectedcolor>Light2</selectedcolor>
                                     <font>WatchedIconSmall</font>
                                     <label>$VAR[LabelPercentWatched]</label>
-                                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                                    <visible>!ListItem.IsParentFolder</visible>
                                 </control>
                                 <control type="label">
                                     <top>90</top>
@@ -545,37 +545,42 @@
                             </control>
                             <control type="group">
                                 <right>40</right>
-                                <top>40</top>
+                                <top>53</top>
                                 <width>300</width>
                                 <control type="image">
                                     <right>0</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong5].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar5].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>38</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong4].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar4].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>76</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong3].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar3].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>114</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong2].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar2].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>152</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong1].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar1].png</texture>
                                 </control>
                             </control>
                         </control>
@@ -719,37 +724,42 @@
                             </control>
                             <control type="group">
                                 <right>40</right>
-                                <top>40</top>
+                                <top>49</top>
                                 <width>300</width>
                                 <control type="image">
                                     <right>0</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong5].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar5].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>38</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong4].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar4].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>76</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong3].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar3].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>114</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong2].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar2].png</texture>
                                 </control>
                                 <control type="image">
                                     <right>152</right>
                                     <width>64</width>
-                                    <height>64</height>
-                                    <texture colordiffuse="Light1">flags/$VAR[FlagstarSong1].png</texture>
+                                    <height>36</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="Light1">flags/$VAR[MusicFlagstar1].png</texture>
                                 </control>
                             </control>
                         </control>
@@ -757,7 +767,6 @@
                 </control>
 	            <include content="Furniture_Scrollbar">
 	                <param name="id" value="1620" />
-	                <param name="jumpbar" value="true" />
 	            </include>
             </control>
         </control>

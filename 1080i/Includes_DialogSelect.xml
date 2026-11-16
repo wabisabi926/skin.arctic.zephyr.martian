@@ -56,6 +56,9 @@
 	</include>
 
     <include name="DialogSelect">
+
+        <include>GlobalOverlay</include>
+
         <include content="DefDialog">
 	        <param name="header_id" value="1"/>
 
@@ -125,6 +128,9 @@
 	</variable>
 	
     <include name="DialogSelectGameSaves">
+
+        <include>GlobalOverlay</include>
+
         <include content="DefDialog">
 			<param name="width" value="1633" />
 			<param name="height" value="858" />
@@ -302,7 +308,7 @@
                     <font>Tiny</font>
                     <height>50</height>
                     <width>auto</width>
-                    <label>35255</label>
+                    <label>31257</label>
                 </control>
                 <control type="label" id="10823">
                     <description>Emulator name</description>
@@ -361,11 +367,6 @@
         </control>		
 	</include>
 
-    <variable name="DialogSelectGameBox">
-        <value condition="!Skin.HasSetting(osd.usetheme)">PanelWhite70</value>
-        <value>Box2</value>
-    </variable>
-	
     <include name="DialogSelectGame">
 		<include condition="!Skin.HasSetting(osd.usetheme)">DialogSelectGameBackground2</include>
         <control type="group">
@@ -428,7 +429,7 @@
 	                        <left>10</left>
 	                        <width>424</width>
 	                        <height>239</height>
-	                        <texture colordiffuse="$VAR[DialogSelectGameBox]" border="4" background="true" infill="false">common/box21.png</texture>
+	                        <texture colordiffuse="$VAR[OSDBox2]" border="4" background="true" infill="false">common/box21.png</texture>
 	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="label">
@@ -492,7 +493,7 @@
 	                        <left>10</left>
 	                        <width>424</width>
 	                        <height>239</height>
-	                        <texture colordiffuse="$VAR[DialogSelectGameBox]" border="4" background="true" infill="false">common/box21.png</texture>
+	                        <texture colordiffuse="$VAR[OSDBox2]" border="4" background="true" infill="false">common/box21.png</texture>
 	                        <visible>Skin.HasSetting(global.showborders)</visible>
 	                    </control>
 	                    <control type="image">
@@ -548,6 +549,9 @@
     </include>
     
     <include name="DialogSelectUserRating">
+
+        <include>GlobalOverlay</include>
+
         <include content="DefDialog">
             <param name="header_id" value="1"/> 
             <param name="width" value="468"/>
@@ -592,27 +596,27 @@
                         <itemgap>12</itemgap>
                         <usecontrolcoords>true</usecontrolcoords>
                         <include content="Def_Flag">
-                            <param name="Star" value="FlagstarSelect1" />
+                            <param name="Star" value="SelectFlagstar1" />
                             <param name="width" value="45" />
                             <param name="color" value="$VAR[ColorStarsSelect]" />
                         </include>
                         <include content="Def_Flag">
-                            <param name="Star" value="FlagstarSelect2" />
+                            <param name="Star" value="SelectFlagstar2" />
                             <param name="width" value="45" />
                             <param name="color" value="$VAR[ColorStarsSelect]" />
                         </include>
                         <include content="Def_Flag">
-                            <param name="Star" value="FlagstarSelect3" />
+                            <param name="Star" value="SelectFlagstar3" />
                             <param name="width" value="45" />
                             <param name="color" value="$VAR[ColorStarsSelect]" />
                         </include>
                         <include content="Def_Flag">
-                            <param name="Star" value="FlagstarSelect4" />
+                            <param name="Star" value="SelectFlagstar4" />
                             <param name="width" value="45" />
                             <param name="color" value="$VAR[ColorStarsSelect]" />
                         </include>
                         <include content="Def_Flag">
-                            <param name="Star" value="FlagstarSelect5" />
+                            <param name="Star" value="SelectFlagstar5" />
                             <param name="width" value="45" />
                             <param name="color" value="$VAR[ColorStarsSelect]" />
                         </include>
@@ -622,7 +626,6 @@
                         <top>225</top>
                         <width>330</width>
                         <height>45</height>
-                        <align>center</align>
                         <include>Animation.DelayFadeIn</include>
                         <control type="image">
                             <include>arrowdimensions</include>
@@ -661,6 +664,8 @@
         <param name="buttons" default="DialogSelectDefaultButtons"/>
 
 		<definition>
+            <include>GlobalOverlay</include>
+
 	        <include content="DefDialog">
 	            <param name="header_id" value="$PARAM[header_id]"/>
 	            <param name="width" value="1700"/>
