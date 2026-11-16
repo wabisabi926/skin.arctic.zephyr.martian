@@ -19,7 +19,7 @@ msgstr ""
 
 msgctxt "#31001"
 msgid "Prefer landscape art"
-msgstr "更喜欢横版艺术图"
+msgstr "优先使用横版图片"
 
 msgctxt "#31002"
 msgid "Animated posters"
@@ -39,7 +39,7 @@ msgstr "标题叠加层（标识视图，已舍弃）"
 
 msgctxt "#31008"
 msgid "Show progress graphic"
-msgstr "显示进度条"
+msgstr "显示进度图形"
 
 msgctxt "#31009"
 msgid "Scroll entire page"
@@ -99,7 +99,7 @@ msgstr "偏移"
 
 msgctxt "#31028"
 msgid "Widgets fade animation"
-msgstr "小组件消失动画"
+msgstr "小组件淡出动画"
 
 msgctxt "#31030"
 msgid "movies in the library"
@@ -171,7 +171,7 @@ msgstr "最高分电影"
 
 msgctxt "#31050"
 msgid "Top 250 Movies"
-msgstr "TOP250 电影"
+msgstr "Top 250 电影"
 
 msgctxt "#31051"
 msgid "Unwatched Movies"
@@ -251,7 +251,7 @@ msgstr "分组的最近剧集"
 
 msgctxt "#31071"
 msgid "Show fanart/landscape view"
-msgstr "显示背景图/横版图视图"
+msgstr "显示背景图/横版视图"
 
 msgctxt "#31072"
 msgid "Poster Flix"
@@ -279,7 +279,7 @@ msgstr "显示光盘封面"
 
 msgctxt "#31080"
 msgid "Fullsize fanart"
-msgstr "完整背景图"
+msgstr "全尺寸背景图"
 
 msgctxt "#31081"
 msgid "Double-Flix"
@@ -295,7 +295,7 @@ msgstr "显示列表而非海报"
 
 msgctxt "#31084"
 msgid "Show clearlogo on top instead on fanart"
-msgstr "显示透明徽标在背景图上方而非表面"
+msgstr "在背景图上方显示透明徽标，而非叠加在背景图上"
 
 msgctxt "#31085"
 msgid "Fanart & poster 2"
@@ -319,7 +319,7 @@ msgstr "分钟"
 
 msgctxt "#31090"
 msgid "Show duration as hours and minutes"
-msgstr "将时长显示为“小时”和“分钟”"
+msgstr "以小时和分钟显示时长"
 
 msgctxt "#31091"
 msgid "Double-Flix Banner"
@@ -411,7 +411,7 @@ msgstr "子菜单"
 
 msgctxt "#31113"
 msgid "No Timer"
-msgstr "无计时"
+msgstr "无定时"
 
 msgctxt "#31114"
 msgid "Show effect"
@@ -435,7 +435,7 @@ msgstr "显示艺术家幻灯片"
 
 msgctxt "#31120"
 msgid "Animate artist slideshow"
-msgstr "动态艺术家幻灯片"
+msgstr "为艺术家幻灯片启用动画"
 
 msgctxt "#31121"
 msgid "Show fanart"
@@ -451,7 +451,7 @@ msgstr "更改图片"
 
 msgctxt "#31125"
 msgid "Set your favourite settings"
-msgstr "确定你的收藏设置"
+msgstr "按喜好调整设置"
 
 msgctxt "#31126"
 msgid "Accent colours"
@@ -499,7 +499,7 @@ msgstr "窗口化播放预告"
 
 msgctxt "#31141"
 msgid "Youtube"
-msgstr "油管"
+msgstr "YouTube"
 
 msgctxt "#31142"
 msgid "Use low list"
@@ -519,7 +519,7 @@ msgstr "显示天气"
 
 msgctxt "#31146"
 msgid "Animate fanart"
-msgstr "动态背景图"
+msgstr "启用背景图动画"
 
 msgctxt "#31147"
 msgid "Extra Info"
@@ -563,7 +563,7 @@ msgstr "尚未创建书签。"
 
 msgctxt "#31157"
 msgid "Extended info of"
-msgstr "更多信息关于"
+msgstr "更多信息："
 
 msgctxt "#31158"
 msgid "Trailer of"
@@ -575,7 +575,7 @@ msgstr "电影出自"
 
 msgctxt "#31160"
 msgid "TV Shows by"
-msgstr "电视剧出自"
+msgstr "出品剧集："
 
 msgctxt "#31161"
 msgid "[B]Configure System Settings[/B][CR][CR] •     Setup and calibrate displays[CR] •     Configure audio output[CR] •     Setup remote controls[CR] •     Set power saving options[CR] •     Enable debugging[CR] •     Setup master lock"
@@ -651,7 +651,7 @@ msgstr "分类中心项"
 
 msgctxt "#31180"
 msgid "Cast of"
-msgstr "演员阵容来自"
+msgstr "演员阵容："
 
 msgctxt "#31181"
 msgid "Similar to"
@@ -659,15 +659,15 @@ msgstr "类似于"
 
 msgctxt "#31182"
 msgid "Fanart of"
-msgstr "背景图来自"
+msgstr "背景图："
 
 msgctxt "#31183"
 msgid "Youtube videos of"
-msgstr "Youtube 视频关于"
+msgstr "YouTube 相关视频："
 
 msgctxt "#31184"
 msgid "Crew of"
-msgstr "摄制组来自"
+msgstr "摄制组："
 
 msgctxt "#31185"
 msgid "Big poster"
@@ -679,15 +679,15 @@ msgstr "在对话框使用圆形图标"
 
 msgctxt "#31187"
 msgid "Filmography of"
-msgstr "从影纪录来自"
+msgstr "参演作品："
 
 msgctxt "#31188"
 msgid "TV Show appearances of"
-msgstr "参演的电视剧来自"
+msgstr "参演剧集："
 
 msgctxt "#31189"
 msgid "Discography of"
-msgstr "唱片目录来自"
+msgstr "唱片目录："
 
 msgctxt "#31191"
 msgid "Directed by"
@@ -711,7 +711,7 @@ msgstr "重载皮肤"
 
 msgctxt "#31196"
 msgid "Content of"
-msgstr "内容来自"
+msgstr "内容："
 
 msgctxt "#31197"
 msgid "Show weather with clock"
@@ -727,7 +727,7 @@ msgstr "信息亭模式"
 
 msgctxt "#31200"
 msgid "Only display widgets when pressing up"
-msgstr "仅在按上按键时显示小组件"
+msgstr "仅在按上方向键时显示小组件"
 
 msgctxt "#31201"
 msgid "Show detailed info when video is paused"
@@ -759,7 +759,7 @@ msgstr "电影出自"
 
 msgctxt "#31208"
 msgid "In Cinemas"
-msgstr "在映"
+msgstr "正在上映"
 
 msgctxt "#31209"
 msgid "Upcoming"
@@ -767,7 +767,7 @@ msgstr "未上映"
 
 msgctxt "#31210"
 msgid "Popular"
-msgstr "流行"
+msgstr "热门"
 
 msgctxt "#31211"
 msgid "Top Rated"
@@ -795,7 +795,7 @@ msgstr "曲目列表出自"
 
 msgctxt "#31217"
 msgid "Show clearart with seekbar"
-msgstr "使用搜索栏显示透明艺术图"
+msgstr "在进度条上显示透明艺术图"
 
 msgctxt "#31218"
 msgid "Show numeric rating"
@@ -831,7 +831,7 @@ msgstr "背景图"
 
 msgctxt "#31226"
 msgid "Youtube"
-msgstr "油管"
+msgstr "YouTube"
 
 msgctxt "#31227"
 msgid "Crew"
@@ -851,7 +851,7 @@ msgstr "音轨"
 
 msgctxt "#31231"
 msgid "Screenshots of"
-msgstr "截图来自"
+msgstr "截图："
 
 msgctxt "#31232"
 msgid "Reboot to eMMC/NAND"
@@ -871,7 +871,7 @@ msgstr "正在播放…"
 
 msgctxt "#31237"
 msgid "Use minimal busy loader in header"
-msgstr "在标题中使用负载最小的加载程序"
+msgstr "在标题栏使用极简加载动画"
 
 msgctxt "#31238"
 msgid "Select highlight colour"
@@ -883,7 +883,7 @@ msgstr "当前颜色"
 
 msgctxt "#31240"
 msgid "Square Light"
-msgstr "光边方框"
+msgstr "浅色方框"
 
 msgctxt "#31241"
 msgid "Icons Info"
@@ -927,11 +927,11 @@ msgstr "垂直"
 
 msgctxt "#31251"
 msgid "Seasons of"
-msgstr "季来自"
+msgstr "分季："
 
 msgctxt "#31252"
 msgid "Collections of"
-msgstr "合集来自"
+msgstr "合集："
 
 msgctxt "#31253"
 msgid "Always display info and seekbar on music visualisation"
@@ -967,7 +967,7 @@ msgstr "设置天气图标"
 
 msgctxt "#31261"
 msgid "Widget aspect"
-msgstr "小组件类型"
+msgstr "小组件比例"
 
 msgctxt "#31262"
 msgid "Poster"
@@ -1035,7 +1035,7 @@ msgstr "[B]配置播放器设置[/B][CR][CR] •     播放动作[CR] •     �
 
 msgctxt "#31278"
 msgid "Download all artwork"
-msgstr "下载所有艺术图片"
+msgstr "下载所有图片"
 
 msgctxt "#31279"
 msgid "Video decoder"
@@ -1051,19 +1051,19 @@ msgstr "播放速度"
 
 msgctxt "#31282"
 msgid "Special Features"
-msgstr "特殊功能"
+msgstr "特别收录"
 
 msgctxt "#31283"
 msgid "Select artwork"
-msgstr "选择艺术图片"
+msgstr "选择图片"
 
 msgctxt "#31284"
 msgid "Download artwork"
-msgstr "下载艺术图片"
+msgstr "下载图片"
 
 msgctxt "#31285"
 msgid "Top Songs"
-msgstr "最高分歌曲"
+msgstr "热门歌曲"
 
 msgctxt "#31286"
 msgid "Random Songs"
@@ -1183,7 +1183,7 @@ msgstr "将皮肤设置重置为默认值"
 
 msgctxt "#31320"
 msgid "Random Actors ordered by movies"
-msgstr "按电影排序的随机演员"
+msgstr "按电影数量排序的随机演员"
 
 msgctxt "#31321"
 msgid "New Unwatched Movies"
@@ -1199,7 +1199,7 @@ msgstr "未观看的新电视剧"
 
 msgctxt "#31324"
 msgid "Search results for"
-msgstr "搜索结果出自"
+msgstr "搜索结果："
 
 msgctxt "#31325"
 msgid "Side Cards"
@@ -1223,7 +1223,7 @@ msgstr "显示透明徽标/艺术图"
 
 msgctxt "#31332"
 msgid "More of"
-msgstr "更多关于"
+msgstr "更多："
 
 msgctxt "#31333"
 msgid "Poster Wall Small"
@@ -1251,7 +1251,7 @@ msgstr "25"
 
 msgctxt "#31339"
 msgid "Reset all menus and widgets to defaults"
-msgstr "将所有菜单和小部件重置为默认值"
+msgstr "将所有菜单和小组件重置为默认值"
 
 msgctxt "#31340"
 msgid "Autoscroll"
@@ -1259,11 +1259,11 @@ msgstr "自动滚动"
 
 msgctxt "#31341"
 msgid "TMDbHelper Movies"
-msgstr ""
+msgstr "TMDbHelper 电影"
 
 msgctxt "#31342"
 msgid "TMDbHelper TV Shows"
-msgstr ""
+msgstr "TMDbHelper 剧集"
 
 msgctxt "#31347"
 msgid "Weather Icons"
@@ -1287,7 +1287,7 @@ msgstr "影片地区图标"
 
 msgctxt "#31354"
 msgid "Animate fanart/slideshow"
-msgstr "动态显示背景图/幻灯片"
+msgstr "启用背景图/幻灯片动画"
 
 msgctxt "#31355"
 msgid "Normal"
@@ -1323,7 +1323,7 @@ msgstr "电源菜单"
 
 msgctxt "#31364"
 msgid "Shutdown in: [B]$INFO[System.Alarmpos][/B]"
-msgstr "关机于: [B]$INFO[System.Alarmpos][/B]"
+msgstr "关机倒计时：[B]$INFO[System.Alarmpos][/B]"
 
 msgctxt "#31365"
 msgid "Use IMDb trailers"
@@ -1407,7 +1407,7 @@ msgstr "黑胶"
 
 msgctxt "#31391"
 msgid "Prefer tags instead of rating"
-msgstr "首选标签而不是评分"
+msgstr "优先使用标签而非评分"
 
 msgctxt "#31394"
 msgid "Multi-Widgets"
@@ -1495,11 +1495,11 @@ msgstr "秒"
 
 msgctxt "#31429"
 msgid "Show more..."
-msgstr "显示更多..."
+msgstr "显示更多…"
 
 msgctxt "#31430"
 msgid "Limited widgets have \"more items\" object"
-msgstr "有“更多选项”物体的有限小部件"
+msgstr "部分小组件带有“更多项目”对象"
 
 msgctxt "#31431"
 msgid "Use old Arctic Zephyr window animation"
@@ -1519,7 +1519,7 @@ msgstr "电影和电视剧"
 
 msgctxt "#31435"
 msgid "Recently added Songs"
-msgstr "电影和电视剧"
+msgstr "最近添加的歌曲"
 
 msgctxt "#31436"
 msgid "Most played Songs"
@@ -1532,6 +1532,14 @@ msgstr "使用 Skin Info Service 字母滚动条"
 msgctxt "#31438"
 msgid "Genre Poster"
 msgstr "类型海报"
+
+msgctxt "#31439"
+msgid "TMDbHelper"
+msgstr "TMDbHelper"
+
+msgctxt "#31440"
+msgid "TMDbHelper Service"
+msgstr "TMDbHelper 服务"
 
 msgctxt "#31442"
 msgid "Select media flags"
@@ -1595,7 +1603,7 @@ msgstr "模拟蓝光"
 
 msgctxt "#31461"
 msgid "Artwork section"
-msgstr "艺术图片部分"
+msgstr "图片区域"
 
 msgctxt "#31462"
 msgid "Landscape"
@@ -1603,7 +1611,7 @@ msgstr "横版图"
 
 msgctxt "#31463"
 msgid "Artwork of"
-msgstr "艺术图片出自"
+msgstr "图片："
 
 msgctxt "#31464"
 msgid "Movies and episodes"
@@ -1663,15 +1671,15 @@ msgstr "HDR"
 
 msgctxt "#31481"
 msgid "Blu-ray / HD DVD / DVD / WEB-DL / TV"
-msgstr "Blu-Ray / HD-DVD / DVD / WEB-DL"
+msgstr "Blu-ray / HD DVD / DVD / WEB-DL / TV"
 
 msgctxt "#31482"
 msgid "IMDb Top 250"
-msgstr "IMDb"
+msgstr "IMDb Top 250"
 
 msgctxt "#31483"
 msgid "Audio Channels"
-msgstr "音频频道"
+msgstr "音频声道"
 
 msgctxt "#31484"
 msgid "Spotlight widget path"
@@ -1735,7 +1743,7 @@ msgstr "合集"
 
 msgctxt "#31500"
 msgid "Prefer percentage"
-msgstr "首选百分比"
+msgstr "优先显示百分比"
 
 msgctxt "#31501"
 msgid "[B]Manage Files[/B][CR][CR] •     Copy[CR] •     Move[CR] •     Delete[CR] •     Rename[CR] •     Manage Source"
@@ -1756,6 +1764,14 @@ msgstr "在底部小组件按“下键”时，小组件不返回初始位置"
 msgctxt "#31505"
 msgid "On up/down at first/last widget, go to last/first widget"
 msgstr "小组件上下循环滚动"
+
+msgctxt "#31506"
+msgid "Roger Ebert"
+msgstr "Roger Ebert"
+
+msgctxt "#31507"
+msgid "MyAnimeList"
+msgstr "MyAnimeList"
 
 msgctxt "#31508"
 msgid "Global"
@@ -1816,6 +1832,10 @@ msgstr "网飞风格背景图"
 msgctxt "#31524"
 msgid "IMDb Position"
 msgstr "IMDb 排位"
+
+msgctxt "#31525"
+msgid "Slider"
+msgstr "滑块"
 
 msgctxt "#31530"
 msgid "Seasons Info Thumbnails"
@@ -1883,7 +1903,7 @@ msgstr "滚动条"
 
 msgctxt "#31577"
 msgid "Progress graphic"
-msgstr "进度条"
+msgstr "进度图形"
 
 msgctxt "#31580"
 msgid "Effect settings"
@@ -1899,7 +1919,7 @@ msgstr "在网飞风格视图中启用自动播放预告片"
 
 msgctxt "#31594"
 msgid "Stop playback on next"
-msgstr "停止播放下一个"
+msgstr "按“下一个”时停止播放"
 
 msgctxt "#31595"
 msgid "Try to hide black bars"
@@ -1955,7 +1975,7 @@ msgstr "分类中心小组件的内容样式"
 
 msgctxt "#31631"
 msgid "Playback action when video info dialog is shown"
-msgstr "显示视频信息对话框时开始播放"
+msgstr "显示视频信息对话框时的播放动作"
 
 msgctxt "#31632"
 msgid "Stop playback when item is no longer focused"
@@ -1979,11 +1999,11 @@ msgstr "正在播放"
 
 msgctxt "#31663"
 msgid "Now playing..."
-msgstr "当前播放..."
+msgstr "正在播放…"
 
 msgctxt "#31667"
 msgid "Artwork"
-msgstr "艺术图"
+msgstr "图片"
 
 msgctxt "#31668"
 msgid "Path to additional animated posters"
@@ -2047,7 +2067,7 @@ msgstr "在线"
 
 msgctxt "#31699"
 msgid "Pick a colour..."
-msgstr "选择一种颜色..."
+msgstr "选择一种颜色…"
 
 msgctxt "#31700"
 msgid "Set colour"
@@ -2127,7 +2147,7 @@ msgstr "票房"
 
 msgctxt "#31817"
 msgid "Known for"
-msgstr "闻名于"
+msgstr "知名作品"
 
 msgctxt "#31818"
 msgid "Crew membership"
@@ -2155,7 +2175,7 @@ msgstr "自动滚动时间间隔"
 
 msgctxt "#31824"
 msgid "Hub-Limit"
-msgstr "Hub 数量限制"
+msgstr "分类中心数量限制"
 
 msgctxt "#31900"
 msgid "OSD position"
@@ -2179,7 +2199,7 @@ msgstr "节点"
 
 msgctxt "#31906"
 msgid "Autohide seekbar after pausing"
-msgstr "暂停后自动隐藏搜索栏"
+msgstr "暂停后自动隐藏进度条"
 
 msgctxt "#31907"
 msgid "Playback Speed"
@@ -2195,7 +2215,7 @@ msgstr "不显示字幕"
 
 msgctxt "#31939"
 msgid "Ended"
-msgstr "截至"
+msgstr "已完结"
 
 msgctxt "#31940"
 msgid "Rumored"
@@ -2223,19 +2243,19 @@ msgstr "已取消"
 
 msgctxt "#31946"
 msgid "Returning Series"
-msgstr "回归系列"
+msgstr "续订中"
 
 msgctxt "#31947"
 msgid "Acting"
-msgstr "表演"
+msgstr "演员"
 
 msgctxt "#31948"
 msgid "Directing"
-msgstr "导演中"
+msgstr "导演"
 
 msgctxt "#31949"
 msgid "Writing"
-msgstr "编剧中"
+msgstr "编剧"
 
 msgctxt "#31950"
 msgid "Production"
@@ -2243,7 +2263,7 @@ msgstr "制作"
 
 msgctxt "#31951"
 msgid "Sound"
-msgstr "声音"
+msgstr "音效"
 
 msgctxt "#31952"
 msgid "Creator"
@@ -2327,7 +2347,7 @@ msgstr "显示EDL标记"
 
 msgctxt "#31975"
 msgid "Hide media flags"
-msgstr "隐藏媒体标志"
+msgstr "隐藏媒体标识"
 
 msgctxt "#31976"
 msgid "Use dark theme"
@@ -2375,11 +2395,11 @@ msgstr "备选"
 
 msgctxt "#31987"
 msgid "[B]Configure Game Settings[/B][CR][CR] •     Gameplay options[CR] •     RetroAchievements login[CR]"
-msgstr "[B] 配置游戏设置[/B][CR][CR] •     游戏玩法选项[CR] •     RetroAchievements 登录[CR]"
+msgstr "[B]配置游戏设置[/B][CR][CR] •     游戏玩法选项[CR] •     RetroAchievements 登录[CR]"
 
 msgctxt "#31988"
 msgid " (only in lists)"
-msgstr "(仅在列表中）"
+msgstr "（仅在列表中）"
 
 msgctxt "#31989"
 msgid "Codecs"
@@ -2387,7 +2407,7 @@ msgstr "编解码器"
 
 msgctxt "#31990"
 msgid "Prefer online cast"
-msgstr "优先选择在线投屏"
+msgstr "优先使用在线演员表"
 
 msgctxt "#31991"
 msgid "Prefer online collections"
@@ -2395,7 +2415,7 @@ msgstr "优先选择在线合集"
 
 msgctxt "#31992"
 msgid "Prefer online artwork"
-msgstr "优先选择在线艺术图片"
+msgstr "优先使用在线图片"
 
 msgctxt "#31993"
 msgid "Timed change of colour scheme"
